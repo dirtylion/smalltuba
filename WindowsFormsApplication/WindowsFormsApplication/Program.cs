@@ -17,7 +17,15 @@ namespace WindowsFormsApplication
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
+            
+            
+           
+
             Win32.AllocConsole();
+            var a = new BarcodeGenerator();
+            a.CreateBarcode("123456789");
+            a.CreateBarcode("123123123");
+
             Console.ReadKey();
         }
     }
