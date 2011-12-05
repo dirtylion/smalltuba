@@ -13,6 +13,8 @@ namespace SmallTuba
 		[STAThread]
 		static void Main()
 		{
+			// FUCK
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1());
