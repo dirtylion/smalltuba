@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 namespace SmallTuba
 {
+    //Se der er kommet en ny klasse!!!!!!!!!!!!!1
+
 	static class Program
 	{
 		/// <summary>
