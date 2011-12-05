@@ -1,8 +1,0 @@
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\bin\Debug\SmallTuba.exe
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\bin\Debug\SmallTuba.pdb
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\obj\x86\Debug\SmallTuba.Properties.Resources.resources
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\obj\x86\Debug\SmallTuba.exe
-C:\Dirtylion\smalltuba\SmallTuba\SmallTuba\obj\x86\Debug\SmallTuba.pdb
