@@ -88,38 +88,14 @@ namespace SmallTuba.Network.Voter
         }
 
         /// <summary>
-        /// Has this voter voted?
-        /// </summary>
-        /// <param name="id">The ID of the voter</param>
-        /// <returns>The state of the voter</returns>
-        public VoterState HasVoted(int id)
-        {
-            Message query = new Message(Keyword.HasVoted, id);
-            Message reply = this.clientFE.SendQuery(query, 0);
-            if (reply == null)
-            {
-                return null;
-            }
-
-            if (reply.GetValue.GetType().Equals(typeof(VoterState)))
-            {
-                return (VoterState)reply.GetValue;
-            }
-
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
-        }
-        
-        /// <summary>
         /// Register that this voter has voted
         /// </summary>
         /// <param name="voterState">The state of the voter</param>
         /// <returns>If the voter was registered</returns>
-        public bool RegisterVoter(VoterState voterState)
+        public bool RegisterVoter(Person person)
         {
-            Contract.Requires(voterState != null);
-            Message query = new Message(Keyword.RegisterVoter, voterState);
+            Contract.Requires(person != null);
+            Message query = new Message(Keyword.RegisterVoter, person);
             Message reply = this.clientFE.SendQuery(query, 0);
             if (reply == null)
             {
@@ -141,9 +117,9 @@ namespace SmallTuba.Network.Voter
         /// </summary>
         /// <param name="id">The id of the voter</param>
         /// <returns>If the voter was unregistered</returns>
-        public bool UnregisterVoter(int id)
+        public bool UnregisterVoter(Person person)
         {
-            Message query = new Message(Keyword.UnregisterVoter, id);
+            Message query = new Message(Keyword.UnregisterVoter, person);
             Message reply = this.clientFE.SendQuery(query, 0);
             if (reply == null)
             {

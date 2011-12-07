@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallTuba", "SmallTuba\SmallTuba.csproj", "{20869018-EB0E-4F42-8570-2CAF18CB06DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication", "ClientApplication\ClientApplication.csproj", "{99D9F2CA-71C6-45AB-8583-130F70F2B953}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{20869018-EB0E-4F42-8570-2CAF18CB06DC}.Debug|x86.Build.0 = Debug|x86
 		{20869018-EB0E-4F42-8570-2CAF18CB06DC}.Release|x86.ActiveCfg = Release|x86
 		{20869018-EB0E-4F42-8570-2CAF18CB06DC}.Release|x86.Build.0 = Release|x86
+		{99D9F2CA-71C6-45AB-8583-130F70F2B953}.Debug|x86.ActiveCfg = Debug|x86
+		{99D9F2CA-71C6-45AB-8583-130F70F2B953}.Debug|x86.Build.0 = Debug|x86
+		{99D9F2CA-71C6-45AB-8583-130F70F2B953}.Release|x86.ActiveCfg = Release|x86
+		{99D9F2CA-71C6-45AB-8583-130F70F2B953}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
