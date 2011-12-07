@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PdfSharp">
+      <HintPath>..\DLL\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,8 @@
     <Compile Include="Network\Message\Keyword.cs" />
     <Compile Include="Network\Message\Message.cs" />
     <Compile Include="Network\Message\Packet.cs" />
+    <Compile Include="PdfGenerator\PollingCards.cs" />
+    <Compile Include="PdfGenerator\VoterList.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Network\Message\ServerFE.cs" />
     <Compile Include="VoterState.cs" />
