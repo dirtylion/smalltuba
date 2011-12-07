@@ -5,11 +5,9 @@
 	using SmallTuba.Entities.Abstracts;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-01</version>
-	/// <summary>
-	/// </summary>
-	public class LogResource : AbstractResource {
-		public List<Log> Build() {
+	/// <version>2011-12-07</version>
+	public class LogResource : AbstractResource<Log> {
+		public override List<Log> Build() {
 			QueryBuilder.SetType("select");
 			QueryBuilder.SetTable(Log.Table);
 			QueryBuilder.SetColumns(Log.Columns);
