@@ -1,14 +1,30 @@
 ﻿namespace SmallTuba.Database {
 	using System.Collections;
 	using System.Collections.Specialized;
-
-	// using System.Diagnostics.Contracts;
+	using System.Diagnostics.Contracts;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-07</version>
 	/// <summary>
+	/// The QueryBuilder is used to assemble MySQL queries from
+	/// parameters set by the range of given setter methods.
 	/// 
+	/// It is also capable of executing the assembled queries
+	/// towards a database using an instance of the Connector class.
 	/// </summary>
+	/// <example>
+	/// queryBuilder = new QueryBuilder();
+	/// queryBuilder.SetType("select");
+	/// queryBuilder.SetTable("person");
+	/// queryBuilder.SetColumns(new [] { "id", "firstname" });
+	/// queryBuilder.AddCondition("`id` = 1");
+	/// queryBuilder.SetLimit(1);
+	/// 
+	/// string result = queryBuilder.Assemble();
+	/// 
+	/// // will produce:
+	/// // SELECT `id`, `firstname` FROM `Person` WHERE (`id` = 1) LIMIT 1
+	/// </example>
 	public class QueryBuilder {
 		private string _type;
 		private string _table;
@@ -23,6 +39,15 @@
 
 		private Connector _connector;
 
+		/// <summary>
+		/// Construct the QueryBuilder.
+		/// 
+		/// Will initialize an instance of the Connector class
+		/// and call the Connect() method of this.
+		/// 
+		/// Also calls the method Clear() which at this point
+		/// works as a field initializer.
+		/// </summary>
 		public QueryBuilder() {
 			_connector = new Connector();
 			_connector.Connect();
@@ -30,6 +55,10 @@
 			Clear();
 		}
 
+		/// <summary>
+		/// Resets the parameters to their default values.
+		/// The default type of the QueryBuilder is "select".
+		/// </summary>
 		private void Clear() {
 			_type = "select";
 			_table = "";
@@ -41,29 +70,55 @@
 			_orders = new OrderedDictionary();
 		}
 
+		/// <summary>
+		/// Set the type of the query.
+		/// </summary>
+		/// <param name="type">The type of the query.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetType(string type) {
-			// Contract.Requires(type == "select" || type == "update" || type == "insert" || type == "delete");
+			Contract.Requires(type != null);
+			Contract.Requires(type == "select" || type == "update" || type == "insert" || type == "delete");
+
 			_type = type;
 			return this;
 		}
 
+		/// <summary>
+		/// Set the table to be used in the query.
+		/// </summary>
+		/// <param name="table">The table to use in the query.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetTable(string table) {
-			// Contract.Requires(table != null);
+			Contract.Requires(table != null);
+
 			_table = table;
 			return this;
 		}
 
+		/// <summary>
+		/// Set the columns of the table that should be used in the query.
+		/// </summary>
+		/// <param name="columns">The columns of the table used in the query.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetColumns(string[] columns) {
-			// Contract.Requires(columns != null);
-			// Contract.Requires(columns.Length > 0);
+			Contract.Requires(columns != null);
+			Contract.Requires(columns.Length > 0);
+
 			_columns.Clear();
 			_columns.AddRange(columns);
 			return this;
 		}
 
+		/// <summary>
+		/// Set the values that should be inserted or updated in the query.
+		/// This is only used when the type of query is either "insert" or
+		/// "update".
+		/// </summary>
+		/// <param name="values">The values to be used for updating or inserting.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetValues(string[] values) {
-			// Contract.Requires(values != null);
-			// Contract.Requires(values.Length > 0);
+			Contract.Requires(values != null);
+			Contract.Requires(values.Length > 0);
 
 			_values.Clear();
 			_values.AddRange(values);
@@ -71,27 +126,59 @@
 			return this;
 		}
 
+		/// <summary>
+		/// Adding a WHERE condition to the query.
+		/// </summary>
+		/// <param name="condition">The condition to be used in the query.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder AddCondition(string condition) {
-			// Contract.Requires(condition != null);
+			Contract.Requires(condition != null);
+
 			return AddCondition(condition, "and", condition);
 		}
 
+		/// <summary>
+		/// Adding a WHERE condition to the query and specifying 
+		/// the following logical operator (must be either "and" or "or").
+		/// </summary>
+		/// <param name="condition">The condition to be used in the query.</param>
+		/// <param name="bind">The binding logical operator.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder AddCondition(string condition, string bind) {
-			// Contract.Requires(condition != null);
-			// Contract.Requires(bind != null);
+			Contract.Requires(condition != null);
+			Contract.Requires(bind != null);
+			Contract.Requires(bind == "and" || bind == "or");
+
 			return AddCondition(condition, bind, condition);
 		}
 
+		/// <summary>
+		/// Adding a WHERE condition to the query, specifying 
+		/// the following logical operator (must be either "and" or "or")
+		/// and an index if the condition should be removed again.
+		/// </summary>
+		/// <param name="condition">The condition to be used in the query.</param>
+		/// <param name="bind">The binding logical operator.</param>
+		/// <param name="index">The identifying index of the condition.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder AddCondition(string condition, string bind, string index) {
-			// Contract.Requires(condition != null);
-			// Contract.Requires(bind != null);
-			// Contract.Requires(index != null);
+			Contract.Requires(condition != null);
+			Contract.Requires(bind != null);
+			Contract.Requires(bind == "and" || bind == "or");
+			Contract.Requires(index != null);
+
 			_conditions.Add(index, new[] { condition, bind });
 			return this;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder RemoveCondition(string index) {
-			// Contract.Requires(index != null);
+			Contract.Requires(index != null);
+
 			_conditions.Remove(index);
 			return this;
 		}
