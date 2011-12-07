@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba
+namespace SmallTuba.Network.Voter
 {
     using System;
     using System.Collections.Generic;

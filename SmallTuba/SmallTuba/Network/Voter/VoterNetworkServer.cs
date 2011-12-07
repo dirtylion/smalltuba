@@ -39,11 +39,6 @@ namespace SmallTuba.Network.Voter
         private IdToPersonRequest idToPersonRequest;
 
         /// <summary>
-        /// Invoke this function that returns a voters state when asked about a voter has voted
-        /// </summary>
-        private HasVotedRequest hasVotedRequest;
-
-        /// <summary>
         /// Invoke this function when asked about registering a user
         /// </summary>
         private RegisterVoteRequest registerVoteRequest;
@@ -80,25 +75,18 @@ namespace SmallTuba.Network.Voter
         public delegate Person IdToPersonRequest(int id);
 
         /// <summary>
-        /// A type of a function to invoke when a request for a state of a voter is made
-        /// </summary>
-        /// <param name="id">The id of the voter</param>
-        /// <returns>The state of the voter</returns>
-        public delegate VoterState HasVotedRequest(int id);
-
-        /// <summary>
         /// A type of a function to invoke when a request for registering a voter is made
         /// </summary>
         /// <param name="voterState">The state of the voret</param>
         /// <returns>If the voter was registered</returns>
-        public delegate bool RegisterVoteRequest(VoterState voterState);
+        public delegate bool RegisterVoteRequest(Person person);
 
         /// <summary>
         /// A type of a function to invoke when a request for unregistering a voter is made
         /// </summary>
         /// <param name="id">The id of the voter</param>
         /// <returns>If the voter was unregistered</returns>
-        public delegate bool UnregisterVoteRequest(int id);
+        public delegate bool UnregisterVoteRequest(Person person);
 
         /// <summary>
         /// Invoke this function that returns a person when asked about a person from a cpr.nr.
@@ -116,15 +104,6 @@ namespace SmallTuba.Network.Voter
         public void SetIdToPersonRequest(IdToPersonRequest function)
         {
             this.idToPersonRequest = function;
-        }
-
-        /// <summary>
-        /// Invoke this function that returns a voters state when asked about a voter has voted
-        /// </summary>
-        /// <param name="function">The function</param>
-        public void SetHasVotedRequest(HasVotedRequest function)
-        {
-            this.hasVotedRequest = function;
         }
 
         /// <summary>
@@ -182,28 +161,19 @@ namespace SmallTuba.Network.Voter
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
-                case Keyword.HasVoted:
-                    if (query.GetValue is int && this.hasVotedRequest != null)
-                    {
-                        VoterState voterState = this.hasVotedRequest.Invoke((int)query.GetValue);
-                        return new Message(keyword, voterState);
-                    }
-
-                    ///TODO: must not happen
-                    throw new InvalidCastException();
                 case Keyword.RegisterVoter:
-                    if (query.GetValue.GetType().Equals(typeof(VoterState)) && this.registerVoteRequest != null)
+                    if (query.GetValue.GetType().Equals(typeof(Person)) && this.registerVoteRequest != null)
                     {
-                        bool b = this.registerVoteRequest.Invoke((VoterState)query.GetValue);
+                        bool b = this.registerVoteRequest.Invoke((Person)query.GetValue);
                         return new Message(keyword, b);
                     }
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
                 case Keyword.UnregisterVoter:
-                    if (query.GetValue is int && this.unregisterVoteRequest != null)
+                    if (query.GetValue.GetType().Equals(typeof(Person)) && this.unregisterVoteRequest != null)
                     {
-                        bool b = this.unregisterVoteRequest.Invoke((int)query.GetValue);
+                        bool b = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
                         return new Message(keyword, b);
                     }
 

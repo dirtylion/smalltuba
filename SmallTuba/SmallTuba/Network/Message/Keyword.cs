@@ -27,11 +27,6 @@ namespace SmallTuba.Network.Message
         GetPersonFromId,
         
         /// <summary>
-        /// Are you a request about getting the state of a voter?
-        /// </summary>
-        HasVoted,
-        
-        /// <summary>
         /// Are you a request about registering a voter?
         /// </summary>
         RegisterVoter,
