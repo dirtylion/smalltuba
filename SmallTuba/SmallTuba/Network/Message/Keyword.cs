@@ -35,5 +35,15 @@ namespace SmallTuba.Network.Message
         /// Are you a request about unregistering a voter?
         /// </summary>
         UnregisterVoter,
+
+        /// <summary>
+        /// Are you a request about valid tables?
+        /// </summary>
+        ValidTables,
+
+        /// <summary>
+        /// Are you connected to a server?
+        /// </summary>
+        Ping
     }
 }

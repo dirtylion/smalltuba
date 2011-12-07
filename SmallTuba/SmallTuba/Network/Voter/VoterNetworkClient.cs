@@ -136,5 +136,44 @@ namespace SmallTuba.Network.Voter
             /// TODO: 
             throw new InvalidCastException();
         }
+
+        /// <summary>
+        /// What are the valid tables for this server?
+        /// </summary>
+        /// <returns></returns>
+        public string[] ValidTables()
+        {
+            Message query = new Message(Keyword.ValidTables, null);
+            Message reply = this.clientFE.SendQuery(query, 0);
+            if (reply == null)
+            {
+                return null;
+            }
+
+            if (reply.GetValue is string[])
+            {
+                return (string[])reply.GetValue;
+            }
+
+            // The code must never reach this point since we asked for a person
+            /// TODO: 
+            throw new InvalidCastException();
+        }
+
+        /// <summary>
+        /// Are you connected to a server?
+        /// </summary>
+        /// <returns></returns>
+        public bool Connected()
+        {
+            Message query = new Message(Keyword.Ping, null);
+            Message reply = this.clientFE.SendQuery(query, 2);
+            if (reply == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

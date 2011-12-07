@@ -96,6 +96,7 @@ namespace SmallTuba.Network.Message
 
                     // Test if the packet is for the server
                     Packet recPacket = (Packet)data;
+                    
                     if (recPacket.GetReceiverId.Equals("server"))
                     {
                         // If the packet has been received before

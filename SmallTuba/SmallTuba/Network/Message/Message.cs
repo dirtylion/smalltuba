@@ -35,7 +35,6 @@ namespace SmallTuba.Network.Message
         /// <param name="value">The value</param>
         public Message(Keyword keyword, object value)
         {
-            Contract.Requires(value != null);
             this.keyword = keyword;
             this.value = value;
         }

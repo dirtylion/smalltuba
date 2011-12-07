@@ -49,6 +49,8 @@ namespace SmallTuba.Network.Voter
         /// </summary>
         private UnregisterVoteRequest unregisterVoteRequest;
 
+        private ValidTableRequest validTableRequest;
+
         /// <summary>
         /// May I have a new VOTER_NETWORK_SERVER with this name?
         /// </summary>
@@ -89,6 +91,8 @@ namespace SmallTuba.Network.Voter
         /// <returns>If the voter was unregistered</returns>
         public delegate bool UnregisterVoteRequest(PersonState person);
 
+        public delegate string[] ValidTableRequest();
+
         /// <summary>
         /// Invoke this function that returns a person when asked about a person from a cpr.nr.
         /// </summary>
@@ -125,6 +129,11 @@ namespace SmallTuba.Network.Voter
             this.unregisterVoteRequest = function;
         }
 
+        public void SetValidTableRequest(ValidTableRequest function)
+        {
+            this.validTableRequest = function;
+        }
+
         /// <summary>
         /// Listen for calls for this amount of time
         /// </summary>
@@ -153,6 +162,7 @@ namespace SmallTuba.Network.Voter
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
+                
                 case Keyword.GetPersonFromId:
                     if (query.GetValue is int && this.idToPersonRequest != null)
                     {
@@ -162,6 +172,7 @@ namespace SmallTuba.Network.Voter
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
+                
                 case Keyword.RegisterVoter:
                     if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.registerVoteRequest != null)
                     {
@@ -171,6 +182,7 @@ namespace SmallTuba.Network.Voter
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
+                
                 case Keyword.UnregisterVoter:
                     if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.unregisterVoteRequest != null)
                     {
@@ -180,6 +192,14 @@ namespace SmallTuba.Network.Voter
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
+                
+                case Keyword.ValidTables:
+                    string[] arr = this.validTableRequest.Invoke();
+                    return new Message(keyword, arr);
+                
+                case Keyword.Ping:
+                    return new Message(keyword, null);
+                
                 default:
                     return null;
             }
