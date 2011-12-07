@@ -10,6 +10,7 @@ namespace SmallTuba.Network.Voter
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
     using System.Linq;
+    using SmallTuba.Entities;
     using SmallTuba.Network.Message;
     using System.Text;
 
@@ -44,7 +45,7 @@ namespace SmallTuba.Network.Voter
         /// </summary>
         /// <param name="cpr">The cpr number of the person</param>
         /// <returns>The person</returns>
-        public Person GetPersonFromCpr(int cpr)
+        public PersonState GetPersonFromCpr(int cpr)
         {
             Message query = new Message(Keyword.GetPersonFromCpr, cpr);
             Message reply = this.clientFE.SendQuery(query, 0);
@@ -53,9 +54,9 @@ namespace SmallTuba.Network.Voter
                 return null;
             }
 
-            if (reply.GetValue.GetType().Equals(typeof(Person)))
+            if (reply.GetValue.GetType().Equals(typeof(PersonState)))
             {
-                return (Person)reply.GetValue;
+                return (PersonState)reply.GetValue;
             }
             
             // The code must never reach this point since we asked for a person
@@ -68,7 +69,7 @@ namespace SmallTuba.Network.Voter
         /// </summary>
         /// <param name="id">The id of the person</param>
         /// <returns>The person</returns>
-        public Person GetPersonFromId(int id)
+        public PersonState GetPersonFromId(int id)
         {
             Message query = new Message(Keyword.GetPersonFromId, id);
             Message reply = this.clientFE.SendQuery(query, 0);
@@ -77,9 +78,9 @@ namespace SmallTuba.Network.Voter
                 return null;
             }
 
-            if (reply.GetValue.GetType().Equals(typeof(Person)))
+            if (reply.GetValue.GetType().Equals(typeof(PersonState)))
             {
-                return (Person)reply.GetValue;
+                return (PersonState)reply.GetValue;
             }
             
             // The code must never reach this point since we asked for a person
@@ -90,9 +91,9 @@ namespace SmallTuba.Network.Voter
         /// <summary>
         /// Register that this voter has voted
         /// </summary>
-        /// <param name="voterState">The state of the voter</param>
+        /// <param name="person">The state of the voter</param>
         /// <returns>If the voter was registered</returns>
-        public bool RegisterVoter(Person person)
+        public bool RegisterVoter(PersonState person)
         {
             Contract.Requires(person != null);
             Message query = new Message(Keyword.RegisterVoter, person);
@@ -115,9 +116,9 @@ namespace SmallTuba.Network.Voter
         /// <summary>
         /// Unregister that this voter has voted
         /// </summary>
-        /// <param name="id">The id of the voter</param>
+        /// <param name="person">The id of the voter</param>
         /// <returns>If the voter was unregistered</returns>
-        public bool UnregisterVoter(Person person)
+        public bool UnregisterVoter(PersonState person)
         {
             Message query = new Message(Keyword.UnregisterVoter, person);
             Message reply = this.clientFE.SendQuery(query, 0);

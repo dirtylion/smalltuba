@@ -116,7 +116,7 @@
     <Compile Include="Network\Message\Keyword.cs" />
     <Compile Include="Network\Message\Message.cs" />
     <Compile Include="Network\Message\Packet.cs" />
-    <Compile Include="Network\Voter\Person.cs" />
+    <Compile Include="Entities\PersonState.cs" />
     <Compile Include="Network\Message\ServerFE.cs" />
     <Compile Include="Network\Object\UDPMulticast.cs" />
     <Compile Include="Network\Voter\VoterNetworkClient.cs" />

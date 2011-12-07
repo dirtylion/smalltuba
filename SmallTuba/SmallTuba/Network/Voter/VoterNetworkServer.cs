@@ -10,6 +10,7 @@ namespace SmallTuba.Network.Voter
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
     using System.Linq;
+    using SmallTuba.Entities;
     using SmallTuba.Network.Message;
     using System.Text;
 
@@ -65,28 +66,28 @@ namespace SmallTuba.Network.Voter
         /// </summary>
         /// <param name="cpr">The cpr. nr.</param>
         /// <returns>The person</returns>
-        public delegate Person CprToPersonRequest(int cpr);
+        public delegate PersonState CprToPersonRequest(int cpr);
 
         /// <summary>
         /// A type of a function to invoke when a request for a person is made
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The person</returns>
-        public delegate Person IdToPersonRequest(int id);
+        public delegate PersonState IdToPersonRequest(int id);
 
         /// <summary>
         /// A type of a function to invoke when a request for registering a voter is made
         /// </summary>
         /// <param name="voterState">The state of the voret</param>
         /// <returns>If the voter was registered</returns>
-        public delegate bool RegisterVoteRequest(Person person);
+        public delegate bool RegisterVoteRequest(PersonState person);
 
         /// <summary>
         /// A type of a function to invoke when a request for unregistering a voter is made
         /// </summary>
         /// <param name="id">The id of the voter</param>
         /// <returns>If the voter was unregistered</returns>
-        public delegate bool UnregisterVoteRequest(Person person);
+        public delegate bool UnregisterVoteRequest(PersonState person);
 
         /// <summary>
         /// Invoke this function that returns a person when asked about a person from a cpr.nr.
@@ -146,7 +147,7 @@ namespace SmallTuba.Network.Voter
                 case Keyword.GetPersonFromCpr:
                     if (query.GetValue is int && this.cprToPersonRequest != null)
                     {
-                        Person person = this.cprToPersonRequest.Invoke((int)query.GetValue);
+                        PersonState person = this.cprToPersonRequest.Invoke((int)query.GetValue);
                         return new Message(keyword, person);
                     }
 
@@ -155,25 +156,25 @@ namespace SmallTuba.Network.Voter
                 case Keyword.GetPersonFromId:
                     if (query.GetValue is int && this.idToPersonRequest != null)
                     {
-                        Person person = this.idToPersonRequest.Invoke((int)query.GetValue);
+                        PersonState person = this.idToPersonRequest.Invoke((int)query.GetValue);
                         return new Message(keyword, person);
                     }
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
                 case Keyword.RegisterVoter:
-                    if (query.GetValue.GetType().Equals(typeof(Person)) && this.registerVoteRequest != null)
+                    if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.registerVoteRequest != null)
                     {
-                        bool b = this.registerVoteRequest.Invoke((Person)query.GetValue);
+                        bool b = this.registerVoteRequest.Invoke((PersonState)query.GetValue);
                         return new Message(keyword, b);
                     }
 
                     ///TODO: must not happen
                     throw new InvalidCastException();
                 case Keyword.UnregisterVoter:
-                    if (query.GetValue.GetType().Equals(typeof(Person)) && this.unregisterVoteRequest != null)
+                    if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.unregisterVoteRequest != null)
                     {
-                        bool b = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
+                        bool b = this.unregisterVoteRequest.Invoke((PersonState)query.GetValue);
                         return new Message(keyword, b);
                     }
 

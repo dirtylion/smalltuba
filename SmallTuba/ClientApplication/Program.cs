@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ClientApplication
@@ -13,9 +14,15 @@ namespace ClientApplication
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Win32.AllocConsole();
+
+            new Controller();
         }
+    }
+
+    public class Win32
+    {
+        [DllImport("kernel32.dll")]
+        public static extern Boolean AllocConsole();
     }
 }

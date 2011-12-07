@@ -9,11 +9,40 @@ using System.Windows.Forms;
 
 namespace ClientApplication
 {
-    public partial class Form1 : Form
+    public partial class WelcomeForm : Form
     {
-        public Form1()
+        public WelcomeForm()
         {
             InitializeComponent();
+        }
+
+        public Button RefreshButton
+        {
+            get
+            {
+                return button1;
+            }
+        }
+
+        public Button OKButton
+        {
+            get
+            {
+                return button2;
+            }
+        }
+
+        public ComboBox dropdown
+        {
+            get
+            {
+                return comboBox1;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

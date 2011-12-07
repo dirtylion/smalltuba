@@ -1,12 +1,11 @@
 ﻿using System;
-//using System.Windows.Forms;
+using System.Windows.Forms;
+using SmallTuba.Entities;
 using SmallTuba.Network.Voter;
 
 namespace SmallTuba
 {
-    //Hej Henrik
-
-	static class Program
+    static class Program
 	{
 		/// <summary>
 		/// The main entry point for the application.
@@ -26,8 +25,8 @@ namespace SmallTuba
             {
                 Console.Out.WriteLine(System.Net.Dns.GetHostName() + " = name");
                 VoterNetworkServer voterServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
-                voterServer.SetCprToPersonRequest(cpr => new Person(42, cpr, "Hans", false));
-                voterServer.SetIdToPersonRequest(id => new Person(id, 42, "Børge", true));
+                voterServer.SetCprToPersonRequest(cpr => new PersonState(){Cpr = cpr, FirstName = "Ole", ID = 42, LastName = "Henriksen", Table = "2", Time = DateTime.Now, Voted = false});
+                voterServer.SetIdToPersonRequest(id => new PersonState() { Cpr = 42, FirstName = "Kim", ID = id, LastName = "Larsen", Table = "3", Time = DateTime.Now, Voted = true });
                 voterServer.SetRegisterVoteRequest(person => !person.Voted);
                 voterServer.SetUnregisterVoteRequest(person => !person.Voted);
                 voterServer.ListenForCalls(5000);
@@ -37,16 +36,16 @@ namespace SmallTuba
                 Console.Out.WriteLine(System.Net.Dns.GetHostName() + " = name");
                 Console.Out.WriteLine("1");
                 VoterNetworkClient voterClient = new VoterNetworkClient(System.Net.Dns.GetHostName());
-                Person person = voterClient.GetPersonFromCpr(1);
+                PersonState person = voterClient.GetPersonFromCpr(1);
                 Console.Out.WriteLine("Person: " + person);
                 Console.Out.WriteLine("2");
                 person = voterClient.GetPersonFromId(1);
                 Console.Out.WriteLine("Person: " + person);
                 Console.Out.WriteLine("3");
-                bool b = voterClient.RegisterVoter(new Person(42, 442, "Ole", false));
+                bool b = voterClient.RegisterVoter(new PersonState() { Cpr = 42, FirstName = "Ole", ID = 442, LastName = "Henriksen", Table = "2", Time = DateTime.Now, Voted = false });
                 Console.Out.WriteLine("Register: " + b);
                 Console.Out.WriteLine("4");
-                bool bb = voterClient.UnregisterVoter(new Person(43, 443, "Bent", true));
+                bool bb = voterClient.UnregisterVoter(new PersonState() { Cpr = 43, FirstName = "Kim", ID = 443, LastName = "Larsen", Table = "3", Time = DateTime.Now, Voted = true });
                 Console.Out.WriteLine("Unregister: " + bb);
             }
 
