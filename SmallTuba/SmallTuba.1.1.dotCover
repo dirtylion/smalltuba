@@ -6,6 +6,6 @@
     <ExcludeFilters />
   </CoverageFilters>
   <SnapshotDialog>
-    <InitialDirectory>C:\Users\Henrik Haugbølle\Dropbox\ITU\03 - BDSA\dirtylion\smalltuba\SmallTuba</InitialDirectory>
+    <InitialDirectory>C:\DirtyLion\SmallTuba</InitialDirectory>
   </SnapshotDialog>
 </Configuration>
