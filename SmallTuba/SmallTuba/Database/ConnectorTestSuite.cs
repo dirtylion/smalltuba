@@ -1,8 +1,30 @@
 ﻿namespace SmallTuba.Database {
 	using System.Collections;
-
 	using NUnit.Framework;
-	
+
+	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
+	/// <version>2011-12-07</version>
+	/// <summary>
+	/// TestSuite for the Connector class. To use the
+	/// class one most make sure that the Connector
+	/// can actually connect to a valid MySQL database.
+	/// See the Connector class for more information.
+	/// 
+	/// The database must contain a table called
+	/// "PersonTestSuite" and the following columns:
+	/// 
+	/// id INT 11
+	/// firstname VARCHAR 100
+	/// 
+	/// And the data as represented below:
+	/// 
+	/// id	firstname
+	/// 1	Henrik
+	/// 2	Christian
+	/// 3	Kåre
+	/// 
+	/// Otherwise the test suite will fail the tests.
+	/// </summary>
 	[TestFixture()]
 	public class ConnectorTestSuite {
 		private Connector _connector;

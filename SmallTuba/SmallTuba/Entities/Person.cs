@@ -1,10 +1,11 @@
 ﻿namespace SmallTuba.Entities {
 	using System.Collections;
+	using System.Diagnostics.Contracts;
 
 	using SmallTuba.Entities.Abstracts;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-01</version>
+	/// <version>2011-12-07</version>
 	/// <summary>
 	/// The Person class represents a real-life person, with
 	/// relevant-to-the-system information associated such as
@@ -20,6 +21,8 @@
 		}
 
 		public Person(Hashtable values) : this() {
+			Contract.Requires(values != null);
+
 			ValueObject.SetValues(values);
 		}
 

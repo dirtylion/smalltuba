@@ -4,11 +4,12 @@
 	using SmallTuba.Entities.Abstracts;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-01</version>
+	/// <version>2011-12-07</version>
 	/// <summary>
-	/// The Person class represents a real-life person, with
-	/// relevant-to-the-system information associated such as
-	/// the persons name and CPR number.
+	/// The Log class contains information on commands
+	/// executed by a client interacting with a person
+	/// entity in the system.
+	/// object.
 	/// </summary>
 	public class Log : AbstractEntity {
 		public static readonly string Table = "Log";

@@ -13,7 +13,7 @@ namespace SmallTuba
 		[STAThread]
 		static void Main(string[] args)
 		{
-            // Tal pænt
+			// Tal pænt
 			//Application.EnableVisualStyles();
 			//Application.SetCompatibleTextRenderingDefault(false);
 			//Application.Run(new Form1());
@@ -57,7 +57,6 @@ namespace SmallTuba
                 }
                 Console.Out.WriteLine("ValidTables: " + result);
             }
-
 		}
 	}
 }

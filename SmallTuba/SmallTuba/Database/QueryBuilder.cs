@@ -172,9 +172,9 @@
 		}
 
 		/// <summary>
-		/// 
+		/// Removing a condition by index.
 		/// </summary>
-		/// <param name="index"></param>
+		/// <param name="index">The index of the condition to be removed.</param>
 		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder RemoveCondition(string index) {
 			Contract.Requires(index != null);
@@ -183,43 +183,89 @@
 			return this;
 		}
 
+		/// <summary>
+		/// Set a limit for the query. The limit must be greater than 0.
+		/// </summary>
+		/// <param name="limit">The limit of the query.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetLimit(int limit) {
-			// Contract.Requires(limit > 0);
+			Contract.Requires(limit > 0);
+
 			_limit = limit;
 			return this;
 		}
 
+		/// <summary>
+		/// Set a offset for the query. The offset must be positive.
+		/// </summary>
+		/// <param name="offset">The offset of the query.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetOffset(int offset) {
-			// Contract.Requires(limit > -1);
+			Contract.Requires(offset > -1);
+
 			_offset = offset;
 			return this;
 		}
 
+		/// <summary>
+		/// Add an ordering clause to the query. The direction
+		/// of the ordering will default to "asc" for this method.
+		/// </summary>
+		/// <param name="order">The ordering clause.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder AddOrder(string order) {
-			// Contract.Requires(order != null);
+			Contract.Requires(order != null);
+
 			return AddOrder(order, "asc", order);
 		}
 
+		/// <summary>
+		/// Add an ordering clause with a direction to the query.
+		/// </summary>
+		/// <param name="order">The ordering clause.</param>
+		/// <param name="dir">The direction of the ordering.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder AddOrder(string order, string dir) {
-			// Contract.Requires(order != null);
-			// Contract.Requires(dir != null);
+			Contract.Requires(order != null);
+			Contract.Requires(dir != null);
+			Contract.Requires(dir == "asc" || dir == "desc");
+
 			return AddOrder(order, dir, order);
 		}
 
+		/// <summary>
+		/// Add an ordering clause with a direction and an
+		/// index for later removal of the clause.
+		/// </summary>
+		/// <param name="order">The ordering clause.</param>
+		/// <param name="dir">The direction of the ordering.</param>
+		/// <param name="index">The index for later removal.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder AddOrder(string order, string dir, string index) {
-			// Contract.Requires(order != null);
-			// Contract.Requires(dir != null);
-			// Contract.Requires(index != null);
+			Contract.Requires(order != null);
+			Contract.Requires(dir != null);
+			Contract.Requires(dir == "asc" || dir == "desc");
+			Contract.Requires(index != null);
+
 			_orders.Add(index, new[] { order, dir });
 			return this;
 		}
 
+		/// <summary>
+		/// Remove an ordering clause by index.
+		/// </summary>
+		/// <param name="index">The index of the order to be removed.</param>
+		/// <returns>The QueryBuilder instance for chaining</returns>
 		public QueryBuilder RemoveOrder(string index) {
 			// Contract.Requires(index != null);
 			_orders.Remove(index);
 			return this;
 		}
 
+		/// <summary>
+		/// Assemble a select query.
+		/// </summary>
+		/// <returns>The query assembled.</returns>
 		private string AssembleSelect() {
 			var query = "SELECT";
 			query += AssembleColumns();
@@ -233,6 +279,10 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble an update query.
+		/// </summary>
+		/// <returns>The query assembled.</returns>
 		private string AssembleUpdate() {
 			var query = "UPDATE";
 			query += AssembleTable();
@@ -253,6 +303,10 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble an insert query.
+		/// </summary>
+		/// <returns>The query assembled.</returns>
 		private string AssembleInsert() {
 			var query = "INSERT INTO";
 			query += AssembleTable();
@@ -264,6 +318,10 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble a delete query.
+		/// </summary>
+		/// <returns>The query assembled.</returns>
 		private string AssembleDelete() {
 			var query = "DELETE FROM";
 			query += AssembleTable();
@@ -274,10 +332,18 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble the table part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
 		private string AssembleTable() {
 			return " `" + _table + "`";
 		}
 
+		/// <summary>
+		/// Assemble the columns part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
 		private string AssembleColumns() {
 			var query = " ";
 
@@ -291,6 +357,10 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble the values part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
 		private string AssembleValues() {
 			var query = " ";
 
@@ -304,6 +374,10 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble the conditions part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
 		private string AssembleConditions() {
 			var query = "";
 			int x = 1, count = _conditions.Count;
@@ -325,6 +399,10 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble the orders part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
 		private string AssembleOrders() {
 			var query = "";
 			int x = 1, count = _orders.Count;
@@ -345,26 +423,50 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assemble the limit part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
 		private string AssembleLimit() {
 			return _limit > -1 ? " LIMIT " + _limit : "";
 		}
 
+		/// <summary>
+		/// Assemble the offset part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
 		private string AssembleOffset() {
 			return _offset > -1 ? " OFFSET " + _offset : "";
 		}
 
+		/// <summary>
+		/// Get the last query assembled.
+		/// </summary>
+		/// <returns>The last query assembled.</returns>
 		public string GetQuery() {
 			return _query;
 		}
 
+		/// <summary>
+		/// Get the number of rows fetched from the last fetch query executed.
+		/// </summary>
+		/// <returns>The number of rows.</returns>
 		public int GetCount() {
 			return _connector.GetCount();
 		}
 
+		/// <summary>
+		/// Get the total number of rows possible to fetch without limitations from the last query executed.
+		/// </summary>
+		/// <returns>The total number of rows.</returns>
 		public int GetCountTotal() {
 			return _connector.GetCountTotal();
 		}
 
+		/// <summary>
+		/// Assembles the query from the given parameters.
+		/// </summary>
+		/// <returns>The assembled query.</returns>
 		public string Assemble() {
 			var query = "";
 
@@ -390,10 +492,23 @@
 			return query;
 		}
 
+		/// <summary>
+		/// Assembles the query from the given parameters
+		/// and executes this towards the Connector object
+		/// returning whatever results the Connector object
+		/// returns.
+		/// </summary>
+		/// <returns>The result of the executed query.</returns>
 		public ArrayList ExecuteQuery() {
 			return _connector.ExecuteQuery(Assemble());
 		}
 
+		/// <summary>
+		/// Assembles the query from the given parameters
+		/// and executes this towards the Connector object
+		/// returning the last affected id.
+		/// </summary>
+		/// <returns>The last affected id of the executed query.</returns>
 		public int ExecuteNoneQuery() {
 			return _connector.ExecuteNoneQuery(Assemble());
 		}
