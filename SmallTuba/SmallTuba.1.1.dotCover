@@ -1,0 +1,11 @@
+<Configuration>
+  <CoverageFilters>
+    <IncludeFilters>
+      <Filter ModuleMask="*" ClassMask="*" FunctionMask="*" />
+    </IncludeFilters>
+    <ExcludeFilters />
+  </CoverageFilters>
+  <SnapshotDialog>
+    <InitialDirectory>C:\Users\Henrik Haugbølle\Dropbox\ITU\03 - BDSA\dirtylion\smalltuba\SmallTuba</InitialDirectory>
+  </SnapshotDialog>
+</Configuration>
