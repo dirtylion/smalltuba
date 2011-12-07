@@ -112,7 +112,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HelloWorld.cs" />
+    <Compile Include="Network\Message\ClientFE.cs" />
+    <Compile Include="Network\Message\Keyword.cs" />
+    <Compile Include="Network\Message\Message.cs" />
+    <Compile Include="Network\Message\Packet.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Network\Message\ServerFE.cs" />
+    <Compile Include="VoterState.cs" />
+    <Compile Include="Network\Object\UDPMulticast.cs" />
+    <Compile Include="Network\Voter\VoterNetworkClient.cs" />
+    <Compile Include="Network\Voter\VoterNetworkServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
