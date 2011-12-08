@@ -24,7 +24,7 @@ namespace SmallTuba
 				Console.Out.WriteLine(System.Net.Dns.GetHostName() + " = name");
 				VoterNetworkServer voterServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
 				voterServer.SetCprToPersonRequest(cpr => new Person(){Cpr = cpr, Firstname = "Ole", DbId = 42, Lastname = "Henriksen", PollingTable = "2", VotedTime = 0, Voted = false});
-				voterServer.SetBarcodeToPersonRequest(id => new Person() { Cpr = 42, Firstname = "Kim", DbId = id, Lastname = "Larsen", PollingTable = "3", VotedTime = 0, Voted = true });
+				voterServer.SetVoterIdToPersonRequest(id => new Person() { Cpr = 42, Firstname = "Kim", DbId = id, Lastname = "Larsen", PollingTable = "3", VotedTime = 0, Voted = true });
 				voterServer.SetRegisterVoteRequest(person => !person.Voted);
 				voterServer.SetUnregisterVoteRequest(person => !person.Voted);
 				voterServer.SetValidTableRequest(() => new string[]{"1", "2", "3"});

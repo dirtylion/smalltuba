@@ -75,8 +75,8 @@
 		/// with a id from a valid, existing person.
 		/// </summary>
 		[Test()]
-		public void TestBarcodeToPersonRequestHandlerWithExistingPerson() {
-			var person = _server.BarcodeToPersonRequestHandler(3306);
+		public void TestVoterIdToPersonRequestHandlerWithExistingPerson() {
+			var person = _server.VoterIdToPersonRequestHandler(3306);
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
@@ -93,8 +93,8 @@
 		/// with a id from a valid, existing person.
 		/// </summary>
 		[Test()]
-		public void TestBarcodeToPersonRequestHandlerWithUnexistingPerson() {
-			var person = _server.BarcodeToPersonRequestHandler(669);
+		public void TestVoterIdToPersonRequestHandlerWithUnexistingPerson() {
+			var person = _server.VoterIdToPersonRequestHandler(669);
 
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);
