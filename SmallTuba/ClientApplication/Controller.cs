@@ -168,12 +168,10 @@ namespace ClientApplication
         {
             if(voter == null)
             {
-                ClearVoter();
                 MessageBox.Show("No network connection");
             }
             else if(!voter.Exists)
             {
-                ClearVoter();
                 MessageBox.Show("No voter found matching this criteria");
             }
             else
@@ -204,6 +202,8 @@ namespace ClientApplication
         private void ClearVoter()
         {
             currentVoter = null;
+            this.mainForm.IdTextBox.Text = "";
+            this.mainForm.CprTextBox.Text = "";
             this.mainForm.RegisterButton.Enabled = false;
             this.mainForm.UnregisterButton.Enabled = false;
             this.mainForm.ClearButton.Enabled = false;
