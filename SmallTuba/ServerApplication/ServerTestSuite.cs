@@ -44,8 +44,8 @@
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
-			Assert.That(person.Firstname == "Henrik");
-			Assert.That(person.Lastname == "Haugbølle");
+			Assert.That(person.FirstName == "Henrik");
+			Assert.That(person.LastName == "Haugbølle");
 			Assert.That(person.Cpr == 0123456789);
 			Assert.That(person.VoterId == 3306);
 			Assert.That(person.PollingVenue == "Venue of Awesome");
@@ -62,8 +62,8 @@
 			
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);
-			Assert.That(person.Firstname == "");
-			Assert.That(person.Lastname == "");
+			Assert.That(person.FirstName == "");
+			Assert.That(person.LastName == "");
 			Assert.That(person.Cpr == 0);
 			Assert.That(person.VoterId == 0);
 			Assert.That(person.PollingVenue == "");
@@ -80,8 +80,8 @@
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
-			Assert.That(person.Firstname == "Henrik");
-			Assert.That(person.Lastname == "Haugbølle");
+			Assert.That(person.FirstName == "Henrik");
+			Assert.That(person.LastName == "Haugbølle");
 			Assert.That(person.Cpr == 0123456789);
 			Assert.That(person.VoterId == 3306);
 			Assert.That(person.PollingVenue == "Venue of Awesome");
@@ -98,8 +98,8 @@
 
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);
-			Assert.That(person.Firstname == "");
-			Assert.That(person.Lastname == "");
+			Assert.That(person.FirstName == "");
+			Assert.That(person.LastName == "");
 			Assert.That(person.Cpr == 0);
 			Assert.That(person.VoterId == 0);
 			Assert.That(person.PollingVenue == "");

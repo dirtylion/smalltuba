@@ -182,13 +182,14 @@ namespace ClientApplication
 
         private void SetVoter(Person voter)
         {
-            Console.Out.WriteLine(voter);
             if(voter == null)
             {
+                ClearVoter();
                 MessageBox.Show("No network connection");
             }
             else if(!voter.Exists)
             {
+                ClearVoter();
                 MessageBox.Show("No voter found matching this criteria");
             }
             else
