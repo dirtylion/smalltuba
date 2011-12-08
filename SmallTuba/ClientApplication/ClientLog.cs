@@ -13,10 +13,13 @@ namespace ClientApplication
 
         private string action;
 
+        private DateTime time;
+
         public ClientLog(Person voter, string action)
         {
             this.voter = voter;
             this.action = action;
+            this.time = DateTime.Now;
         }
 
         public Person Voter
@@ -26,7 +29,6 @@ namespace ClientApplication
 
         public override string ToString()
         {
-            DateTime time = TimeConverter.ConvertFromUnixTimestamp(voter.VotedTime);
             return time.ToLocalTime().Hour + ":" + time.ToLocalTime().Minute + " " + voter.FirstName + " " + voter.LastName + " was " + action;
         }
     }
