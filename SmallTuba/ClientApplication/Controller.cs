@@ -12,6 +12,7 @@ namespace ClientApplication
     using System.Text;
     using System.Windows.Forms;
     using SmallTuba.Entities;
+    using SmallTuba.Utility;
     using SmallTuba.Network.Voter;
  
     /// <summary>
@@ -23,7 +24,7 @@ namespace ClientApplication
         private MainForm mainForm;
         private LogForm logForm;
         private VoterNetworkClient networkClient;
-        private PersonState currentVoter;
+        private Person currentVoter;
         private Model model;
 
         public Controller()
@@ -103,7 +104,7 @@ namespace ClientApplication
             try
             {
                 int id = int.Parse(this.mainForm.IdTextBox.Text);
-                PersonState person = networkClient.GetPersonFromId(id);
+                Person person = networkClient.GetPersonFromId(id);
                 SetVoter(person);
             }
             catch (Exception exception)
@@ -116,7 +117,7 @@ namespace ClientApplication
         {
             try{
                 int cpr = int.Parse(this.mainForm.CprTextBox.Text);
-                PersonState person = networkClient.GetPersonFromCpr(cpr);
+                Person person = networkClient.GetPersonFromCpr(cpr);
                 SetVoter(person);
             }
             catch (Exception exception)
@@ -160,9 +161,12 @@ namespace ClientApplication
 
         private void ChooseLog(object o, EventArgs e)
         {
-            LogState logState = (LogState) this.logForm.LogListBox.SelectedItem;
-            SetVoter(logState.Voter);
-            this.logForm.Hide();
+            if (this.logForm.LogListBox.SelectedItem != null)
+            {
+                ClientLog logState = (ClientLog) this.logForm.LogListBox.SelectedItem;
+                SetVoter(logState.Voter);
+                this.logForm.Hide();
+            }
         }
 
         private void CloseLog(object o, EventArgs e)
@@ -175,7 +179,7 @@ namespace ClientApplication
             ClearVoter();
         }
 
-        private void SetVoter(PersonState voter)
+        private void SetVoter(Person voter)
         {
             if(voter != null)
             {
@@ -183,13 +187,14 @@ namespace ClientApplication
                 this.mainForm.RegisterButton.Enabled = true;
                 this.mainForm.UnregisterButton.Enabled = true;
                 this.mainForm.ClearButton.Enabled = true;
-                this.mainForm.ID.Text = voter.Barcode.ToString();
+                this.mainForm.ID.Text = voter.VoterId.ToString();
                 this.mainForm.FirstName.Text = voter.FirstName;
                 this.mainForm.LastName.Text = voter.LastName;
                 this.mainForm.Cpr.Text = voter.Cpr.ToString();
                 this.mainForm.Voted.Text = voter.Voted.ToString();
-                this.mainForm.Table.Text = voter.Table;
-                this.mainForm.Time.Text = voter.Time.ToLocalTime().Hour.ToString() + ":" + voter.Time.ToLocalTime().Minute.ToString();
+                this.mainForm.Table.Text = voter.VotedPollingTable;
+                DateTime time = TimeConverter.ConvertFromUnixTimestamp(voter.VotedTime);
+                this.mainForm.Time.Text = time.ToLocalTime().Hour.ToString() + ":" + time.ToLocalTime().Minute.ToString();
             }
             else
             {

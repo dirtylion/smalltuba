@@ -7,28 +7,28 @@
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-07</version>
-	public class LogResource : AbstractResource<Log> {
+	public class LogResource : AbstractResource<LogEntity> {
 
-		public LogResource SetPerson(Person person) {
-			Contract.Requires(person != null);
-			Contract.Requires(person.Exists());
+		public LogResource SetPerson(PersonEntity personEntity) {
+			Contract.Requires(personEntity != null);
+			Contract.Requires(personEntity.Exists());
 
-			QueryBuilder.AddCondition("`person_id` = '"+person.Id+"'");
+			QueryBuilder.AddCondition("`person_id` = '"+personEntity.DbId+"'");
 
 			return this;
 		}
 
-		public override List<Log> Build() {
+		public override List<LogEntity> Build() {
 			QueryBuilder.SetType("select");
-			QueryBuilder.SetTable(Log.Table);
-			QueryBuilder.SetColumns(Log.Columns);
+			QueryBuilder.SetTable(LogEntity.Table);
+			QueryBuilder.SetColumns(LogEntity.Columns);
 
 			var results = QueryBuilder.ExecuteQuery();
 
-			var entities = new List<Log>();
+			var entities = new List<LogEntity>();
 
 			foreach (var result in results) {
-				entities.Add(new Log((Hashtable) result));
+				entities.Add(new LogEntity((Hashtable) result));
 			}
 			
 			return entities;

@@ -44,7 +44,7 @@ namespace SmallTuba.PdfGenerator
         }
 
         //Create a polling card for this person!
-        public void CreatePollingCard(Person person)
+        public void CreatePollingCard(PersonEntity person)
         {
             Contract.Requires(person != null);
 

@@ -7,7 +7,7 @@
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-07</version>
-	public class PersonResource : AbstractResource<Person> {
+	public class PersonResource : AbstractResource<PersonEntity> {
 
 		public PersonResource SetFirstname(string firstname) {
 			Contract.Requires(firstname != null);
@@ -23,6 +23,7 @@
 			return this;
 		}
 
+		// TODO SHOULD BE DELETED
 		public PersonResource SetGender(int gender) {
 			Contract.Requires(gender == 1 || gender == 2);
 			QueryBuilder.AddCondition("`gender` = '"+gender+"'");
@@ -51,24 +52,24 @@
 			return this;
 		}
 
-		public PersonResource SetBarcode(int barcode) {
-			Contract.Requires(barcode > 0);
-			QueryBuilder.AddCondition("`barcode` = '"+barcode+"'");
+		public PersonResource SetVoterId(int voter_id) {
+			Contract.Requires(voter_id > 0);
+			QueryBuilder.AddCondition("`voter_id` = '"+voter_id+"'");
 
 			return this;
 		}
 
-		public override List<Person> Build() {
+		public override List<PersonEntity> Build() {
 			QueryBuilder.SetType("select");
-			QueryBuilder.SetTable(Person.Table);
-			QueryBuilder.SetColumns(Person.Columns);
+			QueryBuilder.SetTable(PersonEntity.Table);
+			QueryBuilder.SetColumns(PersonEntity.Columns);
 
 			var results = QueryBuilder.ExecuteQuery();
 
-			var entities = new List<Person>();
+			var entities = new List<PersonEntity>();
 
 			foreach (var result in results) {
-				entities.Add(new Person((Hashtable) result));
+				entities.Add(new PersonEntity((Hashtable) result));
 			}
 			
 			return entities;

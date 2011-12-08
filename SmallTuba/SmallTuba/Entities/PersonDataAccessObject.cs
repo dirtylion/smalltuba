@@ -5,8 +5,8 @@
 	/// <version>2011-12-07</version>
 	public class PersonDataAccessObject : AbstractDataAccessObject {
 		public PersonDataAccessObject() {
-			Table = Person.Table;
-			Columns = Person.Columns;
+			Table = PersonEntity.Table;
+			Columns = PersonEntity.Columns;
 		}
 	}
 }
