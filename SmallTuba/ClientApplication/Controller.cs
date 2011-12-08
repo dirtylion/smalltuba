@@ -23,8 +23,10 @@ namespace ClientApplication
     {
         private WelcomeForm welcomeForm;
         private MainForm mainForm;
+        private LogForm logForm;
         private VoterNetworkClient networkClient;
         private PersonState currentVoter;
+        private Model model;
 
         public Controller()
         {
@@ -33,6 +35,8 @@ namespace ClientApplication
             this.welcomeForm = new WelcomeForm();
             this.mainForm = new MainForm();
             this.networkClient = new VoterNetworkClient("Client");
+            this.logForm = new LogForm();
+            model = new Model();
             currentVoter = null;
         }
 
@@ -54,6 +58,8 @@ namespace ClientApplication
             this.mainForm.UnregisterButton.Click += new EventHandler(this.Unregister);
             this.mainForm.ClearButton.Click += new EventHandler(this.Clear);
             this.mainForm.FormClosed += new FormClosedEventHandler((object sender, FormClosedEventArgs e) => Application.Exit());
+            this.logForm.ChooseButton.Click += new EventHandler(ChooseLog);
+            this.logForm.CloseButton.Click += new EventHandler(CloseLog);
         }
 
         private void GetData()
@@ -82,6 +88,7 @@ namespace ClientApplication
         {
             Console.Out.WriteLine("Ok pressed");
             this.mainForm.ThisTable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
+            this.logForm.TableLable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
             GoToMainForm();
         }
 
@@ -122,13 +129,15 @@ namespace ClientApplication
 
         private void Log(object o, EventArgs e)
         {
-            MessageBox.Show("Log on the way..");
+            this.logForm.LogListBox.Items.AddRange(model.Log.ToArray());
+            this.logForm.Show();
         }
 
         private void Register(object o, EventArgs e)
         {
             if (networkClient.RegisterVoter(currentVoter))
             {
+                model.Log.Add(new LogState(currentVoter, "registered"));
                 MessageBox.Show("Succes!!!");
             }
             else
@@ -141,6 +150,7 @@ namespace ClientApplication
         {
             if (networkClient.UnregisterVoter(currentVoter))
             {
+                model.Log.Add(new LogState(currentVoter, "unregistered"));
                 MessageBox.Show("Succes!!!");
             }
             else
@@ -148,6 +158,18 @@ namespace ClientApplication
                 MessageBox.Show("Fail!!!");
             }
             
+        }
+
+        private void ChooseLog(object o, EventArgs e)
+        {
+            LogState logState = (LogState) this.logForm.LogListBox.SelectedItem;
+            SetVoter(logState.Voter);
+            this.logForm.Hide();
+        }
+
+        private void CloseLog(object o, EventArgs e)
+        {
+            this.logForm.Hide();
         }
 
         private void Clear(object o, EventArgs e)
