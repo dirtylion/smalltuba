@@ -135,7 +135,7 @@ namespace SmallTuba.Network.Voter
         /// <returns></returns>
         public string[] ValidTables()
         {
-            Message query = new Message(Keyword.ValidTables, null);
+            Message query = new Message(Keyword.ValidTables, null);	
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
