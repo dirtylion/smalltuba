@@ -31,7 +31,6 @@ namespace ClientApplication
             this.welcomeForm = new WelcomeForm();
             this.mainForm = new MainForm();
             this.networkClient = new VoterNetworkClient("Client");
-            this.logForm = new LogForm();
             model = new Model();
             currentVoter = null;
         }
@@ -54,8 +53,6 @@ namespace ClientApplication
             this.mainForm.UnregisterButton.Click += (object sender, EventArgs e) => Unregister();
             this.mainForm.ClearButton.Click += (object sender, EventArgs e) => ClearVoter();
             this.mainForm.FormClosed += (object sender, FormClosedEventArgs e) => Application.Exit();
-            this.logForm.ChooseButton.Click += (object sender, EventArgs e) => ChooseLine();
-            this.logForm.CloseButton.Click += (object sender, EventArgs e) => CloseLog();
         }
 
         private void SetDropDown()
@@ -77,9 +74,9 @@ namespace ClientApplication
 
         private void GoToMainForm()
         {
-            this.mainForm.ThisTable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
-            this.logForm.TableLable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
+            model.Name = this.welcomeForm.dropdown.SelectedItem.ToString();
             this.welcomeForm.Hide();
+            this.mainForm.ThisTable.Text = model.Name;
             ClearVoter();
             this.mainForm.Show();
         }
@@ -115,6 +112,9 @@ namespace ClientApplication
         {
             this.logForm = new LogForm();
             this.logForm.LogListBox.Items.AddRange(model.Log.ToArray());
+            this.logForm.TableLable.Text = model.Name;
+            this.logForm.ChooseButton.Click += (object sender, EventArgs e) => ChooseLine();
+            this.logForm.CloseButton.Click += (object sender, EventArgs e) => CloseLog();
             this.logForm.Show();
         }
 
@@ -161,6 +161,7 @@ namespace ClientApplication
         {
             this.logForm.Hide();
             this.logForm.Dispose();
+            Console.Out.WriteLine("Close Log");
         }
 
         private void SetVoter(Person voter)
