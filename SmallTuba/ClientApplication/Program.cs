@@ -16,7 +16,8 @@ namespace ClientApplication
         {
             Win32.AllocConsole();
 
-            new Controller();
+            Controller controller = new Controller();
+            controller.Run();
         }
     }
 

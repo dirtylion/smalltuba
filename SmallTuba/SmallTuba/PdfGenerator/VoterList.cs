@@ -38,7 +38,8 @@ namespace SmallTuba.PdfGenerator
             this.electionName = electionName;
             this.electionDate = electionDate;
             this.pollingTable = pollingTable;
-            document = new PdfDocument();            
+            document = new PdfDocument();
+            this.AddPage();
             font = this.CreateFont();
         }
 
@@ -127,7 +128,7 @@ namespace SmallTuba.PdfGenerator
 
         private void DrawElectionInformation()
         {
-            XFont font = new XFont("Arial", 14, XFontStyle.Bold);
+            XFont font = new XFont("Arial", 12, XFontStyle.Bold);
             XTextFormatter tf = new XTextFormatter(gfx);
             String text = electionName + System.Environment.NewLine + this.electionDate;
             tf.DrawString(text, font, XBrushes.Black, new XRect(leftMargin,topMargin/3,200,50));
