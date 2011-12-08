@@ -55,7 +55,7 @@
 			get { return ValueObject["polling_table"] != null ? (string) ValueObject["polling_table"] : ""; } 
 			set { ValueObject["polling_table"] = value; }
 		}
-<<<<<<< HEAD
+
 		public bool Voted {
 			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register"; }
 		}
@@ -81,40 +81,28 @@
 		}
 
 		public PersonState ToStateObject() {
-			return new PersonState { 
-				Id = Id, 
-				Firstname = Firstname,
-				Lastname = Lastname,
-				Cpr = Cpr,
-				Barcode = Barcode,
-				PollingVenue = PollingVenue,
-				PollingTable = PollingTable,
-				Voted = Voted,
-				VotedTime = VotedTime,
-				Exists = Exists()
+			return new PersonState {
+			    Id = Id,
+			    Firstname = Firstname,
+			    Lastname = Lastname,
+			    Cpr = Cpr,
+			    Barcode = Barcode,
+			    PollingVenue = PollingVenue,
+			    PollingTable = PollingTable,
+			    Voted = Voted,
+			    VotedTime = VotedTime,
+			    Exists = Exists()
 			};
-=======
-		public Address AddressTo
-		{
-			get
-			{
-				return new Address("Kåre", "ungarnsagde 2", "2300 Kbh s");
-			}
 		}
-		public Address AddressFrom
-		{
-			get
-			{
-				return new Address("Rådhuset","Rådhuspladsen","1050 Kbh k");
-			}
+
+		public Address AddressTo {
+			get { return new Address("Kåre", "ungarnsagde 2", "2300 Kbh s"); }
 		}
-		public Address AddressPollingVenue
-		{
-			get
-			{
-				return new Address("Skole what ever", "bliv klog vej", "2300 kbh");
-			}
->>>>>>> 82ef38707d112c05bfe729bf33a1b7aaf5bd5ced
+		public Address AddressFrom {
+			get { return new Address("Rådhuset","Rådhuspladsen","1050 Kbh k"); }
+		}
+		public Address AddressPollingVenue {
+			get { return new Address("Skole what ever", "bliv klog vej", "2300 kbh"); }
 		}
 	}
 }
