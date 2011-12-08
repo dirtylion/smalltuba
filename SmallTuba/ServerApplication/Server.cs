@@ -1,7 +1,8 @@
 ﻿namespace ServerApplication {
 	using System;
 	using System.Collections;
-	
+	using System.Diagnostics.Contracts;
+
 	using SmallTuba.Database;
 	using SmallTuba.Entities;
 	using SmallTuba.Network.Voter;
@@ -26,7 +27,7 @@
 		/// of the VoterNetworkServer identified as "primary".
 		/// </summary>
 		public Server() {
-			voterNetWorkServer = new VoterNetworkServer("Primary");
+			voterNetWorkServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
 		}
 
 		/// <summary>
@@ -59,6 +60,7 @@
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
 		public Person CprToPersonRequestHandler(int cpr) {
 			Console.WriteLine("CprToPersonRequestHandler");
+			Contract.Requires(cpr > 0);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "cpr", cpr } });
@@ -82,6 +84,7 @@
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
 		public Person VoterIdToPersonRequestHandler(int voterId) {
 			Console.WriteLine("VoterIdToPersonRequestHandler");
+			Contract.Requires(voterId > 0);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "voter_id", voterId } });
@@ -110,6 +113,8 @@
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		public bool RegisterVoteRequestHandler(Person person) {
 			Console.WriteLine("RegisterVoteRequestHandler");
+			Contract.Requires(person != null);
+
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
@@ -150,6 +155,8 @@
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		public bool UnregisterVoteRequestHandler(Person person) {
 			Console.WriteLine("UnregisterVoteRequestHandler");
+			Contract.Requires(person != null);
+
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 

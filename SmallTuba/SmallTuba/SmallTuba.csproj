@@ -103,7 +103,7 @@
     <Compile Include="Database\ConnectorTestSuite.cs" />
     <Compile Include="Database\QueryBuilder.cs" />
     <Compile Include="Database\QueryBuilderTestSuite.cs" />
-    <Compile Include="Debug.cs" />
+    <Compile Include="Utility\Debug.cs" />
     <Compile Include="Entities\Abstracts\AbstractDataAccessObject.cs" />
     <Compile Include="Entities\Abstracts\AbstractEntity.cs" />
     <Compile Include="Entities\Abstracts\AbstractResource.cs" />

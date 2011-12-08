@@ -1,6 +1,8 @@
 ﻿namespace SmallTuba.Entities {
 	using System;
 
+	using SmallTuba.Utility;
+
 	/// <author>Christian Ollson (chro@itu.dk)</author>
 	/// <version>2011-12-07</version>
 	/// <summary>
@@ -21,7 +23,7 @@
 		public bool Exists { get; set; }
 
 		public override string ToString() {
-			return DbId.ToString() + "," + Cpr.ToString() + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + VotedTime.ToString() + ", " + Voted.ToString();
+			return DbId + "," + Cpr + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + TimeConverter.ConvertFromUnixTimestamp(VotedTime) + ", " + Voted;
 		}
 	}
 }
