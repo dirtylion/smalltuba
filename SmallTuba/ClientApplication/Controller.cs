@@ -6,7 +6,11 @@
 
 namespace ClientApplication
 {
+<<<<<<< HEAD
     using System;
+=======
+    using System;
+>>>>>>> fb6b449ef396780e9171c1f7d398b58fbeae372c
 	using System.Windows.Forms;
     using SmallTuba.Entities;
     using SmallTuba.Network.Voter;
