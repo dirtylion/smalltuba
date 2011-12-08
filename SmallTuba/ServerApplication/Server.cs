@@ -21,7 +21,6 @@
 	class Server {
 		private VoterNetworkServer voterNetWorkServer;
 
-
 		/// <summary>
 		/// Construct a new server and instantiate and instance
 		/// of the VoterNetworkServer identified as "primary".
@@ -58,17 +57,17 @@
 		/// </summary>
 		/// <param name="cpr">The CPR number to search for a person by.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
-		public PersonState CprToPersonRequestHandler(int cpr) {
+		public Person CprToPersonRequestHandler(int cpr) {
 			Console.WriteLine("CprToPersonRequestHandler");
 
-			var person = new Person();
-			person.Load(new Hashtable { { "cpr", cpr } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "cpr", cpr } });
 
-			if (person.Exists()) {
-				Console.WriteLine("Person exists, Id: "+person.Id);
+			if (personEntity.Exists()) {
+				Console.WriteLine("Person exists, Id: "+personEntity.DbId);
 			}
 
-			return person.ToStateObject();
+			return personEntity.ToObject();
 		}
 
 		/// <summary>
@@ -81,17 +80,17 @@
 		/// </summary>
 		/// <param name="barcode">The barcode number to search for a person by.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
-		public PersonState BarcodeToPersonRequestHandler(int barcode) {
+		public Person BarcodeToPersonRequestHandler(int barcode) {
 			Console.WriteLine("BarcodeToPersonRequestHandler");
 
-			var person = new Person();
-			person.Load(new Hashtable { { "barcode", barcode } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "barcode", barcode } });
 			
-			if (person.Exists()) {
-				Console.WriteLine("Person exists, Id: "+person.Id);
+			if (personEntity.Exists()) {
+				Console.WriteLine("Person exists, Id: "+personEntity.DbId);
 			}
 
-			return person.ToStateObject();
+			return personEntity.ToObject();
 		}
 
 		/// <summary>
@@ -109,16 +108,16 @@
 		/// </summary>
 		/// <param name="personState">The person to be registered.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
-		public bool RegisterVoteRequestHandler(PersonState personState) {
+		public bool RegisterVoteRequestHandler(Person person) {
 			Console.WriteLine("RegisterVoteRequestHandler");
-			var person = new Person();
-			person.Load(new Hashtable { { "id", personState.Id } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
-			if (person.Exists() && !person.Voted) {
-				Console.WriteLine("Person exists, Id: "+person.Id);
+			if (personEntity.Exists() && !person.Voted) {
+				Console.WriteLine("PersonEntity exists, Id: "+person.DbId);
 
-				var log = new Log {
-					PersonId = person.Id,
+				var log = new LogEntity {
+					PersonDbId = personEntity.DbId,
 					Action = "register",
 					Client = "Client 8",
 					PollingTable = "8",
@@ -126,7 +125,7 @@
 				};
 
 				log.Save();
-				Console.WriteLine("Log saved, Id: "+log.Id);
+				Console.WriteLine("LogEntity saved, Id: "+log.DbId);
 
 				return true;
 			}
@@ -149,16 +148,16 @@
 		/// </summary>
 		/// <param name="personState">The person to be unregistrated.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
-		public bool UnregisterVoteRequestHandler(PersonState personState) {
+		public bool UnregisterVoteRequestHandler(Person person) {
 			Console.WriteLine("UnregisterVoteRequestHandler");
-			var person = new Person();
-			person.Load(new Hashtable { { "id", personState.Id } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
-			if (person.Exists() && person.Voted) {
-				Console.WriteLine("Person exists, Id: "+person.Id);
+			if (personEntity.Exists() && person.Voted) {
+				Console.WriteLine("personEntity exists, Id: "+person.Id);
 
-				var log = new Log {
-					PersonId = person.Id,
+				var log = new LogEntity {
+					PersonDbId = personEntity.DbId,
 					Action = "unregister",
 					Client = "Client 8",
 					PollingTable = "8",
@@ -166,7 +165,7 @@
 				};
 
 				log.Save();
-				Console.WriteLine("Log saved, Id: "+log.Id);
+				Console.WriteLine("Log saved, Id: "+log.DbId);
 
 				return true;
 			}

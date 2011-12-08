@@ -59,28 +59,28 @@
 		/// </summary>
 		/// <param name="cpr">The cpr. nr.</param>
 		/// <returns>The person</returns>
-		public delegate PersonState CprToPersonRequest(int cpr);
+		public delegate Person CprToPersonRequest(int cpr);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for a person is made
 		/// </summary>
 		/// <param name="id">The id</param>
 		/// <returns>The person</returns>
-		public delegate PersonState BarcodeToPersonRequest(int id);
+		public delegate Person BarcodeToPersonRequest(int id);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for registering a voter is made
 		/// </summary>
 		/// <param name="voterState">The state of the voret</param>
 		/// <returns>If the voter was registered</returns>
-		public delegate bool RegisterVoteRequest(PersonState person);
+		public delegate bool RegisterVoteRequest(Person person);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for unregistering a voter is made
 		/// </summary>
 		/// <param name="id">The id of the voter</param>
 		/// <returns>If the voter was unregistered</returns>
-		public delegate bool UnregisterVoteRequest(PersonState person);
+		public delegate bool UnregisterVoteRequest(Person person);
 
 		public delegate string[] ValidTableRequest();
 
@@ -147,7 +147,7 @@
 				case Keyword.GetPersonFromCpr:
 					if (query.GetValue is int && this.cprToPersonRequest != null)
 					{
-						PersonState person = this.cprToPersonRequest.Invoke((int)query.GetValue);
+						Person person = this.cprToPersonRequest.Invoke((int)query.GetValue);
 						return new Message(keyword, person);
 					}
 
@@ -157,7 +157,7 @@
 				case Keyword.GetPersonFromId:
 					if (query.GetValue is int && this.barcodeToPersonRequest != null)
 					{
-						PersonState person = this.barcodeToPersonRequest.Invoke((int)query.GetValue);
+						Person person = this.barcodeToPersonRequest.Invoke((int)query.GetValue);
 						return new Message(keyword, person);
 					}
 
@@ -165,9 +165,9 @@
 					throw new InvalidCastException();
 				
 				case Keyword.RegisterVoter:
-					if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.registerVoteRequest != null)
+					if (query.GetValue.GetType().Equals(typeof(Person)) && this.registerVoteRequest != null)
 					{
-						bool b = this.registerVoteRequest.Invoke((PersonState)query.GetValue);
+						bool b = this.registerVoteRequest.Invoke((Person)query.GetValue);
 						return new Message(keyword, b);
 					}
 
@@ -175,9 +175,9 @@
 					throw new InvalidCastException();
 				
 				case Keyword.UnregisterVoter:
-					if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.unregisterVoteRequest != null)
+					if (query.GetValue.GetType().Equals(typeof(Person)) && this.unregisterVoteRequest != null)
 					{
-						bool b = this.unregisterVoteRequest.Invoke((PersonState)query.GetValue);
+						bool b = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
 						return new Message(keyword, b);
 					}
 

@@ -92,7 +92,7 @@ namespace AdminApplication
             String name = form.ElectionName.Text;
             String date = form.ElectionDate.Text;
             PollingCards pollingCards = new PollingCards(name, date, "09.00 - 20.00");
-            pollingCards.CreatePollingCard(new Person());
+            pollingCards.CreatePollingCard(new PersonEntity());
             pollingCards.SaveToDisk(path);
         }
 

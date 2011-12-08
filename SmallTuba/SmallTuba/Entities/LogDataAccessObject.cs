@@ -5,8 +5,8 @@
 	/// <version>2011-12-07</version>
 	public class LogDataAccessObject : AbstractDataAccessObject {
 		public LogDataAccessObject() {
-			Table = Log.Table;
-			Columns = Log.Columns;
+			Table = LogEntity.Table;
+			Columns = LogEntity.Columns;
 		}
 	}
 }

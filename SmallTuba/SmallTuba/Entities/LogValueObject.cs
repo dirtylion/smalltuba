@@ -5,7 +5,7 @@
 	/// <version>2011-12-07</version>
 	public class LogValueObject : AbstractValueObject {
 		public LogValueObject() {
-			Columns = Log.Columns;
+			Columns = LogEntity.Columns;
 		}
 	}
 }

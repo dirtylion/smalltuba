@@ -113,8 +113,8 @@
     <Compile Include="Entities\LogState.cs" />
     <Compile Include="Entities\LogValueObject.cs" />
     <Compile Include="Entities\LogDataAccessObject.cs" />
-    <Compile Include="Entities\Log.cs" />
-    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\LogEntity.cs" />
+    <Compile Include="Entities\PersonEntity.cs" />
     <Compile Include="Entities\PersonDataAccessObject.cs" />
     <Compile Include="Entities\PersonResource.cs" />
     <Compile Include="Entities\PersonValueObject.cs" />
@@ -128,7 +128,7 @@
     <Compile Include="Network\Message\Keyword.cs" />
     <Compile Include="Network\Message\Message.cs" />
     <Compile Include="Network\Message\Packet.cs" />
-    <Compile Include="Entities\PersonState.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="PdfGenerator\PollingCards.cs" />
     <Compile Include="PdfGenerator\VoterList.cs" />
     <Compile Include="Network\Message\ServerFE.cs" />
