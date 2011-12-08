@@ -506,9 +506,9 @@
 		/// <summary>
 		/// Assembles the query from the given parameters
 		/// and executes this towards the Connector object
-		/// returning the last affected id.
+		/// returning the last inserted id.
 		/// </summary>
-		/// <returns>The last affected id of the executed query.</returns>
+		/// <returns>The last inserted id of the executed query.</returns>
 		public int ExecuteNoneQuery() {
 			return _connector.ExecuteNoneQuery(Assemble());
 		}
