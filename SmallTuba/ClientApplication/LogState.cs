@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SmallTuba.Utility;
+using SmallTuba.Entities;
 
-namespace SmallTuba.Entities
+namespace ClientApplication
 {
-    public class LogState
+    public class ClientLog
     {
         private PersonState voter;
 
         private string action;
 
-        public LogState(PersonState voter, string action)
+        public ClientLog(PersonState voter, string action)
         {
             this.voter = voter;
             this.action = action;

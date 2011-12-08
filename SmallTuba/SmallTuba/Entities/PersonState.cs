@@ -21,7 +21,7 @@
 		public bool Exists { get; set; }
 
 		public override string ToString() {
-			return Id.ToString() + "," + Cpr.ToString() + "," + Firstname + "," + Lastname + ", " + PollingTable + ", " + VotedTime.ToString() + ", " + Voted.ToString();
+            return Id.ToString() + "," + Cpr.ToString() + "," + Firstname + "," + Lastname + ", " + PollingTable + ", " + VotedTime.ToString() + ", " + Voted.ToString();
 		}
 	}
 }

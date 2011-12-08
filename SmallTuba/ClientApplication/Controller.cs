@@ -13,8 +13,6 @@ namespace ClientApplication
     using System.Windows.Forms;
     using SmallTuba.Entities;
     using SmallTuba.Network.Voter;
-    
- 
  
     /// <summary>
     /// TODO: Update summary.
@@ -137,7 +135,7 @@ namespace ClientApplication
         {
             if (networkClient.RegisterVoter(currentVoter))
             {
-                model.Log.Add(new LogState(currentVoter, "registered"));
+                model.Log.Add(new ClientLog(currentVoter, "registered"));
                 MessageBox.Show("Succes!!!");
             }
             else
@@ -150,7 +148,7 @@ namespace ClientApplication
         {
             if (networkClient.UnregisterVoter(currentVoter))
             {
-                model.Log.Add(new LogState(currentVoter, "unregistered"));
+                model.Log.Add(new ClientLog(currentVoter, "unregistered"));
                 MessageBox.Show("Succes!!!");
             }
             else
@@ -185,7 +183,7 @@ namespace ClientApplication
                 this.mainForm.RegisterButton.Enabled = true;
                 this.mainForm.UnregisterButton.Enabled = true;
                 this.mainForm.ClearButton.Enabled = true;
-                this.mainForm.ID.Text = voter.ID.ToString();
+                this.mainForm.ID.Text = voter.Barcode.ToString();
                 this.mainForm.FirstName.Text = voter.FirstName;
                 this.mainForm.LastName.Text = voter.LastName;
                 this.mainForm.Cpr.Text = voter.Cpr.ToString();

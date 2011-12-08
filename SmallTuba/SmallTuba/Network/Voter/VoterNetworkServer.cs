@@ -150,29 +150,26 @@
 						PersonState person = this.cprToPersonRequest.Invoke((int)query.GetValue);
 						return new Message(keyword, person);
 					}
+                    System.Diagnostics.Contracts.Contract.Assert(false);
+			        return null;
 
-					///TODO: must not happen
-					throw new InvalidCastException();
-				
 				case Keyword.GetPersonFromId:
 					if (query.GetValue is int && this.idToPersonRequest != null)
 					{
 						PersonState person = this.idToPersonRequest.Invoke((int)query.GetValue);
 						return new Message(keyword, person);
 					}
+                    System.Diagnostics.Contracts.Contract.Assert(false);
+                    return null;
 
-					///TODO: must not happen
-					throw new InvalidCastException();
-				
 				case Keyword.RegisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.registerVoteRequest != null)
 					{
 						bool b = this.registerVoteRequest.Invoke((PersonState)query.GetValue);
 						return new Message(keyword, b);
 					}
-
-					///TODO: must not happen
-					throw new InvalidCastException();
+                    System.Diagnostics.Contracts.Contract.Assert(false);
+                    return null;
 				
 				case Keyword.UnregisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(PersonState)) && this.unregisterVoteRequest != null)
@@ -180,9 +177,8 @@
 						bool b = this.unregisterVoteRequest.Invoke((PersonState)query.GetValue);
 						return new Message(keyword, b);
 					}
-
-					///TODO: must not happen
-					throw new InvalidCastException();
+                    System.Diagnostics.Contracts.Contract.Assert(false);
+                    return null;
 				
 				case Keyword.ValidTables:
 					string[] arr = this.validTableRequest.Invoke();

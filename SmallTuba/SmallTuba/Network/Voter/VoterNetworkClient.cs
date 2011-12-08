@@ -58,10 +58,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (PersonState)reply.GetValue;
             }
-            
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return null;
         }
 
         /// <summary>
@@ -82,10 +80,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (PersonState)reply.GetValue;
             }
-            
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return null;
         }
 
         /// <summary>
@@ -107,10 +103,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (bool)reply.GetValue;
             }
-
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return false;
         }
 
         /// <summary>
@@ -131,10 +125,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (bool)reply.GetValue;
             }
-
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return false;
         }
 
         /// <summary>
@@ -154,10 +146,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (string[])reply.GetValue;
             }
-
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return null;
         }
 
         /// <summary>
@@ -172,7 +162,6 @@ namespace SmallTuba.Network.Voter
             {
                 return false;
             }
-
             return true;
         }
     }
