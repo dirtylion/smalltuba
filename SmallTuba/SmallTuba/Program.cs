@@ -26,8 +26,8 @@ namespace SmallTuba
 				VoterNetworkServer voterServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
 			    DateTime time = DateTime.Now;
                 int unix = (int)TimeConverter.ConvertToUnixTimestamp(time.ToUniversalTime());
-				voterServer.SetCprToPersonRequest(cpr => new Person(){Cpr = cpr, FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false});
-				voterServer.SetVoterIdToPersonRequest(id => new Person() { Cpr = 42, FirstName = "Kim", DbId = id, LastName = "Larsen", VotedPollingTable = "3", VotedTime = unix, Voted = true });
+				voterServer.SetCprToPersonRequest(cpr => new Person(){Cpr = cpr, FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false, Exists = true});
+				voterServer.SetVoterIdToPersonRequest(id => new Person() { Cpr = 42, FirstName = "Kim", DbId = id, LastName = "Larsen", VotedPollingTable = "3", VotedTime = unix, Voted = true, Exists = false});
 				voterServer.SetRegisterVoteRequest(person => !person.Voted);
 				voterServer.SetUnregisterVoteRequest(person => !person.Voted);
 				voterServer.SetValidTableRequest(() => new string[]{"Table 1", "Table 2", "Table 3"});
