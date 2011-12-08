@@ -123,8 +123,7 @@ namespace ClientApplication
 
         private void Register()
         {
-            currentVoter = networkClient.RegisterVoter(currentVoter);
-            if (currentVoter == null)
+            if (networkClient.RegisterVoter(currentVoter))
             {
                 model.Log.Add(new ClientLog(currentVoter, "registered"));
                 MessageBox.Show("Succes!!!");
@@ -133,13 +132,11 @@ namespace ClientApplication
             {
                 MessageBox.Show("Fail!!!");
             }
-            SetVoter(currentVoter);
         }
 
         private void Unregister()
         {
-            currentVoter = networkClient.UnregisterVoter(currentVoter);
-            if (currentVoter == null)
+            if (networkClient.UnregisterVoter(currentVoter))
             {
                 model.Log.Add(new ClientLog(currentVoter, "unregistered"));
                 MessageBox.Show("Succes!!!");
@@ -148,7 +145,7 @@ namespace ClientApplication
             {
                 MessageBox.Show("Fail!!!");
             }
-            SetVoter(currentVoter);
+            
         }
 
         private void ChooseLine()
