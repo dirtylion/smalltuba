@@ -111,7 +111,7 @@
 		/// </summary>
 		/// <param name="personState">The person to be registered.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
-		public bool RegisterVoteRequestHandler(Person person) {
+		public Person RegisterVoteRequestHandler(Person person) {
 			Console.WriteLine("RegisterVoteRequestHandler");
 			Contract.Requires(person != null);
 
@@ -132,10 +132,12 @@
 				log.Save();
 				Console.WriteLine("LogEntity saved, Id: "+log.DbId);
 
-				return true;
+				// return true;
 			}
 
-			return false;
+			// return false;
+
+			return personEntity.ToObject();
 		}
 
 		/// <summary>
@@ -153,7 +155,7 @@
 		/// </summary>
 		/// <param name="personState">The person to be unregistrated.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
-		public bool UnregisterVoteRequestHandler(Person person) {
+		public Person UnregisterVoteRequestHandler(Person person) {
 			Console.WriteLine("UnregisterVoteRequestHandler");
 			Contract.Requires(person != null);
 
@@ -174,10 +176,12 @@
 				log.Save();
 				Console.WriteLine("Log saved, Id: "+log.DbId);
 
-				return true;
+				// return true;
 			}
 
-			return false;
+			// return false;
+
+			return personEntity.ToObject();
 		}
 
 		/// <summary>

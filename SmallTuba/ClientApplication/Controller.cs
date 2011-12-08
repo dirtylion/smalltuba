@@ -6,14 +6,11 @@
 
 namespace ClientApplication
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
-    using SmallTuba.Entities;
-    using SmallTuba.Utility;
-    using SmallTuba.Network.Voter;
+	using System;
+	using System.Windows.Forms;
+	using SmallTuba.Entities;
+	using SmallTuba.Network.Voter;
+	using SmallTuba.Utility;
  
     /// <summary>
     /// TODO: Update summary.
