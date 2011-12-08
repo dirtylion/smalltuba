@@ -73,6 +73,7 @@ namespace ClientApplication
             }
             else
             {
+                welcomeForm.dropdown.Items.Add("No connection");
                 welcomeForm.OKButton.Enabled = false;
             }
         }
@@ -109,7 +110,7 @@ namespace ClientApplication
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Unvalid input");
+                MessageBox.Show("Invalid input");
             }
         }
 
@@ -122,7 +123,7 @@ namespace ClientApplication
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Unvalid input");
+                MessageBox.Show("Invalid input");
             }
        }
 
@@ -181,7 +182,16 @@ namespace ClientApplication
 
         private void SetVoter(Person voter)
         {
-            if(voter != null)
+            Console.Out.WriteLine(voter);
+            if(voter == null)
+            {
+                MessageBox.Show("No network connection");
+            }
+            else if(!voter.Exists)
+            {
+                MessageBox.Show("No voter found matching this criteria");
+            }
+            else
             {
                 currentVoter = voter;
                 this.mainForm.RegisterButton.Enabled = true;
@@ -195,10 +205,6 @@ namespace ClientApplication
                 this.mainForm.Table.Text = voter.VotedPollingTable;
                 DateTime time = TimeConverter.ConvertFromUnixTimestamp(voter.VotedTime);
                 this.mainForm.Time.Text = time.ToLocalTime().Hour.ToString() + ":" + time.ToLocalTime().Minute.ToString();
-            }
-            else
-            {
-                MessageBox.Show("No voter found matching this criteria");
             }
         }
 
