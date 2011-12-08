@@ -48,7 +48,7 @@ namespace SmallTuba.Network.Voter
         public PersonState GetPersonFromCpr(int cpr)
         {
             Message query = new Message(Keyword.GetPersonFromCpr, cpr);
-            Message reply = this.clientFE.SendQuery(query, 0);
+            Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
                 return null;
@@ -72,7 +72,7 @@ namespace SmallTuba.Network.Voter
         public PersonState GetPersonFromId(int id)
         {
             Message query = new Message(Keyword.GetPersonFromId, id);
-            Message reply = this.clientFE.SendQuery(query, 0);
+            Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
                 return null;
@@ -97,7 +97,7 @@ namespace SmallTuba.Network.Voter
         {
             Contract.Requires(person != null);
             Message query = new Message(Keyword.RegisterVoter, person);
-            Message reply = this.clientFE.SendQuery(query, 0);
+            Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
                 return false;
@@ -121,7 +121,7 @@ namespace SmallTuba.Network.Voter
         public bool UnregisterVoter(PersonState person)
         {
             Message query = new Message(Keyword.UnregisterVoter, person);
-            Message reply = this.clientFE.SendQuery(query, 0);
+            Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
                 return false;
@@ -144,7 +144,7 @@ namespace SmallTuba.Network.Voter
         public string[] ValidTables()
         {
             Message query = new Message(Keyword.ValidTables, null);
-            Message reply = this.clientFE.SendQuery(query, 0);
+            Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
                 return null;
@@ -167,7 +167,7 @@ namespace SmallTuba.Network.Voter
         public bool Connected()
         {
             Message query = new Message(Keyword.Ping, null);
-            Message reply = this.clientFE.SendQuery(query, 2);
+            Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
                 return false;
