@@ -33,6 +33,7 @@
 		private OrderedDictionary _conditions;
 		private int _limit;
 		private int _offset;
+		private string _groupBy;
 		private OrderedDictionary _orders;
 
 		private string _query;
@@ -67,6 +68,7 @@
 			_conditions = new OrderedDictionary();
 			_limit = -1;
 			_offset = -1;
+			_groupBy = "";
 			_orders = new OrderedDictionary();
 		}
 
@@ -90,6 +92,10 @@
 		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetTable(string table) {
 			Contract.Requires(table != null);
+
+			if (Debug.ExternalDataSources) {
+				table += "TestSuite";
+			}
 
 			_table = table;
 			return this;
@@ -208,6 +214,18 @@
 		}
 
 		/// <summary>
+		/// Set a group by for the query.
+		/// </summary>
+		/// <param name="groupBy">The group by of the query.</param>
+		/// <returns>The QueryBuilder instance for chaining.</returns>
+		public QueryBuilder SetGroupBy(string groupBy) {
+			Contract.Requires(groupBy != null);
+
+			_groupBy = groupBy;
+			return this;
+		}
+
+		/// <summary>
 		/// Add an ordering clause to the query. The direction
 		/// of the ordering will default to "asc" for this method.
 		/// </summary>
@@ -273,6 +291,7 @@
 			query += AssembleTable();
 			query += AssembleConditions();
 			query += AssembleOrders();
+			query += AssembleGroupBy();
 			query += AssembleLimit();
 			query += AssembleOffset();
 
@@ -440,6 +459,14 @@
 		}
 
 		/// <summary>
+		/// Assemble the group by part of a query.
+		/// </summary>
+		/// <returns>The part assembled.</returns>
+		private string AssembleGroupBy() {
+			return _groupBy != "" ? " GROUP BY " + _groupBy : "";
+		}
+
+		/// <summary>
 		/// Get the last query assembled.
 		/// </summary>
 		/// <returns>The last query assembled.</returns>
@@ -506,9 +533,9 @@
 		/// <summary>
 		/// Assembles the query from the given parameters
 		/// and executes this towards the Connector object
-		/// returning the last affected id.
+		/// returning the last inserted id.
 		/// </summary>
-		/// <returns>The last affected id of the executed query.</returns>
+		/// <returns>The last inserted id of the executed query.</returns>
 		public int ExecuteNoneQuery() {
 			return _connector.ExecuteNoneQuery(Assemble());
 		}

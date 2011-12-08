@@ -31,7 +31,9 @@
 		/// Save the current entity.
 		/// </summary>
 		public void Save() {
-			DataAccessObject.Save(ValueObject.GetValues());
+			var id = DataAccessObject.Save(ValueObject.GetValues());
+			
+			Id = Exists() ? Id : id;
 		}
 
 		/// <summary>
@@ -53,7 +55,7 @@
 		}
 
 		public int Id { 
-			get { return (int) ValueObject["id"]; } 
+			get { return ValueObject["id"] != null ? (int) ValueObject["id"] : 0; } 
 			set { ValueObject["id"] = value; }
 		}
 	}

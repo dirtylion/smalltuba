@@ -1,39 +1,28 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Person.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
+﻿namespace SmallTuba.Entities {
+	using System;
 
-namespace SmallTuba.Entities
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+	/// <author>Christian Ollson (chro@itu.dk)</author>
+	/// <version>2011-12-07</version>
+	/// <summary>
+	/// A shallow copy reflecting properties of the real Person entity.
+	/// </summary>
+	[Serializable]
+	public class PersonState {
+		public int Id { get; set; }
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
+		public int Cpr { get; set; }
+		public int Barcode { get; set; }
+		public string PollingVenue { get; set; }
+		public string PollingTable { get; set; }
+		public bool Voted { get; set; }
+		public int VotedTime { get; set; }
+		public string VotedPollingTable { get; set; }
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
-    [Serializable]
-    public class PersonState
-    {
-        public int ID { get; set; }
+		public bool Exists { get; set; }
 
-        public int Cpr { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string Table { get; set; }
-
-        public DateTime Time { get; set; }
-
-        public bool Voted { get; set; }
-
-        public override string ToString()
-        {
-            return ID.ToString() + "," + Cpr.ToString() + "," + FirstName + "," + LastName + ", " + Table + ", " + Time.ToString() + ", " + Voted.ToString();
-        }
-    }
+		public override string ToString() {
+			return Id.ToString() + "," + Cpr.ToString() + "," + Firstname + "," + Lastname + ", " + PollingTable + ", " + VotedTime.ToString() + ", " + Voted.ToString();
+		}
+	}
 }

@@ -66,7 +66,7 @@
 		/// relationship in the database.
 		/// </summary>
 		/// <param name="values">The values to be saved.</param>
-		public void Save(Hashtable values) {
+		public int Save(Hashtable values) {
 			Contract.Requires(values != null);
 			Contract.Requires(values.Count > 0);
 
@@ -90,7 +90,7 @@
 				QueryBuilder.SetType("insert");
 			}
 
-			QueryBuilder.ExecuteNoneQuery();
+			return QueryBuilder.ExecuteNoneQuery();
 		}
 		
 		/// <summary>

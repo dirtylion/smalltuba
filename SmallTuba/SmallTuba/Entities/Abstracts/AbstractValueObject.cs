@@ -42,7 +42,8 @@
 			get {
 				// Contract.Requires(Array.Exists(Columns, s => s == key));
 
-				return values[key]; }
+				return values[key]; 
+			}
 			set { 
 				// Contract.Requires(Array.Exists(Columns, s => s == key));
 

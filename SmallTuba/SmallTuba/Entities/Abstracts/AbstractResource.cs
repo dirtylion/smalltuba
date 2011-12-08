@@ -46,6 +46,12 @@
 			QueryBuilder.SetOffset(offset);
 		}
 
+		public void SetGroupBy(string groupBy) {
+			Contract.Requires(groupBy != null);
+
+			QueryBuilder.SetGroupBy(groupBy);
+		}
+
 		public int GetCount() {
 			return QueryBuilder.GetCount();
 		}

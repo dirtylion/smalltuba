@@ -13,7 +13,7 @@
 	/// </summary>
 	public class Log : AbstractEntity {
 		public static readonly string Table = "Log";
-		public static readonly string[] Columns = { "id", "client_id", "person_id", "action", "timestamp" };
+		public static readonly string[] Columns = { "id", "person_id", "action", "client", "polling_table", "timestamp" };
 
 		public Log() {
 			ValueObject = new LogValueObject();
@@ -24,21 +24,25 @@
 			ValueObject.SetValues(values);
 		}
 
-		public string ClientId { 
-			get { return (string) ValueObject["client_id"]; } 
-			set { ValueObject["client_id"] = value; }
-		}
-		public string PersonId { 
-			get { return (string) ValueObject["person_id"]; } 
+		public int PersonId { 
+			get { return ValueObject["person_id"] != null ? (int) ValueObject["person_id"] : 0; } 
 			set { ValueObject["person_id"] = value; }
 		}
 		public string Action { 
-			get { return (string) ValueObject["action"]; } 
+			get { return ValueObject["action"] != null ? (string) ValueObject["action"] : ""; } 
 			set { ValueObject["action"] = value; }
 		}
-		public string Timestamp { 
-			get { return (string) ValueObject["timpestamp"]; } 
-			set { ValueObject["timpestamp"] = value; }
+		public string Client { 
+			get { return ValueObject["client"] != null ? (string) ValueObject["client"] : ""; } 
+			set { ValueObject["client"] = value; }
+		}
+		public string PollingTable { 
+			get { return ValueObject["polling_table"] != null ? (string) ValueObject["polling_table"] : ""; } 
+			set { ValueObject["polling_table"] = value; }
+		}
+		public int Timestamp { 
+			get { return ValueObject["timestamp"] != null ? (int) ValueObject["timestamp"] : 0; } 
+			set { ValueObject["timestamp"] = value; }
 		}
 	}
 }
