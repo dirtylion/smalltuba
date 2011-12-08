@@ -50,5 +50,26 @@
 			get { return (string) ValueObject["polling_table"]; } 
 			set { ValueObject["polling_table"] = value; }
 		}
+		public Address AddressTo
+		{
+			get
+			{
+				return new Address("Kåre", "ungarnsagde 2", "2300 Kbh s");
+			}
+		}
+		public Address AddressFrom
+		{
+			get
+			{
+				return new Address("Rådhuset","Rådhuspladsen","1050 Kbh k");
+			}
+		}
+		public Address AddressPollingVenue
+		{
+			get
+			{
+				return new Address("Skole what ever", "bliv klog vej", "2300 kbh");
+			}
+		}
 	}
 }

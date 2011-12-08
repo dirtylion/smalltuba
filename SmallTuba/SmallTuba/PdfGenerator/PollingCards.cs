@@ -12,6 +12,8 @@ namespace SmallTuba.PdfGenerator
     using PdfSharp.Drawing;
     using System.Diagnostics.Contracts;
 
+    using SmallTuba.Entities;
+
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -42,7 +44,7 @@ namespace SmallTuba.PdfGenerator
         }
 
         //Create a polling card for this person!
-        public void CreatePollingCard()
+        public void CreatePollingCard(Person person)
         {
             // Contract bla bla bla
             PdfPage page = document.AddPage();
@@ -51,12 +53,12 @@ namespace SmallTuba.PdfGenerator
             XGraphics gfx = XGraphics.FromPdfPage(page);
             
             gfx.DrawImage(template, 0,0);
-            FromField(gfx, "a", "b", "c");
-            ToField(gfx, "a", "b", "c");
+            FromField(gfx, person.AddressFrom.Name, person.AddressFrom.Road, person.AddressFrom.City);
+            ToField(gfx, person.AddressTo.Name, person.AddressTo.Road, person.AddressTo.City);
             VotingTable(gfx, "1");
             VotingNumber(gfx, "123456789");         
             
-            Location(gfx, "a", "b", "c");
+            VoterVenue(gfx, person.AddressPollingVenue.Name, person.AddressPollingVenue.Road, person.AddressPollingVenue.City);
             gfx.Dispose();
         }
 
@@ -117,7 +119,7 @@ namespace SmallTuba.PdfGenerator
             
         }
 
-        private void Location(XGraphics gfx, string line1, string line2, string line3)
+        private void VoterVenue(XGraphics gfx, string line1, string line2, string line3)
         {
             XFont font = new XFont("Arial", 9, XFontStyle.Bold);
             XTextFormatter tf = new XTextFormatter(gfx);
