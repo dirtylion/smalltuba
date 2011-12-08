@@ -30,7 +30,7 @@ namespace ClientApplication
             Application.SetCompatibleTextRenderingDefault(false);
             this.welcomeForm = new WelcomeForm();
             this.mainForm = new MainForm();
-            this.networkClient = new VoterNetworkClient("Client");
+            this.networkClient = new VoterNetworkClient();
             model = new Model();
             currentVoter = null;
         }
@@ -76,6 +76,7 @@ namespace ClientApplication
         {
             model.Name = this.welcomeForm.dropdown.SelectedItem.ToString();
             this.welcomeForm.Hide();
+            this.networkClient.Name = model.Name;
             this.mainForm.ThisTable.Text = model.Name;
             ClearVoter();
             this.mainForm.Show();

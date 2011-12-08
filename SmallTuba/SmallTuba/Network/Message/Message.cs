@@ -23,6 +23,8 @@ namespace SmallTuba.Network.Message
         /// </summary>
         private readonly Keyword keyword;
 
+        private string sender;
+
         /// <summary>
         /// The value
         /// </summary>
@@ -33,9 +35,10 @@ namespace SmallTuba.Network.Message
         /// </summary>
         /// <param name="keyword">The keyword</param>
         /// <param name="value">The value</param>
-        public Message(Keyword keyword, object value)
+        public Message(Keyword keyword, string sender, object value)
         {
             this.keyword = keyword;
+            this.sender = sender;
             this.value = value;
         }
 
@@ -51,6 +54,14 @@ namespace SmallTuba.Network.Message
             }
         }
 
+        public string GetSender
+        {
+            get
+            {
+                return sender;
+            }
+        }
+        
         /// <summary>
         /// What is the value of this message?
         /// </summary>
@@ -70,7 +81,7 @@ namespace SmallTuba.Network.Message
         [Pure]
         public override string ToString()
         {
-            return this.keyword + "," + this.value;
+            return this.keyword + "," + this.sender + "," + this.value;
         }
     }
 }

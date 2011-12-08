@@ -26,16 +26,16 @@ namespace SmallTuba
 				VoterNetworkServer voterServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
 			    DateTime time = DateTime.Now;
                 int unix = (int)TimeConverter.ConvertToUnixTimestamp(time.ToUniversalTime());
-				voterServer.SetCprToPersonRequest(cpr => new Person(){Cpr = cpr, FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false, Exists = true});
-				voterServer.SetVoterIdToPersonRequest(id => new Person() { Cpr = 42, FirstName = "Kim", DbId = id, LastName = "Larsen", VotedPollingTable = "3", VotedTime = unix, Voted = true, Exists = false});
-				voterServer.SetRegisterVoteRequest(person => !person.Voted);
-				voterServer.SetUnregisterVoteRequest(person => !person.Voted);
-				voterServer.SetValidTableRequest(() => new string[]{"Table 1", "Table 2", "Table 3"});
+				voterServer.SetCprToPersonRequest((name,cpr) => new Person(){Cpr = cpr, FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false, Exists = true});
+				voterServer.SetVoterIdToPersonRequest((name,id) => new Person() { Cpr = 42, FirstName = "Kim", DbId = id, LastName = "Larsen", VotedPollingTable = "3", VotedTime = unix, Voted = true, Exists = false});
+				voterServer.SetRegisterVoteRequest((name,person) => !person.Voted);
+				voterServer.SetUnregisterVoteRequest((name,person) => !person.Voted);
+				voterServer.SetValidTableRequest((name) => new string[]{"Table 1", "Table 2", "Table 3"});
 				voterServer.ListenForCalls(0);
 			}
 			else if (server == 1)
 			{
-				VoterNetworkClient voterClient = new VoterNetworkClient(System.Net.Dns.GetHostName());
+				VoterNetworkClient voterClient = new VoterNetworkClient();
 				Console.Out.WriteLine("Connecected to server: " + voterClient.Connected());
 				Console.Out.WriteLine(System.Net.Dns.GetHostName() + " = name");
 				Console.Out.WriteLine("1");
