@@ -28,8 +28,8 @@ namespace SmallTuba
                 int unix = (int)TimeConverter.ConvertToUnixTimestamp(time.ToUniversalTime());
 				voterServer.SetCprToPersonRequest(cpr => new Person(){Cpr = cpr, FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false, Exists = true});
 				voterServer.SetVoterIdToPersonRequest(id => new Person() { Cpr = 42, FirstName = "Kim", DbId = id, LastName = "Larsen", VotedPollingTable = "3", VotedTime = unix, Voted = true, Exists = false});
-				voterServer.SetRegisterVoteRequest(person => person);
-				voterServer.SetUnregisterVoteRequest(person => person);
+				voterServer.SetRegisterVoteRequest(person => person.Voted);
+				voterServer.SetUnregisterVoteRequest(person => person.Voted);
 				voterServer.SetValidTableRequest(() => new string[]{"Table 1", "Table 2", "Table 3"});
 				voterServer.ListenForCalls(0);
 			}
@@ -45,11 +45,11 @@ namespace SmallTuba
 				person = voterClient.GetPersonFromId(1);
 				Console.Out.WriteLine("Person: " + person);
 				Console.Out.WriteLine("3");
-				Person pp = voterClient.RegisterVoter(new Person() { Cpr = 42, FirstName = "Ole", DbId = 442, LastName = "Henriksen", PollingTable = "2", VotedTime = 0, Voted = false });
-				Console.Out.WriteLine("Register: " + pp);
+				bool b = voterClient.RegisterVoter(new Person() { Cpr = 42, FirstName = "Ole", DbId = 442, LastName = "Henriksen", PollingTable = "2", VotedTime = 0, Voted = false });
+				Console.Out.WriteLine("Register: " + b);
 				Console.Out.WriteLine("4");
-				Person ppp = voterClient.UnregisterVoter(new Person() { Cpr = 43, FirstName = "Kim", DbId = 443, LastName = "Larsen", PollingTable = "3", VotedTime = 0, Voted = true });
-				Console.Out.WriteLine("Unregister: " + ppp);
+				b = voterClient.UnregisterVoter(new Person() { Cpr = 43, FirstName = "Kim", DbId = 443, LastName = "Larsen", PollingTable = "3", VotedTime = 0, Voted = true });
+				Console.Out.WriteLine("Unregister: " + b);
 				Console.Out.WriteLine("5");
 				string[] arr = voterClient.ValidTables();
 				string result = "";

@@ -123,6 +123,7 @@ namespace ClientApplication
             if (networkClient.RegisterVoter(currentVoter))
             {
                 model.Log.Add(new ClientLog(currentVoter, "registered"));
+                ClearVoter();
                 MessageBox.Show("Succes!!!");
             }
             else
@@ -136,6 +137,7 @@ namespace ClientApplication
             if (networkClient.UnregisterVoter(currentVoter))
             {
                 model.Log.Add(new ClientLog(currentVoter, "unregistered"));
+                ClearVoter();
                 MessageBox.Show("Succes!!!");
             }
             else

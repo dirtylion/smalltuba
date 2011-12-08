@@ -165,8 +165,8 @@
 				case Keyword.RegisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(Person)) && this.registerVoteRequest != null)
 					{
-						Person person = this.registerVoteRequest.Invoke((Person)query.GetValue);
-						return new Message(keyword, person);
+						bool b = this.registerVoteRequest.Invoke((Person)query.GetValue);
+						return new Message(keyword, b);
 					}
                     System.Diagnostics.Contracts.Contract.Assert(false);
                     return null;
@@ -174,8 +174,8 @@
 				case Keyword.UnregisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(Person)) && this.unregisterVoteRequest != null)
 					{
-						Person person = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
-						return new Message(keyword, person);
+						bool b = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
+						return new Message(keyword, b);
 					}
                     System.Diagnostics.Contracts.Contract.Assert(false);
                     return null;
