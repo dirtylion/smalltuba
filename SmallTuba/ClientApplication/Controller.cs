@@ -39,26 +39,26 @@ namespace ClientApplication
         public void Run()
         {
             SetListeners();
-            GetData();
+            SetDropDown();
             Application.Run(this.welcomeForm);
         }
 
         private void SetListeners()
         {
-            this.welcomeForm.RefreshButton.Click += new EventHandler(this.Refresh);
-            this.welcomeForm.OKButton.Click += new EventHandler(this.Ok);
-            this.mainForm.IdSearchButton.Click += new EventHandler(this.SearchId);
-            this.mainForm.CprSearchButton.Click += new EventHandler(this.SearchCpr);
-            this.mainForm.LogButton.Click += new EventHandler(this.Log);
-            this.mainForm.RegisterButton.Click += new EventHandler(this.Register);
-            this.mainForm.UnregisterButton.Click += new EventHandler(this.Unregister);
-            this.mainForm.ClearButton.Click += new EventHandler(this.Clear);
-            this.mainForm.FormClosed += new FormClosedEventHandler((object sender, FormClosedEventArgs e) => Application.Exit());
-            this.logForm.ChooseButton.Click += new EventHandler(ChooseLog);
-            this.logForm.CloseButton.Click += new EventHandler(CloseLog);
+            this.welcomeForm.RefreshButton.Click += (object sender, EventArgs e) => SetDropDown();
+            this.welcomeForm.OKButton.Click += (object sender, EventArgs e) => GoToMainForm();
+            this.mainForm.IdSearchButton.Click += (object sender, EventArgs e) => SearchId();
+            this.mainForm.CprSearchButton.Click += (object sender, EventArgs e) => SearchCpr();
+            this.mainForm.LogButton.Click += (object sender, EventArgs e) => CreateLog();
+            this.mainForm.RegisterButton.Click += (object sender, EventArgs e) => Register();
+            this.mainForm.UnregisterButton.Click += (object sender, EventArgs e) => Unregister();
+            this.mainForm.ClearButton.Click += (object sender, EventArgs e) => ClearVoter();
+            this.mainForm.FormClosed += (object sender, FormClosedEventArgs e) => Application.Exit();
+            this.logForm.ChooseButton.Click += (object sender, EventArgs e) => ChooseLine();
+            this.logForm.CloseButton.Click += (object sender, EventArgs e) => CloseLog();
         }
 
-        private void GetData()
+        private void SetDropDown()
         {
             welcomeForm.dropdown.Items.Clear();
             string[] arr = networkClient.ValidTables();
@@ -75,30 +75,17 @@ namespace ClientApplication
             }
         }
 
-        private void Refresh(object o, EventArgs e)
-        {
-            Console.Out.WriteLine("Refreshed pressed");
-            GetData();
-        }
-
-        private void Ok(object o, EventArgs e)
-        {
-            Console.Out.WriteLine("Ok pressed");
-            this.mainForm.ThisTable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
-            this.logForm.TableLable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
-            GoToMainForm();
-        }
-
         private void GoToMainForm()
         {
+            this.mainForm.ThisTable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
+            this.logForm.TableLable.Text = this.welcomeForm.dropdown.SelectedItem.ToString();
             this.welcomeForm.Hide();
             ClearVoter();
             this.mainForm.Show();
         }
 
-        private void SearchId(object o, EventArgs e)
+        private void SearchId()
         {
-            // TODO: Validate user input!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             try
             {
                 int id = int.Parse(this.mainForm.IdTextBox.Text);
@@ -111,7 +98,7 @@ namespace ClientApplication
             }
         }
 
-        private void SearchCpr(object o, EventArgs e)
+        private void SearchCpr()
         {
             try{
                 int cpr = int.Parse(this.mainForm.CprTextBox.Text);
@@ -124,15 +111,17 @@ namespace ClientApplication
             }
        }
 
-        private void Log(object o, EventArgs e)
+        private void CreateLog()
         {
+            this.logForm = new LogForm();
             this.logForm.LogListBox.Items.AddRange(model.Log.ToArray());
             this.logForm.Show();
         }
 
-        private void Register(object o, EventArgs e)
+        private void Register()
         {
-            if (networkClient.RegisterVoter(currentVoter))
+            currentVoter = networkClient.RegisterVoter(currentVoter);
+            if (currentVoter == null)
             {
                 model.Log.Add(new ClientLog(currentVoter, "registered"));
                 MessageBox.Show("Succes!!!");
@@ -141,11 +130,13 @@ namespace ClientApplication
             {
                 MessageBox.Show("Fail!!!");
             }
+            SetVoter(currentVoter);
         }
 
-        private void Unregister(object o, EventArgs e)
+        private void Unregister()
         {
-            if (networkClient.UnregisterVoter(currentVoter))
+            currentVoter = networkClient.UnregisterVoter(currentVoter);
+            if (currentVoter == null)
             {
                 model.Log.Add(new ClientLog(currentVoter, "unregistered"));
                 MessageBox.Show("Succes!!!");
@@ -154,38 +145,35 @@ namespace ClientApplication
             {
                 MessageBox.Show("Fail!!!");
             }
-            
+            SetVoter(currentVoter);
         }
 
-        private void ChooseLog(object o, EventArgs e)
+        private void ChooseLine()
         {
             if (this.logForm.LogListBox.SelectedItem != null)
             {
                 ClientLog logState = (ClientLog) this.logForm.LogListBox.SelectedItem;
                 SetVoter(logState.Voter);
-                this.logForm.Hide();
+                CloseLog();
             }
         }
 
-        private void CloseLog(object o, EventArgs e)
+        private void CloseLog()
         {
             this.logForm.Hide();
-        }
-
-        private void Clear(object o, EventArgs e)
-        {
-            ClearVoter();
+            this.logForm.Dispose();
         }
 
         private void SetVoter(Person voter)
         {
-            Console.Out.WriteLine(voter);
             if(voter == null)
             {
+                ClearVoter();
                 MessageBox.Show("No network connection");
             }
             else if(!voter.Exists)
             {
+                ClearVoter();
                 MessageBox.Show("No voter found matching this criteria");
             }
             else
@@ -199,9 +187,17 @@ namespace ClientApplication
                 this.mainForm.LastName.Text = voter.LastName;
                 this.mainForm.Cpr.Text = voter.Cpr.ToString();
                 this.mainForm.Voted.Text = voter.Voted.ToString();
-                this.mainForm.Table.Text = voter.VotedPollingTable;
-                DateTime time = TimeConverter.ConvertFromUnixTimestamp(voter.VotedTime);
-                this.mainForm.Time.Text = time.ToLocalTime().Hour.ToString() + ":" + time.ToLocalTime().Minute.ToString();
+                if(voter.Voted)
+                {
+                    this.mainForm.Table.Text = voter.VotedPollingTable;
+                    DateTime time = TimeConverter.ConvertFromUnixTimestamp(voter.VotedTime);
+                    this.mainForm.Time.Text = time.ToLocalTime().Hour.ToString() + ":" + time.ToLocalTime().Minute.ToString();
+                }
+                else
+                {
+                    this.mainForm.Table.Text = "";
+                    this.mainForm.Time.Text = "";
+                }
             }
         }
 

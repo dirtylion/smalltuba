@@ -73,14 +73,14 @@
 		/// </summary>
 		/// <param name="voterState">The state of the voret</param>
 		/// <returns>If the voter was registered</returns>
-		public delegate bool RegisterVoteRequest(Person person);
+		public delegate Person RegisterVoteRequest(Person person);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for unregistering a voter is made
 		/// </summary>
 		/// <param name="id">The id of the voter</param>
 		/// <returns>If the voter was unregistered</returns>
-		public delegate bool UnregisterVoteRequest(Person person);
+		public delegate Person UnregisterVoteRequest(Person person);
 
 		public delegate string[] ValidTableRequest();
 
@@ -165,8 +165,8 @@
 				case Keyword.RegisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(Person)) && this.registerVoteRequest != null)
 					{
-						bool b = this.registerVoteRequest.Invoke((Person)query.GetValue);
-						return new Message(keyword, b);
+						Person person = this.registerVoteRequest.Invoke((Person)query.GetValue);
+						return new Message(keyword, person);
 					}
                     System.Diagnostics.Contracts.Contract.Assert(false);
                     return null;
@@ -174,8 +174,8 @@
 				case Keyword.UnregisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(Person)) && this.unregisterVoteRequest != null)
 					{
-						bool b = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
-						return new Message(keyword, b);
+						Person person = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
+						return new Message(keyword, person);
 					}
                     System.Diagnostics.Contracts.Contract.Assert(false);
                     return null;

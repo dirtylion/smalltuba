@@ -89,22 +89,22 @@ namespace SmallTuba.Network.Voter
         /// </summary>
         /// <param name="person">The state of the voter</param>
         /// <returns>If the voter was registered</returns>
-        public bool RegisterVoter(Person person)
+        public Person RegisterVoter(Person person)
         {
             Contract.Requires(person != null);
             Message query = new Message(Keyword.RegisterVoter, person);
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
-                return false;
+                return null;
             }
 
-            if (reply.GetValue is bool)
+            if (reply.GetValue.GetType().Equals(typeof(Person)))
             {
-                return (bool)reply.GetValue;
+                return (Person)reply.GetValue;
             }
             System.Diagnostics.Contracts.Contract.Assert(false);
-            return false;
+            return null;
         }
 
         /// <summary>
@@ -112,21 +112,21 @@ namespace SmallTuba.Network.Voter
         /// </summary>
         /// <param name="person">The id of the voter</param>
         /// <returns>If the voter was unregistered</returns>
-        public bool UnregisterVoter(Person person)
+        public Person UnregisterVoter(Person person)
         {
             Message query = new Message(Keyword.UnregisterVoter, person);
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
-                return false;
+                return null;
             }
 
-            if (reply.GetValue is bool)
+            if (reply.GetValue.GetType().Equals(typeof(Person)))
             {
-                return (bool)reply.GetValue;
+                return (Person)reply.GetValue;
             }
             System.Diagnostics.Contracts.Contract.Assert(false);
-            return false;
+            return null;
         }
 
         /// <summary>
