@@ -72,53 +72,59 @@ namespace SmallTuba.Network.Message
         /// <param name="timeOut">The time to wait in miliseconds</param>
         public void ListenForCalls(long timeOut)
         {
+            bool runForever = timeOut == 0;
             long preTime = DateTime.Now.ToFileTime();
-            while (DateTime.Now.ToFileTime() < preTime + (timeOut * 10000) || timeOut == 0)
+            long timeLeft;
+            while (runForever || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
             {
                 // Test if the requesthandler is set
                 if (this.requestHandler == null)
                 {
                     break;
                 }
-
-                // Test if the time has run out
-                long timeLeft = ((preTime + (timeOut * 10000)) - DateTime.Now.ToFileTime()) / 10000;
-                if (timeLeft > 0) 
-                { 
-                    // Receive the a packet
-                    object data = this.udpMulticast.Receive(timeLeft);
+                
+                // Receive the packet
+                object data;
+                if (runForever)
+                {
+                    data = udpMulticast.Receive(0);
+                }
+                else
+                {
+                    timeLeft = ((preTime + (timeOut * 10000)) - DateTime.Now.ToFileTime()) / 10000;
+                    data = this.udpMulticast.Receive(timeLeft);
+                }
                     
-                    // Test if it's a valid packet
-                    if (data == null || !data.GetType().Equals(typeof(Packet)))
+                // Test if it's a valid packet
+                if (data == null || !data.GetType().Equals(typeof(Packet)))
+                {
+                    continue;
+                }
+
+                // Test if the packet is for the server
+                Packet recPacket = (Packet)data;
+                
+                if (recPacket.GetReceiverId.Equals("server"))
+                {
+                    // If the packet has been received before
+                    if (this.prevPackets.ContainsKey(recPacket.GetSenderId + "#" + recPacket.GetRequestId))
                     {
-                        continue;
+                        // Repeat the reply
+                        Console.Out.WriteLine("Server repeats");
+                        this.udpMulticast.Send(this.prevPackets[recPacket.GetSenderId + "#" + recPacket.GetRequestId]);
                     }
-
-                    // Test if the packet is for the server
-                    Packet recPacket = (Packet)data;
-                    
-                    if (recPacket.GetReceiverId.Equals("server"))
+                    else
                     {
-                        // If the packet has been received before
-                        if (this.prevPackets.ContainsKey(recPacket.GetSenderId + "#" + recPacket.GetRequestId))
-                        {
-                            // Repeat the reply
-                            Console.Out.WriteLine("Server repeats");
-                            this.udpMulticast.Send(this.prevPackets[recPacket.GetSenderId + "#" + recPacket.GetRequestId]);
-                        }
-                        else
-                        {
-                            // The package has not been seen before and we need to generate a response
-                            Console.Out.WriteLine("Server sends fresh");
-                            string senderId = recPacket.GetSenderId;
-                            string requestId = recPacket.GetRequestId;
-                            Message resultMessage = this.requestHandler.Invoke(recPacket.GetMessage);
-                            Packet resultPacket = new Packet(senderId, "server", requestId, resultMessage);
-                            
-                            // Add this query and reply to the previous packets
-                            this.prevPackets.Add(recPacket.GetSenderId + "#" + recPacket.GetRequestId, resultPacket);
-                            this.udpMulticast.Send(resultPacket);
-                        }
+                        // The package has not been seen before and we need to generate a response
+                        Console.Out.WriteLine("Server sends fresh");
+                        string senderId = recPacket.GetSenderId;
+                        string requestId = recPacket.GetRequestId;
+                        Message resultMessage = this.requestHandler.Invoke(recPacket.GetMessage);
+                        Packet resultPacket = new Packet(senderId, "server", requestId, resultMessage);
+                        
+                        // Add this query and reply to the previous packets
+                        this.prevPackets.Add(recPacket.GetSenderId + "#" + recPacket.GetRequestId, resultPacket);
+                        this.udpMulticast.Send(resultPacket);
                     }
                 }
             }

@@ -28,8 +28,8 @@ namespace SmallTuba
                 voterServer.SetIdToPersonRequest(id => new PersonState() { Cpr = 42, FirstName = "Kim", ID = id, LastName = "Larsen", Table = "3", Time = DateTime.Now, Voted = true });
                 voterServer.SetRegisterVoteRequest(person => !person.Voted);
                 voterServer.SetUnregisterVoteRequest(person => !person.Voted);
-                voterServer.SetValidTableRequest(() => new string[]{"1", "2", "3"});
-                voterServer.ListenForCalls(5000);
+                voterServer.SetValidTableRequest(() => new string[]{"Table 1", "Table 2", "Table 3"});
+                voterServer.ListenForCalls(0);
             }
             else if (server == 1)
             {
