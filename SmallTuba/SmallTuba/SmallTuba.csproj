@@ -110,6 +110,7 @@
     <Compile Include="Entities\Abstracts\AbstractValueObject.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\LogResource.cs" />
+    <Compile Include="Entities\LogState.cs" />
     <Compile Include="Entities\LogValueObject.cs" />
     <Compile Include="Entities\LogDataAccessObject.cs" />
     <Compile Include="Entities\Log.cs" />
