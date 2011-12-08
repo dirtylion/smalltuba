@@ -64,6 +64,10 @@
 			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register" ? GetMostRecentLog().Timestamp : 0; }
 		}
 
+		public string VotedPollingTable {
+			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register" ? GetMostRecentLog().PollingTable : ""; }
+		}
+
 		public List<Log> GetLogs() {
 			if (Exists()) {
 				var resource = new LogResource();
@@ -77,7 +81,7 @@
 		}
 
 		public Log GetMostRecentLog() {
-			return GetLogs() != null ? logs[0] : null;
+			return GetLogs() != null && GetLogs().Count > 0 ? logs[0] : null;
 		}
 
 		public PersonState ToStateObject() {
@@ -91,6 +95,7 @@
 			    PollingTable = PollingTable,
 			    Voted = Voted,
 			    VotedTime = VotedTime,
+				VotedPollingTable = VotedPollingTable,
 			    Exists = Exists()
 			};
 		}

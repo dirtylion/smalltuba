@@ -17,6 +17,7 @@
 		public string PollingTable { get; set; }
 		public bool Voted { get; set; }
 		public int VotedTime { get; set; }
+		public string VotedPollingTable { get; set; }
 
 		public bool Exists { get; set; }
 

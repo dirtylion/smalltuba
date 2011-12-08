@@ -7,10 +7,7 @@
 namespace ClientApplication
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
+	using System.Windows.Forms;
     using SmallTuba.Entities;
     using SmallTuba.Network.Voter;
     
@@ -163,13 +160,14 @@ namespace ClientApplication
                 this.mainForm.RegisterButton.Enabled = true;
                 this.mainForm.UnregisterButton.Enabled = true;
                 this.mainForm.ClearButton.Enabled = true;
-                this.mainForm.ID.Text = voter.ID.ToString();
-                this.mainForm.FirstName.Text = voter.FirstName;
-                this.mainForm.LastName.Text = voter.LastName;
+                this.mainForm.ID.Text = voter.Id.ToString();
+                this.mainForm.FirstName.Text = voter.Firstname;
+                this.mainForm.LastName.Text = voter.Lastname;
                 this.mainForm.Cpr.Text = voter.Cpr.ToString();
                 this.mainForm.Voted.Text = voter.Voted.ToString();
-                this.mainForm.Table.Text = voter.Table;
-                this.mainForm.Time.Text = voter.Time.ToLocalTime().Hour.ToString() + ":" + voter.Time.ToLocalTime().Minute.ToString();
+                this.mainForm.Table.Text = voter.PollingTable;
+                // out commented for server testing, do not have the timeconverter yet, therefore I am not fixing it - Henrik
+				// this.mainForm.Time.Text = voter.VotedTime.ToLocalTime().Hour.ToString() + ":" + voter.VotedTime.ToLocalTime().Minute.ToString();
             }
             else
             {

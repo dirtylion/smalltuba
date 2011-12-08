@@ -28,7 +28,7 @@
 		/// <summary>
 		/// Invoke this function that returns a person when asked about a person from a barcode ID
 		/// </summary>
-		private IdToPersonRequest idToPersonRequest;
+		private BarcodeToPersonRequest barcodeToPersonRequest;
 
 		/// <summary>
 		/// Invoke this function when asked about registering a user
@@ -66,7 +66,7 @@
 		/// </summary>
 		/// <param name="id">The id</param>
 		/// <returns>The person</returns>
-		public delegate PersonState IdToPersonRequest(int id);
+		public delegate PersonState BarcodeToPersonRequest(int id);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for registering a voter is made
@@ -97,9 +97,9 @@
 		/// Invoke this function that returns a person when asked about a person from a barcode ID
 		/// </summary>
 		/// <param name="function">The function</param>
-		public void SetIdToPersonRequest(IdToPersonRequest function)
+		public void SetBarcodeToPersonRequest(BarcodeToPersonRequest function)
 		{
-			this.idToPersonRequest = function;
+			this.barcodeToPersonRequest = function;
 		}
 
 		/// <summary>
@@ -155,9 +155,9 @@
 					throw new InvalidCastException();
 				
 				case Keyword.GetPersonFromId:
-					if (query.GetValue is int && this.idToPersonRequest != null)
+					if (query.GetValue is int && this.barcodeToPersonRequest != null)
 					{
-						PersonState person = this.idToPersonRequest.Invoke((int)query.GetValue);
+						PersonState person = this.barcodeToPersonRequest.Invoke((int)query.GetValue);
 						return new Message(keyword, person);
 					}
 
