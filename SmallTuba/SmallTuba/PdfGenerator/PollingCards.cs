@@ -46,7 +46,8 @@ namespace SmallTuba.PdfGenerator
         //Create a polling card for this person!
         public void CreatePollingCard(Person person)
         {
-            // Contract bla bla bla
+            Contract.Requires(person != null);
+
             PdfPage page = document.AddPage();
             page.Width = XUnit.FromMillimeter(width);
             page.Height = XUnit.FromMillimeter(height);
