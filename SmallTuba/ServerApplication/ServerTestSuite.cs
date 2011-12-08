@@ -12,7 +12,7 @@
 	/// <summary>
 	/// Testing the interface of the server. Making sure
 	/// that the reponses to the request is the correct
-	/// data to be send over the network et cetera.
+	/// data to be send over the network etc.
 	/// </summary>
 	[TestFixture()]
 	public class ServerTestSuite {
@@ -40,7 +40,7 @@
 		/// </summary>
 		[Test()]
 		public void TestCprToPersonRequestHandlerWithExistingPerson() {
-			var person = _server.CprToPersonRequestHandler(0123456789);
+			var person = _server.CprToPersonRequestHandler("test client", 0123456789);
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
@@ -58,7 +58,7 @@
 		/// </summary>
 		[Test()]
 		public void TestCprToPersonRequestHandlerWithUnexistingPerson() {
-			var person = _server.CprToPersonRequestHandler(0711891952);
+			var person = _server.CprToPersonRequestHandler("test client", 0711891952);
 			
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);
@@ -76,7 +76,7 @@
 		/// </summary>
 		[Test()]
 		public void TestVoterIdToPersonRequestHandlerWithExistingPerson() {
-			var person = _server.VoterIdToPersonRequestHandler(3306);
+			var person = _server.VoterIdToPersonRequestHandler("test client", 3306);
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
@@ -94,7 +94,7 @@
 		/// </summary>
 		[Test()]
 		public void TestVoterIdToPersonRequestHandlerWithUnexistingPerson() {
-			var person = _server.VoterIdToPersonRequestHandler(669);
+			var person = _server.VoterIdToPersonRequestHandler("test client", 669);
 
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);
@@ -117,7 +117,7 @@
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(_server.RegisterVoteRequestHandler(person));
+			Assert.That(_server.RegisterVoteRequestHandler("test client", person));
 
 			var logEntity = personEntity.GetMostRecentLog();
 			logEntity.Delete();
@@ -134,7 +134,7 @@
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.RegisterVoteRequestHandler(person));
+			Assert.That(!_server.RegisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
@@ -147,7 +147,7 @@
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.RegisterVoteRequestHandler(person));
+			Assert.That(!_server.RegisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
@@ -161,7 +161,7 @@
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.UnregisterVoteRequestHandler(person));
+			Assert.That(!_server.UnregisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
@@ -175,7 +175,7 @@
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(_server.UnregisterVoteRequestHandler(person));
+			Assert.That(_server.UnregisterVoteRequestHandler("test client", person));
 
 			var logEntity = personEntity.GetMostRecentLog();
 			logEntity.Delete();
@@ -191,17 +191,17 @@
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.UnregisterVoteRequestHandler(person));
+			Assert.That(!_server.UnregisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
 		/// Test that the server returns the correct tables
 		/// from the data source and that it does not return
-		/// the same table twice.
+		/// the same table twice. 
 		/// </summary>
 		[Test()]
 		public void TestValidTableRequestHandler() {
-			var tables = _server.ValidTableRequestHandler();
+			var tables = _server.ValidTableRequestHandler("test client");
 
 			var tablesList = new List<string>(tables);
 
