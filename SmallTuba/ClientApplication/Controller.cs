@@ -46,6 +46,8 @@ namespace ClientApplication
         {
             this.welcomeForm.RefreshButton.Click += (object sender, EventArgs e) => SetDropDown();
             this.welcomeForm.OKButton.Click += (object sender, EventArgs e) => GoToMainForm();
+            this.mainForm.IdTextBox.KeyDown += IdTextBoxEnter;
+            this.mainForm.CprTextBox.KeyDown += CprTextBoxEnter;
             this.mainForm.IdSearchButton.Click += (object sender, EventArgs e) => SearchId();
             this.mainForm.CprSearchButton.Click += (object sender, EventArgs e) => SearchCpr();
             this.mainForm.LogButton.Click += (object sender, EventArgs e) => CreateLog();
@@ -116,6 +118,7 @@ namespace ClientApplication
             this.logForm.TableLable.Text = model.Name;
             this.logForm.ChooseButton.Click += (object sender, EventArgs e) => ChooseLine();
             this.logForm.CloseButton.Click += (object sender, EventArgs e) => CloseLog();
+            this.logForm.LogListBox.MouseDoubleClick += (object sender, MouseEventArgs e) => ChooseLine();
             this.logForm.Show();
         }
 
@@ -216,6 +219,22 @@ namespace ClientApplication
             this.mainForm.Voted.Text = "";
             this.mainForm.Table.Text = "";
             this.mainForm.Time.Text = "";
+        }
+
+        private void IdTextBoxEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchId();
+            }
+        }
+
+        private void CprTextBoxEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchCpr();
+            }
         }
     }
 }
