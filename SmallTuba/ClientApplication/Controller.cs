@@ -182,7 +182,7 @@ namespace ClientApplication
 				this.mainForm.RegisterButton.Enabled = true;
 				this.mainForm.UnregisterButton.Enabled = true;
 				this.mainForm.ClearButton.Enabled = true;
-				this.mainForm.ID.Text = voter.Id.ToString();
+				this.mainForm.ID.Text = voter.DbId.ToString();
 				this.mainForm.FirstName.Text = voter.Firstname;
 				this.mainForm.LastName.Text = voter.Lastname;
 				this.mainForm.Cpr.Text = voter.Cpr.ToString();

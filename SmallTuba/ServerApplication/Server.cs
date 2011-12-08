@@ -37,7 +37,7 @@
 			Console.WriteLine("server start");
 			
 			voterNetWorkServer.SetCprToPersonRequest(CprToPersonRequestHandler);
-			voterNetWorkServer.SetBarcodeToPersonRequest(BarcodeToPersonRequestHandler);
+			voterNetWorkServer.SetVoterIdToPersonRequest(VoterIdToPersonRequestHandler);
 
 			voterNetWorkServer.SetRegisterVoteRequest(RegisterVoteRequestHandler);
 			voterNetWorkServer.SetUnregisterVoteRequest(UnregisterVoteRequestHandler);
@@ -78,13 +78,13 @@
 		/// a PersonState object will still be passed back,
 		/// but the Exist property of the object will return false.
 		/// </summary>
-		/// <param name="barcode">The barcode number to search for a person by.</param>
+		/// <param name="voterId">The barcode number to search for a person by.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
-		public Person BarcodeToPersonRequestHandler(int barcode) {
-			Console.WriteLine("BarcodeToPersonRequestHandler");
+		public Person VoterIdToPersonRequestHandler(int voterId) {
+			Console.WriteLine("VoterIdToPersonRequestHandler");
 
 			var personEntity = new PersonEntity();
-			personEntity.Load(new Hashtable { { "barcode", barcode } });
+			personEntity.Load(new Hashtable { { "voter_id", voterId } });
 			
 			if (personEntity.Exists()) {
 				Console.WriteLine("Person exists, Id: "+personEntity.DbId);
@@ -154,7 +154,7 @@
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
 			if (personEntity.Exists() && person.Voted) {
-				Console.WriteLine("personEntity exists, Id: "+person.Id);
+				Console.WriteLine("personEntity exists, Id: "+person.DbId);
 
 				var log = new LogEntity {
 					PersonDbId = personEntity.DbId,
