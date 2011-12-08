@@ -7,6 +7,7 @@
 namespace AdminApplication
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Windows.Forms;
 
@@ -18,7 +19,24 @@ namespace AdminApplication
     /// </summary>
     public class Controller
     {
+        private List<Person> persons;
         private Form1 form;
+
+        public void initializePerson()
+        {
+            persons = new List<Person>();
+
+            persons.Add(new Person {
+                Firstname = "Ole"
+            });
+            persons.Add(new Person
+            {
+                Firstname = "Per"
+            });
+
+
+        }
+
         public Controller()
         {
             form = new Form1();
@@ -49,7 +67,7 @@ namespace AdminApplication
         public void FolderBrowser(Object sender, EventArgs e)
         {
             if (form.FolderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
+            {/*
                 var a = new List<Person>();
                 var person = new Person();
                 person.PollingTable = "bord 1";
@@ -68,6 +86,11 @@ namespace AdminApplication
                 a.Add(person2);
                 Console.WriteLine(a.Count);
                 this.SaveVoterList(a);
+              * */
+
+                //var import = PersonImport(file);
+                //persons = import.GetPersons();
+                //venues = import.GetVenues();
             }
         }
 
