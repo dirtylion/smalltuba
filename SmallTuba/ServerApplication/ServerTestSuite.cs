@@ -3,9 +3,9 @@
 	using System.Collections.Generic;
 
 	using NUnit.Framework;
-	
-	using SmallTuba;
+
 	using SmallTuba.Entities;
+	using SmallTuba.Utility;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-08</version>
