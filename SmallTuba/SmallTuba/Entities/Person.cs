@@ -1,6 +1,8 @@
 ﻿namespace SmallTuba.Entities {
 	using System;
 
+	using SmallTuba.Utility;
+
 	/// <author>Christian Ollson (chro@itu.dk)</author>
 	/// <version>2011-12-07</version>
 	/// <summary>
@@ -9,10 +11,10 @@
 	[Serializable]
 	public class Person {
 		public int DbId { get; set; }
-		public string Firstname { get; set; }
-		public string Lastname { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string Street { get; set; }
+		public string City { get; set; }
 		public int Cpr { get; set; }
 		public int VoterId { get; set; }
 		public string PollingVenue { get; set; }
@@ -23,7 +25,7 @@
 		public bool Exists { get; set; }
 
 		public override string ToString() {
-			return DbId.ToString() + "," + Cpr.ToString() + "," + Firstname + "," + Lastname + ", " + PollingTable + ", " + VotedTime.ToString() + ", " + Voted.ToString();
+			return DbId + "," + Cpr + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + TimeConverter.ConvertFromUnixTimestamp(VotedTime) + ", " + Voted;
 		}
 	}
 }

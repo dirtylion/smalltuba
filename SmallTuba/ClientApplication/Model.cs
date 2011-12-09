@@ -10,16 +10,16 @@ namespace ClientApplication
     {
         private string name;
 
-        private List<LogState> log; 
+        private List<ClientLog> log; 
 
         public Model()
         {
-            this.log = new List<LogState>();
+            this.log = new List<ClientLog>();
         }
 
         public string Name { get; set; }
 
-        public List<LogState> Log
+        public List<ClientLog> Log
         {
             get { return this.log; }
         }

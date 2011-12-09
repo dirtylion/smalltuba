@@ -55,7 +55,7 @@ namespace SmallTuba.PdfGenerator
             
             gfx.DrawImage(template, 0,0);
             FromField(gfx, municipality.Name, municipality.Street, municipality.City);
-            ToField(gfx, person.Firstname + " " + person.Lastname, person.Street, person.City);
+            ToField(gfx, person.FirstName + " " + person.LastName, person.Street, person.City);
             VotingTable(gfx, person.PollingTable);
             VotingNumber(gfx, person.VoterId.ToString());         
             

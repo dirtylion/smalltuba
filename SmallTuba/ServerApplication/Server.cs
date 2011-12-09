@@ -1,7 +1,8 @@
 ﻿namespace ServerApplication {
 	using System;
 	using System.Collections;
-	
+	using System.Diagnostics.Contracts;
+
 	using SmallTuba.Database;
 	using SmallTuba.Entities;
 	using SmallTuba.Network.Voter;
@@ -26,7 +27,7 @@
 		/// of the VoterNetworkServer identified as "primary".
 		/// </summary>
 		public Server() {
-			voterNetWorkServer = new VoterNetworkServer("Primary");
+			voterNetWorkServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
 		}
 
 		/// <summary>
@@ -56,9 +57,11 @@
 		/// but the Exist property of the object will return false.
 		/// </summary>
 		/// <param name="cpr">The CPR number to search for a person by.</param>
+		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
-		public Person CprToPersonRequestHandler(int cpr) {
+		public Person CprToPersonRequestHandler(string clientName, int cpr) {
 			Console.WriteLine("CprToPersonRequestHandler");
+			Contract.Requires(cpr > 0);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "cpr", cpr } });
@@ -79,9 +82,11 @@
 		/// but the Exist property of the object will return false.
 		/// </summary>
 		/// <param name="voterId">The barcode number to search for a person by.</param>
+		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
-		public Person VoterIdToPersonRequestHandler(int voterId) {
+		public Person VoterIdToPersonRequestHandler(string clientName,int voterId) {
 			Console.WriteLine("VoterIdToPersonRequestHandler");
+			Contract.Requires(voterId > 0);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "voter_id", voterId } });
@@ -108,8 +113,11 @@
 		/// </summary>
 		/// <param name="personState">The person to be registered.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
-		public bool RegisterVoteRequestHandler(Person person) {
+		/// <param name="clientName">The id of the client.</param>
+		public bool RegisterVoteRequestHandler(string clientName,Person person) {
 			Console.WriteLine("RegisterVoteRequestHandler");
+			Contract.Requires(person != null);
+
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
@@ -119,8 +127,8 @@
 				var log = new LogEntity {
 					PersonDbId = personEntity.DbId,
 					Action = "register",
-					Client = "Client 8",
-					PollingTable = "8",
+					Client = clientName,
+					PollingTable = clientName,
 					Timestamp = (int) (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds
 				};
 
@@ -147,9 +155,12 @@
 		/// entity in the database was created.
 		/// </summary>
 		/// <param name="personState">The person to be unregistrated.</param>
+		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
-		public bool UnregisterVoteRequestHandler(Person person) {
+		public bool UnregisterVoteRequestHandler(string clientName,Person person) {
 			Console.WriteLine("UnregisterVoteRequestHandler");
+			Contract.Requires(person != null);
+
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
@@ -159,8 +170,8 @@
 				var log = new LogEntity {
 					PersonDbId = personEntity.DbId,
 					Action = "unregister",
-					Client = "Client 8",
-					PollingTable = "8",
+					Client = clientName,
+					PollingTable = clientName,
 					Timestamp = (int) (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds
 				};
 
@@ -177,8 +188,9 @@
 		/// Returns the available tables at a polling venue
 		/// for a client application to choose between.
 		/// </summary>
+		/// <param name="clientName">The id of the client.</param>
 		/// <returns>The available tables for the client to choose as a string array.</returns>
-		public string[] ValidTableRequestHandler() {
+		public string[] ValidTableRequestHandler(string clientName) {
 			var queryBuilder = new QueryBuilder();
 			queryBuilder.SetType("select");
 			queryBuilder.SetTable("Person");

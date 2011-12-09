@@ -1,6 +1,4 @@
-﻿namespace SmallTuba
-{
-
+﻿namespace SmallTuba.Utility {
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-08</version>
 	/// <summary>

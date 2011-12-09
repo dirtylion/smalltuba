@@ -59,30 +59,30 @@
 		/// </summary>
 		/// <param name="cpr">The cpr. nr.</param>
 		/// <returns>The person</returns>
-		public delegate Person CprToPersonRequest(int cpr);
+		public delegate Person CprToPersonRequest(string clientName, int cpr);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for a person is made
 		/// </summary>
 		/// <param name="id">The id</param>
 		/// <returns>The person</returns>
-		public delegate Person VoterIdToPersonRequest(int id);
+		public delegate Person VoterIdToPersonRequest(string clientName, int id);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for registering a voter is made
 		/// </summary>
 		/// <param name="voterState">The state of the voret</param>
 		/// <returns>If the voter was registered</returns>
-		public delegate bool RegisterVoteRequest(Person person);
+		public delegate bool RegisterVoteRequest(string clientName, Person person);
 
 		/// <summary>
 		/// A type of a function to invoke when a request for unregistering a voter is made
 		/// </summary>
 		/// <param name="id">The id of the voter</param>
 		/// <returns>If the voter was unregistered</returns>
-		public delegate bool UnregisterVoteRequest(Person person);
+		public delegate bool UnregisterVoteRequest(string clientName, Person person);
 
-		public delegate string[] ValidTableRequest();
+		public delegate string[] ValidTableRequest(string clientName);
 
 		/// <summary>
 		/// Invoke this function that returns a person when asked about a person from a cpr.nr.
@@ -147,49 +147,45 @@
 				case Keyword.GetPersonFromCpr:
 					if (query.GetValue is int && this.cprToPersonRequest != null)
 					{
-						Person person = this.cprToPersonRequest.Invoke((int)query.GetValue);
-						return new Message(keyword, person);
+						Person person = this.cprToPersonRequest.Invoke(query.GetSender, (int)query.GetValue);
+						return new Message(keyword, name, person);
 					}
+					System.Diagnostics.Contracts.Contract.Assert(false);
+					return null;
 
-					///TODO: must not happen
-					throw new InvalidCastException();
-				
 				case Keyword.GetPersonFromId:
 					if (query.GetValue is int && this.voterIdToPersonRequest != null)
 					{
-						Person person = this.voterIdToPersonRequest.Invoke((int)query.GetValue);
-						return new Message(keyword, person);
+						Person person = this.voterIdToPersonRequest.Invoke(query.GetSender, (int)query.GetValue);
+						return new Message(keyword, name, person);
 					}
+					System.Diagnostics.Contracts.Contract.Assert(false);
+					return null;
 
-					///TODO: must not happen
-					throw new InvalidCastException();
-				
 				case Keyword.RegisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(Person)) && this.registerVoteRequest != null)
 					{
-						bool b = this.registerVoteRequest.Invoke((Person)query.GetValue);
-						return new Message(keyword, b);
+						bool b = this.registerVoteRequest.Invoke(query.GetSender, (Person)query.GetValue);
+						return new Message(keyword, name, b);
 					}
-
-					///TODO: must not happen
-					throw new InvalidCastException();
+					System.Diagnostics.Contracts.Contract.Assert(false);
+					return null;
 				
 				case Keyword.UnregisterVoter:
 					if (query.GetValue.GetType().Equals(typeof(Person)) && this.unregisterVoteRequest != null)
 					{
-						bool b = this.unregisterVoteRequest.Invoke((Person)query.GetValue);
-						return new Message(keyword, b);
+						bool b = this.unregisterVoteRequest.Invoke(query.GetSender, (Person)query.GetValue);
+						return new Message(keyword, name, b);
 					}
-
-					///TODO: must not happen
-					throw new InvalidCastException();
+					System.Diagnostics.Contracts.Contract.Assert(false);
+					return null;
 				
 				case Keyword.ValidTables:
-					string[] arr = this.validTableRequest.Invoke();
-					return new Message(keyword, arr);
+					string[] arr = this.validTableRequest.Invoke(query.GetSender);
+					return new Message(keyword, name, arr);
 				
 				case Keyword.Ping:
-					return new Message(keyword, null);
+					return new Message(keyword, name, null);
 				
 				default:
 					return null;

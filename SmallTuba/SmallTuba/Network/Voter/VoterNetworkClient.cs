@@ -22,7 +22,7 @@ namespace SmallTuba.Network.Voter
         /// <summary>
         /// The name of this client
         /// </summary>
-        private readonly string name;
+        private string name;
 
         /// <summary>
         /// The lower level network class
@@ -33,11 +33,16 @@ namespace SmallTuba.Network.Voter
         /// May I have a new VOTER_NETWORK_CLIENT with this name?
         /// </summary>
         /// <param name="name">The name of the client</param>
-        public VoterNetworkClient(string name)
+        public VoterNetworkClient()
         {
-            Contract.Requires(name != null);
-            this.name = "Client: " + name;
+            this.name = "Client: " + System.Net.Dns.GetHostName();
             this.clientFE = new ClientFE(name);
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { this.name = value; }
         }
 
         /// <summary>
@@ -47,7 +52,7 @@ namespace SmallTuba.Network.Voter
         /// <returns>The person</returns>
         public Person GetPersonFromCpr(int cpr)
         {
-            Message query = new Message(Keyword.GetPersonFromCpr, cpr);
+            Message query = new Message(Keyword.GetPersonFromCpr, name, cpr);
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
@@ -58,10 +63,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (Person)reply.GetValue;
             }
-            
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return null;
         }
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace SmallTuba.Network.Voter
         /// <returns>The person</returns>
         public Person GetPersonFromId(int id)
         {
-            Message query = new Message(Keyword.GetPersonFromId, id);
+            Message query = new Message(Keyword.GetPersonFromId, name, id);
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
@@ -82,10 +85,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (Person)reply.GetValue;
             }
-            
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return null;
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace SmallTuba.Network.Voter
         public bool RegisterVoter(Person person)
         {
             Contract.Requires(person != null);
-            Message query = new Message(Keyword.RegisterVoter, person);
+            Message query = new Message(Keyword.RegisterVoter, name, person);
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
@@ -107,10 +108,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (bool)reply.GetValue;
             }
-
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return false;
         }
 
         /// <summary>
@@ -120,7 +119,7 @@ namespace SmallTuba.Network.Voter
         /// <returns>If the voter was unregistered</returns>
         public bool UnregisterVoter(Person person)
         {
-            Message query = new Message(Keyword.UnregisterVoter, person);
+            Message query = new Message(Keyword.UnregisterVoter, name, person);
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
@@ -131,10 +130,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (bool)reply.GetValue;
             }
-
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return false;
         }
 
         /// <summary>
@@ -143,7 +140,7 @@ namespace SmallTuba.Network.Voter
         /// <returns></returns>
         public string[] ValidTables()
         {
-            Message query = new Message(Keyword.ValidTables, null);
+            Message query = new Message(Keyword.ValidTables, name, null);	
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
@@ -154,10 +151,8 @@ namespace SmallTuba.Network.Voter
             {
                 return (string[])reply.GetValue;
             }
-
-            // The code must never reach this point since we asked for a person
-            /// TODO: 
-            throw new InvalidCastException();
+            System.Diagnostics.Contracts.Contract.Assert(false);
+            return null;
         }
 
         /// <summary>
@@ -166,13 +161,12 @@ namespace SmallTuba.Network.Voter
         /// <returns></returns>
         public bool Connected()
         {
-            Message query = new Message(Keyword.Ping, null);
+            Message query = new Message(Keyword.Ping, name, null);
             Message reply = this.clientFE.SendQuery(query, 2000);
             if (reply == null)
             {
                 return false;
             }
-
             return true;
         }
     }

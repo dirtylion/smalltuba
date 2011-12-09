@@ -2,6 +2,8 @@
 	using System.Collections;
 	using System.Collections.Specialized;
 	using System.Diagnostics.Contracts;
+	
+	using SmallTuba.Utility;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-07</version>

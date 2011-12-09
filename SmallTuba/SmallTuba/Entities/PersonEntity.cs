@@ -87,8 +87,8 @@
 		public Person ToObject() {
 			return new Person {
 			    DbId = DbId,
-			    Firstname = Firstname,
-			    Lastname = Lastname,
+			    FirstName = Firstname,
+			    LastName = Lastname,
 			    Cpr = Cpr,
 			    VoterId = VoterId,
 			    PollingVenue = PollingVenue,

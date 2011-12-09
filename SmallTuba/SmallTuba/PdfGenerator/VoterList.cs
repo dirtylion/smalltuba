@@ -148,7 +148,7 @@ namespace SmallTuba.PdfGenerator
             }
             count++;
             double positionY = topMargin + (rowDistance * count) - 2;
-            gfx.DrawString(person.Firstname + " " + person.Lastname, font, XBrushes.Black, nameFieldX, positionY);
+            gfx.DrawString(person.FirstName + " " + person.LastName, font, XBrushes.Black, nameFieldX, positionY);
             gfx.DrawString(person.Cpr.ToString(), font, XBrushes.Black, cprnrFieldX, positionY);
             gfx.DrawString(person.VoterId.ToString(), font, XBrushes.Black, voternrFieldX, positionY);
         }

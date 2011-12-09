@@ -64,8 +64,8 @@ namespace AdminApplication
             foreach (var element in personElements)
             {
                 Person person = new Person {
-                    Firstname = element.Element("FirstName").Value,
-                    Lastname = element.Element("LastName").Value,
+                    FirstName = element.Element("FirstName").Value,
+                    LastName = element.Element("LastName").Value,
                     Street = element.Element("Street").Value,
                     City = element.Element("City").Value,
                     Cpr = Convert.ToInt32(element.Element("CprNo").Value),
