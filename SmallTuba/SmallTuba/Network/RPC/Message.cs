@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba.Network.Message
+namespace SmallTuba.Network.RPC
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace SmallTuba.Network.Message
     /// A message describing a keyword and a value
     /// </summary>
     [Serializable]
-    public class Message
+    internal class Message
     {
         /// <summary>
         /// The keyword

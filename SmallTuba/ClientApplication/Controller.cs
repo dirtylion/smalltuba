@@ -9,7 +9,7 @@ namespace ClientApplication
 	using System;
 	using System.Windows.Forms;
 	using SmallTuba.Entities;
-	using SmallTuba.Network.Voter;
+	using SmallTuba.Network.RPC;
 	using SmallTuba.Utility;
  
     /// <summary>
@@ -20,7 +20,7 @@ namespace ClientApplication
         private WelcomeForm welcomeForm;
         private MainForm mainForm;
         private LogForm logForm;
-        private VoterNetworkClient networkClient;
+        private VoterClient networkClient;
         private Person currentVoter;
         private Model model;
 
@@ -30,7 +30,7 @@ namespace ClientApplication
             Application.SetCompatibleTextRenderingDefault(false);
             this.welcomeForm = new WelcomeForm();
             this.mainForm = new MainForm();
-            this.networkClient = new VoterNetworkClient();
+            this.networkClient = new VoterClient("Client: " + System.Net.Dns.GetHostName());
             model = new Model();
             currentVoter = null;
         }
@@ -166,7 +166,6 @@ namespace ClientApplication
         {
             this.logForm.Hide();
             this.logForm.Dispose();
-            Console.Out.WriteLine("Close Log");
         }
 
         private void SetVoter(Person voter)

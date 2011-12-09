@@ -1,6 +1,6 @@
 ﻿using System;
 using SmallTuba.Entities;
-using SmallTuba.Network.Voter;
+using SmallTuba.Network.RPC;
 using SmallTuba.Utility;
 
 namespace SmallTuba
@@ -23,7 +23,7 @@ namespace SmallTuba
 			if (server == 0)
 			{
 				Console.Out.WriteLine(System.Net.Dns.GetHostName() + " = name");
-				VoterNetworkServer voterServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
+				VoterServer voterServer = new VoterServer(System.Net.Dns.GetHostName());
 			    DateTime time = DateTime.Now;
                 int unix = (int)TimeConverter.ConvertToUnixTimestamp(time.ToUniversalTime());
 				voterServer.SetCprToPersonRequest((name,cpr) => new Person(){Cpr = cpr, FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false, Exists = true});
@@ -35,7 +35,7 @@ namespace SmallTuba
 			}
 			else if (server == 1)
 			{
-				VoterNetworkClient voterClient = new VoterNetworkClient();
+				VoterClient voterClient = new VoterClient("Client");
 				Console.Out.WriteLine("Connecected to server: " + voterClient.Connected());
 				Console.Out.WriteLine(System.Net.Dns.GetHostName() + " = name");
 				Console.Out.WriteLine("1");

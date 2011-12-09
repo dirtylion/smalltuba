@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba.Network.Message
+namespace SmallTuba.Network.RequestReply
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace SmallTuba.Network.Message
     /// A network packet containing sender, receiver and request id and a message
     /// </summary>
     [Serializable]
-    public struct Packet
+    internal struct Packet
     {
         /// <summary>
         /// The receiver ID
@@ -36,7 +36,7 @@ namespace SmallTuba.Network.Message
         /// <summary>
         /// The content of this packet
         /// </summary>
-        private readonly Message message;
+        private readonly object message;
 
         /// <summary>
         /// May I have a new packet with this receiver, this sender, this request ID and this message?
@@ -45,7 +45,7 @@ namespace SmallTuba.Network.Message
         /// <param name="senderId">The sender ID</param>
         /// <param name="requestId">The request ID</param>
         /// <param name="message">The content of this packet</param>
-        public Packet(string receiverId, string senderId, string requestId, Message message)
+        public Packet(string receiverId, string senderId, string requestId, object message)
         {
             Contract.Requires(receiverId != null);
             Contract.Requires(senderId != null);
@@ -97,7 +97,7 @@ namespace SmallTuba.Network.Message
         /// What is the content of this packet?
         /// </summary>
         [Pure]
-        public Message GetMessage
+        public object GetMessage
         {
             get
             {

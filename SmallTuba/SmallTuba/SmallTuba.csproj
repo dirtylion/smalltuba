@@ -123,17 +123,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Network\Message\ClientFE.cs" />
-    <Compile Include="Network\Message\Keyword.cs" />
-    <Compile Include="Network\Message\Message.cs" />
-    <Compile Include="Network\Message\Packet.cs" />
+    <Compile Include="Network\RequestReply\ClientFrontEnd.cs" />
+    <Compile Include="Network\RPC\Keyword.cs" />
+    <Compile Include="Network\RPC\Message.cs" />
+    <Compile Include="Network\RequestReply\Packet.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="PdfGenerator\PollingCards.cs" />
     <Compile Include="PdfGenerator\VoterList.cs" />
-    <Compile Include="Network\Message\ServerFE.cs" />
-    <Compile Include="Network\Object\UDPMulticast.cs" />
-    <Compile Include="Network\Voter\VoterNetworkClient.cs" />
-    <Compile Include="Network\Voter\VoterNetworkServer.cs" />
+    <Compile Include="Network\RequestReply\ServerFrontEnd.cs" />
+    <Compile Include="Network\UDP\UDPMulticast.cs" />
+    <Compile Include="Network\RPC\VoterClient.cs" />
+    <Compile Include="Network\RPC\VoterServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\TimeConverter.cs" />
