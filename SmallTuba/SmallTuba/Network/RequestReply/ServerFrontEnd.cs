@@ -4,25 +4,21 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba.Network.Message
+namespace SmallTuba.Network.RequestReply
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
     using System.Linq;
-    using SmallTuba.Network.Object;
+    using SmallTuba.Network.UDP;
     using System.Text;
 
     /// <summary>
-    /// A class that listens for requests and if a request is repeated the respsonse is repeated
-    /// </summary>
-    public class ServerFE
+    /// This class listens for request for the server and replies.
+	/// This class only receives request adressed to the server
+    ///</summary>
+    public class ServerFrontEnd
     {
-        /// <summary>
-        /// The name of the client
-        /// </summary>
-        private string name;
-
         /// <summary>
         /// Used for sending and receiving multicasts
         /// </summary>
@@ -39,13 +35,11 @@ namespace SmallTuba.Network.Message
         private RequestHandler requestHandler = null;
         
         /// <summary>
-        /// May I have a new SERVER_FE with this name?
+        /// May I have a new server front end?
         /// </summary>
-        /// <param name="name">The name of the server</param>
-        public ServerFE(string name)
+        public ServerFrontEnd()
         {
-            Contract.Requires(name != null);
-            this.name = name;
+            // Create a new udpMulticast as a server
             this.udpMulticast = new UDPMulticast(0);
             this.prevPackets = new Dictionary<string, Packet>();
         }
@@ -53,9 +47,9 @@ namespace SmallTuba.Network.Message
         /// <summary>
         /// A type of function to invoke when a message is received
         /// </summary>
-        /// <param name="query">The query from the client</param>
+        /// <param name="request">The request from the client</param>
         /// <returns>The result to the client</returns>
-        public delegate Message RequestHandler(Message query);
+        public delegate object RequestHandler(object request);
 
         /// <summary>
         /// Invoke this function when a call is received
@@ -68,18 +62,27 @@ namespace SmallTuba.Network.Message
 
         /// <summary>
         /// Listen for calls for this amount of time
+        /// If a request with the same request id is repeated, the reply is repeated
         /// </summary>
         /// <param name="timeOut">The time to wait in miliseconds</param>
         public void ListenForCalls(long timeOut)
         {
+            Contract.Requires(timeOut >= 0);
+
+            // If the server should listen for requests forever
             bool runForever = timeOut == 0;
+            // The time before the loop was entered
             long preTime = DateTime.Now.ToFileTime();
+            // The time left before timeout
             long timeLeft;
+            
+            // Listen
             while (runForever || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
             {
                 // Test if the requesthandler is set
                 if (this.requestHandler == null)
                 {
+                    // If the eventhandler is not set packages would be dropped therefore we break
                     break;
                 }
                 
@@ -87,16 +90,18 @@ namespace SmallTuba.Network.Message
                 object data;
                 if (runForever)
                 {
+                    // The udpMulticast is allowed to block forever
                     data = udpMulticast.Receive(0);
                 }
                 else
                 {
+                    // The udpMulticast is allowed to block for the time left
                     timeLeft = ((preTime + (timeOut * 10000)) - DateTime.Now.ToFileTime()) / 10000;
                     data = this.udpMulticast.Receive(timeLeft);
                 }
                     
                 // Test if it's a valid packet
-                if (data == null || !data.GetType().Equals(typeof(Packet)))
+                if (data == null || !(data is Packet))
                 {
                     continue;
                 }
@@ -119,10 +124,10 @@ namespace SmallTuba.Network.Message
                         Console.Out.WriteLine("Server sends fresh");
                         string senderId = recPacket.GetSenderId;
                         string requestId = recPacket.GetRequestId;
-                        Message resultMessage = this.requestHandler.Invoke(recPacket.GetMessage);
+                        object resultMessage = this.requestHandler.Invoke(recPacket.GetMessage);
                         Packet resultPacket = new Packet(senderId, "server", requestId, resultMessage);
                         
-                        // Add this query and reply to the previous packets
+                        // Add this request and reply to the list of previous packets
                         this.prevPackets.Add(recPacket.GetSenderId + "#" + recPacket.GetRequestId, resultPacket);
                         this.udpMulticast.Send(resultPacket);
                     }

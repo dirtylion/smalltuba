@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba.Network.Message
+namespace SmallTuba.Network.RPC
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace SmallTuba.Network.Message
     /// <summary>
     /// Describing the action to be performed by the server
     /// </summary>
-    public enum Keyword
+    internal enum Keyword
     {
         /// <summary>
         /// Are you a request about getting a person from a cpr number?

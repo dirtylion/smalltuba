@@ -4,25 +4,26 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba.Network.Message
+namespace SmallTuba.Network.RequestReply
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
-    using SmallTuba.Network.Object;
+    using SmallTuba.Network.UDP;
     using System.Linq;
     using System.Text;
 
     /// <summary>
     /// This class keeps resending packets for the server if its unresponsive
+    /// This class only sends to and receives packages from the server not other clients
     /// </summary>
-    public class ClientFE
+    public class ClientFrontEnd
     {
         /// <summary>
         /// The name of the client
         /// </summary>
         private readonly string name;
-
+        
         /// <summary>
         /// The lower level upd communication
         /// </summary>
@@ -31,37 +32,41 @@ namespace SmallTuba.Network.Message
         /// <summary>
         /// A request ID that is increased by one each time a unique packet is send
         /// </summary>
-        private long queryId;
+        private long requestId;
 
         /// <summary>
-        /// May I have a new CLIENT_COM with this name?
+        /// May I have a new client front end with this name?
         /// </summary>
         /// <param name="name">The name of the client</param>
-        public ClientFE(string name)
+        public ClientFrontEnd(string name)
         {
-            Contract.Requires(name != null);
+            Contract.Requires(name != null && name != "server");
             this.name = name;
+            // Specifies that this is a client
             this.udpMulticast = new UDPMulticast(1);
         }
 
         /// <summary>
-        /// What is the result of the this query?
+        /// What is the result of the this request?
         /// The method will keep waiting/requesting an answer till the answer is received or the timeout is reached
         /// </summary>
-        /// <param name="message">The query</param>
+        /// <param name="message">The request</param>
         /// <param name="timeOut">The time to wait in milliseconds, 0 means forever</param>
         /// <returns>The result, null in the case an answer isn't received</returns>
-        public Message SendQuery(Message message, long timeOut)
+        public object SendRequest(object message, long timeOut)
         {
             Contract.Requires(message != null);
-            // Send a query
-            this.queryId++;
-            Packet packet = new Packet("server", this.name, this.queryId.ToString(), message);
+            Contract.Requires(timeOut >= 0);
+
+            // Send a request
+            this.requestId++;
+            Packet packet = new Packet("server", this.name, this.requestId.ToString(), message);
             this.udpMulticast.Send(packet);
             
             // Start listening for a reply
             long preTime = DateTime.Now.ToFileTime();
-            while ((DateTime.Now.ToFileTime() < preTime + (timeOut * 10000)) || (timeOut == 0))
+            // Test if the timeout is 0 or the timeout value has run out
+            while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
             {
                 // Wait for reply
                 object result = this.udpMulticast.Receive(200);
@@ -71,20 +76,20 @@ namespace SmallTuba.Network.Message
                     Console.Out.WriteLine("Client repeats");
                     this.udpMulticast.Send(packet);
                 }
-                else if (result.GetType().Equals(typeof(Packet)))
+                else if (result is Packet)
                 {
                     // A packet was received
                     Packet recPacket = (Packet)result;
                     
                     // Test if the packet is for us
-                    if (recPacket.GetReceiverId.Equals(this.name) && recPacket.GetRequestId.Equals(this.queryId.ToString()))
+                    if (recPacket.GetReceiverId.Equals(this.name) && recPacket.GetRequestId.Equals(this.requestId.ToString()))
                     {
                         return recPacket.GetMessage;
                     }
                 }
             }
 
-            // The timeout has expired
+            // The timeout value has expired
             return null;
         }
     }

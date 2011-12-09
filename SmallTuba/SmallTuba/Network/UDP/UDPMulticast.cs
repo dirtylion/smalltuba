@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba.Network.Object
+namespace SmallTuba.Network.UDP
 {
     using System;
     using System.Diagnostics.Contracts;
@@ -32,14 +32,20 @@ namespace SmallTuba.Network.Object
         /// <summary>
         /// Where the packages come from
         /// </summary>
-        private IPEndPoint recPoint;
+        private IPEndPoint receivePoint;
 
         /// <summary>
-        /// May i have a new multicast client?
+        /// May i have a new multicast client with this choice of server or client setting?
+        /// The client listens to ip 224.5.6.7 port 5000
+	    /// The client sends to ip 224.5.6.7 port 5001
+	    /// The server listens to ip 224.5.6.7 port 5001
+	    /// The server sends to ip 224.5.6.7 port 5000
         /// </summary>
-        /// <param name="server">If the client should be server or client 0/1</param>
+        /// <param name="server">If the client should be server - 0 or client - 1</param>
         public UDPMulticast(int server)
         {
+            Contract.Requires(server == 0 || server == 1);
+            
             // Creates a new client initialized for port 5000/5001
             this.client = new UdpClient(5000 + 1 - server);
             
@@ -50,7 +56,7 @@ namespace SmallTuba.Network.Object
             this.sendPoint = new IPEndPoint(ip, 5000 + server);
 
             // Where we recieve them from
-            this.recPoint = null;
+            this.receivePoint = null;
 
             // Join the multicast group
             this.client.JoinMulticastGroup(ip);
@@ -73,20 +79,29 @@ namespace SmallTuba.Network.Object
         /// <summary>
         /// May I have an object if one is in queue or arrives within this timeframe?
         /// </summary>
-        /// <param name="timeOut">The time to wait</param>
-        /// <returns>The received object</returns>
+        /// <param name="timeOut">The time to wait in milliseconds</param>
+        /// <returns>The received object, null if it times out</returns>
         public object Receive(long timeOut)
         {
+            Contract.Requires(timeOut >= 0);
+
+            // The initial time
             var preTime = DateTime.Now.ToFileTime();
-            while (DateTime.Now.ToFileTime() < preTime + (timeOut * 10000) || timeOut == 0)
+            
+            // Listen forever if timeout was 0, or until the time has expired
+            while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
             {
+                // If packages are available
                 if (this.client.Available > 0)
                 {
-                    byte[] data = this.client.Receive(ref this.recPoint);
+                    // Receive the next as a byte array
+                    byte[] data = this.client.Receive(ref this.receivePoint);
                     var ms = new MemoryStream();
                     var bf = new BinaryFormatter();
                     ms.Write(data, 0, data.Length);
                     ms.Seek(0, SeekOrigin.Begin);
+                    
+                    // Try to deserialize the data
                     try
                     {
                         return bf.Deserialize(ms);
@@ -103,7 +118,7 @@ namespace SmallTuba.Network.Object
                     System.Threading.Thread.Sleep(10);
                 }
             }
-
+            // The time has run out
             return null;
         }
     }

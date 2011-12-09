@@ -8,8 +8,6 @@ namespace ClientApplication
 {
     class Model
     {
-        private string name;
-
         private List<ClientLog> log; 
 
         public Model()

@@ -5,7 +5,7 @@
 
 	using SmallTuba.Database;
 	using SmallTuba.Entities;
-	using SmallTuba.Network.Voter;
+	using SmallTuba.Network.RPC;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-08</version>
@@ -20,14 +20,14 @@
 	/// utilizing the entity and QueryBuilder classes.
 	/// </summary>
 	class Server {
-		private VoterNetworkServer voterNetWorkServer;
+		private VoterServer voterNetWorkServer;
 
 		/// <summary>
 		/// Construct a new server and instantiate and instance
 		/// of the VoterNetworkServer identified as "primary".
 		/// </summary>
 		public Server() {
-			voterNetWorkServer = new VoterNetworkServer(System.Net.Dns.GetHostName());
+			voterNetWorkServer = new VoterServer(System.Net.Dns.GetHostName());
 		}
 
 		/// <summary>
