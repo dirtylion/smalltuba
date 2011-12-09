@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using SmallTuba.Entities;
 using SmallTuba.Network.RPC;
 using SmallTuba.Utility;

@@ -13,6 +13,7 @@ namespace SmallTuba.PdfGenerator
     using PdfSharp.Drawing;
     using System.Diagnostics.Contracts;
 
+    using SmallTuba.Entities;
 
     /// <summary>
     /// TODO: Update summary.
@@ -34,6 +35,7 @@ namespace SmallTuba.PdfGenerator
             Contract.Requires(electionName != null);
             Contract.Requires(electionDate != null);
             Contract.Requires(pollingTable != null);
+
             this.rows = rows;
             this.electionName = electionName;
             this.electionDate = electionDate;
@@ -136,18 +138,19 @@ namespace SmallTuba.PdfGenerator
         }
 
         //Can you save the voting list to this location on the harddrive?
-        public void AddVoter()
+        public void AddVoter(Person person)
         {
-            //Contract bla bla bla
+            Contract.Requires(person != null);
+
             if (count == rows)
             {
                 AddPage();
             }
             count++;
             double positionY = topMargin + (rowDistance * count) - 2;
-            gfx.DrawString("Kåre Sylow Perdersen", font, XBrushes.Black, nameFieldX, positionY);
-            gfx.DrawString("010101-0101", font, XBrushes.Black, cprnrFieldX, positionY);
-            gfx.DrawString("123456789", font, XBrushes.Black, voternrFieldX, positionY);
+            gfx.DrawString(person.FirstName + " " + person.LastName, font, XBrushes.Black, nameFieldX, positionY);
+            gfx.DrawString(person.Cpr.ToString(), font, XBrushes.Black, cprnrFieldX, positionY);
+            gfx.DrawString(person.VoterId.ToString(), font, XBrushes.Black, voternrFieldX, positionY);
         }
 
         //Can you save the voting list to this location on the harddrive?
@@ -155,6 +158,7 @@ namespace SmallTuba.PdfGenerator
         {
             Contract.Requires(path != null);
             this.AddPageNumbers();
+            Console.WriteLine(path);
             document.Save(path);
         }
      

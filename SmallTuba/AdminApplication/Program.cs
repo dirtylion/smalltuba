@@ -18,7 +18,9 @@ namespace AdminApplication
             Win32.AllocConsole();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new Controller();
+            Controller controller = new Controller();
+            controller.Run();
+
             Console.ReadKey();
         }
 

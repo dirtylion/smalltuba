@@ -94,6 +94,14 @@
             }
         }
 
+        public FolderBrowserDialog FolderBrowserDialog
+        {
+            get
+            {
+                return folderBrowserDialog;
+            }
+        }
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -115,9 +123,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -192,7 +198,7 @@
             this.generateVoterList.Name = "generateVoterList";
             this.generateVoterList.Size = new System.Drawing.Size(130, 23);
             this.generateVoterList.TabIndex = 9;
-            this.generateVoterList.Text = "Generate Voter List";
+            this.generateVoterList.Text = "Generate Voter Lists";
             this.generateVoterList.UseVisualStyleBackColor = true;
             // 
             // tableView
@@ -202,10 +208,6 @@
             this.tableView.AllowUserToResizeRows = false;
             this.tableView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Location,
-            this.Address,
-            this.City});
             this.tableView.Cursor = System.Windows.Forms.Cursors.Default;
             this.tableView.Location = new System.Drawing.Point(21, 24);
             this.tableView.MultiSelect = false;
@@ -250,25 +252,6 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
-            // Location
-            // 
-            this.Location.HeaderText = "Name";
-            this.Location.Name = "Location";
-            this.Location.ReadOnly = true;
-            this.Location.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Address
-            // 
-            this.Address.HeaderText = "Road";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
-            // City
-            // 
-            this.City.HeaderText = "City";
-            this.City.Name = "City";
-            this.City.ReadOnly = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,9 +285,7 @@
         private GroupBox groupBox1;
         private GroupBox groupBox3;
         private OpenFileDialog openFileDialog;
-        private DataGridViewTextBoxColumn Location;
-        private DataGridViewTextBoxColumn Address;
-        private DataGridViewTextBoxColumn City;
+        private FolderBrowserDialog folderBrowserDialog;
     }
 }
 

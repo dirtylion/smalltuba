@@ -13,6 +13,8 @@
 		public int DbId { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
+		public string Street { get; set; }
+		public string City { get; set; }
 		public int Cpr { get; set; }
 		public int VoterId { get; set; }
 		public string PollingVenue { get; set; }
