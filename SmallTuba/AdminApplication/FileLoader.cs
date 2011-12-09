@@ -79,7 +79,7 @@ namespace AdminApplication
 					Street = element.Element("Street").Value,
 					City = element.Element("City").Value,
 					Cpr = Convert.ToInt32(element.Element("CprNo").Value),
-					PollingTable = Convert.ToInt32(element.Element("PollingTable").Value),
+					PollingTable = element.Element("PollingTable").Value,
 					VoterId = VoterIdGenerator.CreateVoterId()
 				};
 

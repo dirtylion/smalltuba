@@ -23,19 +23,18 @@ namespace SmallTuba.PdfGenerator
         private const int topMargin = 100, bottonMargin = 50, rightMargin = 50, leftMargin = 50;
         private uint count, rows;
         private double nameFieldX, cprnrFieldX, voternrFieldX, rowDistance;
-        private string electionName, electionDate;
-        private int pollingTable;
+        private string electionName, electionDate, pollingTable;
         private XFont font;
         private XGraphics gfx;
         private PdfDocument document;
 
         //May I have a new voting list for this election?
-        public VoterList(uint rows, string electionName, string electionDate, int pollingTable)
+        public VoterList(uint rows, string electionName, string electionDate, string pollingTable)
         {
             Contract.Requires(rows > 20);
             Contract.Requires(electionName != null);
             Contract.Requires(electionDate != null);
-            Contract.Requires(pollingTable > 0);
+            Contract.Requires(pollingTable != null);
 
             this.rows = rows;
             this.electionName = electionName;

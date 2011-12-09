@@ -21,14 +21,14 @@ namespace AdminApplication
     {
         public void SaveVoterList(List<Person> persons, string path, string electionName, string electionDate)
         {
-            Dictionary<int, VoterList> voterlists = this.CreateVoterListsForVenue(persons, electionName, electionDate);
+            Dictionary<string, VoterList> voterlists = this.CreateVoterListsForVenue(persons, electionName, electionDate);
             this.AddVotersToVoterlists(persons, voterlists);
             this.SaveVoterListsToDisk(path, voterlists);
         }
 
-        private Dictionary<int, VoterList> CreateVoterListsForVenue(List<Person> persons, string electionName, string electionDate)
+        private Dictionary<string, VoterList> CreateVoterListsForVenue(List<Person> persons, string electionName, string electionDate)
         {
-            Dictionary<int, VoterList> voterlists = new Dictionary<int, VoterList>();
+            Dictionary<string, VoterList> voterlists = new Dictionary<string, VoterList>();
             foreach (var person in persons)
             {
                 if (!voterlists.ContainsKey(person.PollingTable))
@@ -39,7 +39,7 @@ namespace AdminApplication
             return voterlists;
         }
 
-        private void AddVotersToVoterlists(List<Person> persons, Dictionary<int, VoterList> voterlists)
+        private void AddVotersToVoterlists(List<Person> persons, Dictionary<string, VoterList> voterlists)
         {
             foreach (var person in persons)
             {
@@ -47,7 +47,7 @@ namespace AdminApplication
             }
         }
 
-        private void SaveVoterListsToDisk(string path, Dictionary<int, VoterList> voterlists)
+        private void SaveVoterListsToDisk(string path, Dictionary<string, VoterList> voterlists)
         {
             foreach (var pollingTabel in voterlists.Keys)
             {
