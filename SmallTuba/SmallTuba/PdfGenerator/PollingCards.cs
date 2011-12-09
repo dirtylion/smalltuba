@@ -153,7 +153,7 @@ namespace SmallTuba.PdfGenerator
             barcode.Text = votingNumber;
             barcode.StartChar = '*';
             barcode.EndChar = '*';
-            barcode.Size = new XSize(new XPoint(120, 20));
+            barcode.Size = (XSize) (new XPoint(120, 20));
             gfx.DrawBarCode(barcode, XBrushes.Black, new XPoint(310, 40));
 
             XFont font = new XFont("Lucida Console", 7, XFontStyle.Regular);
