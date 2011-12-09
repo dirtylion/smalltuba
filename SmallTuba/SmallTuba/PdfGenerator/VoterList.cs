@@ -23,18 +23,19 @@ namespace SmallTuba.PdfGenerator
         private const int topMargin = 100, bottonMargin = 50, rightMargin = 50, leftMargin = 50;
         private uint count, rows;
         private double nameFieldX, cprnrFieldX, voternrFieldX, rowDistance;
-        private string electionName, electionDate, pollingTable;
+        private string electionName, electionDate;
+        private int pollingTable;
         private XFont font;
         private XGraphics gfx;
         private PdfDocument document;
 
         //May I have a new voting list for this election?
-        public VoterList(uint rows, string electionName, string electionDate, string pollingTable)
+        public VoterList(uint rows, string electionName, string electionDate, int pollingTable)
         {
             Contract.Requires(rows > 20);
             Contract.Requires(electionName != null);
             Contract.Requires(electionDate != null);
-            Contract.Requires(pollingTable != null);
+            Contract.Requires(pollingTable > 0);
 
             this.rows = rows;
             this.electionName = electionName;
@@ -134,7 +135,7 @@ namespace SmallTuba.PdfGenerator
             XTextFormatter tf = new XTextFormatter(gfx);
             String text = electionName + System.Environment.NewLine + this.electionDate;
             tf.DrawString(text, font, XBrushes.Black, new XRect(leftMargin,topMargin/3,200,50));
-            tf.DrawString(this.pollingTable, font, XBrushes.Black, new XRect(gfx.PageSize.Width/2, topMargin/3, 200, 50));
+            tf.DrawString("bord "+ this.pollingTable.ToString(), font, XBrushes.Black, new XRect(gfx.PageSize.Width/2, topMargin/3, 200, 50));
         }
 
         //Can you save the voting list to this location on the harddrive?

@@ -20,7 +20,6 @@ namespace AdminApplication
             Application.SetCompatibleTextRenderingDefault(false);
             Controller controller = new Controller();
             controller.Run();
-
             Console.ReadKey();
         }
 

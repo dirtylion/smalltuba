@@ -7,13 +7,10 @@
 namespace AdminApplication
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows.Forms;
-
-    using SmallTuba.Entities;
-    using SmallTuba.PdfGenerator;
+    using System.Xml.Schema;
 
     /// <summary>
     /// TODO: Update summary.
@@ -46,9 +43,12 @@ namespace AdminApplication
 
         private void SetPollingVenues(string path)
         {
-            pollingVenues = fileLoader.GetPollingVenues(path);
-            this.UpdateTable();
-            Changed.Invoke();
+            pollingVenues = fileLoader.GetPollingVenues(path, this.ErrorLoadFileDialog);
+            if (pollingVenues != null)
+            {
+                this.UpdateTable();
+                Changed.Invoke();
+            }     
         }
 
         private void UpdateTable()
@@ -89,6 +89,11 @@ namespace AdminApplication
         private PollingVenue GetPollingVenueFromTable()
         {
             return pollingVenues[form.TableView.SelectedRows[0].Index];
+        }
+
+        private void ErrorLoadFileDialog(Object sender, ValidationEventArgs e)
+        {
+            MessageBox.Show(e.Message, "XML Parsing Error", MessageBoxButtons.OK);
         }
 
         private string ElectionName()

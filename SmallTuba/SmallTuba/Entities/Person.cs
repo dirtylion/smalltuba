@@ -18,7 +18,7 @@
 		public int Cpr { get; set; }
 		public int VoterId { get; set; }
 		public string PollingVenue { get; set; }
-		public string PollingTable { get; set; }
+		public int PollingTable { get; set; }
 		public bool Voted { get; set; }
 		public int VotedTime { get; set; }
 		public string VotedPollingTable { get; set; }
