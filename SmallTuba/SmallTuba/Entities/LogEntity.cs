@@ -11,20 +11,20 @@
 	/// entity in the system.
 	/// object.
 	/// </summary>
-	public class Log : AbstractEntity {
+	public class LogEntity : AbstractEntity {
 		public static readonly string Table = "Log";
 		public static readonly string[] Columns = { "id", "person_id", "action", "client", "polling_table", "timestamp" };
 
-		public Log() {
+		public LogEntity() {
 			ValueObject = new LogValueObject();
 			DataAccessObject = new LogDataAccessObject();
 		}
 
-		public Log(Hashtable values) : this() {
+		public LogEntity(Hashtable values) : this() {
 			ValueObject.SetValues(values);
 		}
 
-		public int PersonId { 
+		public int PersonDbId { 
 			get { return ValueObject["person_id"] != null ? (int) ValueObject["person_id"] : 0; } 
 			set { ValueObject["person_id"] = value; }
 		}

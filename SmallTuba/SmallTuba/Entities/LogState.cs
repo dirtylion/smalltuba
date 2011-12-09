@@ -2,17 +2,17 @@ namespace SmallTuba.Entities
 {
 	public class LogState
 	{
-		private PersonState voter;
+		private Person voter;
 
 		private string action;
 
-		public LogState(PersonState voter, string action)
+		public LogState(Person voter, string action)
 		{
 			this.voter = voter;
 			this.action = action;
 		}
 
-		public PersonState Voter
+		public Person Voter
 		{
 			get { return voter; }
 		}

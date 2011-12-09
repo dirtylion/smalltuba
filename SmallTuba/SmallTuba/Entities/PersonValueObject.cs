@@ -5,7 +5,7 @@
 	/// <version>2011-12-07</version>
 	public class PersonValueObject : AbstractValueObject {
 		public PersonValueObject() {
-			Columns = Person.Columns;
+			Columns = PersonEntity.Columns;
 		}
 	}
 }

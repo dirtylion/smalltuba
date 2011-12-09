@@ -1,113 +1,29 @@
 ﻿namespace SmallTuba.Entities {
-	using System.Collections;
-	using System.Collections.Generic;
-	using System.Diagnostics.Contracts;
+	using System;
 
-	using SmallTuba.Entities.Abstracts;
-
-	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
+	/// <author>Christian Ollson (chro@itu.dk)</author>
 	/// <version>2011-12-07</version>
 	/// <summary>
-	/// The Person class represents a real-life person, with
-	/// relevant-to-the-system information associated such as
-	/// the persons name and CPR number.
+	/// A shallow copy reflecting properties of the real Person entity.
 	/// </summary>
-	public class Person : AbstractEntity {
-		public static readonly string Table = "Person";
-		public static readonly string[] Columns = { "id", "firstname", "lastname", "cpr", "barcode", "polling_venue", "polling_table" };
+	[Serializable]
+	public class Person {
+		public int DbId { get; set; }
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+		public int Cpr { get; set; }
+		public int VoterId { get; set; }
+		public string PollingVenue { get; set; }
+		public string PollingTable { get; set; }
+		public bool Voted { get; set; }
+		public int VotedTime { get; set; }
+		public string VotedPollingTable { get; set; }
+		public bool Exists { get; set; }
 
-		private List<Log> logs;
-
-		public Person() {
-			ValueObject = new PersonValueObject();
-			DataAccessObject = new PersonDataAccessObject();
-
-			logs = null;
-		}
-
-		public Person(Hashtable values) : this() {
-			Contract.Requires(values != null);
-
-			ValueObject.SetValues(values);
-		}
-
-		public string Firstname { 
-			get { return ValueObject["firstname"] != null ? (string) ValueObject["firstname"] : ""; } 
-			set { ValueObject["firstname"] = value; }
-		}
-		public string Lastname { 
-			get { return ValueObject["lastname"] != null ? (string) ValueObject["lastname"] : ""; } 
-			set { ValueObject["lastname"] = value; }
-		}
-		public int Cpr { 
-			get { return ValueObject["cpr"] != null ? (int) ValueObject["cpr"] : 0; } 
-			set { ValueObject["cpr"] = value; }
-		}
-		public int Barcode { 
-			get { return ValueObject["barcode"] != null ? (int) ValueObject["barcode"] : 0; } 
-			set { ValueObject["barcode"] = value; }
-		}
-		public string PollingVenue { 
-			get { return ValueObject["polling_venue"] != null ? (string) ValueObject["polling_venue"] : ""; } 
-			set { ValueObject["polling_venue"] = value; }
-		}
-		public string PollingTable { 
-			get { return ValueObject["polling_table"] != null ? (string) ValueObject["polling_table"] : ""; } 
-			set { ValueObject["polling_table"] = value; }
-		}
-
-		public bool Voted {
-			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register"; }
-		}
-
-		public int VotedTime {
-			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register" ? GetMostRecentLog().Timestamp : 0; }
-		}
-
-		public string VotedPollingTable {
-			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register" ? GetMostRecentLog().PollingTable : ""; }
-		}
-
-		public List<Log> GetLogs() {
-			if (Exists()) {
-				var resource = new LogResource();
-				resource.SetPerson(this);
-				resource.SetOrder("timestamp", "desc");
-
-				logs = resource.Build();
-			}
-
-			return logs;
-		}
-
-		public Log GetMostRecentLog() {
-			return GetLogs() != null && GetLogs().Count > 0 ? logs[0] : null;
-		}
-
-		public PersonState ToStateObject() {
-			return new PersonState {
-			    Id = Id,
-			    Firstname = Firstname,
-			    Lastname = Lastname,
-			    Cpr = Cpr,
-			    Barcode = Barcode,
-			    PollingVenue = PollingVenue,
-			    PollingTable = PollingTable,
-			    Voted = Voted,
-			    VotedTime = VotedTime,
-				VotedPollingTable = VotedPollingTable,
-			    Exists = Exists()
-			};
-		}
-
-		public Address AddressTo {
-			get { return new Address("Kåre", "ungarnsagde 2", "2300 Kbh s"); }
-		}
-		public Address AddressFrom {
-			get { return new Address("Rådhuset","Rådhuspladsen","1050 Kbh k"); }
-		}
-		public Address AddressPollingVenue {
-			get { return new Address("Skole what ever", "bliv klog vej", "2300 kbh"); }
+		public override string ToString() {
+			return DbId.ToString() + "," + Cpr.ToString() + "," + Firstname + "," + Lastname + ", " + PollingTable + ", " + VotedTime.ToString() + ", " + Voted.ToString();
 		}
 	}
 }

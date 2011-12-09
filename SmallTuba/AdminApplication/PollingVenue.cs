@@ -1,23 +1,27 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Address.cs" company="">
+// <copyright file="PollingVenue.cs" company="">
 // TODO: Update copyright text.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SmallTuba.Entities
+namespace AdminApplication
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
+    using SmallTuba.Entities;
+
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public struct Address
+    public class PollingVenue
     {
-        public string Name { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }        
+        public List<Person> Persons { get; set; }
+        public Address PollingVenueAddress { get; set; }
+        public Address MunicipalityAddress { get; set; }
+
     }
+
 }

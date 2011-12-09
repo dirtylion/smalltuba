@@ -44,7 +44,7 @@ namespace SmallTuba.PdfGenerator
         }
 
         //Create a polling card for this person!
-        public void CreatePollingCard(Person person)
+        public void CreatePollingCard(Person person, Address municipality, Address pollingVenue)
         {
             Contract.Requires(person != null);
 
@@ -54,12 +54,12 @@ namespace SmallTuba.PdfGenerator
             XGraphics gfx = XGraphics.FromPdfPage(page);
             
             gfx.DrawImage(template, 0,0);
-            FromField(gfx, person.AddressFrom.Name, person.AddressFrom.Road, person.AddressFrom.City);
-            ToField(gfx, person.AddressTo.Name, person.AddressTo.Road, person.AddressTo.City);
-            VotingTable(gfx, "1");
-            VotingNumber(gfx, "123456789");         
+            FromField(gfx, municipality.Name, municipality.Street, municipality.City);
+            ToField(gfx, person.Firstname + " " + person.Lastname, person.Street, person.City);
+            VotingTable(gfx, person.PollingTable);
+            VotingNumber(gfx, person.VoterId.ToString());         
             
-            VoterVenue(gfx, person.AddressPollingVenue.Name, person.AddressPollingVenue.Road, person.AddressPollingVenue.City);
+            VoterVenue(gfx, pollingVenue.Name, pollingVenue.Street, pollingVenue.City);
             gfx.Dispose();
         }
 

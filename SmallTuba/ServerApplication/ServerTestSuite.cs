@@ -40,16 +40,16 @@
 		/// </summary>
 		[Test()]
 		public void TestCprToPersonRequestHandlerWithExistingPerson() {
-			var personState = _server.CprToPersonRequestHandler(0123456789);
+			var person = _server.CprToPersonRequestHandler(0123456789);
 			
-			Assert.That(personState.Exists);
-			Assert.That(personState.Id == 1);
-			Assert.That(personState.Firstname == "Henrik");
-			Assert.That(personState.Lastname == "Haugbølle");
-			Assert.That(personState.Cpr == 0123456789);
-			Assert.That(personState.Barcode == 3306);
-			Assert.That(personState.PollingVenue == "Venue of Awesome");
-			Assert.That(personState.PollingTable == "Table of Win");
+			Assert.That(person.Exists);
+			Assert.That(person.DbId == 1);
+			Assert.That(person.Firstname == "Henrik");
+			Assert.That(person.Lastname == "Haugbølle");
+			Assert.That(person.Cpr == 0123456789);
+			Assert.That(person.VoterId == 3306);
+			Assert.That(person.PollingVenue == "Venue of Awesome");
+			Assert.That(person.PollingTable == "Table of Win");
 		}
 		
 		/// <summary>
@@ -58,16 +58,16 @@
 		/// </summary>
 		[Test()]
 		public void TestCprToPersonRequestHandlerWithUnexistingPerson() {
-			var personState = _server.CprToPersonRequestHandler(0711891952);
+			var person = _server.CprToPersonRequestHandler(0711891952);
 			
-			Assert.That(personState.Exists == false);
-			Assert.That(personState.Id == 0);
-			Assert.That(personState.Firstname == "");
-			Assert.That(personState.Lastname == "");
-			Assert.That(personState.Cpr == 0);
-			Assert.That(personState.Barcode == 0);
-			Assert.That(personState.PollingVenue == "");
-			Assert.That(personState.PollingTable == "");
+			Assert.That(person.Exists == false);
+			Assert.That(person.DbId == 0);
+			Assert.That(person.Firstname == "");
+			Assert.That(person.Lastname == "");
+			Assert.That(person.Cpr == 0);
+			Assert.That(person.VoterId == 0);
+			Assert.That(person.PollingVenue == "");
+			Assert.That(person.PollingTable == "");
 		}
 
 		/// <summary>
@@ -75,17 +75,17 @@
 		/// with a id from a valid, existing person.
 		/// </summary>
 		[Test()]
-		public void TestBarcodeToPersonRequestHandlerWithExistingPerson() {
-			var personState = _server.BarcodeToPersonRequestHandler(3306);
+		public void TestVoterIdToPersonRequestHandlerWithExistingPerson() {
+			var person = _server.VoterIdToPersonRequestHandler(3306);
 			
-			Assert.That(personState.Exists);
-			Assert.That(personState.Id == 1);
-			Assert.That(personState.Firstname == "Henrik");
-			Assert.That(personState.Lastname == "Haugbølle");
-			Assert.That(personState.Cpr == 0123456789);
-			Assert.That(personState.Barcode == 3306);
-			Assert.That(personState.PollingVenue == "Venue of Awesome");
-			Assert.That(personState.PollingTable == "Table of Win");
+			Assert.That(person.Exists);
+			Assert.That(person.DbId == 1);
+			Assert.That(person.Firstname == "Henrik");
+			Assert.That(person.Lastname == "Haugbølle");
+			Assert.That(person.Cpr == 0123456789);
+			Assert.That(person.VoterId == 3306);
+			Assert.That(person.PollingVenue == "Venue of Awesome");
+			Assert.That(person.PollingTable == "Table of Win");
 		}
 
 		/// <summary>
@@ -93,17 +93,17 @@
 		/// with a id from a valid, existing person.
 		/// </summary>
 		[Test()]
-		public void TestBarcodeToPersonRequestHandlerWithUnexistingPerson() {
-			var personState = _server.BarcodeToPersonRequestHandler(669);
+		public void TestVoterIdToPersonRequestHandlerWithUnexistingPerson() {
+			var person = _server.VoterIdToPersonRequestHandler(669);
 
-			Assert.That(personState.Exists == false);
-			Assert.That(personState.Id == 0);
-			Assert.That(personState.Firstname == "");
-			Assert.That(personState.Lastname == "");
-			Assert.That(personState.Cpr == 0);
-			Assert.That(personState.Barcode == 0);
-			Assert.That(personState.PollingVenue == "");
-			Assert.That(personState.PollingTable == "");
+			Assert.That(person.Exists == false);
+			Assert.That(person.DbId == 0);
+			Assert.That(person.Firstname == "");
+			Assert.That(person.Lastname == "");
+			Assert.That(person.Cpr == 0);
+			Assert.That(person.VoterId == 0);
+			Assert.That(person.PollingVenue == "");
+			Assert.That(person.PollingTable == "");
 		}
 
 		/// <summary>
@@ -112,15 +112,15 @@
 		/// </summary>
 		[Test()]
 		public void TestRegisterVoteRequestHandlerWithExistingNonVotePerson() {
-			var person = new Person();
-			person.Load(new Hashtable { { "id", 1 } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", 1 } });
 			
-			var personState = person.ToStateObject();
+			var person = personEntity.ToObject();
 
-			Assert.That(_server.RegisterVoteRequestHandler(personState));
+			Assert.That(_server.RegisterVoteRequestHandler(person));
 
-			var log = person.GetMostRecentLog();
-			log.Delete();
+			var logEntity = personEntity.GetMostRecentLog();
+			logEntity.Delete();
 		}
 
 		/// <summary>
@@ -129,12 +129,12 @@
 		/// </summary>
 		[Test()]
 		public void TestRegisterVoteRequestHandlerWithExistingVotePerson() {
-			var person = new Person();
-			person.Load(new Hashtable { { "id", 2 } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", 2 } });
 			
-			var personState = person.ToStateObject();
+			var person = personEntity.ToObject();
 
-			Assert.That(!_server.RegisterVoteRequestHandler(personState));
+			Assert.That(!_server.RegisterVoteRequestHandler(person));
 		}
 
 		/// <summary>
@@ -142,12 +142,12 @@
 		/// </summary>
 		[Test()]
 		public void TestRegisterVoteRequestHandlerWithUnexistingPerson() {
-			var person = new Person();
-			person.Load(new Hashtable { { "id", 669 } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", 669 } });
 			
-			var personState = person.ToStateObject();
+			var person = personEntity.ToObject();
 
-			Assert.That(!_server.RegisterVoteRequestHandler(personState));
+			Assert.That(!_server.RegisterVoteRequestHandler(person));
 		}
 
 		/// <summary>
@@ -156,12 +156,12 @@
 		/// </summary>
 		[Test()]
 		public void TestUnregisterVoteRequestHandlerWithExistingNonVotePerson() {
-			var person = new Person();
-			person.Load(new Hashtable { { "id", 1 } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", 1 } });
 			
-			var personState = person.ToStateObject();
+			var person = personEntity.ToObject();
 
-			Assert.That(!_server.UnregisterVoteRequestHandler(personState));
+			Assert.That(!_server.UnregisterVoteRequestHandler(person));
 		}
 
 		/// <summary>
@@ -170,15 +170,15 @@
 		/// </summary>
 		[Test()]
 		public void TestUnregisterVoteRequestHandlerWithExistingVotePerson() {
-			var person = new Person();
-			person.Load(new Hashtable { { "id", 2 } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", 2 } });
 			
-			var personState = person.ToStateObject();
+			var person = personEntity.ToObject();
 
-			Assert.That(_server.UnregisterVoteRequestHandler(personState));
+			Assert.That(_server.UnregisterVoteRequestHandler(person));
 
-			var log = person.GetMostRecentLog();
-			log.Delete();
+			var logEntity = personEntity.GetMostRecentLog();
+			logEntity.Delete();
 		}
 
 		/// <summary>
@@ -186,12 +186,12 @@
 		/// </summary>
 		[Test()]
 		public void TestUnregisterVoteRequestHandlerWitUnexistingPerson() {
-			var person = new Person();
-			person.Load(new Hashtable { { "id", 669 } });
+			var personEntity = new PersonEntity();
+			personEntity.Load(new Hashtable { { "id", 669 } });
 			
-			var personState = person.ToStateObject();
+			var person = personEntity.ToObject();
 
-			Assert.That(!_server.UnregisterVoteRequestHandler(personState));
+			Assert.That(!_server.UnregisterVoteRequestHandler(person));
 		}
 
 		/// <summary>

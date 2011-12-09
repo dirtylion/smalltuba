@@ -150,7 +150,7 @@ namespace SmallTuba.PdfGenerator
             double positionY = topMargin + (rowDistance * count) - 2;
             gfx.DrawString(person.Firstname + " " + person.Lastname, font, XBrushes.Black, nameFieldX, positionY);
             gfx.DrawString(person.Cpr.ToString(), font, XBrushes.Black, cprnrFieldX, positionY);
-            gfx.DrawString(person.Barcode.ToString(), font, XBrushes.Black, voternrFieldX, positionY);
+            gfx.DrawString(person.VoterId.ToString(), font, XBrushes.Black, voternrFieldX, positionY);
         }
 
         //Can you save the voting list to this location on the harddrive?
@@ -158,6 +158,7 @@ namespace SmallTuba.PdfGenerator
         {
             Contract.Requires(path != null);
             this.AddPageNumbers();
+            Console.WriteLine(path);
             document.Save(path);
         }
      

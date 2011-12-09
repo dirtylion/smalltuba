@@ -9,6 +9,7 @@ namespace AdminApplication
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Forms;
 
     using SmallTuba.Entities;
@@ -19,152 +20,98 @@ namespace AdminApplication
     /// </summary>
     public class Controller
     {
-        private List<Person> persons;
+        private List<PollingVenue> pollingVenues;
         private Form1 form;
+        private FileLoader fileLoader;
+        private FileSaver fileSaver;
+        public event PollingVenuesChanged Changed;
 
-        public void initializePerson()
-        {
-            persons = new List<Person>();
-
-            persons.Add(new Person {
-                Firstname = "Ole"
-            });
-            persons.Add(new Person
-            {
-                Firstname = "Per"
-            });
-
-
-        }
+        public delegate void PollingVenuesChanged();
 
         public Controller()
         {
             form = new Form1();
-
-            form.GenerateVoterList.Click += new EventHandler(this.FolderBrowser);
-            form.GeneratePollingCards.Click += new EventHandler(this.FileSaveDiaglogPollingCards);
-            form.ImportData.Click += new EventHandler(this.FileOpenDialogImport);
-
-            List<Address> a = new List<Address>();
-            a.Add(new Address("skole1", "vej1", "by1"));
-            a.Add(new Address("skole2", "vej2", "by2"));
-            this.UpdateTable(a);
-
-            this.ShowGui();
+            fileLoader = new FileLoader();
+            fileSaver = new FileSaver();
+            this.InitializeEventSubscribers();
         }
 
-        public void FileSaveDiaglogPollingCards(Object sender, EventArgs e)
+        private void InitializeEventSubscribers()
+        {
+            form.GenerateVoterList.Click += this.FolderBrowserVoterLists;
+            form.GeneratePollingCards.Click += this.FileSaveDiaglogPollingCards;
+            form.ImportData.Click += this.FileOpenDialogImport;
+            Changed += this.UpdateTable;
+        }
+
+        private void SetPollingVenues(string path)
+        {
+            pollingVenues = fileLoader.GetPollingVenues(path);
+            this.UpdateTable();
+            Changed.Invoke();
+        }
+
+        private void UpdateTable()
+        {
+            var addresses = from n in pollingVenues select n.PollingVenueAddress;
+            BindingSource bs = new BindingSource();
+            bs.DataSource = addresses;
+            form.TableView.DataSource = bs;
+        }
+
+        private void FileSaveDiaglogPollingCards(Object sender, EventArgs e)
         {
             form.SaveFileDialog.Filter = "Pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
 
             if (form.SaveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                this.SavePollingCards();
-
+                fileSaver.SavePollingCards(this.GetPollingVenueFromTable(), this.SelectedFilePath(), this.ElectionName(), this.ElectionDate());
             }  
         }
 
-        public void FolderBrowser(Object sender, EventArgs e)
+        private void FolderBrowserVoterLists(Object sender, EventArgs e)
         {
             if (form.FolderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {/*
-                var a = new List<Person>();
-                var person = new Person();
-                person.PollingTable = "bord 1";
-                person.Firstname = "Kåre";
-                person.Lastname = "Sylow";
-                person.Cpr = "010101-0101";
-                person.Barcode = "123456789";
-
-                var person2 = new Person();
-                person2.PollingTable = "bord 1";
-                person2.Firstname = "Kåre";
-                person2.Lastname = "Sylow";
-                person2.Cpr = "010101-0101";
-                person2.Barcode = "123456789";
-                a.Add(person);
-                a.Add(person2);
-                Console.WriteLine(a.Count);
-                this.SaveVoterList(a);
-              * */
-
-                //var import = PersonImport(file);
-                //persons = import.GetPersons();
-                //venues = import.GetVenues();
+            {
+                fileSaver.SaveVoterList(this.GetPollingVenueFromTable().Persons, this.SelectedFolderPath(), this.ElectionName(), this.ElectionDate());
             }
         }
 
-        public void FileOpenDialogImport(Object sender, EventArgs e)
+        private void FileOpenDialogImport(Object sender, EventArgs e)
         {
-            GetVenueFromTable();
-            form.OpenFileDialog.Filter = "Vores evil format (*.xxx)|*.xxx";
+            form.OpenFileDialog.Filter = "Xml Files (*.xml)|*.xml";
             if (form.OpenFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //Load file
+                this.SetPollingVenues(form.OpenFileDialog.FileName);
             }
         }
 
-        public void UpdateTable(List<Address> pollingVenues)
+        private PollingVenue GetPollingVenueFromTable()
         {
-            form.TableView.DataSource = pollingVenues;
+            return pollingVenues[form.TableView.SelectedRows[0].Index];
         }
 
-        public void GetVenueFromTable()
+        private string ElectionName()
         {
-            Console.WriteLine(form.TableView.SelectedRows[0].Index);
+            return form.ElectionName.Text;
         }
 
-        private void SaveVoterList(List<Person> persons)
+        private string ElectionDate()
         {
-            String path = form.FolderBrowserDialog.SelectedPath;
-            String electionName = form.ElectionName.Text;
-            String electionDate = form.ElectionDate.Text;
-
-            Dictionary<string, VoterList> voterlists = this.CreateVoterListsForVenue(persons, electionName, electionDate);
-            this.AddVotersToVoterlists(persons, voterlists);
-            this.SaveVoterListsToDisk(path, voterlists);
+            return form.ElectionDate.Text;
         }
 
-        private Dictionary<string, VoterList> CreateVoterListsForVenue(List<Person> persons, string electionName, string electionDate)
+        private string SelectedFolderPath()
         {
-            Dictionary<string, VoterList> voterlists = new Dictionary<string, VoterList>();
-            foreach (var person in persons)
-            {
-                if (!voterlists.ContainsKey(person.PollingTable))
-                {
-                    voterlists.Add(person.PollingTable, new VoterList(50, electionName, electionDate, person.PollingTable));
-                }
-            }
-            return voterlists;
+            return form.FolderBrowserDialog.SelectedPath;
         }
 
-        private void AddVotersToVoterlists(List<Person> persons, Dictionary<string, VoterList> voterlists)
+        private string SelectedFilePath()
         {
-            foreach (var person in persons)
-            {
-                voterlists[person.PollingTable].AddVoter(person);
-            }
+            return form.SaveFileDialog.FileName;
         }
 
-        private void SaveVoterListsToDisk(string path, Dictionary<string, VoterList> voterlists)
-        {
-            foreach (var pollingTabel in voterlists.Keys)
-            {
-                voterlists[pollingTabel].SaveToDisk(path+ "\\"+pollingTabel +".pdf");
-            }
-        }
-
-        private void SavePollingCards()
-        {
-            String path = form.SaveFileDialog.FileName;
-            String name = form.ElectionName.Text;
-            String date = form.ElectionDate.Text;
-            PollingCards pollingCards = new PollingCards(name, date, "09.00 - 20.00");
-            pollingCards.CreatePollingCard(new Person());
-            pollingCards.SaveToDisk(path);
-        }
-
-        public void ShowGui()
+        public void Run()
         {
            Application.Run(form);
         }

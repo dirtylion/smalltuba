@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+﻿﻿// -----------------------------------------------------------------------
 // <copyright file="Controller.cs" company="">
 // TODO: Update copyright text.
 // </copyright>
@@ -22,7 +22,7 @@ namespace ClientApplication
 		private MainForm mainForm;
 		private LogForm logForm;
 		private VoterNetworkClient networkClient;
-		private PersonState currentVoter;
+		private Person currentVoter;
 		private Model model;
 
 		public Controller()
@@ -102,7 +102,7 @@ namespace ClientApplication
 			try
 			{
 				int id = int.Parse(this.mainForm.IdTextBox.Text);
-				PersonState person = networkClient.GetPersonFromId(id);
+				Person person = networkClient.GetPersonFromId(id);
 				SetVoter(person);
 			}
 			catch (Exception exception)
@@ -115,7 +115,7 @@ namespace ClientApplication
 		{
 			try{
 				int cpr = int.Parse(this.mainForm.CprTextBox.Text);
-				PersonState person = networkClient.GetPersonFromCpr(cpr);
+				Person person = networkClient.GetPersonFromCpr(cpr);
 				SetVoter(person);
 			}
 			catch (Exception exception)
@@ -174,7 +174,7 @@ namespace ClientApplication
 			ClearVoter();
 		}
 
-		private void SetVoter(PersonState voter)
+		private void SetVoter(Person voter)
 		{
 			if(voter != null)
 			{
@@ -182,7 +182,7 @@ namespace ClientApplication
 				this.mainForm.RegisterButton.Enabled = true;
 				this.mainForm.UnregisterButton.Enabled = true;
 				this.mainForm.ClearButton.Enabled = true;
-				this.mainForm.ID.Text = voter.Id.ToString();
+				this.mainForm.ID.Text = voter.DbId.ToString();
 				this.mainForm.FirstName.Text = voter.Firstname;
 				this.mainForm.LastName.Text = voter.Lastname;
 				this.mainForm.Cpr.Text = voter.Cpr.ToString();
@@ -213,3 +213,4 @@ namespace ClientApplication
 		}
 	}
 }
+
