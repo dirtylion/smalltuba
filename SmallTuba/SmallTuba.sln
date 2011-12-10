@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerApplication", "Server
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ServerSetup", "ServerSetup\ServerSetup.vdproj", "{03072307-6299-419F-B442-29776E2EEA2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorApplication", "GeneratorApplication\GeneratorApplication.csproj", "{457E7437-41F1-46A1-AC69-50CF37B5706C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -35,6 +37,10 @@ Global
 		{DBE6DB47-42C3-460B-B525-A2D7CC08E2B9}.Release|x86.Build.0 = Release|x86
 		{03072307-6299-419F-B442-29776E2EEA2D}.Debug|x86.ActiveCfg = Debug
 		{03072307-6299-419F-B442-29776E2EEA2D}.Release|x86.ActiveCfg = Release
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Debug|x86.ActiveCfg = Debug|x86
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Debug|x86.Build.0 = Debug|x86
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.ActiveCfg = Release|x86
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
