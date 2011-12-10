@@ -38,6 +38,7 @@ namespace AdminApplication
             form.GenerateVoterList.Click += this.FolderBrowserVoterLists;
             form.GeneratePollingCards.Click += this.FileSaveDiaglogPollingCards;
             form.ImportData.Click += this.FileOpenDialogImport;
+            form.ExportData.Click += this.FileSaveDialogVotersExport;
             Changed += this.UpdateTable;
         }
 
@@ -61,19 +62,47 @@ namespace AdminApplication
 
         private void FileSaveDiaglogPollingCards(Object sender, EventArgs e)
         {
+            if (this.GetSelectedPollingVenue() == null)
+            {
+                MessageBox.Show("No polling venue is selected", "Error", MessageBoxButtons.OK);
+                return;
+            }
+
             form.SaveFileDialog.Filter = "Pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
 
             if (form.SaveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                fileSaver.SavePollingCards(this.GetPollingVenueFromTable(), this.SelectedFilePath(), this.ElectionName(), this.ElectionDate());
+                fileSaver.SavePollingCards(this.GetSelectedPollingVenue(), this.SelectedFilePath(), this.ElectionName(), this.ElectionDate());
             }  
+        }
+
+        private void FileSaveDialogVotersExport(Object sender, EventArgs e)
+        {
+            if (this.GetSelectedPollingVenue() == null)
+            {
+                MessageBox.Show("No polling venue is selected", "Error", MessageBoxButtons.OK);
+                return;
+            }
+
+            form.SaveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+
+            if (form.SaveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                fileSaver.SaveVoters(this.GetSelectedPollingVenue().Persons, this.SelectedFilePath());
+            }
         }
 
         private void FolderBrowserVoterLists(Object sender, EventArgs e)
         {
+            if (this.GetSelectedPollingVenue() == null)
+            {
+                MessageBox.Show("No polling venue is selected", "Error", MessageBoxButtons.OK);
+                return;
+            }
+
             if (form.FolderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                fileSaver.SaveVoterList(this.GetPollingVenueFromTable().Persons, this.SelectedFolderPath(), this.ElectionName(), this.ElectionDate());
+                fileSaver.SaveVoterList(this.GetSelectedPollingVenue().Persons, this.SelectedFolderPath(), this.ElectionName(), this.ElectionDate());
             }
         }
 
@@ -86,9 +115,16 @@ namespace AdminApplication
             }
         }
 
-        private PollingVenue GetPollingVenueFromTable()
+        private PollingVenue GetSelectedPollingVenue()
         {
-            return pollingVenues[form.TableView.SelectedRows[0].Index];
+            if (form.TableView.SelectedRows.Count > 0)
+            {
+                return pollingVenues[form.TableView.SelectedRows[0].Index];
+            }else
+            {
+                return null;
+            }
+            
         }
 
         private void ErrorLoadFileDialog(Object sender, ValidationEventArgs e)

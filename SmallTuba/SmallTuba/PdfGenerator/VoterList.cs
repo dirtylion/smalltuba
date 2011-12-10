@@ -134,7 +134,7 @@ namespace SmallTuba.PdfGenerator
             XTextFormatter tf = new XTextFormatter(gfx);
             String text = electionName + System.Environment.NewLine + this.electionDate;
             tf.DrawString(text, font, XBrushes.Black, new XRect(leftMargin,topMargin/3,200,50));
-            tf.DrawString("bord "+ this.pollingTable.ToString(), font, XBrushes.Black, new XRect(gfx.PageSize.Width/2, topMargin/3, 200, 50));
+            tf.DrawString("Bord "+ this.pollingTable.ToString(), font, XBrushes.Black, new XRect(gfx.PageSize.Width/2, topMargin/3, 200, 50));
         }
 
         //Can you save the voting list to this location on the harddrive?
