@@ -2,7 +2,7 @@
 {
     using System.Windows.Forms;
 
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -38,30 +38,6 @@
             }
         }
 
-        public Button GeneratePollingCards
-        {
-            get
-            {
-                return generatePollingCards;
-            }
-        }
-
-        public Button GenerateVoterList
-        {
-            get
-            {
-                return generateVoterList;
-            }
-        }
-
-        public SaveFileDialog SaveFileDialog
-        {
-            get
-            {
-                return saveFileDialog;
-            }
-        }
-
         public DataGridView TableView
         {
             get
@@ -94,13 +70,6 @@
             }
         }
 
-        public FolderBrowserDialog FolderBrowserDialog
-        {
-            get
-            {
-                return folderBrowserDialog;
-            }
-        }
 
         #region Windows Form Designer generated code
 
@@ -116,14 +85,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.importData = new System.Windows.Forms.Button();
             this.exportData = new System.Windows.Forms.Button();
-            this.generatePollingCards = new System.Windows.Forms.Button();
-            this.generateVoterList = new System.Windows.Forms.Button();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tableView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -182,25 +147,6 @@
             this.exportData.Text = "Export Data";
             this.exportData.UseVisualStyleBackColor = true;
             // 
-            // generatePollingCards
-            // 
-            this.generatePollingCards.Location = new System.Drawing.Point(372, 111);
-            this.generatePollingCards.Name = "generatePollingCards";
-            this.generatePollingCards.Size = new System.Drawing.Size(130, 23);
-            this.generatePollingCards.TabIndex = 8;
-            this.generatePollingCards.Text = "Generate Polling Cards";
-            this.generatePollingCards.UseVisualStyleBackColor = true;
-            this.generatePollingCards.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // generateVoterList
-            // 
-            this.generateVoterList.Location = new System.Drawing.Point(372, 82);
-            this.generateVoterList.Name = "generateVoterList";
-            this.generateVoterList.Size = new System.Drawing.Size(130, 23);
-            this.generateVoterList.TabIndex = 9;
-            this.generateVoterList.Text = "Generate Voter Lists";
-            this.generateVoterList.UseVisualStyleBackColor = true;
-            // 
             // tableView
             // 
             this.tableView.AllowUserToAddRows = false;
@@ -239,8 +185,6 @@
             this.groupBox3.Controls.Add(this.importData);
             this.groupBox3.Controls.Add(this.exportData);
             this.groupBox3.Controls.Add(this.tableView);
-            this.groupBox3.Controls.Add(this.generatePollingCards);
-            this.groupBox3.Controls.Add(this.generateVoterList);
             this.groupBox3.Location = new System.Drawing.Point(12, 135);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(520, 244);
@@ -248,18 +192,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Polling Venues";
             // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog";
-            // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 391);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Admin Application";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
@@ -278,14 +218,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button importData;
         private System.Windows.Forms.Button exportData;
-        private System.Windows.Forms.Button generatePollingCards;
-        private System.Windows.Forms.Button generateVoterList;
-        private SaveFileDialog saveFileDialog;
         private DataGridView tableView;
         private GroupBox groupBox1;
         private GroupBox groupBox3;
         private OpenFileDialog openFileDialog;
-        private FolderBrowserDialog folderBrowserDialog;
     }
 }
 
