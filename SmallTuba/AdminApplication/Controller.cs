@@ -18,33 +18,32 @@ namespace AdminApplication
     public class Controller
     {
         private List<PollingVenue> pollingVenues;
-        private Form1 form;
-        private FileLoader fileLoader;
-        private FileSaver fileSaver;
+        private MainWindow form;
+        private ExportWindow export;
         public event PollingVenuesChanged Changed;
 
         public delegate void PollingVenuesChanged();
 
         public Controller()
         {
-            form = new Form1();
-            fileLoader = new FileLoader();
-            fileSaver = new FileSaver();
+            form = new MainWindow();
+            export = new ExportWindow();
             this.InitializeEventSubscribers();
         }
 
         private void InitializeEventSubscribers()
         {
-            form.GenerateVoterList.Click += this.FolderBrowserVoterLists;
-            form.GeneratePollingCards.Click += this.FileSaveDiaglogPollingCards;
             form.ImportData.Click += this.FileOpenDialogImport;
-            form.ExportData.Click += this.FileSaveDialogVotersExport;
+            form.ExportData.Click += (o, e) => OpenExportWindow();
+            export.ExportData.Click += ExportData;
+            export.Cancel.Click += (o, e) => export.Close();
             Changed += this.UpdateTable;
         }
 
         private void SetPollingVenues(string path)
         {
-            pollingVenues = fileLoader.GetPollingVenues(path, this.ErrorLoadFileDialog);
+            FileLoader fl = new FileLoader();
+            pollingVenues = fl.GetPollingVenues(path, this.ErrorLoadFileDialog);
             if (pollingVenues != null)
             {
                 this.UpdateTable();
@@ -58,52 +57,6 @@ namespace AdminApplication
             BindingSource bs = new BindingSource();
             bs.DataSource = addresses;
             form.TableView.DataSource = bs;
-        }
-
-        private void FileSaveDiaglogPollingCards(Object sender, EventArgs e)
-        {
-            if (this.GetSelectedPollingVenue() == null)
-            {
-                MessageBox.Show("No polling venue is selected", "Error", MessageBoxButtons.OK);
-                return;
-            }
-
-            form.SaveFileDialog.Filter = "Pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
-
-            if (form.SaveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                fileSaver.SavePollingCards(this.GetSelectedPollingVenue(), this.SelectedFilePath(), this.ElectionName(), this.ElectionDate());
-            }  
-        }
-
-        private void FileSaveDialogVotersExport(Object sender, EventArgs e)
-        {
-            if (this.GetSelectedPollingVenue() == null)
-            {
-                MessageBox.Show("No polling venue is selected", "Error", MessageBoxButtons.OK);
-                return;
-            }
-
-            form.SaveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-
-            if (form.SaveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                fileSaver.SaveVoters(this.GetSelectedPollingVenue().Persons, this.SelectedFilePath());
-            }
-        }
-
-        private void FolderBrowserVoterLists(Object sender, EventArgs e)
-        {
-            if (this.GetSelectedPollingVenue() == null)
-            {
-                MessageBox.Show("No polling venue is selected", "Error", MessageBoxButtons.OK);
-                return;
-            }
-
-            if (form.FolderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                fileSaver.SaveVoterList(this.GetSelectedPollingVenue().Persons, this.SelectedFolderPath(), this.ElectionName(), this.ElectionDate());
-            }
         }
 
         private void FileOpenDialogImport(Object sender, EventArgs e)
@@ -120,11 +73,19 @@ namespace AdminApplication
             if (form.TableView.SelectedRows.Count > 0)
             {
                 return pollingVenues[form.TableView.SelectedRows[0].Index];
-            }else
-            {
-                return null;
             }
-            
+
+            return null;
+
+        }
+
+        private bool PollingVenueSelected()
+        {
+            if (this.GetSelectedPollingVenue() == null)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void ErrorLoadFileDialog(Object sender, ValidationEventArgs e)
@@ -144,17 +105,57 @@ namespace AdminApplication
 
         private string SelectedFolderPath()
         {
-            return form.FolderBrowserDialog.SelectedPath;
-        }
-
-        private string SelectedFilePath()
-        {
-            return form.SaveFileDialog.FileName;
+            return export.FolderBrowserDialog.SelectedPath;
         }
 
         public void Run()
         {
            Application.Run(form);
+        }
+
+        private void OpenExportWindow()
+        {
+            if (this.PollingVenueSelected())
+            {
+                export.ShowDialog();
+            }else
+            {
+                MessageBox.Show("No polling venue is selected", "Notification", MessageBoxButtons.OK);
+            }
+            
+        }
+
+        private void ExportData(Object sender, EventArgs e)
+        {
+            if(!this.ExportElementsSelected())
+            {
+                MessageBox.Show("No export elements are selected", "Notification", MessageBoxButtons.OK);
+                return;
+            }
+
+            if (export.FolderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                FileSaver fs = new FileSaver(this.SelectedFolderPath(), this.GetSelectedPollingVenue().PollingVenueAddress.Name);
+                if (export.PollingCards.Checked)
+                {
+                    fs.SavePollingCards(this.GetSelectedPollingVenue(), this.ElectionName(), this.ElectionDate());
+                }
+                if (export.VoterLists.Checked)
+                {
+                    fs.SaveVoterList(this.GetSelectedPollingVenue().Persons, this.ElectionName(), this.ElectionDate());
+                }
+                if (export.Voters.Checked)
+                {
+                    fs.SaveVoters(this.GetSelectedPollingVenue().Persons);
+                }
+            }
+
+            export.Close();
+        }
+
+        private bool ExportElementsSelected()
+        {
+            return export.PollingCards.Checked || export.VoterLists.Checked || export.Voters.Checked;
         }
     }
         
