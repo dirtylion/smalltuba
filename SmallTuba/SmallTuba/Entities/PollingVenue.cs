@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace AdminApplication
+namespace SmallTuba.Entities
 {
     using System;
     using System.Collections.Generic;

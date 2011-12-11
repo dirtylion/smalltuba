@@ -4,20 +4,18 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace AdminApplication
+namespace SmallTuba.IO
 {
-	using System;
 	using System.Collections.Generic;
-	using System.IO;
 	using System.Linq;
-	using System.Text;
 	using System.Xml;
 	using System.Xml.Linq;
 	using System.Xml.Schema;
 
 	using SmallTuba.Entities;
+	using SmallTuba.Utility;
 
-	/// <summary>
+    /// <summary>
 	/// TODO: Update summary.
 	/// </summary>
 	public class FileLoader
@@ -78,7 +76,7 @@ namespace AdminApplication
 					LastName = element.Element("LastName").Value,
 					Street = element.Element("Street").Value,
 					City = element.Element("City").Value,
-					Cpr = Convert.ToInt32(element.Element("CprNo").Value),
+					Cpr = element.Element("CprNo").Value,
 					PollingTable = element.Element("PollingTable").Value,
 					VoterId = VoterIdGenerator.CreateVoterId()
 				};

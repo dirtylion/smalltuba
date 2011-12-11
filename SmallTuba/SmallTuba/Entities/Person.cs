@@ -17,7 +17,7 @@
 		public string LastName { get; set; }
 		public string Street { get; set; }
 		public string City { get; set; }
-		public int Cpr { get; set; }
+		public string Cpr { get; set; }
 		public int VoterId { get; set; }
 		public string PollingVenue { get; set; }
 		public string PollingTable { get; set; }
@@ -30,17 +30,19 @@
 			return DbId + "," + Cpr + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + TimeConverter.ConvertFromUnixTimestamp(VotedTime) + ", " + Voted;
 		}
 
-        public static IComparer<Person> CprSort()
-        {
-            return (IComparer<Person>) new SortPersonsCpr();
-        }
+		public static IComparer<Person> NameSort()
+		{
+			return (IComparer<Person>) new SortPersonsName();
+		}
 
-        private class SortPersonsCpr : IComparer<Person>
-        {
-            public int Compare(Person a, Person b)
-            {
-                return a.Cpr.CompareTo(b.Cpr);
-            }
-        }
+		private class SortPersonsName : IComparer<Person>
+		{
+			public int Compare(Person a, Person b)
+			{
+				string name1 = a.FirstName + " " + a.LastName;
+				string name2 = b.FirstName + " " + b.LastName;
+				return name1.CompareTo(name2);
+			}
+		}
 	}
 }

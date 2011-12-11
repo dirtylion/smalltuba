@@ -9,7 +9,7 @@ namespace GeneratorApplication
 	{
 		private int numberOfMunicipalities;
 		private int numberOfPollingVenues;
-		private int numberOfVoters;
+		private int numberOfVoters; 
 
 		private string fileDestination;
 
