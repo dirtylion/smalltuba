@@ -22,8 +22,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallTubaAutomatedTests", "SmallTubaAutomatedTests01\SmallTubaAutomatedTests.csproj", "{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SmallTuba.vsmdi
@@ -107,16 +105,6 @@ Global
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.ActiveCfg = Release|x86
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.Build.0 = Release|x86
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
