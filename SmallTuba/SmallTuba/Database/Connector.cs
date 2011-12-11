@@ -55,7 +55,8 @@
 		/// Check whether a connection to the database is established.
 		/// </summary>
 		/// <returns>A boolean which tells whether a connection is established.</returns>
-		public bool IsConnected() {
+		[Pure]
+        public bool IsConnected() {
 			return (_connection != null);
 		}
 
