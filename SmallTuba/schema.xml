@@ -23,7 +23,7 @@
 																<element name = "Voter">
 																	<complexType>
 																		<sequence>
-																			<element name = "FirstName" type = "string"/>
+																			<element name = "FirstName" type = "string"/> 
 																			<element name = "LastName" type = "string"/>
 																			<element name = "Street" type = "string"/>
 																			<element name = "City" type = "string"/>

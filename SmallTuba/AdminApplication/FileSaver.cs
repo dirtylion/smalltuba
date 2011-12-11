@@ -7,7 +7,9 @@
 namespace AdminApplication
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
 
@@ -19,11 +21,18 @@ namespace AdminApplication
     /// </summary>
     public class FileSaver
     {
-        public void SaveVoterList(List<Person> persons, string path, string electionName, string electionDate)
+        private string path;
+
+        public FileSaver(string path, string pollingVenueName)
+        {
+            this.path = Directory.CreateDirectory(path+"\\"+pollingVenueName).FullName;
+        }
+
+        public void SaveVoterList(List<Person> persons, string electionName, string electionDate)
         {
             Dictionary<string, VoterList> voterlists = this.CreateVoterListsForVenue(persons, electionName, electionDate);
             this.AddVotersToVoterlists(persons, voterlists);
-            this.SaveVoterListsToDisk(path, voterlists);
+            this.SaveVoterListsToDisk(voterlists);
         }
 
         private Dictionary<string, VoterList> CreateVoterListsForVenue(List<Person> persons, string electionName, string electionDate)
@@ -41,21 +50,22 @@ namespace AdminApplication
 
         private void AddVotersToVoterlists(List<Person> persons, Dictionary<string, VoterList> voterlists)
         {
+            persons.Sort(Person.CprSort());
             foreach (var person in persons)
             {
                 voterlists[person.PollingTable].AddVoter(person);
-            }
+            }          
         }
 
-        private void SaveVoterListsToDisk(string path, Dictionary<string, VoterList> voterlists)
+        private void SaveVoterListsToDisk(Dictionary<string, VoterList> voterlists)
         {
             foreach (var pollingTabel in voterlists.Keys)
             {
-                voterlists[pollingTabel].SaveToDisk(path + "\\" + "Bord"+pollingTabel + ".pdf");
+                voterlists[pollingTabel].SaveToDisk(this.path + "\\" + "VoterListTabel"+pollingTabel + ".pdf");
             }
         }
 
-        public void SavePollingCards(PollingVenue pollingVenue, string path, string electionName, string electionDate)
+        public void SavePollingCards(PollingVenue pollingVenue, string electionName, string electionDate)
         {
             PollingCards pollingCards = new PollingCards(electionName, electionDate, "09.00 - 20.00");
 
@@ -63,7 +73,19 @@ namespace AdminApplication
             {
                 pollingCards.CreatePollingCard(person, pollingVenue.MunicipalityAddress, pollingVenue.PollingVenueAddress);
             }
-            pollingCards.SaveToDisk(path);
+            pollingCards.SaveToDisk(this.path+"\\PollingCards.pdf");
+        }
+
+        public void SaveVoters(List<Person> persons)
+        {
+            StreamWriter sw = new StreamWriter(this.path+"\\Voters.csv", false);
+            sw.WriteLine("FirstName;LastName;Cpr;VoterId;");
+            
+            foreach (var person in persons)
+            {
+                sw.WriteLine(person.FirstName+";"+person.LastName+";"+person.Cpr+";"+person.VoterId);
+            }
+            sw.Close();
         }
 
     }

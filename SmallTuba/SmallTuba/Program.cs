@@ -1,24 +1,24 @@
-using System;
-using SmallTuba.Entities;
-using SmallTuba.Network.RPC;
-using SmallTuba.Utility;
+namespace SmallTuba {
+	using System;
 
-namespace SmallTuba
-{
 	static class Program
 	{
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main(string[] args)
-		{
-			// Tal pænt
-			//Application.EnableVisualStyles();
-			//Application.SetCompatibleTextRenderingDefault(false);
-			//Application.Run(new Form1());
-			// TODO ORDER PIZZA
+		static void Main(string[] args) {
+			var dg = new DataGenerator.DataGenerator();
+			dg.NumberOfMunicipalities = 20;
+			dg.NumberOfPollingVenues = 20;
+			dg.NumberOfVoters = 2000;
 
+			dg.FileDestination = "XmlTest.xml";
+
+			dg.Generate();
+
+
+			/*
 			int server = int.Parse(args[0]);
 			if (server == 0)
 			{
@@ -59,7 +59,7 @@ namespace SmallTuba
 				}
 				Console.Out.WriteLine("ValidTables: " + result);
 			}
-
+			*/
 		}
 	}
 }

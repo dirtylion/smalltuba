@@ -13,6 +13,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ServerSetup", "ServerSetup\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallTubaTestSuite", "SmallTubaTestSuite\SmallTubaTestSuite.csproj", "{5972E424-3638-4894-9396-0EC264EF67E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorApplication", "GeneratorApplication\GeneratorApplication.csproj", "{457E7437-41F1-46A1-AC69-50CF37B5706C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -41,6 +43,10 @@ Global
 		{5972E424-3638-4894-9396-0EC264EF67E4}.Debug|x86.Build.0 = Debug|x86
 		{5972E424-3638-4894-9396-0EC264EF67E4}.Release|x86.ActiveCfg = Release|x86
 		{5972E424-3638-4894-9396-0EC264EF67E4}.Release|x86.Build.0 = Release|x86
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Debug|x86.ActiveCfg = Debug|x86
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Debug|x86.Build.0 = Debug|x86
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.ActiveCfg = Release|x86
+		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

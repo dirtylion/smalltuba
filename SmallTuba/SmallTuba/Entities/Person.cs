@@ -1,5 +1,7 @@
 ﻿namespace SmallTuba.Entities {
 	using System;
+	using System.Collections;
+	using System.Collections.Generic;
 
 	using SmallTuba.Utility;
 
@@ -27,5 +29,18 @@
 		public override string ToString() {
 			return DbId + "," + Cpr + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + TimeConverter.ConvertFromUnixTimestamp(VotedTime) + ", " + Voted;
 		}
+
+        public static IComparer<Person> CprSort()
+        {
+            return (IComparer<Person>) new SortPersonsCpr();
+        }
+
+        private class SortPersonsCpr : IComparer<Person>
+        {
+            public int Compare(Person a, Person b)
+            {
+                return a.Cpr.CompareTo(b.Cpr);
+            }
+        }
 	}
 }
