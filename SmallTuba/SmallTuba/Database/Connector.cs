@@ -30,7 +30,7 @@
 		/// Connect to the external data source.
 		/// </summary>
 		public void Connect() {
-			_connection = new MySqlConnection("Server="+_server+";Port="+_port+";Database="+_database+";UID="+_uid+";Password="+_password);
+			_connection = new MySqlConnection("Server="+_server+";Port="+_port+";Database="+_database+";UID="+_uid+";Password="+_password+";Pooling=false");
 			_count = 0;
 
 			try {
@@ -56,7 +56,7 @@
 		/// </summary>
 		/// <returns>A boolean which tells whether a connection is established.</returns>
 		[Pure]
-        public bool IsConnected() {
+		public bool IsConnected() {
 			return (_connection != null);
 		}
 
