@@ -6,11 +6,8 @@
 
 namespace AdminApplication
 {
-	using System;
 	using System.Collections.Generic;
-	using System.IO;
 	using System.Linq;
-	using System.Text;
 	using System.Xml;
 	using System.Xml.Linq;
 	using System.Xml.Schema;
@@ -78,7 +75,7 @@ namespace AdminApplication
 					LastName = element.Element("LastName").Value,
 					Street = element.Element("Street").Value,
 					City = element.Element("City").Value,
-					Cpr = Convert.ToInt32(element.Element("CprNo").Value),
+					Cpr = element.Element("CprNo").Value,
 					PollingTable = element.Element("PollingTable").Value,
 					VoterId = VoterIdGenerator.CreateVoterId()
 				};

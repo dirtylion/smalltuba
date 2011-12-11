@@ -1,6 +1,5 @@
 ﻿namespace SmallTuba.Entities {
 	using System;
-	using System.Collections;
 	using System.Collections.Generic;
 
 	using SmallTuba.Utility;
@@ -17,7 +16,7 @@
 		public string LastName { get; set; }
 		public string Street { get; set; }
 		public string City { get; set; }
-		public int Cpr { get; set; }
+		public string Cpr { get; set; }
 		public int VoterId { get; set; }
 		public string PollingVenue { get; set; }
 		public string PollingTable { get; set; }
@@ -30,17 +29,17 @@
 			return DbId + "," + Cpr + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + TimeConverter.ConvertFromUnixTimestamp(VotedTime) + ", " + Voted;
 		}
 
-        public static IComparer<Person> CprSort()
-        {
-            return (IComparer<Person>) new SortPersonsCpr();
-        }
+		public static IComparer<Person> CprSort()
+		{
+			return (IComparer<Person>) new SortPersonsCpr();
+		}
 
-        private class SortPersonsCpr : IComparer<Person>
-        {
-            public int Compare(Person a, Person b)
-            {
-                return a.Cpr.CompareTo(b.Cpr);
-            }
-        }
+		private class SortPersonsCpr : IComparer<Person>
+		{
+			public int Compare(Person a, Person b)
+			{
+				return a.Cpr.CompareTo(b.Cpr);
+			}
+		}
 	}
 }
