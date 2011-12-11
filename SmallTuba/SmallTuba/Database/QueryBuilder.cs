@@ -81,7 +81,7 @@
 		/// <returns>The QueryBuilder instance for chaining.</returns>
 		public QueryBuilder SetType(string type) {
 			Contract.Requires(type != null);
-			Contract.Requires(type == "select" || type == "update" || type == "insert" || type == "delete");
+			Contract.Requires(type == "select" || type == "update" || type == "insert" || type == "delete" || type == "truncate");
 
 			_type = type;
 			return this;
@@ -354,6 +354,17 @@
 		}
 
 		/// <summary>
+		/// Assemble a truncate query.
+		/// </summary>
+		/// <returns>The query assembled.</returns>
+		private string AssembleTruncate() {
+			var query = "TRUNCATE TABLE";
+			query += AssembleTable();
+
+			return query;
+		}
+
+		/// <summary>
 		/// Assemble the table part of a query.
 		/// </summary>
 		/// <returns>The part assembled.</returns>
@@ -511,6 +522,9 @@
 					break;
 				case "delete":
 					query = AssembleDelete();
+					break;
+				case "truncate":
+					query = AssembleTruncate();
 					break;
 			}
 

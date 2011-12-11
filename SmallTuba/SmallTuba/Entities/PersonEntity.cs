@@ -39,8 +39,8 @@
 			get { return ValueObject["lastname"] != null ? (string) ValueObject["lastname"] : ""; } 
 			set { ValueObject["lastname"] = value; }
 		}
-		public int Cpr { 
-			get { return ValueObject["cpr"] != null ? (int) ValueObject["cpr"] : 0; } 
+		public string Cpr { 
+			get { return ValueObject["cpr"] != null ? (string) ValueObject["cpr"] : ""; } 
 			set { ValueObject["cpr"] = value; }
 		}
 		public int VoterId { 

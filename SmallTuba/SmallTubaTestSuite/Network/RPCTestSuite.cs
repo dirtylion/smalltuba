@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using NUnit.Framework;
 using SmallTuba.Entities;
@@ -24,7 +21,7 @@ namespace SmallTubaTestSuite.Network
             unixTime = (int)TimeConverter.ConvertToUnixTimestamp(DateTime.Now.ToUniversalTime());
             person1 = new Person()
                           {
-                              Cpr = 1,
+                              Cpr = "1",
                               FirstName = "TestCprFirst",
                               DbId = 11,
                               LastName = "TestCprLast",
@@ -35,7 +32,7 @@ namespace SmallTubaTestSuite.Network
                           };
             person2 = new Person()
                           {
-                              Cpr = 2,
+                              Cpr = "2",
                               FirstName = "TestIdFirst",
                               DbId = 22,
                               LastName = "TestIdFirst",

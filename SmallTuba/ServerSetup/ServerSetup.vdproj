@@ -21,26 +21,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3607F76B43D8E0D9DFA813E48276C113"
+        "MsmKey" = "8:_1B4B2F4FF0FDB69F2731D05547BF9D39"
         "OwnerKey" = "8:_0534CC5394C04974955A12E4ED72FABE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9635C20CD9A82071A9B86979661153DA"
+        "MsmKey" = "8:_5356AD2055DBDAD9952769B7221947AF"
         "OwnerKey" = "8:_0534CC5394C04974955A12E4ED72FABE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9635C20CD9A82071A9B86979661153DA"
-        "OwnerKey" = "8:_DFA851DFE32D1341D335ADC556B17D27"
+        "MsmKey" = "8:_EBC4A30FE2BF39C8ECA38D8266BB4151"
+        "OwnerKey" = "8:_0534CC5394C04974955A12E4ED72FABE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DFA851DFE32D1341D335ADC556B17D27"
-        "OwnerKey" = "8:_0534CC5394C04974955A12E4ED72FABE"
+        "MsmKey" = "8:_EBC4A30FE2BF39C8ECA38D8266BB4151"
+        "OwnerKey" = "8:_1B4B2F4FF0FDB69F2731D05547BF9D39"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,19 +58,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3607F76B43D8E0D9DFA813E48276C113"
+        "OwnerKey" = "8:_5356AD2055DBDAD9952769B7221947AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DFA851DFE32D1341D335ADC556B17D27"
+        "OwnerKey" = "8:_1B4B2F4FF0FDB69F2731D05547BF9D39"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9635C20CD9A82071A9B86979661153DA"
+        "OwnerKey" = "8:_EBC4A30FE2BF39C8ECA38D8266BB4151"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -98,6 +98,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -152,14 +165,45 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3607F76B43D8E0D9DFA813E48276C113"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1B4B2F4FF0FDB69F2731D05547BF9D39"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MySql.Data.Entity, Version=6.4.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1B4B2F4FF0FDB69F2731D05547BF9D39"
+                    {
+                    "Name" = "8:MySql.Data.Entity.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MySql.Data.Entity.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5356AD2055DBDAD9952769B7221947AF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_3607F76B43D8E0D9DFA813E48276C113"
+                    "_5356AD2055DBDAD9952769B7221947AF"
                     {
                     "Name" = "8:PdfSharp.dll"
                     "Attributes" = "3:512"
@@ -183,51 +227,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9635C20CD9A82071A9B86979661153DA"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EBC4A30FE2BF39C8ECA38D8266BB4151"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.4.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9635C20CD9A82071A9B86979661153DA"
+                    "_EBC4A30FE2BF39C8ECA38D8266BB4151"
                     {
                     "Name" = "8:MySql.Data.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:MySql.Data.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DFA851DFE32D1341D335ADC556B17D27"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MySql.Data.Entity, Version=6.4.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DFA851DFE32D1341D335ADC556B17D27"
-                    {
-                    "Name" = "8:MySql.Data.Entity.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MySql.Data.Entity.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"
@@ -324,7 +337,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Server"
         "ProductCode" = "8:{A6EC7F96-2D51-4839-9CED-4F0992BF5BA4}"
-        "PackageCode" = "8:{F46A593E-DAA4-4D5B-AD42-2E57F1004274}"
+        "PackageCode" = "8:{DBD29238-45B2-4006-936C-3B691087F824}"
         "UpgradeCode" = "8:{C075598F-C4C3-4A66-BE6C-26484509BBEA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -485,8 +498,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -530,8 +542,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -581,8 +592,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -604,8 +614,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -653,8 +662,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "InstallAllUsersVisible"
@@ -698,8 +706,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -749,8 +756,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -798,8 +804,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -821,8 +826,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -853,8 +857,7 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:2"
-                            "Value" = "8:"
+                            "Setting" = "3:0"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -869,7 +872,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0534CC5394C04974955A12E4ED72FABE"
             {
-            "SourcePath" = "8:..\\SmallTuba\\obj\\x86\\Release\\SmallTuba.exe"
+            "SourcePath" = "8:..\\SmallTuba\\obj\\x86\\Debug\\SmallTuba.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"
@@ -925,7 +928,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D34E57393803491C82B49E9A80C232E0"
             {
-            "SourcePath" = "8:..\\ServerApplication\\obj\\x86\\Release\\ServerApplication.exe"
+            "SourcePath" = "8:..\\ServerApplication\\obj\\x86\\Debug\\ServerApplication.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"

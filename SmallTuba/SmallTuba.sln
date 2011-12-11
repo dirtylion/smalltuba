@@ -15,14 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallTubaTestSuite", "Small
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorApplication", "GeneratorApplication\GeneratorApplication.csproj", "{457E7437-41F1-46A1-AC69-50CF37B5706C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallTubaAutomatedTests", "SmallTubaAutomatedTests\SmallTubaAutomatedTests.csproj", "{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{222A85D6-08E1-4685-83D2-B42D093C7AB7}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
 		SmallTuba.vsmdi = SmallTuba.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallTubaAutomatedTests", "SmallTubaAutomatedTests01\SmallTubaAutomatedTests.csproj", "{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -107,16 +107,16 @@ Global
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.ActiveCfg = Release|x86
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.Build.0 = Release|x86
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3D8A6602-9D47-4E87-9DFD-043C3A53D8FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CF2AC990-D2FA-4FA8-A91A-C87FCA4F0DD0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
