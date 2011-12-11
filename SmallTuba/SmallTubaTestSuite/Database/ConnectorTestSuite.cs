@@ -1,7 +1,7 @@
 ﻿namespace SmallTubaTestSuite {
 	using System.Collections;
-    using SmallTuba.Database;
 	using NUnit.Framework;
+	using SmallTuba.Database;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
 	/// <version>2011-12-07</version>

@@ -21,6 +21,7 @@
 	/// </summary>
 	class Server {
 		private VoterServer voterNetWorkServer;
+		private ServerData serverData;
 
 		/// <summary>
 		/// Construct a new server and instantiate and instance
@@ -28,6 +29,7 @@
 		/// </summary>
 		public Server() {
 			voterNetWorkServer = new VoterServer(System.Net.Dns.GetHostName());
+			serverData = new ServerData();
 		}
 
 		/// <summary>
@@ -35,17 +37,27 @@
 		/// to the listeners on the VoterNetworkServer object.
 		/// </summary>
 		public void Start() {
-			Console.WriteLine("server start");
-			
-			voterNetWorkServer.SetCprToPersonRequest(CprToPersonRequestHandler);
-			voterNetWorkServer.SetVoterIdToPersonRequest(VoterIdToPersonRequestHandler);
+			Console.WriteLine("Digital Voter Registration System");
+			Console.WriteLine("Server v1.8");
+			Console.WriteLine("");
+			Console.WriteLine("Setup server:");
+			Console.WriteLine("");
 
-			voterNetWorkServer.SetRegisterVoteRequest(RegisterVoteRequestHandler);
-			voterNetWorkServer.SetUnregisterVoteRequest(UnregisterVoteRequestHandler);
+			if (Setup()) {
+				Console.WriteLine("Server is starting");
 
-			voterNetWorkServer.SetValidTableRequest(ValidTableRequestHandler);
+				voterNetWorkServer.SetCprToPersonRequest(CprToPersonRequestHandler);
+				voterNetWorkServer.SetVoterIdToPersonRequest(VoterIdToPersonRequestHandler);
 
-			voterNetWorkServer.ListenForCalls(0);
+				voterNetWorkServer.SetRegisterVoteRequest(RegisterVoteRequestHandler);
+				voterNetWorkServer.SetUnregisterVoteRequest(UnregisterVoteRequestHandler);
+
+				voterNetWorkServer.SetValidTableRequest(ValidTableRequestHandler);
+
+				voterNetWorkServer.ListenForCalls(0);
+
+				Console.WriteLine("Server is running");
+			}
 		}
 
 		/// <summary>
@@ -60,15 +72,10 @@
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
 		public Person CprToPersonRequestHandler(string clientName, int cpr) {
-			Console.WriteLine("CprToPersonRequestHandler");
 			Contract.Requires(cpr > 0);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "cpr", cpr } });
-
-			if (personEntity.Exists()) {
-				Console.WriteLine("Person exists, Id: "+personEntity.DbId);
-			}
 
 			return personEntity.ToObject();
 		}
@@ -85,15 +92,10 @@
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
 		public Person VoterIdToPersonRequestHandler(string clientName,int voterId) {
-			Console.WriteLine("VoterIdToPersonRequestHandler");
 			Contract.Requires(voterId > 0);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "voter_id", voterId } });
-			
-			if (personEntity.Exists()) {
-				Console.WriteLine("Person exists, Id: "+personEntity.DbId);
-			}
 
 			return personEntity.ToObject();
 		}
@@ -115,15 +117,12 @@
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		/// <param name="clientName">The id of the client.</param>
 		public bool RegisterVoteRequestHandler(string clientName,Person person) {
-			Console.WriteLine("RegisterVoteRequestHandler");
 			Contract.Requires(person != null);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
 			if (personEntity.Exists() && !person.Voted) {
-				Console.WriteLine("PersonEntity exists, Id: "+person.DbId);
-
 				var log = new LogEntity {
 					PersonDbId = personEntity.DbId,
 					Action = "register",
@@ -133,7 +132,6 @@
 				};
 
 				log.Save();
-				Console.WriteLine("LogEntity saved, Id: "+log.DbId);
 
 				return true;
 			}
@@ -158,15 +156,12 @@
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		public bool UnregisterVoteRequestHandler(string clientName,Person person) {
-			Console.WriteLine("UnregisterVoteRequestHandler");
 			Contract.Requires(person != null);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
 			if (personEntity.Exists() && person.Voted) {
-				Console.WriteLine("personEntity exists, Id: "+person.DbId);
-
 				var log = new LogEntity {
 					PersonDbId = personEntity.DbId,
 					Action = "unregister",
@@ -176,7 +171,6 @@
 				};
 
 				log.Save();
-				Console.WriteLine("Log saved, Id: "+log.DbId);
 
 				return true;
 			}
@@ -208,6 +202,44 @@
 			return tables;
 		}
 
+		private bool Setup() {
+			Console.WriteLine("Commands: import <<filetoimport.csv>>, clear <<(person|log)>>, start, cancel");
+			var input = Console.ReadLine();
+			var args = input.Split(' ');
+			var command = args.Length > 0 ? args[0] : "";
+			
+			switch (command) {
+				case "import":
+					Console.WriteLine(
+						serverData.Import(args)
+							? "importing to database succeeded"
+							: "importing to database failed - command: import <<filetoimport.csv>> - please make sure that the file to import exists and is correctly formatted"
+					);
+
+					Setup();
+					break;
+				case "clear":
+					Console.WriteLine(
+						serverData.Clear(args)
+							? "clearing of database succeeded"
+							: "clearing of database failed - command: clear <<(person|log)>> - please try again"
+					);
+					
+					Setup();
+					break;
+				case "start": 
+					break;
+				case "cancel":
+					return false;
+					break;
+				default: 
+					Setup(); 
+					break;
+			}
+
+			return true;
+		}
+
 		/// <summary>
 		/// The main method starting the thread for the
 		/// server to run at and instantiating and starting
@@ -215,12 +247,9 @@
 		/// </summary>
 		/// <param name="args">Does not use the application arguments.</param>
 		static void Main(string[] args) {
-			Console.WriteLine("start");
-
 			var server = new Server();
 			server.Start();
 
-			Console.WriteLine("end");
 			Console.ReadKey();
 		}
 	}

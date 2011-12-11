@@ -1,6 +1,5 @@
 ﻿namespace SmallTuba.Entities {
 	using System;
-	using System.Collections;
 	using System.Collections.Generic;
 
 	using SmallTuba.Utility;
@@ -30,18 +29,56 @@
 			return DbId + "," + Cpr + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + TimeConverter.ConvertFromUnixTimestamp(VotedTime) + ", " + Voted;
 		}
 
+
 		public static IComparer<Person> NameSort()
 		{
 			return (IComparer<Person>) new SortPersonsName();
 		}
 
-		private class SortPersonsName : IComparer<Person>
+	    private class SortPersonsName : IComparer<Person>
+	    {
+	        public int Compare(Person a, Person b)
+	        {
+	            string name1 = a.FirstName + " " + a.LastName;
+	            string name2 = b.FirstName + " " + b.LastName;
+	            return name1.CompareTo(name2);
+	        }
+	    }
+
+	    public bool Equals(Person other)
 		{
-			public int Compare(Person a, Person b)
+			if (ReferenceEquals(null, other)) return false;
+			if (ReferenceEquals(this, other)) return true;
+			return other.DbId == DbId && Equals(other.FirstName, FirstName) && Equals(other.LastName, LastName) && Equals(other.Street, Street) && Equals(other.City, City) && other.Cpr == Cpr && other.VoterId == VoterId && Equals(other.PollingVenue, PollingVenue) && Equals(other.PollingTable, PollingTable) && other.Voted.Equals(Voted) && other.VotedTime == VotedTime && Equals(other.VotedPollingTable, VotedPollingTable) && other.Exists.Equals(Exists);
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (ReferenceEquals(null, obj)) return false;
+			if (ReferenceEquals(this, obj)) return true;
+			if (obj.GetType() != typeof(Person)) return false;
+			return Equals((Person)obj);
+		}
+
+		public override int GetHashCode()
+		{
+			unchecked
 			{
-				string name1 = a.FirstName + " " + a.LastName;
-				string name2 = b.FirstName + " " + b.LastName;
-				return name1.CompareTo(name2);
+				int result = DbId;
+				result = (result * 397) ^ (FirstName != null ? FirstName.GetHashCode() : 0);
+				result = (result * 397) ^ (LastName != null ? LastName.GetHashCode() : 0);
+				result = (result * 397) ^ (Street != null ? Street.GetHashCode() : 0);
+				result = (result * 397) ^ (City != null ? City.GetHashCode() : 0);
+				result = (result * 397) ^	(Cpr != null ? Cpr.GetHashCode() : 0);
+				result = (result * 397) ^ VoterId;
+				result = (result * 397) ^ (PollingVenue != null ? PollingVenue.GetHashCode() : 0);
+				result = (result * 397) ^ (PollingTable != null ? PollingTable.GetHashCode() : 0);
+				result = (result * 397) ^ Voted.GetHashCode();
+				result = (result * 397) ^ VotedTime;
+				result = (result * 397) ^ (VotedPollingTable != null ? VotedPollingTable.GetHashCode() : 0);
+				result = (result * 397) ^ Exists.GetHashCode();
+				return result;
+
 			}
 		}
 	}

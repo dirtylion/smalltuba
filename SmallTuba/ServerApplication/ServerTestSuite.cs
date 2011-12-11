@@ -64,7 +64,7 @@
 			Assert.That(person.DbId == 0);
 			Assert.That(person.FirstName == "");
 			Assert.That(person.LastName == "");
-			Assert.That(person.Cpr == "0");
+			Assert.That(person.Cpr == "");
 			Assert.That(person.VoterId == 0);
 			Assert.That(person.PollingVenue == "");
 			Assert.That(person.PollingTable == "");
@@ -100,7 +100,7 @@
 			Assert.That(person.DbId == 0);
 			Assert.That(person.FirstName == "");
 			Assert.That(person.LastName == "");
-			Assert.That(person.Cpr == "0");
+			Assert.That(person.Cpr == "");
 			Assert.That(person.VoterId == 0);
 			Assert.That(person.PollingVenue == "");
 			Assert.That(person.PollingTable == "");
