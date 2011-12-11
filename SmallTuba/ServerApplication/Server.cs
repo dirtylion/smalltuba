@@ -126,7 +126,7 @@
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
-			if (personEntity.Exists() && !person.Voted) {
+			if (personEntity.Exists() && !personEntity.Voted) {
 				var log = new LogEntity {
 					PersonDbId = personEntity.DbId,
 					Action = "register",
@@ -166,7 +166,7 @@
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
 
-			if (personEntity.Exists() && person.Voted) {
+			if (personEntity.Exists() && personEntity.Voted) {
 				var log = new LogEntity {
 					PersonDbId = personEntity.DbId,
 					Action = "unregister",
