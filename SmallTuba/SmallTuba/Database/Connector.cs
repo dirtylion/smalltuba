@@ -26,17 +26,36 @@
 		private MySqlConnection _connection;
 		private int _count;
 
+		private static Connector CONNECTOR;
+
+		private Connector() {
+
+		}
+
+		public static Connector GetConnector() {
+			if (CONNECTOR == null) {
+				CONNECTOR = new Connector();
+			}
+
+			return CONNECTOR;
+		}
+
 		/// <summary>
 		/// Connect to the external data source.
 		/// </summary>
 		public void Connect() {
-			_connection = new MySqlConnection("Server="+_server+";Port="+_port+";Database="+_database+";UID="+_uid+";Password="+_password+";Pooling=false");
-			_count = 0;
+			if (!IsConnected()) {
+				_connection =
+					new MySqlConnection(
+						"Server=" + _server + ";Port=" + _port + ";Database=" + _database + ";UID=" + _uid + ";Password=" + _password
+						+ ";Pooling=false");
+				_count = 0;
 
-			try {
-				_connection.Open();
-			} catch (Exception e) {
-				Console.WriteLine(e);
+				try {
+					_connection.Open();
+				} catch (Exception e) {
+					Console.WriteLine(e);
+				}
 			}
 		}
 
@@ -48,6 +67,7 @@
 
 			if (_connection != null) {
 				_connection.Close();
+				_connection = null;
 			}
 		}
 

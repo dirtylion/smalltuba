@@ -52,7 +52,7 @@
 		/// works as a field initializer.
 		/// </summary>
 		public QueryBuilder() {
-			_connector = new Connector();
+			_connector = Connector.GetConnector();
 			_connector.Connect();
 
 			Clear();
