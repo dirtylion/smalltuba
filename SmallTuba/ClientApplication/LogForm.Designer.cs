@@ -51,6 +51,7 @@
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Log for: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tableLabel
             // 
@@ -91,7 +92,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox);
             this.Name = "LogForm";
-            this.Text = "LogForm";
+            this.Text = "Log";
             this.Load += new System.EventHandler(this.LogForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

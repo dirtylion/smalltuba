@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientApplicationSetup", "ClientApplicationSetup\ClientApplicationSetup.vdproj", "{1F9AF067-73C1-409C-9626-6CDBFC3315B6}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SmallTuba.vsmdi
@@ -105,6 +107,22 @@ Global
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.ActiveCfg = Release|x86
 		{457E7437-41F1-46A1-AC69-50CF37B5706C}.Release|x86.Build.0 = Release|x86
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|x86.ActiveCfg = Release|Any CPU
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Debug|Any CPU.ActiveCfg = Debug
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Debug|x86.ActiveCfg = Debug
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|Any CPU.ActiveCfg = Release
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|Mixed Platforms.ActiveCfg = Release
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

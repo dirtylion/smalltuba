@@ -118,7 +118,7 @@ namespace SmallTubaTestSuite.Network
         private void SetupServer()
         {
             VoterServer voterServer = new VoterServer(System.Net.Dns.GetHostName());
-            voterServer.SetCprToPersonRequest((name, cpr) => cpr == 1 ? person1 : emptyPerson);
+            voterServer.SetCprToPersonRequest((name, cpr) => cpr == "1" ? person1 : emptyPerson);
             voterServer.SetVoterIdToPersonRequest((name, id) => id == 2 ? person2 : emptyPerson);
             voterServer.SetRegisterVoteRequest((name, person) => !person.Voted);
             voterServer.SetUnregisterVoteRequest((name, person) => !person.Voted);
