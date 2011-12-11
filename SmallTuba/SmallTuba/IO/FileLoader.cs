@@ -4,7 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace AdminApplication
+
+namespace SmallTuba.IO
 {
 	using System.Collections.Generic;
 	using System.Linq;
@@ -13,8 +14,9 @@ namespace AdminApplication
 	using System.Xml.Schema;
 
 	using SmallTuba.Entities;
+	using SmallTuba.Utility;
 
-	/// <summary>
+    /// <summary>
 	/// TODO: Update summary.
 	/// </summary>
 	public class FileLoader

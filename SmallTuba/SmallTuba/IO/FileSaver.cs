@@ -4,15 +4,10 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace AdminApplication
+namespace SmallTuba.IO
 {
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
-    using System.Text;
-
     using SmallTuba.Entities;
     using SmallTuba.PdfGenerator;
 
@@ -50,7 +45,7 @@ namespace AdminApplication
 
         private void AddVotersToVoterlists(List<Person> persons, Dictionary<string, VoterList> voterlists)
         {
-            persons.Sort(Person.CprSort());
+            persons.Sort(Person.NameSort());
             foreach (var person in persons)
             {
                 voterlists[person.PollingTable].AddVoter(person);
@@ -59,9 +54,9 @@ namespace AdminApplication
 
         private void SaveVoterListsToDisk(Dictionary<string, VoterList> voterlists)
         {
-            foreach (var pollingTabel in voterlists.Keys)
+            foreach (var pollingTable in voterlists.Keys)
             {
-                voterlists[pollingTabel].SaveToDisk(this.path + "\\" + "VoterListTabel"+pollingTabel + ".pdf");
+                voterlists[pollingTable].SaveToDisk(this.path + "\\" + "VoterListTable"+pollingTable + ".pdf");
             }
         }
 
@@ -76,14 +71,14 @@ namespace AdminApplication
             pollingCards.SaveToDisk(this.path+"\\PollingCards.pdf");
         }
 
-        public void SaveVoters(List<Person> persons)
+        public void SaveVoters(PollingVenue pollingVenue)
         {
             StreamWriter sw = new StreamWriter(this.path+"\\Voters.csv", false);
-            sw.WriteLine("FirstName;LastName;Cpr;VoterId;");
+            sw.WriteLine("FirstName;LastName;Cpr;VoterId;PollingTable;PollingVenueName");
             
-            foreach (var person in persons)
+            foreach (var person in pollingVenue.Persons)
             {
-                sw.WriteLine(person.FirstName+";"+person.LastName+";"+person.Cpr+";"+person.VoterId);
+                sw.WriteLine(person.FirstName+";"+person.LastName+";"+person.Cpr+";"+person.VoterId+";"+person.PollingTable+";"+pollingVenue.PollingVenueAddress.Name);
             }
             sw.Close();
         }

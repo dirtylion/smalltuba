@@ -4,15 +4,9 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace AdminApplication
+namespace SmallTuba.Utility
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Diagnostics.Contracts;
-
-    using SmallTuba.Utility;
 
     /// <summary>
     /// Generates a unique id number

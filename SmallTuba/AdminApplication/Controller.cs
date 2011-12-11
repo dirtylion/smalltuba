@@ -12,6 +12,9 @@ namespace AdminApplication
     using System.Windows.Forms;
     using System.Xml.Schema;
 
+    using SmallTuba.Entities;
+    using SmallTuba.IO;
+
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -146,7 +149,7 @@ namespace AdminApplication
                 }
                 if (export.Voters.Checked)
                 {
-                    fs.SaveVoters(this.GetSelectedPollingVenue().Persons);
+                    fs.SaveVoters(this.GetSelectedPollingVenue());
                 }
             }
 
