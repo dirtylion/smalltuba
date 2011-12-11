@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorApplication", "Gen
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Documentation", "Documentation\Documentation.modelproj", "{D62BBB01-95B9-446C-9B60-DA92872E0A87}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientApplicationSetup", "ClientApplicationSetup\ClientApplicationSetup.vdproj", "{1F9AF067-73C1-409C-9626-6CDBFC3315B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,12 @@ Global
 		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D62BBB01-95B9-446C-9B60-DA92872E0A87}.Release|x86.ActiveCfg = Release|Any CPU
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Debug|Any CPU.ActiveCfg = Debug
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Debug|x86.ActiveCfg = Debug
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|Any CPU.ActiveCfg = Release
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|Mixed Platforms.ActiveCfg = Release
+		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

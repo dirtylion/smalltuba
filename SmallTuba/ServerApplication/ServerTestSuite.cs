@@ -40,7 +40,7 @@
 		/// </summary>
 		[Test()]
 		public void TestCprToPersonRequestHandlerWithExistingPerson() {
-			var person = _server.CprToPersonRequestHandler("test client", 0123456789);
+			var person = _server.CprToPersonRequestHandler("test client", "0123456789");
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
@@ -58,7 +58,7 @@
 		/// </summary>
 		[Test()]
 		public void TestCprToPersonRequestHandlerWithUnexistingPerson() {
-			var person = _server.CprToPersonRequestHandler("test client", 0711891952);
+			var person = _server.CprToPersonRequestHandler("test client", "0711891952");
 			
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);

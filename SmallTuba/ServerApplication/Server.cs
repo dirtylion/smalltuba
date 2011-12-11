@@ -8,7 +8,7 @@
 	using SmallTuba.Network.RPC;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-08</version>
+	/// <version>2011-12-11</version>
 	/// <summary>
 	/// The Server class handles request from the ClientApplication,
 	/// by utilizing the VoterNetworkServer and entity classes.
@@ -33,8 +33,11 @@
 		}
 
 		/// <summary>
-		/// Boot the server by attaching the proper callback functions
-		/// to the listeners on the VoterNetworkServer object.
+		/// Calls the Setup() method to give the user possibility
+		/// to setup the servers data. If the setup is not canceled,
+		/// the proper callback functions will be attached to the 
+		/// listeners of the VoterNetworkServer object and the server
+		/// will start to listen for requests.
 		/// </summary>
 		public void Start() {
 			Console.WriteLine("Digital Voter Registration System");
@@ -54,9 +57,9 @@
 
 				voterNetWorkServer.SetValidTableRequest(ValidTableRequestHandler);
 
-				voterNetWorkServer.ListenForCalls(0);
-
 				Console.WriteLine("Server is running");
+
+				voterNetWorkServer.ListenForCalls(0);
 			}
 		}
 
@@ -71,8 +74,8 @@
 		/// <param name="cpr">The CPR number to search for a person by.</param>
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
-		public Person CprToPersonRequestHandler(string clientName, int cpr) {
-			Contract.Requires(cpr > 0);
+		public Person CprToPersonRequestHandler(string clientName, string cpr) {
+			Contract.Requires(cpr != null);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "cpr", cpr } });
@@ -91,7 +94,7 @@
 		/// <param name="voterId">The barcode number to search for a person by.</param>
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
-		public Person VoterIdToPersonRequestHandler(string clientName,int voterId) {
+		public Person VoterIdToPersonRequestHandler(string clientName, int voterId) {
 			Contract.Requires(voterId > 0);
 
 			var personEntity = new PersonEntity();
@@ -116,8 +119,9 @@
 		/// <param name="personState">The person to be registered.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		/// <param name="clientName">The id of the client.</param>
-		public bool RegisterVoteRequestHandler(string clientName,Person person) {
+		public bool RegisterVoteRequestHandler(string clientName, Person person) {
 			Contract.Requires(person != null);
+			Contract.Ensures(VoterIdToPersonRequestHandler("", person.VoterId).Exists && !VoterIdToPersonRequestHandler("", person.VoterId).Voted ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
@@ -155,8 +159,9 @@
 		/// <param name="personState">The person to be unregistrated.</param>
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
-		public bool UnregisterVoteRequestHandler(string clientName,Person person) {
+		public bool UnregisterVoteRequestHandler(string clientName, Person person) {
 			Contract.Requires(person != null);
+			Contract.Ensures(VoterIdToPersonRequestHandler("", person.VoterId).Exists && VoterIdToPersonRequestHandler("", person.VoterId).Voted ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
@@ -202,6 +207,12 @@
 			return tables;
 		}
 
+		/// <summary>
+		/// Acts as a commandline interface for setting up the server
+		/// given the user the possibility to import data to the
+		/// database.
+		/// </summary>
+		/// <returns>Returns false if the user decides to cancel the setup.</returns>
 		private bool Setup() {
 			Console.WriteLine("Commands: import <<filetoimport.csv>>, clear <<(person|log)>>, start, cancel");
 			var input = Console.ReadLine();
