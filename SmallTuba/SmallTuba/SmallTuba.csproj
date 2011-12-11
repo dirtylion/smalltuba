@@ -100,7 +100,6 @@
   <ItemGroup>
     <Compile Include="Database\Connector.cs" />
     <Compile Include="Database\QueryBuilder.cs" />
-    <Compile Include="Database\QueryBuilderTestSuite.cs" />
     <Compile Include="DataGenerator\DataGenerator.cs" />
     <Compile Include="DataGenerator\DataSource.cs" />
     <Compile Include="Utility\Debug.cs" />
