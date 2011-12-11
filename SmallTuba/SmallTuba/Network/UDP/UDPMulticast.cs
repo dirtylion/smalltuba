@@ -54,9 +54,12 @@ namespace SmallTuba.Network.UDP
             
             // Where we send the packages to
             this.sendPoint = new IPEndPoint(ip, 5000 + server);
-
+            
             // Where we recieve them from
             this.receivePoint = null;
+            
+            // How far to multicast
+            this.client.Ttl = 2;
 
             // Join the multicast group
             this.client.JoinMulticastGroup(ip);
