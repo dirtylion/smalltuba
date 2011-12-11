@@ -62,7 +62,7 @@ namespace SmallTuba.Network.RPC
 			// The request to send
 			Message request = new Message(Keyword.GetPersonFromCpr, name, cpr);
 			// The reply received
-			object reply = this.clientFrontEnd.SendRequest(request, 2000);
+			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			// If it was a timeout
 			if (reply == null)
 			{
@@ -91,7 +91,7 @@ namespace SmallTuba.Network.RPC
 			// The request to send
 			Message request = new Message(Keyword.GetPersonFromId, name, id);
 			// The reply received
-			object reply = this.clientFrontEnd.SendRequest(request, 2000);
+			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			// If it was a timeout
 			if (reply == null)
 			{
@@ -121,7 +121,7 @@ namespace SmallTuba.Network.RPC
 			// The request to send
 			Message request = new Message(Keyword.RegisterVoter, name, person);
 			// The reply received
-			object reply = this.clientFrontEnd.SendRequest(request, 2000);
+			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			// If it was a timeout
 			if (reply == null)
 			{
@@ -151,7 +151,7 @@ namespace SmallTuba.Network.RPC
 			// The request to send
 			Message request = new Message(Keyword.UnregisterVoter, name, person);
 			// The reply received
-			object reply = this.clientFrontEnd.SendRequest(request, 2000);
+			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			// If it was a timeout
 			if (reply == null)
 			{
@@ -179,7 +179,7 @@ namespace SmallTuba.Network.RPC
 			// The request to send
 			Message request = new Message(Keyword.ValidTables, name, null);
 			// The reply received
-			object reply = this.clientFrontEnd.SendRequest(request, 2000);
+			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			// If it was a timeout
 			if (reply == null)
 			{
@@ -206,7 +206,7 @@ namespace SmallTuba.Network.RPC
 			// The request to send
 			Message request = new Message(Keyword.Ping, name, null);
 			// The reply received
-			object reply = this.clientFrontEnd.SendRequest(request, 2000);
+			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			// If it was a timeout
 			if (reply == null)
 			{

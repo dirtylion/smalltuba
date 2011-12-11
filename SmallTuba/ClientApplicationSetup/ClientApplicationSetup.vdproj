@@ -15,20 +15,32 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3D5771FA9807B467E1D9E101EB74AB3F"
+        "MsmKey" = "8:_532692EA588CC250F2067B5EB1579856"
         "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3D5771FA9807B467E1D9E101EB74AB3F"
-        "OwnerKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
+        "MsmKey" = "8:_9FAA1F04A9C9A29E3286FF6E66A16204"
+        "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
+        "MsmKey" = "8:_9FAA1F04A9C9A29E3286FF6E66A16204"
+        "OwnerKey" = "8:_532692EA588CC250F2067B5EB1579856"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B2475E359FC873E94ECB4BF70992D6A0"
         "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B2475E359FC873E94ECB4BF70992D6A0"
+        "OwnerKey" = "8:_532692EA588CC250F2067B5EB1579856"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -39,24 +51,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FF56A323DBCA6869B884F023F8EEC374"
-        "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FF56A323DBCA6869B884F023F8EEC374"
-        "OwnerKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FF56A323DBCA6869B884F023F8EEC374"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
         "MsmSig" = "8:_UNDEFINED"
@@ -64,13 +58,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
+        "OwnerKey" = "8:_532692EA588CC250F2067B5EB1579856"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3D5771FA9807B467E1D9E101EB74AB3F"
+        "OwnerKey" = "8:_B2475E359FC873E94ECB4BF70992D6A0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9FAA1F04A9C9A29E3286FF6E66A16204"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -91,6 +91,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -107,6 +115,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -136,45 +165,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3D5771FA9807B467E1D9E101EB74AB3F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_3D5771FA9807B467E1D9E101EB74AB3F"
-                    {
-                    "Name" = "8:PdfSharp.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:PdfSharp.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_532692EA588CC250F2067B5EB1579856"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:SmallTuba, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
+                    "_532692EA588CC250F2067B5EB1579856"
                     {
                     "Name" = "8:SmallTuba.exe"
                     "Attributes" = "3:512"
@@ -198,20 +196,51 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FF56A323DBCA6869B884F023F8EEC374"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9FAA1F04A9C9A29E3286FF6E66A16204"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.4.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_FF56A323DBCA6869B884F023F8EEC374"
+                    "_9FAA1F04A9C9A29E3286FF6E66A16204"
                     {
                     "Name" = "8:MySql.Data.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:MySql.Data.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B2475E359FC873E94ECB4BF70992D6A0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B2475E359FC873E94ECB4BF70992D6A0"
+                    {
+                    "Name" = "8:PdfSharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:PdfSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
@@ -286,7 +315,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ClientApplicationSetup"
         "ProductCode" = "8:{4D9FA3A8-90D1-43CF-9A17-9B10A832F89D}"
-        "PackageCode" = "8:{3BD93C56-EB73-4F0A-8768-CAC6FDA31A86}"
+        "PackageCode" = "8:{BF77192F-6F0A-4FC0-9546-3B0AE9592B8A}"
         "UpgradeCode" = "8:{448EA8DB-839E-4946-B12E-8E6D6E5B230C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

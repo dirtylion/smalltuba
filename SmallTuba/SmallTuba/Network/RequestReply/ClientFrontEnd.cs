@@ -61,7 +61,7 @@ namespace SmallTuba.Network.RequestReply
 			while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
 			{
 				// Wait for reply
-				object result = this.udpMulticast.Receive(200);
+				object result = this.udpMulticast.Receive(500);
 				if (result == null)
 				{
 					// No reply - resend...

@@ -121,7 +121,11 @@
 		/// <param name="clientName">The id of the client.</param>
 		public bool RegisterVoteRequestHandler(string clientName, Person person) {
 			Contract.Requires(person != null);
-			Contract.Ensures(VoterIdToPersonRequestHandler("", person.VoterId).Exists && !VoterIdToPersonRequestHandler("", person.VoterId).Voted ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
+			Contract.Ensures(Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Exists) && !Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Voted) ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
+
+            Console.Out.WriteLine("Exists: " + VoterIdToPersonRequestHandler("", person.VoterId).Exists);
+            Console.Out.WriteLine("Can vote: " + !VoterIdToPersonRequestHandler("", person.VoterId).Voted);
+            Console.Out.WriteLine("true == trur? " + (true == true));
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
@@ -161,7 +165,7 @@
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		public bool UnregisterVoteRequestHandler(string clientName, Person person) {
 			Contract.Requires(person != null);
-			Contract.Ensures(VoterIdToPersonRequestHandler("", person.VoterId).Exists && VoterIdToPersonRequestHandler("", person.VoterId).Voted ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
+			Contract.Ensures(Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Exists) && Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Voted) ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
