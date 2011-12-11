@@ -1,0 +1,2885 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmallTuba.Moles</name>
+    </assembly>
+    <members>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractDataAccessObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.#ctor(SmallTuba.Entities.Abstracts.AbstractDataAccessObject)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractDataAccessObject.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.DeleteInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractDataAccessObject.Delete(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.LoadHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractDataAccessObject.Load(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.SaveHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractDataAccessObject.Save(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.AllInstances.DeleteInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractDataAccessObject.Delete(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.AllInstances.LoadHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractDataAccessObject.Load(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractDataAccessObject.AllInstances.SaveHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractDataAccessObject.Save(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractEntity"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.#ctor(SmallTuba.Entities.Abstracts.AbstractEntity)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.DbIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractEntity.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.DbIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractEntity.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.Delete">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Delete"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.Exists">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Exists"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.LoadHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Load(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.Save">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Save"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.AllInstances.DbIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractEntity.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.AllInstances.DbIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractEntity.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.AllInstances.Delete">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Delete"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.AllInstances.Exists">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Exists"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.AllInstances.LoadHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Load(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractEntity.AllInstances.Save">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractEntity.Save"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractResource`1"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.#ctor(SmallTuba.Entities.Abstracts.AbstractResource{`0})">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.GetCount">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.GetCount"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.GetCountTotal">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.GetCountTotal"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.SetGroupByString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetGroupBy(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.SetLimitInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetLimit(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.SetOffsetInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetOffset(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.SetOrderStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetOrder(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.AllInstances.GetCount">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.GetCount"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.AllInstances.GetCountTotal">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.GetCountTotal"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.AllInstances.SetGroupByString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetGroupBy(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.AllInstances.SetLimitInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetLimit(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.AllInstances.SetOffsetInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetOffset(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractResource`1.AllInstances.SetOrderStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.SetOrder(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractValueObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.#ctor(SmallTuba.Entities.Abstracts.AbstractValueObject)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractValueObject.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.GetValues">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractValueObject.GetValues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.ItemGetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractValueObject.Item(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.ItemSetStringObject">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractValueObject.Item(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.SetValuesHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractValueObject.SetValues(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.AllInstances.GetValues">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractValueObject.GetValues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.AllInstances.ItemGetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractValueObject.Item(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.AllInstances.ItemSetStringObject">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Abstracts.AbstractValueObject.Item(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.MAbstractValueObject.AllInstances.SetValuesHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Abstracts.AbstractValueObject.SetValues(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MAddress">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.Address"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MAddress.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MAddress.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MAddress.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MAddress.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MAddress.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd">
+            <summary>Mole type of <see cref="T:SmallTuba.Network.RequestReply.ClientFrontEnd"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.#ctor(SmallTuba.Network.RequestReply.ClientFrontEnd)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.ConstructorString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ClientFrontEnd.#ctor(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.SendRequestObjectInt64">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ClientFrontEnd.SendRequest(System.Object,System.Int64)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MClientFrontEnd.AllInstances.SendRequestObjectInt64">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ClientFrontEnd.SendRequest(System.Object,System.Int64)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Database.Moles.MConnector">
+            <summary>Mole type of <see cref="T:SmallTuba.Database.Connector"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MConnector.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MConnector.#ctor(SmallTuba.Database.Connector)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MConnector.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MConnector.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.Connect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.Connect"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.Disconnect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.Disconnect"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.ExecuteNoneQueryString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.ExecuteNoneQuery(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.ExecuteQueryString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.ExecuteQuery(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.GetCount">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.GetCount"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.GetCountTotal">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.GetCountTotal"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.IsConnected">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.IsConnected"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Database.Moles.MConnector.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.AllInstances.Connect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.Connect"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.AllInstances.Disconnect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.Disconnect"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.AllInstances.ExecuteNoneQueryString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.ExecuteNoneQuery(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.AllInstances.ExecuteQueryString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.ExecuteQuery(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.AllInstances.GetCount">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.GetCount"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.AllInstances.GetCountTotal">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.GetCountTotal"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MConnector.AllInstances.IsConnected">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.Connector.IsConnected"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.DataGenerator.Moles.MDataGenerator">
+            <summary>Mole type of <see cref="T:SmallTuba.DataGenerator.DataGenerator"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataGenerator.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataGenerator.#ctor(SmallTuba.DataGenerator.DataGenerator)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataGenerator.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataGenerator.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.FileDestinationGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.FileDestination"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.FileDestinationSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.FileDestination"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.Generate">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.Generate"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.GenerateMunicipalitesXmlDocument">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.GenerateMunicipalites(System.Xml.XmlDocument)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.GeneratePollingVenuesXmlDocumentStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.GeneratePollingVenues(System.Xml.XmlDocument,System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.GenerateVotersXmlDocumentStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.GenerateVoters(System.Xml.XmlDocument,System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.NumberOfMunicipalitiesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfMunicipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.NumberOfMunicipalitiesSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfMunicipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.NumberOfPollingVenuesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfPollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.NumberOfPollingVenuesSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfPollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.NumberOfVotersGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfVoters"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.NumberOfVotersSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfVoters"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.FileDestinationGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.FileDestination"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.FileDestinationSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.FileDestination"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.Generate">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.Generate"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.GenerateMunicipalitesXmlDocument">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.GenerateMunicipalites(System.Xml.XmlDocument)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.GeneratePollingVenuesXmlDocumentStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.GeneratePollingVenues(System.Xml.XmlDocument,System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.GenerateVotersXmlDocumentStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataGenerator.GenerateVoters(System.Xml.XmlDocument,System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.NumberOfMunicipalitiesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfMunicipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.NumberOfMunicipalitiesSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfMunicipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.NumberOfPollingVenuesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfPollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.NumberOfPollingVenuesSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfPollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.NumberOfVotersGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfVoters"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataGenerator.AllInstances.NumberOfVotersSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataGenerator.NumberOfVoters"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.DataGenerator.Moles.MDataSource">
+            <summary>Mole type of <see cref="T:SmallTuba.DataGenerator.DataSource"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataSource.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataSource.#ctor(SmallTuba.DataGenerator.DataSource)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataSource.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.MDataSource.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.FirstNamesMenGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.FirstNamesMenSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.FirstNamesWomenGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.FirstNamesWomenSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.GenerateBirthday">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateBirthday"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.GenerateCprMen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateCprMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.GenerateCprWomen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateCprWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.GenerateStreet">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateStreet"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.GetMunicipality">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GetMunicipality"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.GetPollingVenueStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GetPollingVenue(System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.GetVoterStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GetVoter(System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LastNamesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.LastNames"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LastNamesSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.LastNames"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.Load">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.Load"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LoadFirstNamesMen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadFirstNamesMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LoadFirstNamesWomen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadFirstNamesWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LoadLastNames">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadLastNames"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LoadMunicipalities">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadMunicipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LoadPollingVenues">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadPollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.LoadStreets">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadStreets"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.MunicipalitiesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Municipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.MunicipalitiesSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Municipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.PollingVenuesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.PollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.PollingVenuesSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.PollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.RandomNumberInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.RandomNumber(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.RandomNumberInt32Int32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.RandomNumber(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.StreetsGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Streets"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.StreetsSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Streets"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.FirstNamesMenGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.FirstNamesMenSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.FirstNamesWomenGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.FirstNamesWomenSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.FirstNamesWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.GenerateBirthday">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateBirthday"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.GenerateCprMen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateCprMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.GenerateCprWomen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateCprWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.GenerateStreet">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GenerateStreet"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.GetMunicipality">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GetMunicipality"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.GetPollingVenueStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GetPollingVenue(System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.GetVoterStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.GetVoter(System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LastNamesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.LastNames"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LastNamesSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.LastNames"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.Load">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.Load"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LoadFirstNamesMen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadFirstNamesMen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LoadFirstNamesWomen">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadFirstNamesWomen"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LoadLastNames">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadLastNames"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LoadMunicipalities">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadMunicipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LoadPollingVenues">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadPollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.LoadStreets">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.LoadStreets"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.MunicipalitiesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Municipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.MunicipalitiesSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Municipalities"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.PollingVenuesGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.PollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.PollingVenuesSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.PollingVenues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.RandomNumberInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.RandomNumber(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.RandomNumberInt32Int32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.DataGenerator.DataSource.RandomNumber(System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.StreetsGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Streets"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.MDataSource.AllInstances.StreetsSetListOfString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.DataGenerator.DataSource.Streets"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Utility.Moles.MDebug">
+            <summary>Mole type of <see cref="T:SmallTuba.Utility.Debug"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MDebug.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MDebug.#ctor(SmallTuba.Utility.Debug)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MDebug.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MDebug.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.MDebug.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.MDebug.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Utility.Debug.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Utility.Moles.MDebug.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogDataAccessObject">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.LogDataAccessObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogDataAccessObject.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogDataAccessObject.#ctor(SmallTuba.Entities.LogDataAccessObject)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogDataAccessObject.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogDataAccessObject.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogDataAccessObject.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogDataAccessObject.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogDataAccessObject.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogDataAccessObject.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogEntity">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.LogEntity"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogEntity.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogEntity.#ctor(SmallTuba.Entities.LogEntity)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogEntity.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogEntity.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.ActionGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Action"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.ActionSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Action"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.ClientGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Client"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.ClientSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Client"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogEntity.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.ConstructorHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogEntity.#ctor(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.PersonDbIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PersonDbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.PersonDbIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PersonDbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.PollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.PollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.TimestampGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Timestamp"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.TimestampSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Timestamp"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogEntity.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.ActionGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Action"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.ActionSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Action"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.ClientGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Client"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.ClientSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Client"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.PersonDbIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PersonDbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.PersonDbIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PersonDbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.PollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.PollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.TimestampGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Timestamp"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogEntity.AllInstances.TimestampSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.LogEntity.Timestamp"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogResource">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.LogResource"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogResource.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogResource.#ctor(SmallTuba.Entities.LogResource)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogResource.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogResource.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogResource.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogResource.Build">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogResource.Build"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogResource.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogResource.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogResource.SetPersonPersonEntity">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogResource.SetPerson(SmallTuba.Entities.PersonEntity)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogResource.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogResource.AllInstances.Build">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogResource.Build"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogResource.AllInstances.SetPersonPersonEntity">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogResource.SetPerson(SmallTuba.Entities.PersonEntity)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogValueObject">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.LogValueObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogValueObject.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogValueObject.#ctor(SmallTuba.Entities.LogValueObject)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogValueObject.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MLogValueObject.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogValueObject.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MLogValueObject.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.LogValueObject.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MLogValueObject.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPerson">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.Person"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPerson.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPerson.#ctor(SmallTuba.Entities.Person)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPerson.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPerson.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.CityGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.City"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.CitySetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.City"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.CprGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.CprSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.CprSort">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.CprSort"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.DbIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.DbIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.EqualsObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.Equals(System.Object)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.EqualsPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.Equals(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.ExistsGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Exists"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.ExistsSetBoolean">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Exists"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.FirstNameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.FirstName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.FirstNameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.FirstName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.GetHashCode">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.GetHashCode"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.LastNameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.LastName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.LastNameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.LastName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.PollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.PollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.PollingVenueGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.PollingVenueSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.StreetGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Street"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.StreetSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Street"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.ToString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.ToString"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VotedGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Voted"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VotedPollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedPollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VotedPollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedPollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VotedSetBoolean">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Voted"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VotedTimeGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedTime"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VotedTimeSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedTime"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VoterIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VoterId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.VoterIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VoterId"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPerson.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.CityGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.City"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.CitySetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.City"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.CprGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.CprSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.DbIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.DbIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.DbId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.EqualsObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.Equals(System.Object)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.EqualsPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.Equals(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.ExistsGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Exists"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.ExistsSetBoolean">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Exists"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.FirstNameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.FirstName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.FirstNameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.FirstName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.GetHashCode01">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.GetHashCode"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.LastNameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.LastName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.LastNameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.LastName"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.PollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.PollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.PollingVenueGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.PollingVenueSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.StreetGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Street"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.StreetSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Street"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.ToString01">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.Person.ToString"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VotedGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Voted"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VotedPollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedPollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VotedPollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedPollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VotedSetBoolean">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.Voted"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VotedTimeGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedTime"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VotedTimeSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VotedTime"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VoterIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VoterId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPerson.AllInstances.VoterIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.Person.VoterId"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonDataAccessObject">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.PersonDataAccessObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonDataAccessObject.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonDataAccessObject.#ctor(SmallTuba.Entities.PersonDataAccessObject)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonDataAccessObject.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonDataAccessObject.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonDataAccessObject.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonDataAccessObject.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonDataAccessObject.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonDataAccessObject.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonEntity">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.PersonEntity"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonEntity.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonEntity.#ctor(SmallTuba.Entities.PersonEntity)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonEntity.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonEntity.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.ConstructorHashtable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.#ctor(System.Collections.Hashtable)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.CprGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.CprSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.FirstnameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Firstname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.FirstnameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Firstname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.GetLogs">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.GetLogs"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.GetMostRecentLog">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.GetMostRecentLog"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.LastnameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Lastname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.LastnameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Lastname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.PollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.PollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.PollingVenueGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.PollingVenueSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.ToObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.ToObject"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.VotedGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Voted"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.VotedPollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VotedPollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.VotedTimeGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VotedTime"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.VoterIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VoterId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.VoterIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VoterId"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonEntity.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.CprGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.CprSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Cpr"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.FirstnameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Firstname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.FirstnameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Firstname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.GetLogs">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.GetLogs"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.GetMostRecentLog">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.GetMostRecentLog"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.LastnameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Lastname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.LastnameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Lastname"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.PollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.PollingTableSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.PollingVenueGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.PollingVenueSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.PollingVenue"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.ToObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonEntity.ToObject"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.VotedGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.Voted"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.VotedPollingTableGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VotedPollingTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.VotedTimeGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VotedTime"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.VoterIdGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VoterId"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonEntity.AllInstances.VoterIdSetInt32">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Entities.PersonEntity.VoterId"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonResource">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.PersonResource"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonResource.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonResource.#ctor(SmallTuba.Entities.PersonResource)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonResource.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonResource.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.Build">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.Build"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.SetCprInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetCpr(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.SetFirstnameString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetFirstname(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.SetGenderInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetGender(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.SetLastnameString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetLastname(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.SetPollingTableString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetPollingTable(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.SetPollingVenueString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetPollingVenue(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.SetVoterIdInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetVoterId(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonResource.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.Build">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.Build"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.SetCprInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetCpr(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.SetFirstnameString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetFirstname(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.SetGenderInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetGender(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.SetLastnameString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetLastname(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.SetPollingTableString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetPollingTable(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.SetPollingVenueString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetPollingVenue(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonResource.AllInstances.SetVoterIdInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonResource.SetVoterId(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonValueObject">
+            <summary>Mole type of <see cref="T:SmallTuba.Entities.PersonValueObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonValueObject.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonValueObject.#ctor(SmallTuba.Entities.PersonValueObject)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonValueObject.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.MPersonValueObject.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonValueObject.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.MPersonValueObject.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Entities.PersonValueObject.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.MPersonValueObject.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:SmallTuba.PdfGenerator.Moles.MPollingCards">
+            <summary>Mole type of <see cref="T:SmallTuba.PdfGenerator.PollingCards"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MPollingCards.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MPollingCards.#ctor(SmallTuba.PdfGenerator.PollingCards)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MPollingCards.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MPollingCards.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AddWatermarkXGraphics">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.AddWatermark(PdfSharp.Drawing.XGraphics)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.BarcodeXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.Barcode(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.ConstructorStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.#ctor(System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.CreatePollingCardPersonAddressAddress">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.CreatePollingCard(SmallTuba.Entities.Person,SmallTuba.Entities.Address,SmallTuba.Entities.Address)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.DescriptionsXGraphics">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.Descriptions(PdfSharp.Drawing.XGraphics)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.DrawGraphicsXGraphics">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.DrawGraphics(PdfSharp.Drawing.XGraphics)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.ElectionDetailsXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.ElectionDetails(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.ElectionTimeXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.ElectionTime(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.FromFieldXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.FromField(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.PollingTableXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.PollingTable(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.PollingVenueXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.PollingVenue(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.SaveToDiskString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.SaveToDisk(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.ToFieldXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.ToField(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.VotingNumberXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.VotingNumber(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.AddWatermarkXGraphics">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.AddWatermark(PdfSharp.Drawing.XGraphics)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.BarcodeXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.Barcode(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.CreatePollingCardPersonAddressAddress">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.CreatePollingCard(SmallTuba.Entities.Person,SmallTuba.Entities.Address,SmallTuba.Entities.Address)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.DescriptionsXGraphics">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.Descriptions(PdfSharp.Drawing.XGraphics)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.DrawGraphicsXGraphics">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.DrawGraphics(PdfSharp.Drawing.XGraphics)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.ElectionDetailsXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.ElectionDetails(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.ElectionTimeXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.ElectionTime(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.FromFieldXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.FromField(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.PollingTableXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.PollingTable(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.PollingVenueXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.PollingVenue(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.SaveToDiskString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.SaveToDisk(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.ToFieldXGraphicsStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.ToField(PdfSharp.Drawing.XGraphics,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MPollingCards.AllInstances.VotingNumberXGraphicsString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.PollingCards.VotingNumber(PdfSharp.Drawing.XGraphics,System.String)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Database.Moles.MQueryBuilder">
+            <summary>Mole type of <see cref="T:SmallTuba.Database.QueryBuilder"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MQueryBuilder.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MQueryBuilder.#ctor(SmallTuba.Database.QueryBuilder)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MQueryBuilder.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.MQueryBuilder.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AddConditionString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddCondition(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AddConditionStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddCondition(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AddConditionStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddCondition(System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AddOrderString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddOrder(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AddOrderStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddOrder(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AddOrderStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddOrder(System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.Assemble">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.Assemble"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleColumns">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleColumns"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleConditions">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleConditions"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleDelete">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleDelete"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleGroupBy">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleGroupBy"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleInsert">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleInsert"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleLimit">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleLimit"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleOffset">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleOffset"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleOrders">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleOrders"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleSelect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleSelect"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleTable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleUpdate">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleUpdate"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AssembleValues">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleValues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.Clear">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.Clear"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.ExecuteNoneQuery">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.ExecuteNoneQuery"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.ExecuteQuery">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.ExecuteQuery"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.GetCount">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.GetCount"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.GetCountTotal">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.GetCountTotal"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.GetQuery">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.GetQuery"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.RemoveConditionString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.RemoveCondition(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.RemoveOrderString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.RemoveOrder(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.SetColumnsStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetColumns(System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.SetGroupByString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetGroupBy(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.SetLimitInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetLimit(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.SetOffsetInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetOffset(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.SetTableString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetTable(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.SetTypeString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetType(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.SetValuesStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetValues(System.String[])"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Database.Moles.MQueryBuilder.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AddConditionString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddCondition(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AddConditionStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddCondition(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AddConditionStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddCondition(System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AddOrderString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddOrder(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AddOrderStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddOrder(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AddOrderStringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AddOrder(System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.Assemble">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.Assemble"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleColumns">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleColumns"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleConditions">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleConditions"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleDelete">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleDelete"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleGroupBy">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleGroupBy"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleInsert">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleInsert"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleLimit">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleLimit"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleOffset">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleOffset"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleOrders">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleOrders"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleSelect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleSelect"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleTable">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleTable"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleUpdate">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleUpdate"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.AssembleValues">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.AssembleValues"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.Clear">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.Clear"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.ExecuteNoneQuery">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.ExecuteNoneQuery"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.ExecuteQuery">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.ExecuteQuery"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.GetCount">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.GetCount"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.GetCountTotal">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.GetCountTotal"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.GetQuery">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.GetQuery"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.RemoveConditionString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.RemoveCondition(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.RemoveOrderString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.RemoveOrder(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.SetColumnsStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetColumns(System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.SetGroupByString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetGroupBy(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.SetLimitInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetLimit(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.SetOffsetInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetOffset(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.SetTableString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetTable(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.SetTypeString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetType(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.MQueryBuilder.AllInstances.SetValuesStringArray">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Database.QueryBuilder.SetValues(System.String[])"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd">
+            <summary>Mole type of <see cref="T:SmallTuba.Network.RequestReply.ServerFrontEnd"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.#ctor(SmallTuba.Network.RequestReply.ServerFrontEnd)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ServerFrontEnd.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.ListenForCallsInt64">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ServerFrontEnd.ListenForCalls(System.Int64)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.SetRequestHandlerServerFrontEndRequestHandler">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ServerFrontEnd.SetRequestHandler(SmallTuba.Network.RequestReply.ServerFrontEnd.RequestHandler)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.AllInstances.ListenForCallsInt64">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ServerFrontEnd.ListenForCalls(System.Int64)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.MServerFrontEnd.AllInstances.SetRequestHandlerServerFrontEndRequestHandler">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RequestReply.ServerFrontEnd.SetRequestHandler(SmallTuba.Network.RequestReply.ServerFrontEnd.RequestHandler)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Utility.Moles.MTimeConverter">
+            <summary>Mole type of <see cref="T:SmallTuba.Utility.TimeConverter"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MTimeConverter.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MTimeConverter.#ctor(SmallTuba.Utility.TimeConverter)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MTimeConverter.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.MTimeConverter.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.MTimeConverter.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.MTimeConverter.Constructor">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Utility.TimeConverter.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.MTimeConverter.ConvertFromUnixTimestampDouble">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Utility.TimeConverter.ConvertFromUnixTimestamp(System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.MTimeConverter.ConvertToUnixTimestampDateTime">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Utility.TimeConverter.ConvertToUnixTimestamp(System.DateTime)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Utility.Moles.MTimeConverter.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:SmallTuba.Network.UDP.Moles.MUDPMulticast">
+            <summary>Mole type of <see cref="T:SmallTuba.Network.UDP.UDPMulticast"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.UDP.Moles.MUDPMulticast.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Network.UDP.Moles.MUDPMulticast.#ctor(SmallTuba.Network.UDP.UDPMulticast)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.UDP.Moles.MUDPMulticast.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Network.UDP.Moles.MUDPMulticast.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.MUDPMulticast.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.MUDPMulticast.ConstructorInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.UDP.UDPMulticast.#ctor(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.MUDPMulticast.ReceiveInt64">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.UDP.UDPMulticast.Receive(System.Int64)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.MUDPMulticast.SendObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.UDP.UDPMulticast.Send(System.Object)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.UDP.Moles.MUDPMulticast.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.MUDPMulticast.AllInstances.ReceiveInt64">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.UDP.UDPMulticast.Receive(System.Int64)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.MUDPMulticast.AllInstances.SendObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.UDP.UDPMulticast.Send(System.Object)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.RPC.Moles.MVoterClient">
+            <summary>Mole type of <see cref="T:SmallTuba.Network.RPC.VoterClient"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterClient.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterClient.#ctor(SmallTuba.Network.RPC.VoterClient)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterClient.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterClient.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.Connected">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.Connected"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.ConstructorString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.#ctor(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.GetPersonFromCprInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.GetPersonFromCpr(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.GetPersonFromIdInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.GetPersonFromId(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.NameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Network.RPC.VoterClient.Name"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.NameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Network.RPC.VoterClient.Name"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.RegisterVoterPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.RegisterVoter(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.UnregisterVoterPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.UnregisterVoter(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.ValidTables">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.ValidTables"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient._InvariantMethod">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.$InvariantMethod$"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.Connected">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.Connected"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.GetPersonFromCprInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.GetPersonFromCpr(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.GetPersonFromIdInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.GetPersonFromId(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.NameGet">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Network.RPC.VoterClient.Name"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.NameSetString">
+            <summary>Sets the mole of <see cref="P:SmallTuba.Network.RPC.VoterClient.Name"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.RegisterVoterPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.RegisterVoter(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.UnregisterVoterPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.UnregisterVoter(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances.ValidTables">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.ValidTables"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterClient.AllInstances._InvariantMethod">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterClient.$InvariantMethod$"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.PdfGenerator.Moles.MVoterList">
+            <summary>Mole type of <see cref="T:SmallTuba.PdfGenerator.VoterList"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MVoterList.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MVoterList.#ctor(SmallTuba.PdfGenerator.VoterList)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MVoterList.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.MVoterList.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AddPage">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.AddPage"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AddPageNumbers">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.AddPageNumbers"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AddVoterPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.AddVoter(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.ConstructorUInt32StringStringString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.#ctor(System.UInt32,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.CreateFont">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.CreateFont"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.DrawColumnDescriptionsXRect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawColumnDescriptions(PdfSharp.Drawing.XRect)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.DrawElectionInformation">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawElectionInformation"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.DrawInnerFrameXRect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawInnerFrame(PdfSharp.Drawing.XRect)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.DrawOuterFramePdfPage">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawOuterFrame(PdfSharp.Pdf.PdfPage)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.DrawTemplatePdfPage">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawTemplate(PdfSharp.Pdf.PdfPage)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.SaveToDiskString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.SaveToDisk(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.SetDescriptionFieldsPostitionsXRect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.SetDescriptionFieldsPostitions(PdfSharp.Drawing.XRect)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.AddPage">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.AddPage"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.AddPageNumbers">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.AddPageNumbers"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.AddVoterPerson">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.AddVoter(SmallTuba.Entities.Person)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.CreateFont">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.CreateFont"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.DrawColumnDescriptionsXRect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawColumnDescriptions(PdfSharp.Drawing.XRect)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.DrawElectionInformation">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawElectionInformation"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.DrawInnerFrameXRect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawInnerFrame(PdfSharp.Drawing.XRect)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.DrawOuterFramePdfPage">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawOuterFrame(PdfSharp.Pdf.PdfPage)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.DrawTemplatePdfPage">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.DrawTemplate(PdfSharp.Pdf.PdfPage)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.SaveToDiskString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.SaveToDisk(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.MVoterList.AllInstances.SetDescriptionFieldsPostitionsXRect">
+            <summary>Sets the mole of <see cref="M:SmallTuba.PdfGenerator.VoterList.SetDescriptionFieldsPostitions(PdfSharp.Drawing.XRect)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.RPC.Moles.MVoterServer">
+            <summary>Mole type of <see cref="T:SmallTuba.Network.RPC.VoterServer"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterServer.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterServer.#ctor(SmallTuba.Network.RPC.VoterServer)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterServer.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.MVoterServer.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.ConstructorString">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.#ctor(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.ListenForCallsInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.ListenForCalls(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.RequestHandlerObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.RequestHandler(System.Object)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.SetCprToPersonRequestVoterServerCprToPersonRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetCprToPersonRequest(SmallTuba.Network.RPC.VoterServer.CprToPersonRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.SetRegisterVoteRequestVoterServerRegisterVoteRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetRegisterVoteRequest(SmallTuba.Network.RPC.VoterServer.RegisterVoteRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.SetUnregisterVoteRequestVoterServerUnregisterVoteRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetUnregisterVoteRequest(SmallTuba.Network.RPC.VoterServer.UnregisterVoteRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.SetValidTableRequestVoterServerValidTableRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetValidTableRequest(SmallTuba.Network.RPC.VoterServer.ValidTableRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.SetVoterIdToPersonRequestVoterServerVoterIdToPersonRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetVoterIdToPersonRequest(SmallTuba.Network.RPC.VoterServer.VoterIdToPersonRequest)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances.ListenForCallsInt32">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.ListenForCalls(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances.RequestHandlerObject">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.RequestHandler(System.Object)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances.SetCprToPersonRequestVoterServerCprToPersonRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetCprToPersonRequest(SmallTuba.Network.RPC.VoterServer.CprToPersonRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances.SetRegisterVoteRequestVoterServerRegisterVoteRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetRegisterVoteRequest(SmallTuba.Network.RPC.VoterServer.RegisterVoteRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances.SetUnregisterVoteRequestVoterServerUnregisterVoteRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetUnregisterVoteRequest(SmallTuba.Network.RPC.VoterServer.UnregisterVoteRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances.SetValidTableRequestVoterServerValidTableRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetValidTableRequest(SmallTuba.Network.RPC.VoterServer.ValidTableRequest)"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.MVoterServer.AllInstances.SetVoterIdToPersonRequestVoterServerVoterIdToPersonRequest">
+            <summary>Sets the mole of <see cref="M:SmallTuba.Network.RPC.VoterServer.SetVoterIdToPersonRequest(SmallTuba.Network.RPC.VoterServer.VoterIdToPersonRequest)"/>
+            </summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.SAbstractDataAccessObject">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractDataAccessObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractDataAccessObject.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractDataAccessObject.InitializeStub">
+            <summary>Initializes a new instance of type SAbstractDataAccessObject</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractDataAccessObject.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractDataAccessObject.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.SAbstractEntity">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractEntity"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractEntity.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractEntity.InitializeStub">
+            <summary>Initializes a new instance of type SAbstractEntity</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractEntity.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractEntity.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.SAbstractResource`1">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractResource`1"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractResource`1.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractResource`1.Build">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.Build"/>
+            </summary>
+        </member>
+        <member name="F:SmallTuba.Entities.Abstracts.Moles.SAbstractResource`1.Build01">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Abstracts.AbstractResource`1.Build"/>
+            </summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractResource`1.InitializeStub">
+            <summary>Initializes a new instance of type SAbstractResource</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractResource`1.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractResource`1.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Abstracts.Moles.SAbstractValueObject">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.Abstracts.AbstractValueObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractValueObject.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Abstracts.Moles.SAbstractValueObject.InitializeStub">
+            <summary>Initializes a new instance of type SAbstractValueObject</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractValueObject.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Abstracts.Moles.SAbstractValueObject.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Network.RequestReply.Moles.SClientFrontEnd">
+            <summary>Stub type of <see cref="T:SmallTuba.Network.RequestReply.ClientFrontEnd"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.SClientFrontEnd.#ctor(System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.SClientFrontEnd.InitializeStub">
+            <summary>Initializes a new instance of type SClientFrontEnd</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.SClientFrontEnd.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.SClientFrontEnd.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Database.Moles.SConnector">
+            <summary>Stub type of <see cref="T:SmallTuba.Database.Connector"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.SConnector.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.SConnector.InitializeStub">
+            <summary>Initializes a new instance of type SConnector</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.SConnector.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.SConnector.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.DataGenerator.Moles.SDataGenerator">
+            <summary>Stub type of <see cref="T:SmallTuba.DataGenerator.DataGenerator"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.SDataGenerator.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.SDataGenerator.InitializeStub">
+            <summary>Initializes a new instance of type SDataGenerator</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.SDataGenerator.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.SDataGenerator.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.DataGenerator.Moles.SDataSource">
+            <summary>Stub type of <see cref="T:SmallTuba.DataGenerator.DataSource"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.SDataSource.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.DataGenerator.Moles.SDataSource.InitializeStub">
+            <summary>Initializes a new instance of type SDataSource</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.SDataSource.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.DataGenerator.Moles.SDataSource.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Utility.Moles.SDebug">
+            <summary>Stub type of <see cref="T:SmallTuba.Utility.Debug"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.SDebug.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.SDebug.InitializeStub">
+            <summary>Initializes a new instance of type SDebug</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.SDebug.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.SDebug.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SLogDataAccessObject">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.LogDataAccessObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogDataAccessObject.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogDataAccessObject.InitializeStub">
+            <summary>Initializes a new instance of type SLogDataAccessObject</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogDataAccessObject.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogDataAccessObject.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SLogEntity">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.LogEntity"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogEntity.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogEntity.#ctor(System.Collections.Hashtable)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogEntity.InitializeStub">
+            <summary>Initializes a new instance of type SLogEntity</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogEntity.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogEntity.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SLogResource">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.LogResource"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogResource.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogResource.Build">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.LogResource.Build"/>
+            </summary>
+        </member>
+        <member name="F:SmallTuba.Entities.Moles.SLogResource.Build01">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.LogResource.Build"/>
+            </summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogResource.InitializeStub">
+            <summary>Initializes a new instance of type SLogResource</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogResource.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogResource.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SLogValueObject">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.LogValueObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogValueObject.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SLogValueObject.InitializeStub">
+            <summary>Initializes a new instance of type SLogValueObject</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogValueObject.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SLogValueObject.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SPerson">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.Person"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPerson.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPerson.Equals(System.Object)">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Person.Equals(System.Object)"/>
+            </summary>
+        </member>
+        <member name="F:SmallTuba.Entities.Moles.SPerson.EqualsObject">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Person.Equals(System.Object)"/>
+            </summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPerson.GetHashCode">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Person.GetHashCode"/>
+            </summary>
+        </member>
+        <member name="F:SmallTuba.Entities.Moles.SPerson.GetHashCode01">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Person.GetHashCode"/>
+            </summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPerson.InitializeStub">
+            <summary>Initializes a new instance of type SPerson</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPerson.ToString">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Person.ToString"/>
+            </summary>
+        </member>
+        <member name="F:SmallTuba.Entities.Moles.SPerson.ToString01">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.Person.ToString"/>
+            </summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPerson.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPerson.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SPersonDataAccessObject">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.PersonDataAccessObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonDataAccessObject.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonDataAccessObject.InitializeStub">
+            <summary>Initializes a new instance of type SPersonDataAccessObject</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonDataAccessObject.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonDataAccessObject.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SPersonEntity">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.PersonEntity"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonEntity.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonEntity.#ctor(System.Collections.Hashtable)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonEntity.InitializeStub">
+            <summary>Initializes a new instance of type SPersonEntity</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonEntity.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonEntity.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SPersonResource">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.PersonResource"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonResource.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonResource.Build">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.PersonResource.Build"/>
+            </summary>
+        </member>
+        <member name="F:SmallTuba.Entities.Moles.SPersonResource.Build01">
+            <summary>Sets the stub of <see cref="M:SmallTuba.Entities.PersonResource.Build"/>
+            </summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonResource.InitializeStub">
+            <summary>Initializes a new instance of type SPersonResource</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonResource.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonResource.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Entities.Moles.SPersonValueObject">
+            <summary>Stub type of <see cref="T:SmallTuba.Entities.PersonValueObject"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonValueObject.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Entities.Moles.SPersonValueObject.InitializeStub">
+            <summary>Initializes a new instance of type SPersonValueObject</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonValueObject.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Entities.Moles.SPersonValueObject.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.PdfGenerator.Moles.SPollingCards">
+            <summary>Stub type of <see cref="T:SmallTuba.PdfGenerator.PollingCards"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.SPollingCards.#ctor(System.String,System.String,System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.SPollingCards.InitializeStub">
+            <summary>Initializes a new instance of type SPollingCards</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.SPollingCards.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.SPollingCards.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Database.Moles.SQueryBuilder">
+            <summary>Stub type of <see cref="T:SmallTuba.Database.QueryBuilder"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.SQueryBuilder.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Database.Moles.SQueryBuilder.InitializeStub">
+            <summary>Initializes a new instance of type SQueryBuilder</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.SQueryBuilder.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Database.Moles.SQueryBuilder.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Network.RequestReply.Moles.SServerFrontEnd">
+            <summary>Stub type of <see cref="T:SmallTuba.Network.RequestReply.ServerFrontEnd"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.SServerFrontEnd.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RequestReply.Moles.SServerFrontEnd.InitializeStub">
+            <summary>Initializes a new instance of type SServerFrontEnd</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.SServerFrontEnd.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RequestReply.Moles.SServerFrontEnd.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Utility.Moles.STimeConverter">
+            <summary>Stub type of <see cref="T:SmallTuba.Utility.TimeConverter"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.STimeConverter.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Utility.Moles.STimeConverter.InitializeStub">
+            <summary>Initializes a new instance of type STimeConverter</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.STimeConverter.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Utility.Moles.STimeConverter.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Network.UDP.Moles.SUDPMulticast">
+            <summary>Stub type of <see cref="T:SmallTuba.Network.UDP.UDPMulticast"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.UDP.Moles.SUDPMulticast.#ctor(System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.UDP.Moles.SUDPMulticast.InitializeStub">
+            <summary>Initializes a new instance of type SUDPMulticast</summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.SUDPMulticast.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Network.UDP.Moles.SUDPMulticast.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Network.RPC.Moles.SVoterClient">
+            <summary>Stub type of <see cref="T:SmallTuba.Network.RPC.VoterClient"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.SVoterClient.#ctor(System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.SVoterClient.InitializeStub">
+            <summary>Initializes a new instance of type SVoterClient</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.SVoterClient.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.SVoterClient.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.PdfGenerator.Moles.SVoterList">
+            <summary>Stub type of <see cref="T:SmallTuba.PdfGenerator.VoterList"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.SVoterList.#ctor(System.UInt32,System.String,System.String,System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.PdfGenerator.Moles.SVoterList.InitializeStub">
+            <summary>Initializes a new instance of type SVoterList</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.SVoterList.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.PdfGenerator.Moles.SVoterList.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:SmallTuba.Network.RPC.Moles.SVoterServer">
+            <summary>Stub type of <see cref="T:SmallTuba.Network.RPC.VoterServer"/>
+            .</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.SVoterServer.#ctor(System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SmallTuba.Network.RPC.Moles.SVoterServer.InitializeStub">
+            <summary>Initializes a new instance of type SVoterServer</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.SVoterServer.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SmallTuba.Network.RPC.Moles.SVoterServer.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+    </members>
+</doc>

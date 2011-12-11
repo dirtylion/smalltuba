@@ -30,17 +30,15 @@ namespace SmallTuba.Network.RPC
 		/// </summary>
 		private readonly ClientFrontEnd clientFrontEnd;
 
-		/// <summary>
-		/// May I have a new client for the voter network with this name?
-		/// </summary>
-		/// <param name="name">The name of the client</param>
-		public VoterClient(string name)
-		{
-			/// TODO: ENABLE CONTRACTS
-			Contract.Requires(false);
-			this.name = name;
-			this.clientFrontEnd = new ClientFrontEnd(name);
-		}
+        /// <summary>
+        /// May I have a new client for the voter network with this name?
+        /// </summary>
+        /// <param name="name">The name of the client</param>
+        public VoterClient(string name)
+        {
+            this.name = name;
+            this.clientFrontEnd = new ClientFrontEnd(name);
+        }
 
 		/// <summary>
 		/// The name of this client

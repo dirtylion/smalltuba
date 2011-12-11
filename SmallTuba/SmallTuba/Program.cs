@@ -1,3 +1,7 @@
+using SmallTuba.Entities;
+using SmallTuba.Network.RPC;
+using SmallTuba.Utility;
+
 namespace SmallTuba {
 	using System;
 
@@ -18,7 +22,7 @@ namespace SmallTuba {
 			dg.Generate();
 
 
-			/*
+			
 			int server = int.Parse(args[0]);
 			if (server == 0)
 			{
@@ -26,40 +30,13 @@ namespace SmallTuba {
 				VoterServer voterServer = new VoterServer(System.Net.Dns.GetHostName());
 				DateTime time = DateTime.Now;
 				int unix = (int)TimeConverter.ConvertToUnixTimestamp(time.ToUniversalTime());
-				voterServer.SetCprToPersonRequest((name,cpr) => new Person(){Cpr = cpr, FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false, Exists = true});
-				voterServer.SetVoterIdToPersonRequest((name,id) => new Person() { Cpr = 42, FirstName = "Kim", DbId = id, LastName = "Larsen", VotedPollingTable = "3", VotedTime = unix, Voted = true, Exists = false});
+				voterServer.SetCprToPersonRequest((name,cpr) => new Person(){Cpr = cpr.ToString(), FirstName = "Ole", DbId = 42, LastName = "Henriksen", VotedPollingTable = "2", VotedTime = unix, Voted = false, Exists = true});
+				voterServer.SetVoterIdToPersonRequest((name,id) => new Person() { Cpr = "42", FirstName = "Kim", DbId = id, LastName = "Larsen", VotedPollingTable = "3", VotedTime = unix, Voted = true, Exists = false});
 				voterServer.SetRegisterVoteRequest((name,person) => !person.Voted);
 				voterServer.SetUnregisterVoteRequest((name,person) => !person.Voted);
 				voterServer.SetValidTableRequest((name) => new string[]{"Table 1", "Table 2", "Table 3"});
 				voterServer.ListenForCalls(0);
 			}
-			else if (server == 1)
-			{
-				VoterClient voterClient = new VoterClient("Client");
-				Console.Out.WriteLine("Connecected to server: " + voterClient.Connected());
-				Console.Out.WriteLine(System.Net.Dns.GetHostName() + " = name");
-				Console.Out.WriteLine("1");
-				Person person = voterClient.GetPersonFromCpr(1);
-				Console.Out.WriteLine("Person: " + person);
-				Console.Out.WriteLine("2");
-				person = voterClient.GetPersonFromId(1);
-				Console.Out.WriteLine("Person: " + person);
-				Console.Out.WriteLine("3");
-				bool b = voterClient.RegisterVoter(new Person() { Cpr = 42, FirstName = "Ole", DbId = 442, LastName = "Henriksen", PollingTable = "2", VotedTime = 0, Voted = false });
-				Console.Out.WriteLine("Register: " + b);
-				Console.Out.WriteLine("4");
-				b = voterClient.UnregisterVoter(new Person() { Cpr = 43, FirstName = "Kim", DbId = 443, LastName = "Larsen", PollingTable = "3", VotedTime = 0, Voted = true });
-				Console.Out.WriteLine("Unregister: " + b);
-				Console.Out.WriteLine("5");
-				string[] arr = voterClient.ValidTables();
-				string result = "";
-				foreach (var temp in arr)
-				{
-					result += temp + ", ";
-				}
-				Console.Out.WriteLine("ValidTables: " + result);
-			}
-			*/
 		}
 	}
 }

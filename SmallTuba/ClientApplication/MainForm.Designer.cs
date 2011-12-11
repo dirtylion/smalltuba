@@ -42,6 +42,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.tableLabel = new System.Windows.Forms.Label();
+            this.votedLabel = new System.Windows.Forms.Label();
+            this.cprLabel = new System.Windows.Forms.Label();
+            this.lastNameLabel = new System.Windows.Forms.Label();
+            this.firstNameLabel = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,12 +56,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.firstNameLabel = new System.Windows.Forms.Label();
-            this.lastNameLabel = new System.Windows.Forms.Label();
-            this.cprLabel = new System.Windows.Forms.Label();
-            this.votedLabel = new System.Windows.Forms.Label();
-            this.tableLabel = new System.Windows.Forms.Label();
-            this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -209,6 +209,66 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Voter";
             // 
+            // timeLabel
+            // 
+            this.timeLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.timeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.timeLabel.Location = new System.Drawing.Point(270, 135);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(100, 23);
+            this.timeLabel.TabIndex = 33;
+            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLabel
+            // 
+            this.tableLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.tableLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tableLabel.Location = new System.Drawing.Point(139, 135);
+            this.tableLabel.Name = "tableLabel";
+            this.tableLabel.Size = new System.Drawing.Size(100, 23);
+            this.tableLabel.TabIndex = 32;
+            this.tableLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // votedLabel
+            // 
+            this.votedLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.votedLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.votedLabel.Location = new System.Drawing.Point(13, 135);
+            this.votedLabel.Name = "votedLabel";
+            this.votedLabel.Size = new System.Drawing.Size(100, 23);
+            this.votedLabel.TabIndex = 31;
+            this.votedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cprLabel
+            // 
+            this.cprLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.cprLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.cprLabel.Location = new System.Drawing.Point(270, 84);
+            this.cprLabel.Name = "cprLabel";
+            this.cprLabel.Size = new System.Drawing.Size(100, 23);
+            this.cprLabel.TabIndex = 30;
+            this.cprLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lastNameLabel
+            // 
+            this.lastNameLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.lastNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lastNameLabel.Location = new System.Drawing.Point(139, 84);
+            this.lastNameLabel.Name = "lastNameLabel";
+            this.lastNameLabel.Size = new System.Drawing.Size(100, 23);
+            this.lastNameLabel.TabIndex = 29;
+            this.lastNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // firstNameLabel
+            // 
+            this.firstNameLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.firstNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.firstNameLabel.Location = new System.Drawing.Point(10, 84);
+            this.firstNameLabel.Name = "firstNameLabel";
+            this.firstNameLabel.Size = new System.Drawing.Size(100, 23);
+            this.firstNameLabel.TabIndex = 28;
+            this.firstNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // idLabel
             // 
             this.idLabel.BackColor = System.Drawing.SystemColors.Window;
@@ -283,66 +343,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "ID";
             // 
-            // firstNameLabel
-            // 
-            this.firstNameLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.firstNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.firstNameLabel.Location = new System.Drawing.Point(10, 84);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(100, 23);
-            this.firstNameLabel.TabIndex = 28;
-            this.firstNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lastNameLabel
-            // 
-            this.lastNameLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.lastNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lastNameLabel.Location = new System.Drawing.Point(139, 84);
-            this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(100, 23);
-            this.lastNameLabel.TabIndex = 29;
-            this.lastNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cprLabel
-            // 
-            this.cprLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.cprLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.cprLabel.Location = new System.Drawing.Point(270, 84);
-            this.cprLabel.Name = "cprLabel";
-            this.cprLabel.Size = new System.Drawing.Size(100, 23);
-            this.cprLabel.TabIndex = 30;
-            this.cprLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // votedLabel
-            // 
-            this.votedLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.votedLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.votedLabel.Location = new System.Drawing.Point(13, 135);
-            this.votedLabel.Name = "votedLabel";
-            this.votedLabel.Size = new System.Drawing.Size(100, 23);
-            this.votedLabel.TabIndex = 31;
-            this.votedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLabel
-            // 
-            this.tableLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.tableLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tableLabel.Location = new System.Drawing.Point(139, 135);
-            this.tableLabel.Name = "tableLabel";
-            this.tableLabel.Size = new System.Drawing.Size(100, 23);
-            this.tableLabel.TabIndex = 32;
-            this.tableLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // timeLabel
-            // 
-            this.timeLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.timeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.timeLabel.Location = new System.Drawing.Point(270, 135);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(100, 23);
-            this.timeLabel.TabIndex = 33;
-            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,7 +352,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Digital Voter Registration System";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

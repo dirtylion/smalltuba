@@ -129,11 +129,11 @@ namespace ClientApplication
             {
                 model.Log.Add(new ClientLog(currentVoter, "registered"));
                 ClearVoter();
-                MessageBox.Show("Succes!!!");
+                MessageBox.Show("The voter was registered succesfully");
             }
             else
             {
-                MessageBox.Show("Fail!!!");
+                MessageBox.Show("The voter could not be registered!!!");
             }
         }
 
@@ -143,13 +143,12 @@ namespace ClientApplication
             {
                 model.Log.Add(new ClientLog(currentVoter, "unregistered"));
                 ClearVoter();
-                MessageBox.Show("Succes!!!");
+                MessageBox.Show("The voter was unregistered succesfully");
             }
             else
             {
-                MessageBox.Show("Fail!!!");
+                MessageBox.Show("The voter could not be unregistered!!!");
             }
-            
         }
 
         private void ChooseLine()
@@ -158,7 +157,8 @@ namespace ClientApplication
             if (this.logForm.LogListBox.SelectedItem != null)
             {
                 ClientLog logState = (ClientLog) this.logForm.LogListBox.SelectedItem;
-                SetVoter(logState.Voter);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+                Person person = networkClient.GetPersonFromId(logState.Voter.VoterId);
+                SetVoter(person);
                 CloseLog();
             }
         }

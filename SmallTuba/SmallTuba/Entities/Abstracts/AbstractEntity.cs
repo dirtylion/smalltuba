@@ -50,7 +50,8 @@
 		/// Returns whether the entity yet exists in the external data source.
 		/// </summary>
 		/// <returns>Whether the entity exists.</returns>
-		public bool Exists() {
+		[Pure]
+        public bool Exists() {
 			return (DbId > 0);
 		}
 
