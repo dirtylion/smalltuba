@@ -29,20 +29,23 @@
 			return DbId + "," + Cpr + "," + FirstName + "," + LastName + ", " + PollingTable + ", " + TimeConverter.ConvertFromUnixTimestamp(VotedTime) + ", " + Voted;
 		}
 
-		public static IComparer<Person> CprSort()
+
+		public static IComparer<Person> NameSort()
 		{
-			return (IComparer<Person>) new SortPersonsCpr();
+			return (IComparer<Person>) new SortPersonsName();
 		}
 
-		private class SortPersonsCpr : IComparer<Person>
-		{
-			public int Compare(Person a, Person b)
-			{
-				return a.Cpr.CompareTo(b.Cpr);
-			}
-		}
+	    private class SortPersonsName : IComparer<Person>
+	    {
+	        public int Compare(Person a, Person b)
+	        {
+	            string name1 = a.FirstName + " " + a.LastName;
+	            string name2 = b.FirstName + " " + b.LastName;
+	            return name1.CompareTo(name2);
+	        }
+	    }
 
-		public bool Equals(Person other)
+	    public bool Equals(Person other)
 		{
 			if (ReferenceEquals(null, other)) return false;
 			if (ReferenceEquals(this, other)) return true;
@@ -75,6 +78,7 @@
 				result = (result * 397) ^ (VotedPollingTable != null ? VotedPollingTable.GetHashCode() : 0);
 				result = (result * 397) ^ Exists.GetHashCode();
 				return result;
+
 			}
 		}
 	}

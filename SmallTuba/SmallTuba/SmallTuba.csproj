@@ -127,6 +127,9 @@
     <Compile Include="Database\QueryBuilder.cs" />
     <Compile Include="DataGenerator\DataGenerator.cs" />
     <Compile Include="DataGenerator\DataSource.cs" />
+    <Compile Include="Entities\PollingVenue.cs" />
+    <Compile Include="IO\FileLoader.cs" />
+    <Compile Include="IO\FileSaver.cs" />
     <Compile Include="Utility\Debug.cs" />
     <Compile Include="Entities\Abstracts\AbstractDataAccessObject.cs" />
     <Compile Include="Entities\Abstracts\AbstractEntity.cs" />
@@ -155,6 +158,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\TimeConverter.cs" />
+    <Compile Include="Utility\VoterIdGenerator.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
