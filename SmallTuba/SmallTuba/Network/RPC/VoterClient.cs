@@ -36,6 +36,8 @@ namespace SmallTuba.Network.RPC
         /// <param name="name">The name of the client</param>
         public VoterClient(string name)
         {
+            /// TODO: ENABLE CONTRACTS
+            Contract.Requires(false);
             this.name = name;
             this.clientFrontEnd = new ClientFrontEnd(name);
         }

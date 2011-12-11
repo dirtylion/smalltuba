@@ -109,7 +109,7 @@ namespace SmallTuba.Network.UDP
                     catch (System.Runtime.Serialization.SerializationException)
                     {
                         // The received input was not an object
-                        // Maybe someone else is multicasting to this port
+                        // Maybe Another application is using this port
                     }
                 }
                 else
