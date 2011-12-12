@@ -16,7 +16,7 @@ namespace SmallTubaTestSuite.Network
         private int unixTime;
         private string[] tables;
 
-        /*
+        
         private void Init()
         {
             unixTime = (int)TimeConverter.ConvertToUnixTimestamp(DateTime.Now.ToUniversalTime());
@@ -126,6 +126,6 @@ namespace SmallTubaTestSuite.Network
             voterServer.SetValidTableRequest((name) => tables);
             voterServer.ListenForCalls(0);
         }
-         * */
+         
     }
 }
