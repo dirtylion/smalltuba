@@ -1,11 +1,13 @@
-﻿
-namespace SmallTuba.Network.RequestReply
+﻿namespace SmallTuba.Network.RequestReply
 {
-	using System;
+    using System;
 	using System.Diagnostics.Contracts;
-	using SmallTuba.Network.UDP;
+    using SmallTuba.Network.UDP;
+    using SmallTuba.Utility;
 
-	/// <summary>
+	/// <author>Christian Olsson (chro@itu.dk)</author>
+    /// <version>2011-12-12</version>
+    /// <summary>
 	/// This class keeps resending packets for the server if its unresponsive
 	/// This class only sends to and receives packages from the server not other clients
 	/// </summary>
@@ -19,7 +21,7 @@ namespace SmallTuba.Network.RequestReply
 		/// <summary>
 		/// The lower level upd communication
 		/// </summary>
-		private readonly UDPMulticast udpMulticast;
+		private readonly UdpMulticast udpMulticast;
 
 		/// <summary>
 		/// A request ID that is increased by one each time a unique packet is send
@@ -34,8 +36,9 @@ namespace SmallTuba.Network.RequestReply
 		{
 			Contract.Requires(name != null && name != "server");
 			this.name = name;
+
 			// Specifies that this is a client
-			this.udpMulticast = new UDPMulticast(1);
+			this.udpMulticast = new UdpMulticast(1);
 		}
 
 		/// <summary>
@@ -57,6 +60,7 @@ namespace SmallTuba.Network.RequestReply
 			
 			// Start listening for a reply
 			long preTime = DateTime.Now.ToFileTime();
+
 			// Test if the timeout is 0 or the timeout value has run out
 			while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
 			{
@@ -65,7 +69,7 @@ namespace SmallTuba.Network.RequestReply
 				if (result == null)
 				{
 					// No reply - resend...
-					Console.Out.WriteLine("Client repeats");
+					Debug.WriteLine("Client repeats");
 					this.udpMulticast.Send(packet);
 				}
 				else if (result is Packet)

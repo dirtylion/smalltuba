@@ -3,7 +3,9 @@
     using System;
 	using System.Diagnostics.Contracts;
 
-	/// <summary>
+	/// <author>Christian Olsson (chro@itu.dk)</author>
+    /// <version>2011-12-12</version>
+    /// <summary>
     /// A network packet containing sender, receiver and request id and a message
     /// </summary>
     [Serializable]

@@ -261,7 +261,8 @@
 		/// <param name="index">The index of the order to be removed.</param>
 		/// <returns>The QueryBuilder instance for chaining</returns>
 		public QueryBuilder RemoveOrder(string index) {
-			// Contract.Requires(index != null);
+			Contract.Requires(index != null);
+
 			this.orders.Remove(index);
 			return this;
 		}
@@ -363,7 +364,7 @@
 		/// </summary>
 		/// <returns>The query assembled.</returns>
 		private string AssembleSelect() {
-			var query = "SELECT";
+			var query = "SELECT SQL_CALC_FOUND_ROWS";
 			query += AssembleColumns();
 			query += " FROM";
 			query += AssembleTable();

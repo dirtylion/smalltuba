@@ -95,8 +95,6 @@
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A PersonState object filled with information from the Person entity.</returns>
 		public Person VoterIdToPersonRequestHandler(string clientName, int voterId) {
-			Contract.Requires(voterId > 0);
-
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "voter_id", voterId } });
 

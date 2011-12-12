@@ -14,15 +14,20 @@
 	/// The database must contain a table called
 	/// "PersonTestSuite" and the following columns:
 	/// 
-	/// id INT 11
-	/// firstname VARCHAR 100
+	/// id				INT			11
+	/// firstname		VARCHAR		100
+	/// lastname		VARCHAR		100
+	/// cpr				VARCHAR		10
+	/// voter_id		INT			11
+	/// polling_venue	VARCHAR		100
+	/// polling_table	VARCHAR		100
 	/// 
 	/// And the data as represented below:
 	/// 
-	/// id	firstname
-	/// 1	Henrik
-	/// 2	Christian
-	/// 3	Kåre
+	/// id	firstname	lastname		cpr			voter_id	polling_venue		polling_table
+	/// 1	Henrik		Haugbølle		0123456789	3306		Venue of Awesome	Table of Win
+	/// 2	Christian	Olsson			0123456789	8889		Venue of Shame		Table of Fish
+	/// 3	Kåre		Sylow Pedersen	0123456789	8080		Venue of Anger		Table of Calmness
 	/// 
 	/// Otherwise the test suite will fail the tests.
 	/// </summary>
@@ -66,6 +71,9 @@
 
 			Assert.That(((int) ((Hashtable) results[2])["id"]) == 3);
 			Assert.That(((string) ((Hashtable) results[2])["firstname"]) == "Kåre");
+
+			Assert.That(this.connector.GetCount() == 3);
+			Assert.That(this.connector.GetCountTotal() == 3);
 		}
 
 		/// <summary>

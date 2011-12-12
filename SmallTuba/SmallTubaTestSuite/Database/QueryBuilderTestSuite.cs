@@ -33,14 +33,18 @@
 			this.queryBuilder.SetTable("person");
 			this.queryBuilder.SetColumns(new [] { "id", "firstname", "lastname" });
 			this.queryBuilder.AddCondition("firstname = 'henrik'");
+			this.queryBuilder.AddCondition("firstname = 'henrik'", "or", "toberemoved");
+			this.queryBuilder.RemoveCondition("toberemoved");
 			this.queryBuilder.AddOrder("firstname", "desc");
-			this.queryBuilder.AddOrder("lastname", "asc");
+			this.queryBuilder.AddOrder("lastname");
+			this.queryBuilder.AddOrder("wrong order", "asc", "toberemoved");
+			this.queryBuilder.RemoveOrder("toberemoved");
 			this.queryBuilder.SetLimit(10);
 			this.queryBuilder.SetOffset(5);
 			
 			var query = this.queryBuilder.Assemble();
 			
-			Assert.AreEqual("SELECT `id`, `firstname`, `lastname` FROM `person` WHERE (firstname = 'henrik') ORDER BY `firstname` DESC, `lastname` ASC LIMIT 10 OFFSET 5", query);
+			Assert.AreEqual("SELECT SQL_CALC_FOUND_ROWS `id`, `firstname`, `lastname` FROM `person` WHERE (firstname = 'henrik') ORDER BY `firstname` DESC, `lastname` ASC LIMIT 10 OFFSET 5", query);
 		}
 		
 		/// <summary>
@@ -94,6 +98,23 @@
 			var query = this.queryBuilder.Assemble();
 			
 			Assert.AreEqual("DELETE FROM `person` WHERE (id = 8) OR (id = 6)", query);
+		}
+
+		/// <summary>
+		/// Assembling and testing a TRUNCATE statement.
+		/// 
+		/// Also tested: table.
+		/// </summary>
+		[Test]
+		public void TestTruncate () {
+			this.queryBuilder.SetType("truncate");
+			this.queryBuilder.SetTable("log");
+			
+			this.queryBuilder.Assemble();
+
+			var query = this.queryBuilder.GetQuery();
+			
+			Assert.AreEqual("TRUNCATE TABLE `log`", query);
 		}
 	}
 }

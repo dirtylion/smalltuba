@@ -1,21 +1,22 @@
 ﻿namespace SmallTuba.PdfGenerator
 {
 	using System.Diagnostics.Contracts;
+	using System.IO;
 	using PdfSharp.Drawing;
 	using PdfSharp.Drawing.BarCodes;
 	using PdfSharp.Drawing.Layout;
 	using PdfSharp.Pdf;
+
 	using SmallTuba.Entities;
 
-    /// <summary>
+	/// <summary>
     /// This class generates polling cards.
     /// The design of the polling card, is a rough copy of the official danish pollingcard for national election. 
     /// Each polling card is append as a page to a pdf document.
     /// The pdf document can be saved to a path supplied by the user of the class.
     /// </summary>
-    public class PollingCards
-    {
-        private const int width = 210, height = 100, rightMargin = 35, leftMargin =35;
+    public class PollingCards{
+        private const int Width = 210, Height = 100, RightMargin = 35, LeftMargin =35;
         private PdfDocument document;
         private XForm template;
 
@@ -25,17 +26,16 @@
         /// <param name="electionName">The name of the election</param>
         /// <param name="electionDate">The date of the election</param>
         /// <param name="electionTime">The timespan of the election</param>
-        public PollingCards(string electionName, string electionDate, string electionTime)
-        {
+        public PollingCards(string electionName, string electionDate, string electionTime){
             Contract.Requires(electionName != null);
             Contract.Requires(electionDate != null);
             Contract.Requires(electionTime != null);
-
+            
             //Create the a new document
             document = new PdfDocument();
 
             //Create a template containing the non specific voter details
-            template = new XForm(document,XUnit.FromMillimeter(width), XUnit.FromMillimeter(height));
+            template = new XForm(document,XUnit.FromMillimeter(Width), XUnit.FromMillimeter(Height));
             XGraphics gfx = XGraphics.FromForm(template);
             AddWatermark(gfx);
             DrawGraphics(gfx);
@@ -43,8 +43,7 @@
             Descriptions(gfx);
             
             //Release the XGraphics object
-            gfx.Dispose();
-       
+            gfx.Dispose();           
         }
         
         /// <summary>
@@ -53,14 +52,13 @@
         /// <param name="person">The voter</param>
         /// <param name="sender">Address of the sender</param>
         /// <param name="pollingVenue">Address of the polling venue</param>
-        public void CreatePollingCard(Person person, Address sender, Address pollingVenue)
-        {
+        public void CreatePollingCard(Person person, Address sender, Address pollingVenue){
             Contract.Requires(person != null);
 
             //Add a new page to the document
             PdfPage page = document.AddPage();
-            page.Width = XUnit.FromMillimeter(width);
-            page.Height = XUnit.FromMillimeter(height);
+            page.Width = XUnit.FromMillimeter(Width);
+            page.Height = XUnit.FromMillimeter(Height);
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
             //Draw the template
@@ -82,9 +80,10 @@
         /// //Can you save all the polling card on this location on the harddrive?
         /// </summary>
         /// <param name="path">The location on the disk</param>
-        public void SaveToDisk(string path)
-        {
+        public void SaveToDisk(string path){
             Contract.Requires(path != null);
+            Contract.Ensures(File.Exists(path));
+
             document.Save(path);
         }
 
@@ -92,14 +91,12 @@
         /// Draws the Watermark
         /// </summary>
         /// <param name="gfx">XGraphics object</param>
-        private void AddWatermark(XGraphics gfx)
-        {
+        private void AddWatermark(XGraphics gfx){
             gfx.RotateTransform(-40);
             XFont font = new XFont("Arial Rounded MT Bold", 60, XFontStyle.Regular);
             XBrush brush = new XSolidBrush(XColor.FromArgb(70, 255, 0, 0));
             gfx.DrawString("VALGKORT", font, brush, -120, 250);
-            gfx.RotateTransform(40);
-            
+            gfx.RotateTransform(40);           
         }
 
         /// <summary>
@@ -109,8 +106,7 @@
         /// <param name="name">Name of the sender</param>
         /// <param name="street">Street of the sender</param>
         /// <param name="city">City of the sender</param>
-        private void FromField(XGraphics gfx, string name, string street, string city)
-        {
+        private void FromField(XGraphics gfx, string name, string street, string city){
             XFont font = new XFont("Lucida Console", 8, XFontStyle.Italic);
             XTextFormatter tf = new XTextFormatter(gfx);
             string adress = name + System.Environment.NewLine + street + System.Environment.NewLine + city;
@@ -124,8 +120,7 @@
        /// <param name="name">Name of the receiver</param>
        /// <param name="street">Street of the receiver</param>
        /// <param name="city">City of the receiver</param>
-        private void ToField(XGraphics gfx, string name, string street, string city)
-        {
+        private void ToField(XGraphics gfx, string name, string street, string city){
             XFont font = new XFont("Lucida Console", 8, XFontStyle.Regular);
             XTextFormatter tf = new XTextFormatter(gfx);
             string adress = name + System.Environment.NewLine + street + System.Environment.NewLine + city;
@@ -136,8 +131,7 @@
         /// Draws the statics descriptions of the values
         /// </summary>
         /// <param name="gfx">XGraphics object</param>
-        private void Descriptions(XGraphics gfx)
-        {
+        private void Descriptions(XGraphics gfx){
             XFont font = new XFont("Arial", 5, XFontStyle.Regular);
             gfx.DrawString("Afstemningssted:", font, XBrushes.Black, 40, 90);
             gfx.DrawString("Valgbord:", font, XBrushes.Black, 40, 162);
@@ -154,8 +148,7 @@
         /// <param name="electionName">The name of the election</param>
         /// <param name="electionDate">What date it is</param>
         /// <param name="electionTime">The timespan of the election</param>
-        private void ElectionDetails(XGraphics gfx, string electionName, string electionDate, string electionTime)
-        {
+        private void ElectionDetails(XGraphics gfx, string electionName, string electionDate, string electionTime){
             XFont font = new XFont("Arial", 12, XFontStyle.Bold);
             gfx.DrawString(electionName, font, XBrushes.Black, 35, 40);
             gfx.DrawString(electionDate, font, XBrushes.Black, 35, 55);
@@ -174,8 +167,7 @@
         /// <param name="name">The name of the polling venue</param>
         /// <param name="street">The street of the polling venue</param>
         /// <param name="city">The city of the polling venue</param>
-        private void PollingVenue(XGraphics gfx, string name, string street, string city)
-        {
+        private void PollingVenue(XGraphics gfx, string name, string street, string city){
             XFont font = new XFont("Arial", 9, XFontStyle.Bold);
             XTextFormatter tf = new XTextFormatter(gfx);
             string adress = name + System.Environment.NewLine + street + System.Environment.NewLine + city;
@@ -187,8 +179,7 @@
         /// </summary>
         /// <param name="gfx">XGraphics object</param>
         /// <param name="table">The polling table number</param>
-        private void PollingTable(XGraphics gfx, string table)
-        {
+        private void PollingTable(XGraphics gfx, string table){
             XFont font = new XFont("Arial", 9, XFontStyle.Bold);
             gfx.DrawString(table, font, XBrushes.Black, 80, 162);
         }
@@ -198,8 +189,7 @@
         /// </summary>
         /// <param name="gfx">XGraphics object</param>
         /// <param name="votingNumber">The unique voter id</param>
-        private void VotingNumber(XGraphics gfx, string votingNumber)
-        {
+        private void VotingNumber(XGraphics gfx, string votingNumber){
             XFont font = new XFont("Arial", 9, XFontStyle.Bold);
             gfx.DrawString(votingNumber, font, XBrushes.Black, 80, 192);
             Barcode(gfx, votingNumber);
@@ -210,8 +200,7 @@
         /// </summary>
         /// <param name="gfx">XGraphics object</param>
         /// <param name="votingNumber">The unique voter id </param>
-        private void Barcode(XGraphics gfx, string votingNumber)
-        {
+        private void Barcode(XGraphics gfx, string votingNumber){
             //The barcode type
             BarCode barcode = new Code3of9Standard();
             barcode.Text = votingNumber;
@@ -234,8 +223,7 @@
         /// </summary>
         /// <param name="gfx">xGraphics object</param>
         /// <param name="time">The timespan for the election</param>
-        private void ElectionTime(XGraphics gfx, string time)
-        {
+        private void ElectionTime(XGraphics gfx, string time){
             XFont font = new XFont("Arial", 9, XFontStyle.Bold);
             gfx.DrawString(time, font, XBrushes.Black, 80, 222);
         }
@@ -244,36 +232,33 @@
         /// Draws the graphical lines one the polling card
         /// </summary>
         /// <param name="gfx">XGraphics object</param>
-        private void DrawGraphics(XGraphics gfx)
-        {
+        private void DrawGraphics(XGraphics gfx){
             //the size and color of the lines
             XPen pen = new XPen(XColor.FromName("Black"), 0.5);
             
             //The rectangle around the polling venue address
-            gfx.DrawRectangle(pen, leftMargin, 80, 220, 60);
+            gfx.DrawRectangle(pen, LeftMargin, 80, 220, 60);
 
             //The rectangle around the polling table 
-            gfx.DrawRectangle(pen, leftMargin, 150, 220, 20);
+            gfx.DrawRectangle(pen, LeftMargin, 150, 220, 20);
 
             //The rectangle around the voter id
-            gfx.DrawRectangle(pen, leftMargin, 180, 220, 20);
+            gfx.DrawRectangle(pen, LeftMargin, 180, 220, 20);
             
             //The rectangle around the voting timespan
-            gfx.DrawRectangle(pen, leftMargin, 210, 220, 20);
+            gfx.DrawRectangle(pen, LeftMargin, 210, 220, 20);
 
             //The vertical separate line
             gfx.DrawLine(pen, 300, 20, 300, 250);
 
             //The horizontal separate linjes
-            gfx.DrawLine(pen, leftMargin, 250, gfx.PageSize.Width - rightMargin, 250);   
-            gfx.DrawLine(pen, 300, 80, gfx.PageSize.Width - rightMargin, 80);
-            gfx.DrawLine(pen, 300, 140, gfx.PageSize.Width - rightMargin, 140);
+            gfx.DrawLine(pen, LeftMargin, 250, gfx.PageSize.Width - RightMargin, 250);   
+            gfx.DrawLine(pen, 300, 80, gfx.PageSize.Width - RightMargin, 80);
+            gfx.DrawLine(pen, 300, 140, gfx.PageSize.Width - RightMargin, 140);
 
             //The crossed lines on the sender address
             gfx.DrawLine(pen, 300, 80, 450, 140);
             gfx.DrawLine(pen, 300, 140, 450, 80);
-        }
-
-       
+        }      
     }
 }

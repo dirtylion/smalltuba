@@ -33,7 +33,7 @@
 		public void Save() {
 			var id = this.DataAccessObject.Save(this.ValueObject.GetValues());
 			
-			this.DbId  =this.Exists() ? this.DbId : id;
+			this.DbId = this.Exists() ? this.DbId : id;
 		}
 
 		/// <summary>
@@ -44,6 +44,8 @@
 			Contract.Requires(Exists());
 
 			this.DataAccessObject.Delete(DbId);
+
+			this.DbId = 0;
 		}
 
 		/// <summary>
@@ -52,7 +54,7 @@
 		/// <returns>Whether the entity exists.</returns>
 		[Pure]
 		public bool Exists() {
-			return (DbId > 0);
+			return (this.DbId > 0);
 		}
 
 		public int DbId { 
