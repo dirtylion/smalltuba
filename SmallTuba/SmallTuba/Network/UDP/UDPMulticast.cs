@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="UDPMulticast.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.UDP
+﻿namespace SmallTuba.Network.UDP
 {
     using System;
     using System.Diagnostics.Contracts;
@@ -13,11 +7,13 @@ namespace SmallTuba.Network.UDP
     using System.Net;
     using System.Net.Sockets;
     using System.Runtime.Serialization.Formatters.Binary;
- 
+
+    /// <author>Christian Olsson (chro@itu.dk)</author>
+    /// <version>2011-12-12</version>
     /// <summary>
     /// Class used for multicasting data
     /// </summary>
-    public class UDPMulticast
+    public class UdpMulticast
     {
         /// <summary>
         /// The Udpclient that wraps all the socket programming nicely
@@ -42,7 +38,7 @@ namespace SmallTuba.Network.UDP
 	    /// The server sends to ip 224.5.6.7 port 5000
         /// </summary>
         /// <param name="server">If the client should be server - 0 or client - 1</param>
-        public UDPMulticast(int server)
+        public UdpMulticast(int server)
         {
             Contract.Requires(server == 0 || server == 1);
             
@@ -121,6 +117,7 @@ namespace SmallTuba.Network.UDP
                     System.Threading.Thread.Sleep(10);
                 }
             }
+
             // The time has run out
             return null;
         }

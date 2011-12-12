@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
-namespace ClientApplication
+﻿namespace ClientApplication
 {
-    static class Program
+    using System;
+    using System.Runtime.InteropServices;
+
+    /// <author>Christian Olsson (chro@itu.dk)</author>
+    /// <version>2011-12-12</version>
+    /// <summary>
+    /// The entry point of the client application
+    /// </summary>
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Win32.AllocConsole();
 
@@ -21,8 +23,15 @@ namespace ClientApplication
         }
     }
 
+    /// <summary>
+    /// Helper class for enabling the console
+    /// </summary>
     public class Win32
     {
+        /// <summary>
+        /// Enables the console
+        /// </summary>
+        /// <returns></returns>
         [DllImport("kernel32.dll")]
         public static extern Boolean AllocConsole();
     }
