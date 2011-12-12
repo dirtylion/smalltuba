@@ -16,7 +16,7 @@ namespace SmallTuba.Network.RPC
     /// A message describing a keyword and a value
     /// </summary>
     [Serializable]
-    internal class Message
+    internal struct Message
     {
         /// <summary>
         /// The keyword
@@ -72,16 +72,6 @@ namespace SmallTuba.Network.RPC
             {
                 return this.value;
             }
-        }
-
-        /// <summary>
-        /// What is the textural representation of this message?
-        /// </summary>
-        /// <returns>The textual representation</returns>
-        [Pure]
-        public override string ToString()
-        {
-            return this.keyword + "," + this.sender + "," + this.value;
         }
     }
 }

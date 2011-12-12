@@ -49,13 +49,13 @@
 			if (Setup()) {
 				Console.WriteLine("Server is starting");
 
-				voterNetWorkServer.SetCprToPersonRequest(CprToPersonRequestHandler);
-				voterNetWorkServer.SetVoterIdToPersonRequest(VoterIdToPersonRequestHandler);
+				voterNetWorkServer.CprToPersonRequest = CprToPersonRequestHandler;
+				voterNetWorkServer.VoterIdToPersonRequest = VoterIdToPersonRequestHandler;
 
-				voterNetWorkServer.SetRegisterVoteRequest(RegisterVoteRequestHandler);
-				voterNetWorkServer.SetUnregisterVoteRequest(UnregisterVoteRequestHandler);
+				voterNetWorkServer.RegisterVoteRequest = RegisterVoteRequestHandler;
+				voterNetWorkServer.UnregisterVoteRequest = UnregisterVoteRequestHandler;
 
-				voterNetWorkServer.SetValidTableRequest(ValidTableRequestHandler);
+				voterNetWorkServer.ValidTableRequest = ValidTableRequestHandler;
 
 				Console.WriteLine("Server is running");
 

@@ -68,16 +68,16 @@ namespace SmallTuba.Network.RPC
 			{
 				return null;
 			}
-			// If it was a valid reply
-			if (reply is Message && ((Message)reply).GetValue is Person)
-			{
-				Message replyMessage = (Message) reply;
+            // If it was a valid reply
+            if (reply is Message && ((Message)reply).GetValue is Person)
+            {
+                Message replyMessage = (Message) reply;
 				return (Person)replyMessage.GetValue;
 			}
 			// The server should never send invalid replys, because the request-reply
 			// classes ensures that the received reply is a reply for this request
 			Contract.Assert(false);
-			return null;
+            return null;
 		}
 
 		/// <summary>
@@ -201,6 +201,7 @@ namespace SmallTuba.Network.RPC
 		/// Are you connected to a server?
 		/// </summary>
 		/// <returns></returns>
+		[Pure]
 		public bool Connected()
 		{
 			// The request to send

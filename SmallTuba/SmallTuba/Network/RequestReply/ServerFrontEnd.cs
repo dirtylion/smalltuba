@@ -27,12 +27,12 @@ namespace SmallTuba.Network.RequestReply
         /// <summary>
         /// A key/value pair of previous requests and responses
         /// </summary>
-        private Dictionary<string, Packet> prevPackets; 
+        private Dictionary<string, Packet> prevPackets;
 
         /// <summary>
         /// Invoke this function when a call is received
         /// </summary>
-        private RequestHandler requestHandler = null;
+        public RequestHandlerDelegate RequestHandler { get; set; }
         
         /// <summary>
         /// May I have a new server front end?
@@ -49,16 +49,8 @@ namespace SmallTuba.Network.RequestReply
         /// </summary>
         /// <param name="request">The request from the client</param>
         /// <returns>The result to the client</returns>
-        public delegate object RequestHandler(object request);
+        public delegate object RequestHandlerDelegate(object request);
 
-        /// <summary>
-        /// Invoke this function when a call is received
-        /// </summary>
-        /// <param name="handler">The function to invoke</param>
-        public void SetRequestHandler(RequestHandler handler)
-        {
-            this.requestHandler = handler;
-        }
 
         /// <summary>
         /// Listen for calls for this amount of time
@@ -68,6 +60,7 @@ namespace SmallTuba.Network.RequestReply
         public void ListenForCalls(long timeOut)
         {
             Contract.Requires(timeOut >= 0);
+            Contract.Requires(RequestHandler != null);
 
             // If the server should listen for requests forever
             bool runForever = timeOut == 0;
@@ -79,13 +72,6 @@ namespace SmallTuba.Network.RequestReply
             // Listen
             while (runForever || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
             {
-                // Test if the requesthandler is set
-                if (this.requestHandler == null)
-                {
-                    // If the eventhandler is not set packages would be dropped therefore we break
-                    break;
-                }
-                
                 // Receive the packet
                 object data;
                 if (runForever)
@@ -115,7 +101,6 @@ namespace SmallTuba.Network.RequestReply
                     if (this.prevPackets.ContainsKey(recPacket.GetSenderId + "#" + recPacket.GetRequestId))
                     {
                         // Repeat the reply
-                        Console.Out.WriteLine("Server repeats");
                         this.udpMulticast.Send(this.prevPackets[recPacket.GetSenderId + "#" + recPacket.GetRequestId]);
                     }
                     else
@@ -124,7 +109,7 @@ namespace SmallTuba.Network.RequestReply
                         Console.Out.WriteLine("Server sends fresh");
                         string senderId = recPacket.GetSenderId;
                         string requestId = recPacket.GetRequestId;
-                        object resultMessage = this.requestHandler.Invoke(recPacket.GetMessage);
+                        object resultMessage = this.RequestHandler.Invoke(recPacket.GetMessage);
                         Packet resultPacket = new Packet(senderId, "server", requestId, resultMessage);
                         
                         // Add this request and reply to the list of previous packets

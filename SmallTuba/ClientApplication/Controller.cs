@@ -153,7 +153,6 @@ namespace ClientApplication
 
 		private void ChooseLine()
 		{
-			// TODO: GET NEW VOTER FROM SERVER
 			if (this.logForm.LogListBox.SelectedItem != null)
 			{
 				ClientLog logState = (ClientLog) this.logForm.LogListBox.SelectedItem;

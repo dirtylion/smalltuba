@@ -104,15 +104,5 @@ namespace SmallTuba.Network.RequestReply
                 return this.message;
             }
         }
-
-        /// <summary>
-        /// What is the textual representation of this message?
-        /// </summary>
-        /// <returns>The textual representation</returns>
-        [Pure]
-        public override string ToString()
-        {
-            return "Receiver ID: " + this.receiverId + ", Sender ID: " + this.senderId + ", Request ID: " + this.requestId + ", Message: " + this.message;
-        }
     }
 }
