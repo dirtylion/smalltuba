@@ -36,7 +36,7 @@
 		/// </summary>
 		[SetUp()]
 		public void SetUp() {
-			_connector = new Connector();
+			_connector = Connector.GetConnector();
 			_connector.Connect();
 		}
 

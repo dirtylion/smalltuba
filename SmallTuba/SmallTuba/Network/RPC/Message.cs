@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Class1.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.RPC
+﻿namespace SmallTuba.Network.RPC
 {
     using System;
     using System.Collections.Generic;
@@ -12,18 +6,23 @@ namespace SmallTuba.Network.RPC
     using System.Linq;
     using System.Text;
 
+    /// <author>Christian Olsson (chro@itu.dk)</author>
+    /// <version>2011-12-12</version>
     /// <summary>
     /// A message describing a keyword and a value
     /// </summary>
     [Serializable]
-    internal class Message
+    internal struct Message
     {
         /// <summary>
         /// The keyword
         /// </summary>
         private readonly Keyword keyword;
 
-        private string sender;
+        /// <summary>
+        /// The sender of the message
+        /// </summary>
+        private readonly string sender;
 
         /// <summary>
         /// The value
@@ -34,6 +33,7 @@ namespace SmallTuba.Network.RPC
         /// May I have a new message with this keyword and this value?
         /// </summary>
         /// <param name="keyword">The keyword</param>
+        /// <param name="sender">The sender</param>
         /// <param name="value">The value</param>
         public Message(Keyword keyword, string sender, object value)
         {
@@ -54,11 +54,14 @@ namespace SmallTuba.Network.RPC
             }
         }
 
+        /// <summary>
+        /// Who is the sender of this message
+        /// </summary>
         public string GetSender
         {
             get
             {
-                return sender;
+                return this.sender;
             }
         }
         
@@ -72,16 +75,6 @@ namespace SmallTuba.Network.RPC
             {
                 return this.value;
             }
-        }
-
-        /// <summary>
-        /// What is the textural representation of this message?
-        /// </summary>
-        /// <returns>The textual representation</returns>
-        [Pure]
-        public override string ToString()
-        {
-            return this.keyword + "," + this.sender + "," + this.value;
         }
     }
 }

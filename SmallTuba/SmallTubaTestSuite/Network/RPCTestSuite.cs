@@ -48,12 +48,23 @@ namespace SmallTubaTestSuite.Network
         [Test]
         public void TestRpc()
         {
+            // Setup test objects
             Init();
+            
+            // Start a server that will be active for 10 seconds
             Thread serverThread = new Thread(new ThreadStart(SetupServer));
             serverThread.Start();
+            
+            // Wait to make sure its active
             Thread.Sleep(5000);
 
+            // Start testing
             VoterClient voterClient = new VoterClient("Client1");
+
+            // Test the name
+            Assert.That(voterClient.Name.Equals("Client1"));
+            voterClient.Name = "Client1.1";
+            Assert.That(voterClient.Name.Equals("Client1.1"));
 
             // Connected
             Assert.True(voterClient.Connected());
@@ -86,10 +97,16 @@ namespace SmallTubaTestSuite.Network
             Assert.That(arr[2] == tables[2]);
 
 
-            //Disconnect the server and test that the client perfomrs as expected
+            // Await that the server runs out of time
+            Thread.Sleep(10000);
+
+            // Abort the server thread
             serverThread.Abort();
+
+            // Make sure that the thraed is not allive
             Thread.Sleep(5000);
 
+            // Test that it perfomrs well when not connected to a server
             //Connected
             Assert.False(voterClient.Connected());
 
@@ -114,16 +131,18 @@ namespace SmallTubaTestSuite.Network
             Assert.That(arr == null);
         }
 
-
+        /// <summary>
+        /// A server that will listen for 10 seconds
+        /// </summary>
         private void SetupServer()
         {
             VoterServer voterServer = new VoterServer(System.Net.Dns.GetHostName());
-            voterServer.SetCprToPersonRequest((name, cpr) => cpr == "1" ? person1 : emptyPerson);
-            voterServer.SetVoterIdToPersonRequest((name, id) => id == 2 ? person2 : emptyPerson);
-            voterServer.SetRegisterVoteRequest((name, person) => !person.Voted);
-            voterServer.SetUnregisterVoteRequest((name, person) => !person.Voted);
-            voterServer.SetValidTableRequest((name) => tables);
-            voterServer.ListenForCalls(0);
+            voterServer.CprToPersonRequest = ((name, cpr) => cpr == "1" ? person1 : emptyPerson);
+            voterServer.VoterIdToPersonRequest = ((name, id) => id == 2 ? person2 : emptyPerson);
+            voterServer.RegisterVoteRequest = ((name, person) => !person.Voted);
+            voterServer.UnregisterVoteRequest = ((name, person) => !person.Voted);
+            voterServer.ValidTableRequest = ((name) => tables);
+            voterServer.ListenForCalls(10000);
         }
     }
 }
