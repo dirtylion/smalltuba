@@ -3,7 +3,7 @@
 	using System.Diagnostics.Contracts;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-07</version>
+	/// <version>2011-12-12</version>
 	/// <summary>
 	/// The AbstractEntity provides common load, save and
 	/// delete methods for all entities inheriting from it.
@@ -24,16 +24,16 @@
 			Contract.Requires(parameters != null);
 			Contract.Requires(parameters.Count > 0);
 
-			ValueObject.SetValues(DataAccessObject.Load(parameters));
+			this.ValueObject.SetValues(this.DataAccessObject.Load(parameters));
 		}
 
 		/// <summary>
 		/// Save the current entity.
 		/// </summary>
 		public void Save() {
-			var id = DataAccessObject.Save(ValueObject.GetValues());
+			var id = this.DataAccessObject.Save(this.ValueObject.GetValues());
 			
-			DbId = Exists() ? DbId : id;
+			this.DbId  =this.Exists() ? this.DbId : id;
 		}
 
 		/// <summary>
@@ -43,7 +43,7 @@
 		public void Delete() {
 			Contract.Requires(Exists());
 
-			DataAccessObject.Delete(DbId);
+			this.DataAccessObject.Delete(DbId);
 		}
 
 		/// <summary>
@@ -51,13 +51,13 @@
 		/// </summary>
 		/// <returns>Whether the entity exists.</returns>
 		[Pure]
-        public bool Exists() {
+		public bool Exists() {
 			return (DbId > 0);
 		}
 
 		public int DbId { 
-			get { return ValueObject["id"] != null ? (int) ValueObject["id"] : 0; } 
-			set { ValueObject["id"] = value; }
+			get { return this.ValueObject["id"] != null ? (int) this.ValueObject["id"] : 0; } 
+			set { this.ValueObject["id"] = value; }
 		}
 	}
 }

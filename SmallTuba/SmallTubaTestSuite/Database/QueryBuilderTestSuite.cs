@@ -1,5 +1,4 @@
-﻿namespace SmallTubaTestSuite {
-
+﻿namespace SmallTubaTestSuite.Database {
 	using NUnit.Framework;
 	using SmallTuba.Database;
 	
@@ -13,13 +12,13 @@
 	/// Various parameters such as limits, offsets, orderings,
 	/// condition et cetera are tested within these 4 tests.
 	/// </summary>
-	[TestFixture()]
+	[TestFixture]
 	public class QueryBuilderTestSuite {
-		private QueryBuilder _query;
+		private QueryBuilder queryBuilder;
 		
-		[SetUp()]
+		[SetUp]
 		public void SetUp () {
-			_query = new QueryBuilder();
+			this.queryBuilder = new QueryBuilder();
 		}
 		
 		/// <summary>
@@ -28,18 +27,18 @@
 		/// Also tested: table, columns, condition, 
 		/// multiple orderings, limit and offset.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestSelect () {
-			_query.SetType("select");
-			_query.SetTable("person");
-			_query.SetColumns(new string[] { "id", "firstname", "lastname" });
-			_query.AddCondition("firstname = 'henrik'");
-			_query.AddOrder("firstname", "desc");
-			_query.AddOrder("lastname", "asc");
-			_query.SetLimit(10);
-			_query.SetOffset(5);
+			this.queryBuilder.SetType("select");
+			this.queryBuilder.SetTable("person");
+			this.queryBuilder.SetColumns(new [] { "id", "firstname", "lastname" });
+			this.queryBuilder.AddCondition("firstname = 'henrik'");
+			this.queryBuilder.AddOrder("firstname", "desc");
+			this.queryBuilder.AddOrder("lastname", "asc");
+			this.queryBuilder.SetLimit(10);
+			this.queryBuilder.SetOffset(5);
 			
-			string query = _query.Assemble();
+			var query = this.queryBuilder.Assemble();
 			
 			Assert.AreEqual("SELECT `id`, `firstname`, `lastname` FROM `person` WHERE (firstname = 'henrik') ORDER BY `firstname` DESC, `lastname` ASC LIMIT 10 OFFSET 5", query);
 		}
@@ -50,15 +49,15 @@
 		/// Also tested: table, columns, values and
 		/// single condition.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestUpdate () {
-			_query.SetType("update");
-			_query.SetTable("person");
-			_query.SetColumns(new string[] { "id", "firstname", "lastname" });
-			_query.SetValues(new string[] { "4", "henrik", "haugbølle" });
-			_query.AddCondition("firstname = 'henrik'");
+			this.queryBuilder.SetType("update");
+			this.queryBuilder.SetTable("person");
+			this.queryBuilder.SetColumns(new [] { "id", "firstname", "lastname" });
+			this.queryBuilder.SetValues(new [] { "4", "henrik", "haugbølle" });
+			this.queryBuilder.AddCondition("firstname = 'henrik'");
 			
-			string query = _query.Assemble();
+			var query = this.queryBuilder.Assemble();
 			
 			Assert.AreEqual("UPDATE `person` SET `id` = '4', `firstname` = 'henrik', `lastname` = 'haugbølle' WHERE (firstname = 'henrik')", query);
 		}
@@ -68,14 +67,14 @@
 		/// 
 		/// Also tested: table, columns and values.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestInsert () {
-			_query.SetType("insert");
-			_query.SetTable("person");
-			_query.SetColumns(new string[] { "id", "firstname", "lastname" });
-			_query.SetValues(new string[] { "4", "henrik", "haugbølle" });
+			this.queryBuilder.SetType("insert");
+			this.queryBuilder.SetTable("person");
+			this.queryBuilder.SetColumns(new [] { "id", "firstname", "lastname" });
+			this.queryBuilder.SetValues(new [] { "4", "henrik", "haugbølle" });
 			
-			string query = _query.Assemble();
+			var query = this.queryBuilder.Assemble();
 			
 			Assert.AreEqual("INSERT INTO `person` ( `id`, `firstname`, `lastname` ) VALUES ( '4', 'henrik', 'haugbølle' )", query);
 		}
@@ -85,14 +84,14 @@
 		/// 
 		/// Also tested: table and multiple conditions.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestDelete () {
-			_query.SetType("delete");
-			_query.SetTable("person");
-			_query.AddCondition("id = 8", "or");
-			_query.AddCondition("id = 6");
+			this.queryBuilder.SetType("delete");
+			this.queryBuilder.SetTable("person");
+			this.queryBuilder.AddCondition("id = 8", "or");
+			this.queryBuilder.AddCondition("id = 6");
 			
-			string query = _query.Assemble();
+			var query = this.queryBuilder.Assemble();
 			
 			Assert.AreEqual("DELETE FROM `person` WHERE (id = 8) OR (id = 6)", query);
 		}

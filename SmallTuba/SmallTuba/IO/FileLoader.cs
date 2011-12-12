@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="FileLoader.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-
-namespace SmallTuba.IO
+﻿namespace SmallTuba.IO
 {
 	using System.Collections.Generic;
 	using System.Linq;
@@ -16,9 +9,6 @@ namespace SmallTuba.IO
 	using SmallTuba.Entities;
 	using SmallTuba.Utility;
 
-    /// <summary>
-	/// TODO: Update summary.
-	/// </summary>
 	public class FileLoader
 	{
 		public List<PollingVenue> GetPollingVenues(string path, ValidationEventHandler notifier)

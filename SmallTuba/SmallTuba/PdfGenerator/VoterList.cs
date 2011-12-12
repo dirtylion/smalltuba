@@ -1,18 +1,12 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="VoterList.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.PdfGenerator
+﻿namespace SmallTuba.PdfGenerator
 {
-    using System;
-    using PdfSharp;
-    using PdfSharp.Drawing.Layout;
-    using PdfSharp.Pdf;
-    using PdfSharp.Drawing;
-    using System.Diagnostics.Contracts;
-    using SmallTuba.Entities;
+	using System;
+	using System.Diagnostics.Contracts;
+	using PdfSharp;
+	using PdfSharp.Drawing;
+	using PdfSharp.Drawing.Layout;
+	using PdfSharp.Pdf;
+	using SmallTuba.Entities;
 
     /// <summary>
     /// This class generates voter lists.

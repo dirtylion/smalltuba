@@ -1,17 +1,7 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Keyword.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.RPC
+﻿namespace SmallTuba.Network.RPC
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
-    /// <summary>
+	/// <summary>
     /// Describing the action to be performed by the server
     /// </summary>
     internal enum Keyword

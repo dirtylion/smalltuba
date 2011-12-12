@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="UDPMulticast.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.UDP
+﻿namespace SmallTuba.Network.UDP
 {
     using System;
     using System.Diagnostics.Contracts;

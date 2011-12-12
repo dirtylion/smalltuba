@@ -1,19 +1,11 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="ServerCom.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.RequestReply
+﻿namespace SmallTuba.Network.RequestReply
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
-    using System.Linq;
-    using SmallTuba.Network.UDP;
-    using System.Text;
+	using SmallTuba.Network.UDP;
 
-    /// <summary>
+	/// <summary>
     /// This class listens for request for the server and replies.
 	/// This class only receives request adressed to the server
     ///</summary>

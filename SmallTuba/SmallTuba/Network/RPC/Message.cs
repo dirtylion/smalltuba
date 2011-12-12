@@ -1,18 +1,9 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Class1.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.RPC
+﻿namespace SmallTuba.Network.RPC
 {
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.Contracts;
-    using System.Linq;
-    using System.Text;
+	using System.Diagnostics.Contracts;
 
-    /// <summary>
+	/// <summary>
     /// A message describing a keyword and a value
     /// </summary>
     [Serializable]

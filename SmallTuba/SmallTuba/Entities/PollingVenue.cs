@@ -1,27 +1,16 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="PollingVenue.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
+﻿namespace SmallTuba.Entities {
+	using System.Collections.Generic;
 
-namespace SmallTuba.Entities
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
-    using SmallTuba.Entities;
-
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
-    public class PollingVenue
-    {
-        public List<Person> Persons { get; set; }
-        public Address PollingVenueAddress { get; set; }
-        public Address MunicipalityAddress { get; set; }
-
-    }
-
+	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
+	/// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
+	/// <version>2011-12-12</version>
+	/// <summary>
+	/// Used to encapsulate information about 
+	/// an polling venue.
+	/// </summary>
+	public class PollingVenue {
+		public List<Person> Persons { get; set; }
+		public Address PollingVenueAddress { get; set; }
+		public Address MunicipalityAddress { get; set; }
+	}
 }

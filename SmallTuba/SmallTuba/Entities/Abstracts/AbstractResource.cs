@@ -23,7 +23,7 @@
 		/// instance of QueryBuilder to be used for querying.
 		/// </summary>
 		protected AbstractResource() {
-			QueryBuilder = new QueryBuilder();
+			this.QueryBuilder = new QueryBuilder();
 		}
 
 		public void SetOrder(string order, string direction) {
@@ -31,39 +31,37 @@
 			Contract.Requires(direction != null);
 			Contract.Requires(direction == "asc" || direction == "desc");
 
-			QueryBuilder.AddOrder(order, direction);
+			this.QueryBuilder.AddOrder(order, direction);
 		}
 
 		public void SetLimit(int limit) {
 			Contract.Requires(limit > 0);
 
-			QueryBuilder.SetLimit(limit);
+			this.QueryBuilder.SetLimit(limit);
 		}
 
 		public void SetOffset(int offset) {
 			Contract.Requires(offset >= 0);
 
-			QueryBuilder.SetOffset(offset);
+			this.QueryBuilder.SetOffset(offset);
 		}
 
 		public void SetGroupBy(string groupBy) {
 			Contract.Requires(groupBy != null);
 
-			QueryBuilder.SetGroupBy(groupBy);
+			this.QueryBuilder.SetGroupBy(groupBy);
 		}
 
 		public int GetCount() {
-			return QueryBuilder.GetCount();
+			return this.QueryBuilder.GetCount();
 		}
 
 		public int GetCountTotal() {
-			return QueryBuilder.GetCountTotal();
+			return this.QueryBuilder.GetCountTotal();
 		}
 
 		/// <summary>
 		/// Method must be overridden in child class.
-		/// 
-		/// TODO: Maybe this method can also be abstract by using generics.
 		/// </summary>
 		/// <returns>A list of the entities build.</returns>
 		public abstract List<T> Build();

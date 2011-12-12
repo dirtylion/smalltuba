@@ -8,7 +8,7 @@
 	using SmallTuba.Network.RPC;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-11</version>
+	/// <version>2011-12-12</version>
 	/// <summary>
 	/// The Server class handles request from the ClientApplication,
 	/// by utilizing the VoterNetworkServer and entity classes.
@@ -20,16 +20,16 @@
 	/// utilizing the entity and QueryBuilder classes.
 	/// </summary>
 	class Server {
-		private VoterServer voterNetWorkServer;
-		private ServerData serverData;
+		private readonly VoterServer voterServer;
+		private readonly ServerData serverData;
 
 		/// <summary>
 		/// Construct a new server and instantiate and instance
 		/// of the VoterNetworkServer identified as "primary".
 		/// </summary>
 		public Server() {
-			voterNetWorkServer = new VoterServer(System.Net.Dns.GetHostName());
-			serverData = new ServerData();
+			this.voterServer = new VoterServer(System.Net.Dns.GetHostName());
+			this.serverData = new ServerData();
 		}
 
 		/// <summary>
@@ -40,26 +40,26 @@
 		/// will start to listen for requests.
 		/// </summary>
 		public void Start() {
-			Console.WriteLine("Digital Voter Registration System");
-			Console.WriteLine("Server v1.8");
+			Console.WriteLine(@"Digital Voter Registration System");
+			Console.WriteLine(@"Server v1.8");
 			Console.WriteLine("");
-			Console.WriteLine("Setup server:");
+			Console.WriteLine(@"Setup server:");
 			Console.WriteLine("");
 
-			if (Setup()) {
-				Console.WriteLine("Server is starting");
+			if (this.Setup()) {
+				Console.WriteLine(@"Server is starting");
 
-				voterNetWorkServer.CprToPersonRequest = CprToPersonRequestHandler;
-				voterNetWorkServer.VoterIdToPersonRequest = VoterIdToPersonRequestHandler;
+				this.voterServer.CprToPersonRequest = CprToPersonRequestHandler;
+				this.voterServer.VoterIdToPersonRequest = VoterIdToPersonRequestHandler;
 
-				voterNetWorkServer.RegisterVoteRequest = RegisterVoteRequestHandler;
-				voterNetWorkServer.UnregisterVoteRequest = UnregisterVoteRequestHandler;
+				this.voterServer.RegisterVoteRequest = RegisterVoteRequestHandler;
+				this.voterServer.UnregisterVoteRequest = UnregisterVoteRequestHandler;
 
-				voterNetWorkServer.ValidTableRequest = ValidTableRequestHandler;
+				this.voterServer.ValidTableRequest = ValidTableRequestHandler;
 
-				Console.WriteLine("Server is running");
+				Console.WriteLine(@"Server is running");
 
-				voterNetWorkServer.ListenForCalls(0);
+				this.voterServer.ListenForCalls(0);
 			}
 		}
 
@@ -116,16 +116,12 @@
 		/// that the registration successed and that a log
 		/// entity in the database was created.
 		/// </summary>
-		/// <param name="personState">The person to be registered.</param>
+		/// <param name="person">The person to be registered.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		/// <param name="clientName">The id of the client.</param>
 		public bool RegisterVoteRequestHandler(string clientName, Person person) {
 			Contract.Requires(person != null);
-			Contract.Ensures(Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Exists) && !Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Voted) ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
-
-            Console.Out.WriteLine("Exists: " + VoterIdToPersonRequestHandler("", person.VoterId).Exists);
-            Console.Out.WriteLine("Can vote: " + !VoterIdToPersonRequestHandler("", person.VoterId).Voted);
-            Console.Out.WriteLine("true == trur? " + (true == true));
+			Contract.Ensures(!Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Exists) || Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Voted) ? Contract.Result<bool>() == false : Contract.Result<bool>() == true);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
@@ -160,12 +156,12 @@
 		/// that the unregistration successed and that a log
 		/// entity in the database was created.
 		/// </summary>
-		/// <param name="personState">The person to be unregistrated.</param>
+		/// <param name="person">The person to be unregistrated.</param>
 		/// <param name="clientName">The id of the client.</param>
 		/// <returns>A boolean value determining if the request failed or successed.</returns>
 		public bool UnregisterVoteRequestHandler(string clientName, Person person) {
 			Contract.Requires(person != null);
-			Contract.Ensures(Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Exists) && Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Voted) ? Contract.Result<bool>() == true : Contract.Result<bool>() == false);
+			Contract.Ensures(!Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Exists) || !Contract.OldValue(VoterIdToPersonRequestHandler("", person.VoterId).Voted) ? Contract.Result<bool>() == false : Contract.Result<bool>() == true);
 
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", person.DbId } });
@@ -218,38 +214,42 @@
 		/// </summary>
 		/// <returns>Returns false if the user decides to cancel the setup.</returns>
 		private bool Setup() {
-			Console.WriteLine("Commands: import <<filetoimport.csv>>, clear <<(person|log)>>, start, cancel");
-			var input = Console.ReadLine();
-			var args = input.Split(' ');
-			var command = args.Length > 0 ? args[0] : "";
-			
-			switch (command) {
-				case "import":
-					Console.WriteLine(
-						serverData.Import(args)
-							? "importing to database succeeded"
-							: "importing to database failed - command: import <<filetoimport.csv>> - please make sure that the file to import exists and is correctly formatted"
-					);
+			Console.WriteLine(@"Commands: import <<filetoimport.csv>>, clear <<(person|log)>>, start, cancel");
 
-					Setup();
-					break;
-				case "clear":
-					Console.WriteLine(
-						serverData.Clear(args)
-							? "clearing of database succeeded"
-							: "clearing of database failed - command: clear <<(person|log)>> - please try again"
-					);
-					
-					Setup();
-					break;
-				case "start": 
-					break;
-				case "cancel":
-					return false;
-					break;
-				default: 
-					Setup(); 
-					break;
+			var input = Console.ReadLine();
+			if (input != null) {
+				var args = input.Split(' ');
+				var command = args.Length > 0 ? args[0] : "";
+
+				switch (command) {
+					case "import":
+						Console.WriteLine(
+							serverData.Import(args)
+								? @"importing to database succeeded"
+								: @"importing to database failed - command: import <<filetoimport.csv>> - please make sure that the file to import exists and is correctly formatted"
+						);
+
+						this.Setup();
+						break;
+					case "clear":
+						Console.WriteLine(
+							serverData.Clear(args)
+								? @"clearing of database succeeded"
+								: @"clearing of database failed - command: clear <<(person|log)>> - please try again"
+						);
+
+						this.Setup();
+						break;
+					case "start":
+						break;
+					case "cancel":
+						return false;
+					default:
+						this.Setup();
+						break;
+				}
+			} else {
+				this.Setup();
 			}
 
 			return true;
@@ -260,12 +260,9 @@
 		/// server to run at and instantiating and starting
 		/// an instance of the Server class.
 		/// </summary>
-		/// <param name="args">Does not use the application arguments.</param>
-		static void Main(string[] args) {
+		static void Main() {
 			var server = new Server();
 			server.Start();
-
-			Console.ReadKey();
 		}
 	}
 }

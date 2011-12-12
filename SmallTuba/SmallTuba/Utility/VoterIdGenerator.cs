@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Unique_Voter_Id_Generator.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Utility
+﻿namespace SmallTuba.Utility
 {
     using System;
 

@@ -1,18 +1,9 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="ClientFE.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.RPC
+﻿namespace SmallTuba.Network.RPC
 {
 	using System;
-	using System.Collections.Generic;
 	using System.Diagnostics.Contracts;
-	using System.Linq;
 	using SmallTuba.Entities;
 	using SmallTuba.Network.RequestReply;
-	using System.Text;
 
 	/// <summary>
 	/// The client side of the network communication in our voting system.

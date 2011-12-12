@@ -28,19 +28,19 @@
 	/// // SELECT `id`, `firstname` FROM `Person` WHERE (`id` = 1) LIMIT 1
 	/// </example>
 	public class QueryBuilder {
-		private string _type;
-		private string _table;
-		private ArrayList _columns;
-		private ArrayList _values;
-		private OrderedDictionary _conditions;
-		private int _limit;
-		private int _offset;
-		private string _groupBy;
-		private OrderedDictionary _orders;
+		private string type;
+		private string table;
+		private ArrayList columns;
+		private ArrayList values;
+		private OrderedDictionary conditions;
+		private int limit;
+		private int offset;
+		private string groupBy;
+		private OrderedDictionary orders;
 
-		private string _query;
+		private string query;
 
-		private Connector _connector;
+		private readonly Connector connector;
 
 		/// <summary>
 		/// Construct the QueryBuilder.
@@ -52,26 +52,10 @@
 		/// works as a field initializer.
 		/// </summary>
 		public QueryBuilder() {
-			_connector = Connector.GetConnector();
-			_connector.Connect();
+			this.connector = Connector.GetConnector();
+			this.connector.Connect();
 
 			Clear();
-		}
-
-		/// <summary>
-		/// Resets the parameters to their default values.
-		/// The default type of the QueryBuilder is "select".
-		/// </summary>
-		private void Clear() {
-			_type = "select";
-			_table = "";
-			_columns = new ArrayList();
-			_values = new ArrayList();
-			_conditions = new OrderedDictionary();
-			_limit = -1;
-			_offset = -1;
-			_groupBy = "";
-			_orders = new OrderedDictionary();
 		}
 
 		/// <summary>
@@ -83,7 +67,7 @@
 			Contract.Requires(type != null);
 			Contract.Requires(type == "select" || type == "update" || type == "insert" || type == "delete" || type == "truncate");
 
-			_type = type;
+			this.type = type;
 			return this;
 		}
 
@@ -99,7 +83,7 @@
 				table += "TestSuite";
 			}
 
-			_table = table;
+			this.table = table;
 			return this;
 		}
 
@@ -112,8 +96,8 @@
 			Contract.Requires(columns != null);
 			Contract.Requires(columns.Length > 0);
 
-			_columns.Clear();
-			_columns.AddRange(columns);
+			this.columns.Clear();
+			this.columns.AddRange(columns);
 			return this;
 		}
 
@@ -128,8 +112,8 @@
 			Contract.Requires(values != null);
 			Contract.Requires(values.Length > 0);
 
-			_values.Clear();
-			_values.AddRange(values);
+			this.values.Clear();
+			this.values.AddRange(values);
 
 			return this;
 		}
@@ -142,7 +126,7 @@
 		public QueryBuilder AddCondition(string condition) {
 			Contract.Requires(condition != null);
 
-			return AddCondition(condition, "and", condition);
+			return this.AddCondition(condition, "and", condition);
 		}
 
 		/// <summary>
@@ -157,7 +141,7 @@
 			Contract.Requires(bind != null);
 			Contract.Requires(bind == "and" || bind == "or");
 
-			return AddCondition(condition, bind, condition);
+			return this.AddCondition(condition, bind, condition);
 		}
 
 		/// <summary>
@@ -175,7 +159,7 @@
 			Contract.Requires(bind == "and" || bind == "or");
 			Contract.Requires(index != null);
 
-			_conditions.Add(index, new[] { condition, bind });
+			this.conditions.Add(index, new[] { condition, bind });
 			return this;
 		}
 
@@ -187,7 +171,7 @@
 		public QueryBuilder RemoveCondition(string index) {
 			Contract.Requires(index != null);
 
-			_conditions.Remove(index);
+			this.conditions.Remove(index);
 			return this;
 		}
 
@@ -199,7 +183,7 @@
 		public QueryBuilder SetLimit(int limit) {
 			Contract.Requires(limit > 0);
 
-			_limit = limit;
+			this.limit = limit;
 			return this;
 		}
 
@@ -211,7 +195,7 @@
 		public QueryBuilder SetOffset(int offset) {
 			Contract.Requires(offset > -1);
 
-			_offset = offset;
+			this.offset = offset;
 			return this;
 		}
 
@@ -223,7 +207,7 @@
 		public QueryBuilder SetGroupBy(string groupBy) {
 			Contract.Requires(groupBy != null);
 
-			_groupBy = groupBy;
+			this.groupBy = groupBy;
 			return this;
 		}
 
@@ -236,7 +220,7 @@
 		public QueryBuilder AddOrder(string order) {
 			Contract.Requires(order != null);
 
-			return AddOrder(order, "asc", order);
+			return this.AddOrder(order, "asc", order);
 		}
 
 		/// <summary>
@@ -250,7 +234,7 @@
 			Contract.Requires(dir != null);
 			Contract.Requires(dir == "asc" || dir == "desc");
 
-			return AddOrder(order, dir, order);
+			return this.AddOrder(order, dir, order);
 		}
 
 		/// <summary>
@@ -267,7 +251,7 @@
 			Contract.Requires(dir == "asc" || dir == "desc");
 			Contract.Requires(index != null);
 
-			_orders.Add(index, new[] { order, dir });
+			this.orders.Add(index, new[] { order, dir });
 			return this;
 		}
 
@@ -278,8 +262,100 @@
 		/// <returns>The QueryBuilder instance for chaining</returns>
 		public QueryBuilder RemoveOrder(string index) {
 			// Contract.Requires(index != null);
-			_orders.Remove(index);
+			this.orders.Remove(index);
 			return this;
+		}
+
+		/// <summary>
+		/// Get the last query assembled.
+		/// </summary>
+		/// <returns>The last query assembled.</returns>
+		public string GetQuery() {
+			return this.query;
+		}
+
+		/// <summary>
+		/// Get the number of rows fetched from the last fetch query executed.
+		/// </summary>
+		/// <returns>The number of rows.</returns>
+		public int GetCount() {
+			return this.connector.GetCount();
+		}
+
+		/// <summary>
+		/// Get the total number of rows possible to fetch without limitations from the last query executed.
+		/// </summary>
+		/// <returns>The total number of rows.</returns>
+		public int GetCountTotal() {
+			return this.connector.GetCountTotal();
+		}
+
+		/// <summary>
+		/// Assembles the query from the given parameters.
+		/// </summary>
+		/// <returns>The assembled query.</returns>
+		public string Assemble() {
+			var query = "";
+
+			switch (this.type) {
+				case "select":
+					query = this.AssembleSelect();
+					break;
+				case "update":
+					query = this.AssembleUpdate();
+					break;
+				case "insert":
+					query = this.AssembleInsert();
+					break;
+				case "delete":
+					query = this.AssembleDelete();
+					break;
+				case "truncate":
+					query = this.AssembleTruncate();
+					break;
+			}
+
+			this.query = query;
+			this.Clear();
+
+			return query;
+		}
+
+		/// <summary>
+		/// Assembles the query from the given parameters
+		/// and executes this towards the Connector object
+		/// returning whatever results the Connector object
+		/// returns.
+		/// </summary>
+		/// <returns>The result of the executed query.</returns>
+		public ArrayList ExecuteQuery() {
+			return this.connector.ExecuteQuery(Assemble());
+		}
+
+		/// <summary>
+		/// Assembles the query from the given parameters
+		/// and executes this towards the Connector object
+		/// returning the last inserted id.
+		/// </summary>
+		/// <returns>The last inserted id of the executed query.</returns>
+		public int ExecuteNoneQuery() {
+			return this.connector.ExecuteNoneQuery(Assemble());
+		}
+
+		/// <summary>
+		/// Resets the parameters to their default values.
+		/// The default type of the QueryBuilder is "select".
+		/// </summary>
+		private void Clear() {
+			this.type = "select";
+			this.table = "";
+			this.columns = new ArrayList();
+			this.values = new ArrayList();
+			this.conditions = new OrderedDictionary();
+			this.limit = -1;
+			this.offset = -1;
+			this.groupBy = "";
+			this.orders = new OrderedDictionary();
 		}
 
 		/// <summary>
@@ -309,10 +385,10 @@
 			query += AssembleTable();
 			query += " SET";
 
-			var count = _columns.Count;
+			var count = this.columns.Count;
 			for (var x = 0; x < count; x++) {
-				var column = _columns[x];
-				var value = _values[x];
+				var column = this.columns[x];
+				var value = this.values[x];
 
 				query += " `" + column + "` = '" + value + "'" + (x < count - 1 ? "," : "");
 			}
@@ -369,7 +445,7 @@
 		/// </summary>
 		/// <returns>The part assembled.</returns>
 		private string AssembleTable() {
-			return " `" + _table + "`";
+			return " `" + this.table + "`";
 		}
 
 		/// <summary>
@@ -379,8 +455,8 @@
 		private string AssembleColumns() {
 			var query = " ";
 
-			int x = 1, count = _columns.Count;
-			foreach (string column in _columns) {
+			int x = 1, count = this.columns.Count;
+			foreach (string column in this.columns) {
 				query += "`" + column + "`" + (x < count ? ", " : "");
 
 				x++;
@@ -396,8 +472,8 @@
 		private string AssembleValues() {
 			var query = " ";
 
-			int x = 1, count = _values.Count;
-			foreach (string value in _values) {
+			int x = 1, count = this.values.Count;
+			foreach (string value in this.values) {
 				query += "'" + value + "'" + (x < count ? ", " : "");
 
 				x++;
@@ -412,8 +488,8 @@
 		/// <returns>The part assembled.</returns>
 		private string AssembleConditions() {
 			var query = "";
-			int x = 1, count = _conditions.Count;
-			var enumerator = _conditions.GetEnumerator();
+			int x = 1, count = this.conditions.Count;
+			var enumerator = this.conditions.GetEnumerator();
 
 			if (enumerator != null && count > 0) {
 				query += " WHERE";
@@ -437,8 +513,8 @@
 		/// <returns>The part assembled.</returns>
 		private string AssembleOrders() {
 			var query = "";
-			int x = 1, count = _orders.Count;
-			var enumerator = _orders.GetEnumerator();
+			int x = 1, count = this.orders.Count;
+			var enumerator = this.orders.GetEnumerator();
 
 			if (enumerator != null && count > 0) {
 				query += " ORDER BY";
@@ -460,7 +536,7 @@
 		/// </summary>
 		/// <returns>The part assembled.</returns>
 		private string AssembleLimit() {
-			return _limit > -1 ? " LIMIT " + _limit : "";
+			return this.limit > -1 ? " LIMIT " + this.limit : "";
 		}
 
 		/// <summary>
@@ -468,7 +544,7 @@
 		/// </summary>
 		/// <returns>The part assembled.</returns>
 		private string AssembleOffset() {
-			return _offset > -1 ? " OFFSET " + _offset : "";
+			return this.offset > -1 ? " OFFSET " + this.offset : "";
 		}
 
 		/// <summary>
@@ -476,84 +552,7 @@
 		/// </summary>
 		/// <returns>The part assembled.</returns>
 		private string AssembleGroupBy() {
-			return _groupBy != "" ? " GROUP BY " + _groupBy : "";
-		}
-
-		/// <summary>
-		/// Get the last query assembled.
-		/// </summary>
-		/// <returns>The last query assembled.</returns>
-		public string GetQuery() {
-			return _query;
-		}
-
-		/// <summary>
-		/// Get the number of rows fetched from the last fetch query executed.
-		/// </summary>
-		/// <returns>The number of rows.</returns>
-		public int GetCount() {
-			return _connector.GetCount();
-		}
-
-		/// <summary>
-		/// Get the total number of rows possible to fetch without limitations from the last query executed.
-		/// </summary>
-		/// <returns>The total number of rows.</returns>
-		public int GetCountTotal() {
-			return _connector.GetCountTotal();
-		}
-
-		/// <summary>
-		/// Assembles the query from the given parameters.
-		/// </summary>
-		/// <returns>The assembled query.</returns>
-		public string Assemble() {
-			var query = "";
-
-			switch (_type) {
-				case "select":
-					query = AssembleSelect();
-					break;
-				case "update":
-					query = AssembleUpdate();
-					break;
-				case "insert":
-					query = AssembleInsert();
-					break;
-				case "delete":
-					query = AssembleDelete();
-					break;
-				case "truncate":
-					query = AssembleTruncate();
-					break;
-			}
-
-			_query = query;
-
-			Clear();
-
-			return query;
-		}
-
-		/// <summary>
-		/// Assembles the query from the given parameters
-		/// and executes this towards the Connector object
-		/// returning whatever results the Connector object
-		/// returns.
-		/// </summary>
-		/// <returns>The result of the executed query.</returns>
-		public ArrayList ExecuteQuery() {
-			return _connector.ExecuteQuery(Assemble());
-		}
-
-		/// <summary>
-		/// Assembles the query from the given parameters
-		/// and executes this towards the Connector object
-		/// returning the last inserted id.
-		/// </summary>
-		/// <returns>The last inserted id of the executed query.</returns>
-		public int ExecuteNoneQuery() {
-			return _connector.ExecuteNoneQuery(Assemble());
+			return this.groupBy != "" ? " GROUP BY " + this.groupBy : "";
 		}
 	}
 }

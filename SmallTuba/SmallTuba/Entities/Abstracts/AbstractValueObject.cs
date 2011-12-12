@@ -28,7 +28,7 @@
 		/// Constructs the object.
 		/// </summary>
 		protected AbstractValueObject () {
-			values = new Hashtable();
+			this.values = new Hashtable();
 		}
 		
 		/// <summary>
@@ -39,16 +39,8 @@
 		/// <param name="key">The key of the value.</param>
 		/// <returns>The value of the key.</returns>
 		public object this[string key] {
-			get {
-				// Contract.Requires(Array.Exists(Columns, s => s == key));
-
-				return values[key]; 
-			}
-			set { 
-				// Contract.Requires(Array.Exists(Columns, s => s == key));
-
-				values[key] = value; 
-			}
+			get { return this.values[key];  }
+			set { this.values[key] = value;  }
 		}
 		
 		/// <summary>

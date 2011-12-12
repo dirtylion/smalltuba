@@ -1,19 +1,10 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="FileSaver.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.IO
+﻿namespace SmallTuba.IO
 {
     using System.Collections.Generic;
     using System.IO;
     using SmallTuba.Entities;
     using SmallTuba.PdfGenerator;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class FileSaver
     {
         private string path;

@@ -1,10 +1,3 @@
-
-﻿﻿// -----------------------------------------------------------------------
-// <copyright file="Controller.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
 namespace ClientApplication
 {
 	using System;
@@ -12,10 +5,7 @@ namespace ClientApplication
 	using SmallTuba.Entities;
 	using SmallTuba.Network.RPC;
 	using SmallTuba.Utility;
- 
-	/// <summary>
-	/// TODO: Update summary.
-	/// </summary>
+
 	public class Controller
 	{
 		private WelcomeForm welcomeForm;

@@ -1,18 +1,11 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="PDFGenerator.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.PdfGenerator
+﻿namespace SmallTuba.PdfGenerator
 {
-    using PdfSharp.Drawing.BarCodes;
-    using PdfSharp.Drawing.Layout;
-    using PdfSharp.Pdf;
-    using PdfSharp.Drawing;
-    using System.Diagnostics.Contracts;
-
-    using SmallTuba.Entities;
+	using System.Diagnostics.Contracts;
+	using PdfSharp.Drawing;
+	using PdfSharp.Drawing.BarCodes;
+	using PdfSharp.Drawing.Layout;
+	using PdfSharp.Pdf;
+	using SmallTuba.Entities;
 
     /// <summary>
     /// This class generates polling cards.

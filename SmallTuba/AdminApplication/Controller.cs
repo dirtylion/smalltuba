@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Controller1.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace AdminApplication
+﻿namespace AdminApplication
 {
     using System;
     using System.Collections.Generic;
@@ -15,9 +9,6 @@ namespace AdminApplication
     using SmallTuba.Entities;
     using SmallTuba.IO;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class Controller
     {
         private List<PollingVenue> pollingVenues;

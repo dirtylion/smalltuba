@@ -1,18 +1,9 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Packet.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.Network.RequestReply
+﻿namespace SmallTuba.Network.RequestReply
 {
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.Contracts;
-    using System.Linq;
-    using System.Text;
+	using System.Diagnostics.Contracts;
 
-    /// <summary>
+	/// <summary>
     /// A network packet containing sender, receiver and request id and a message
     /// </summary>
     [Serializable]
