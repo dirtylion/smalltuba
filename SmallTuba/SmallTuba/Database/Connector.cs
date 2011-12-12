@@ -2,11 +2,12 @@
 	using System;
 	using System.Collections;
 	using System.Diagnostics.Contracts;
-
 	using MySql.Data.MySqlClient;
-	
+
+	using SmallTuba.Utility;
+
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-07</version>
+	/// <version>2011-12-12</version>
 	/// <summary>
 	/// The Connector is meant to be some kind of proxy/driver for the 
 	/// underlying external data source. This Connector interfaces 
@@ -15,29 +16,30 @@
 	/// The primary tasks of the Connector class is to establish connection
 	/// to the external data source, to terminate the connection, to fetch
 	/// data, and to execute queries.
+	/// 
+	/// The Connector is meant to act like a singleton, so only one instance
+	/// is in play at all time. Therefore you have to use the GetConnector()
+	/// method for instantiation.
 	/// </summary>
 	public class Connector {
-		private const string _server = "localhost";
-		private const string _port = "3306";
-		private const string _database = "dirtylion";
-		private const string _uid = "dirtylion";
-		private const string _password = "abcd1234";
+		private const string Server = "localhost";
+		private const string Port = "3306";
+		private const string Database = "dirtylion";
+		private const string Uid = "dirtylion";
+		private const string Password = "abcd1234";
 
-		private MySqlConnection _connection;
-		private int _count;
+		private MySqlConnection connection;
+		private int count;
 
-		private static Connector CONNECTOR;
+		private static Connector instance;
 
-		private Connector() {
-
-		}
+		/// <summary>
+		/// Empty private constructor for no normal instantiation.
+		/// </summary>
+		private Connector() { }
 
 		public static Connector GetConnector() {
-			if (CONNECTOR == null) {
-				CONNECTOR = new Connector();
-			}
-
-			return CONNECTOR;
+			return instance ?? (instance = new Connector());
 		}
 
 		/// <summary>
@@ -45,16 +47,13 @@
 		/// </summary>
 		public void Connect() {
 			if (!IsConnected()) {
-				_connection =
-					new MySqlConnection(
-						"Server=" + _server + ";Port=" + _port + ";Database=" + _database + ";UID=" + _uid + ";Password=" + _password
-						+ ";Pooling=false");
-				_count = 0;
+				this.connection = new MySqlConnection("Server=" + Server + ";Port=" + Port + ";Database=" + Database + ";UID=" + Uid + ";Password=" + Password + ";Pooling=false");
+				this.count = 0;
 
 				try {
-					_connection.Open();
+					this.connection.Open();
 				} catch (Exception e) {
-					Console.WriteLine(e);
+					Debug.WriteLine(e.ToString());
 				}
 			}
 		}
@@ -65,9 +64,9 @@
 		public void Disconnect() {
 			Contract.Requires(IsConnected());
 
-			if (_connection != null) {
-				_connection.Close();
-				_connection = null;
+			if (this.connection != null) {
+				this.connection.Close();
+				this.connection = null;
 			}
 		}
 
@@ -77,7 +76,7 @@
 		/// <returns>A boolean which tells whether a connection is established.</returns>
 		[Pure]
 		public bool IsConnected() {
-			return (_connection != null);
+			return (this.connection != null);
 		}
 
 		/// <summary>
@@ -93,7 +92,7 @@
 		public ArrayList ExecuteQuery(string query) {
 			Contract.Requires(IsConnected());
 
-			var command = new MySqlCommand { Connection = _connection, CommandText = query };
+			var command = new MySqlCommand { Connection = this.connection, CommandText = query };
 			var reader = command.ExecuteReader();
 
 			var results = new ArrayList();
@@ -108,7 +107,7 @@
 				results.Add(row);
 			}
 
-			_count = results.Count;
+			this.count = results.Count;
 
 			reader.Close();
 
@@ -123,12 +122,12 @@
 		public int ExecuteNoneQuery(string query) {
 			Contract.Requires(IsConnected());
 
-			var command = new MySqlCommand { Connection = _connection, CommandText = query };
+			var command = new MySqlCommand { Connection = this.connection, CommandText = query };
 			command.ExecuteNonQuery();
 
-			_count = 0;
+			this.count = 0;
 
-			command = new MySqlCommand { Connection = _connection, CommandText = "SELECT LAST_INSERT_ID();" };
+			command = new MySqlCommand { Connection = this.connection, CommandText = "SELECT LAST_INSERT_ID();" };
 
 			return Convert.ToInt32(command.ExecuteScalar());
 		}
@@ -140,7 +139,7 @@
 		/// </summary>
 		/// <returns>An integer.</returns>
 		public int GetCount() {
-			return _count;
+			return this.count;
 		}
 			
 		/// <summary>
@@ -153,7 +152,7 @@
 		public int GetCountTotal() {
 			Contract.Requires(IsConnected());
 
-			var command = new MySqlCommand { Connection = _connection, CommandText = "SELECT FOUND_ROWS();" };
+			var command = new MySqlCommand { Connection = this.connection, CommandText = "SELECT FOUND_ROWS();" };
 
 			return Convert.ToInt32(command.ExecuteScalar());
 		}
