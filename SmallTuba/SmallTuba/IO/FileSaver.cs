@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="FileSaver.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.IO
+﻿namespace SmallTuba.IO
 {
     using System.Collections.Generic;
     using System.IO;
@@ -12,6 +6,8 @@ namespace SmallTuba.IO
     using SmallTuba.Entities;
     using SmallTuba.PdfGenerator;
 
+    /// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
+    /// <version>2011-12-12</version>
     /// <summary>
     /// This class exports polling cards, voter lists and data for the local polling venue.
     /// The class creates a new folder when it is instantiated, with the same name as the polling venue, on the path
@@ -31,7 +27,7 @@ namespace SmallTuba.IO
             Contract.Requires(pollingVenueName.Length>0);
             Contract.Ensures(Directory.Exists(path));
 
-            //Creates a new folder with the polling venue name
+            //Creates a new folder with the polling venue name  
             this.path = Directory.CreateDirectory(path+"\\"+pollingVenueName).FullName;
         }
 

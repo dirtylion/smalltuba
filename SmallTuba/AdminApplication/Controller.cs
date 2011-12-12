@@ -1,22 +1,18 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Controller1.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace AdminApplication
+﻿namespace AdminApplication
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Windows.Forms;
     using System.Xml.Schema;
-
     using SmallTuba.Entities;
     using SmallTuba.IO;
 
+    /// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
+    /// <version>2011-12-12</version>
     /// <summary>
-    /// TODO: Update summary.
+    /// The controller class for the gui, responsible for the actions made by the user.
     /// </summary>
     public class Controller
     {
@@ -69,7 +65,7 @@ namespace AdminApplication
             var addresses = from n in pollingVenues select n.PollingVenueAddress;
             BindingSource bs = new BindingSource();
             bs.DataSource = addresses;
-            form.TableView.DataSource = bs;
+            this.form.TableView.DataSource = bs;
         }
 
         /// <summary>
@@ -77,10 +73,16 @@ namespace AdminApplication
         /// </summary>
         private void FileOpenDialogImport()
         {
-            form.OpenFileDialog.Filter = "Xml Files (*.xml)|*.xml";
-            if (form.OpenFileDialog.ShowDialog() == DialogResult.OK)
+            this.form.OpenFileDialog.Filter = "Xml Files (*.xml)|*.xml";
+            if (this.form.OpenFileDialog.ShowDialog() == DialogResult.OK)
             {
-                this.SetPollingVenues(form.OpenFileDialog.FileName);
+                string path = form.OpenFileDialog.FileName;
+                if(Path.GetExtension(path).Equals(".xml")){
+                    this.SetPollingVenues(path);
+                }else{
+                    MessageBox.Show("The selected file type is not supported, please select a .xml file", "File error", MessageBoxButtons.OK);
+                }
+                
             }
         }
 
@@ -91,7 +93,7 @@ namespace AdminApplication
         /// <returns>Polling Venue</returns>
         private PollingVenue GetSelectedPollingVenue()
         {
-            if (form.TableView.SelectedRows.Count > 0)
+            if (this.form.TableView.SelectedRows.Count > 0)
             {
                 return pollingVenues[form.TableView.SelectedRows[0].Index];
             }

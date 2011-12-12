@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="PDFGenerator.cs" company="">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace SmallTuba.PdfGenerator
+﻿namespace SmallTuba.PdfGenerator
 {
     using System.IO;
     using PdfSharp.Drawing.BarCodes;
@@ -14,6 +8,8 @@ namespace SmallTuba.PdfGenerator
     using System.Diagnostics.Contracts;
     using SmallTuba.Entities;
 
+    /// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
+    /// <version>2011-12-12</version>
     /// <summary>
     /// This class generates polling cards.
     /// The design of the polling card, is a rough copy of the official danish pollingcard for national election. 
