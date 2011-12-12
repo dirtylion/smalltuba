@@ -6,15 +6,12 @@
 
 namespace SmallTuba.Entities
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
-    using SmallTuba.Entities;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// The class represent a real polling venue.
+    /// The class contains all the voters, the address of the polling venue
+    /// and the addresse of the municipality the polling venue is located in 
     /// </summary>
     public class PollingVenue
     {

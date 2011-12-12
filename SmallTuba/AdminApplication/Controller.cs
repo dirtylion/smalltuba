@@ -34,15 +34,22 @@ namespace AdminApplication
             this.InitializeEventSubscribers();
         }
 
+        /// <summary>
+        /// Adds event subscribers to the gui elements
+        /// </summary>
         private void InitializeEventSubscribers()
         {
-            form.ImportData.Click += this.FileOpenDialogImport;
+            form.ImportData.Click += (o, e) => FileOpenDialogImport();
             form.ExportData.Click += (o, e) => OpenExportWindow();
-            export.ExportData.Click += ExportData;
+            export.ExportData.Click += (o, e) => ExportData();
             export.Cancel.Click += (o, e) => export.Close();
             Changed += this.UpdateTable;
         }
 
+        /// <summary>
+        /// Loads the polling venues and invoke the change event on the table overview
+        /// </summary>
+        /// <param name="path"></param>
         private void SetPollingVenues(string path)
         {
             FileLoader fl = new FileLoader();
@@ -54,6 +61,9 @@ namespace AdminApplication
             }     
         }
 
+        /// <summary>
+        /// Updates the visible table overview with the loaded polling venues
+        /// </summary>
         private void UpdateTable()
         {
             var addresses = from n in pollingVenues select n.PollingVenueAddress;
@@ -62,7 +72,10 @@ namespace AdminApplication
             form.TableView.DataSource = bs;
         }
 
-        private void FileOpenDialogImport(Object sender, EventArgs e)
+        /// <summary>
+        /// Opens the import file dialog box
+        /// </summary>
+        private void FileOpenDialogImport()
         {
             form.OpenFileDialog.Filter = "Xml Files (*.xml)|*.xml";
             if (form.OpenFileDialog.ShowDialog() == DialogResult.OK)
@@ -71,6 +84,11 @@ namespace AdminApplication
             }
         }
 
+        /// <summary>
+        /// Return the polling venue the user has selected in the table overview
+        /// Returns null if no polling venue is selected.
+        /// </summary>
+        /// <returns>Polling Venue</returns>
         private PollingVenue GetSelectedPollingVenue()
         {
             if (form.TableView.SelectedRows.Count > 0)
@@ -82,6 +100,10 @@ namespace AdminApplication
 
         }
 
+        /// <summary>
+        /// Checks that a polling venue is selected
+        /// </summary>
+        /// <returns>bool</returns>
         private bool PollingVenueSelected()
         {
             if (this.GetSelectedPollingVenue() == null)
@@ -91,31 +113,54 @@ namespace AdminApplication
             return true;
         }
 
+        /// <summary>
+        /// Shows the message box if the import file is not correct
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
         private void ErrorLoadFileDialog(Object sender, ValidationEventArgs e)
         {
             MessageBox.Show(e.Message, "XML Parsing Error", MessageBoxButtons.OK);
         }
 
+        /// <summary>
+        /// The text from the gui text field ElectionName
+        /// </summary>
+        /// <returns>Name of the election</returns>
         private string ElectionName()
         {
             return form.ElectionName.Text;
         }
 
+        /// <summary>
+        /// The date from the date picker in the gui
+        /// </summary>
+        /// <returns>Date of the election</returns>
         private string ElectionDate()
         {
             return form.ElectionDate.Text;
         }
 
-        private string SelectedFolderPath()
+        /// <summary>
+        /// Returns the selected folder path for export files
+        /// </summary>
+        /// <returns>path</returns>
+        private string SelectedExportFolderPath()
         {
             return export.FolderBrowserDialog.SelectedPath;
         }
 
+        /// <summary>
+        /// Starts the gui
+        /// </summary>
         public void Run()
         {
            Application.Run(form);
         }
 
+        /// <summary>
+        /// Opens the export form
+        /// </summary>
         private void OpenExportWindow()
         {
             if (this.PollingVenueSelected())
@@ -128,8 +173,13 @@ namespace AdminApplication
             
         }
 
-        private void ExportData(Object sender, EventArgs e)
+        /// <summary>
+        /// Exports the data for each polling venue dependent on which checkboxes in
+        /// the export form that are checked.
+        /// </summary>
+        private void ExportData()
         {
+            //If no boxes are checked
             if(!this.ExportElementsSelected())
             {
                 MessageBox.Show("No export elements are selected", "Notification", MessageBoxButtons.OK);
@@ -138,7 +188,7 @@ namespace AdminApplication
 
             if (export.FolderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                FileSaver fs = new FileSaver(this.SelectedFolderPath(), this.GetSelectedPollingVenue().PollingVenueAddress.Name);
+                FileSaver fs = new FileSaver(this.SelectedExportFolderPath(), this.GetSelectedPollingVenue().PollingVenueAddress.Name);
                 if (export.PollingCards.Checked)
                 {
                     fs.SavePollingCards(this.GetSelectedPollingVenue(), this.ElectionName(), this.ElectionDate());
@@ -153,9 +203,13 @@ namespace AdminApplication
                 }
             }
 
-            export.Close();
+            export.Close(); //close the form
         }
 
+        /// <summary>
+        /// Checks that at least one check box is checked in the export form
+        /// </summary>
+        /// <returns>bool</returns>
         private bool ExportElementsSelected()
         {
             return export.PollingCards.Checked || export.VoterLists.Checked || export.Voters.Checked;
