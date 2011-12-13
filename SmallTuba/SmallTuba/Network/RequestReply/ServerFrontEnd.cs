@@ -12,8 +12,7 @@
     /// This class listens for request for the server and replies.
 	/// This class only receives request adressed to the server
     /// </summary>
-    public class ServerFrontEnd
-    {
+    public class ServerFrontEnd {
         /// <summary>
         /// Used for sending and receiving multicasts
         /// </summary>
@@ -27,8 +26,7 @@
         /// <summary>
         /// May I have a new server front end?
         /// </summary>
-        public ServerFrontEnd()
-        {
+        public ServerFrontEnd() {
             // Create a new udpMulticast as a server
             this.udpMulticast = new UdpMulticast(0);
             this.prevPackets = new Dictionary<string, Packet>();
@@ -51,8 +49,7 @@
         /// If a request with the same request id is repeated, the reply is repeated
         /// </summary>
         /// <param name="timeOut">The time to wait in miliseconds</param>
-        public void ListenForCalls(long timeOut)
-        {
+        public void ListenForCalls(long timeOut) {
             Contract.Requires(timeOut >= 0);
             Contract.Requires(this.RequestHandler != null);
 
@@ -63,41 +60,34 @@
             long preTime = DateTime.Now.ToFileTime();
             
             // Listen
-            while (runForever || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
-            {
+            while (runForever || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000)) {
                 // Receive the packet
                 object data;
-                if (runForever)
-                {
+                if (runForever) {
                     // The udpMulticast is allowed to block forever
                     data = this.udpMulticast.Receive(0);
                 }
-                else
-                {
+                else {
                     // The udpMulticast is allowed to block for the time left
                     long timeLeft = ((preTime + (timeOut * 10000)) - DateTime.Now.ToFileTime()) / 10000;
                     data = this.udpMulticast.Receive(timeLeft);
                 }
                     
                 // Test if it's a valid packet
-                if (data == null || !(data is Packet))
-                {
+                if (data == null || !(data is Packet)) {
                     continue;
                 }
 
                 // Test if the packet is for the server
                 Packet recPacket = (Packet)data;
                 
-                if (recPacket.GetReceiverId.Equals("server"))
-                {
+                if (recPacket.GetReceiverId.Equals("server")) {
                     // If the packet has been received before
-                    if (this.prevPackets.ContainsKey(recPacket.GetSenderId + "#" + recPacket.GetRequestId))
-                    {
+                    if (this.prevPackets.ContainsKey(recPacket.GetSenderId + "#" + recPacket.GetRequestId)) {
                         // Repeat the reply
                         this.udpMulticast.Send(this.prevPackets[recPacket.GetSenderId + "#" + recPacket.GetRequestId]);
                     }
-                    else
-                    {
+                    else {
                         // The package has not been seen before and we need to generate a response
                         Console.Out.WriteLine("Server sends fresh");
                         string senderId = recPacket.GetSenderId;

@@ -1,5 +1,4 @@
-﻿namespace SmallTuba.Network.RPC
-{
+﻿namespace SmallTuba.Network.RPC {
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -10,8 +9,7 @@
     /// <summary>
     /// Describing the action to be performed by the server
     /// </summary>
-    internal enum Keyword
-    {
+    internal enum Keyword {
         /// <summary>
         /// Are you a request about getting a person from a cpr number?
         /// </summary>

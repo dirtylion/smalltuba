@@ -1,5 +1,4 @@
-﻿namespace SmallTuba.Network.RequestReply
-{
+﻿namespace SmallTuba.Network.RequestReply {
     using System;
 	using System.Diagnostics.Contracts;
     using SmallTuba.Network.UDP;
@@ -10,8 +9,7 @@
 	/// This class keeps resending packets for the server if its unresponsive
 	/// This class only sends to and receives packages from the server not other clients
 	/// </summary>
-	public class ClientFrontEnd
-	{
+	public class ClientFrontEnd {
 		/// <summary>
 		/// The name of the client
 		/// </summary>
@@ -31,8 +29,7 @@
 		/// May I have a new client front end with this name?
 		/// </summary>
 		/// <param name="name">The name of the client</param>
-		public ClientFrontEnd(string name)
-		{
+		public ClientFrontEnd(string name) {
 			Contract.Requires(name != null && name != "server");
 			this.name = name;
 
@@ -47,8 +44,7 @@
 		/// <param name="message">The request</param>
 		/// <param name="timeOut">The time to wait in milliseconds, 0 means forever</param>
 		/// <returns>The result, null in the case an answer isn't received</returns>
-		public object SendRequest(object message, long timeOut)
-		{
+		public object SendRequest(object message, long timeOut) {
 			Contract.Requires(message != null);
 			Contract.Requires(timeOut >= 0);
 
@@ -61,24 +57,20 @@
 			long preTime = DateTime.Now.ToFileTime();
 
 			// Test if the timeout is 0 or the timeout value has run out
-			while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
-			{
+			while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000)) {
 				// Wait for reply
 				object result = this.udpMulticast.Receive(500);
-				if (result == null)
-				{
+				if (result == null) {
 					// No reply - resend...
 					Console.Out.WriteLine("Client repeats");
 					this.udpMulticast.Send(packet);
 				}
-				else if (result is Packet)
-				{
+				else if (result is Packet) {
 					// A packet was received
 					Packet recPacket = (Packet)result;
 					
 					// Test if the packet is for us
-					if (recPacket.GetReceiverId.Equals(this.name) && recPacket.GetRequestId.Equals(this.requestId.ToString()))
-					{
+					if (recPacket.GetReceiverId.Equals(this.name) && recPacket.GetRequestId.Equals(this.requestId.ToString())) {
 						return recPacket.GetMessage;
 					}
 				}

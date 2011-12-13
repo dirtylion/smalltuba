@@ -1,5 +1,4 @@
-﻿namespace ClientApplication
-{
+﻿namespace ClientApplication {
     using System;
     using System.Runtime.InteropServices;
 
@@ -8,14 +7,12 @@
     /// <summary>
     /// The entry point of the client application
     /// </summary>
-    public static class Program
-    {
+    public static class Program {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        public static void Main()
-        {
+        public static void Main() {
             Win32.AllocConsole();
 
             Controller controller = new Controller();
@@ -26,8 +23,7 @@
     /// <summary>
     /// Helper class for enabling the console
     /// </summary>
-    public class Win32
-    {
+    public class Win32 {
         /// <summary>
         /// Enables the console
         /// </summary>

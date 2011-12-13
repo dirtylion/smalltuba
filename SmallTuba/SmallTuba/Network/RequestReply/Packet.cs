@@ -1,5 +1,4 @@
-﻿namespace SmallTuba.Network.RequestReply
-{
+﻿namespace SmallTuba.Network.RequestReply {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
@@ -12,8 +11,7 @@
     /// A network packet containing sender, receiver and request id and a message
     /// </summary>
     [Serializable]
-    internal struct Packet
-    {
+    internal struct Packet {
         /// <summary>
         /// The receiver ID
         /// </summary>
@@ -41,8 +39,7 @@
         /// <param name="senderId">The sender ID</param>
         /// <param name="requestId">The request ID</param>
         /// <param name="message">The content of this packet</param>
-        public Packet(string receiverId, string senderId, string requestId, object message)
-        {
+        public Packet(string receiverId, string senderId, string requestId, object message) {
             Contract.Requires(receiverId != null);
             Contract.Requires(senderId != null);
             Contract.Requires(requestId != null);
@@ -57,10 +54,8 @@
         /// Who is the receiver of this message?
         /// </summary>
         [Pure]
-        public string GetReceiverId
-        {
-            get
-            {
+        public string GetReceiverId {
+            get {
                 return this.receiverId;
             }
         }
@@ -69,10 +64,8 @@
         /// Who is the sender of this message?
         /// </summary>
         [Pure]
-        public string GetSenderId
-        {
-            get
-            {
+        public string GetSenderId {
+            get {
                 return this.senderId;
             }
         }
@@ -81,10 +74,8 @@
         /// What is the request ID of this message?
         /// </summary>
         [Pure]
-        public string GetRequestId
-        {
-            get
-            {
+        public string GetRequestId {
+            get {
                 return this.requestId;
             }
         }
@@ -93,10 +84,8 @@
         /// What is the content of this packet?
         /// </summary>
         [Pure]
-        public object GetMessage
-        {
-            get
-            {
+        public object GetMessage {
+            get {
                 return this.message;
             }
         }
