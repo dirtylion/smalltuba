@@ -10,6 +10,8 @@
     /// <version>2011-12-12</version>
     /// <summary>
     /// This test class tests the file loader and the file saver.
+    /// The testdata.xml and schema.xml have to be located in the in the same
+    /// folder as the .exe file before the tests can be run successfully
     /// </summary>
     [TestFixture]
     public class IOTest{
@@ -17,14 +19,14 @@
         private FileSaver fileSaver;
         private List<PollingVenue> pollingVenues;
         private string path;
-        
+
         /// <summary>
         /// Load a test file in, and creates some folders for test purpose
         /// </summary>
         [SetUp]
         public void SetUp(){
             FileLoader fileLoader = new FileLoader();
-            pollingVenues = fileLoader.GetPollingVenues("TestInput.xml", ((o, e) => { }));
+            pollingVenues = fileLoader.GetPollingVenues(@"IO\TestInput.xml", ((o, e) => { }));
             path = Directory.CreateDirectory("Test").FullName;
             fileSaver = new FileSaver(path, "TestVenue");
         }

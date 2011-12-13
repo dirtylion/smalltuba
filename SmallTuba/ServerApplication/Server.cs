@@ -1,6 +1,7 @@
 ﻿namespace ServerApplication {
 	using System;
 	using System.Collections;
+	using System.Diagnostics;
 	using System.Diagnostics.Contracts;
 
 	using SmallTuba.Database;
@@ -263,6 +264,7 @@
 		/// <param name="args">Does not use the application arguments.</param>
 		static void Main(string[] args) {
 			var server = new Server();
+
 			server.Start();
 
 			Console.ReadKey();

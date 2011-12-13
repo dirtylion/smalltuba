@@ -3,6 +3,8 @@ using System.Windows.Forms;
 
 namespace AdminApplication
 {
+    using System.Diagnostics;
+
     static class Program
     {
         /// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
@@ -12,6 +14,7 @@ namespace AdminApplication
         /// </summary>
         [STAThread]
         static void Main(){
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Controller controller = new Controller();

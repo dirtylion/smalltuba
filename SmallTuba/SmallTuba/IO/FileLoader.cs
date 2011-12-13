@@ -106,7 +106,7 @@
 		/// <returns>The result of the validation</returns>
 		private bool ValidateXmlFile(XDocument xDocument, ValidationEventHandler notifier){
 			var schemas = new XmlSchemaSet();
-			schemas.Add("", XmlReader.Create("schema.xml"));
+			schemas.Add("", XmlReader.Create(@"IO\schema.xml"));
 			bool error = false;
 			xDocument.Validate(schemas, (o,e) => {
 					notifier(o, e);//Notifies the subscriber

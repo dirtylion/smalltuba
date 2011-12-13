@@ -12,7 +12,7 @@
 	/// object.
 	/// </summary>
 	public class LogEntity : AbstractEntity {
-		public static readonly string Table = "Log";
+		public static readonly string Table = "log";
 		public static readonly string[] Columns = { "id", "person_id", "action", "client", "polling_table", "timestamp" };
 
 		public LogEntity() {

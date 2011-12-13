@@ -79,6 +79,13 @@
 				queryBuilder.SetType("truncate");
 				queryBuilder.SetTable(args[1]);
 
+			    var test = new QueryBuilder();
+			    test.SetType("truncate");
+			    test.SetTable(args[1]);
+
+                Console.WriteLine(test.Assemble());
+
+
 				queryBuilder.ExecuteNoneQuery();
 
 				return true;
