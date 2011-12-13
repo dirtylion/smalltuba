@@ -16,45 +16,55 @@ namespace SmallTubaTestSuite.Network
         private int unixTime;
         private string[] tables;
 
-        
         private void Init()
         {
             unixTime = (int)TimeConverter.ConvertToUnixTimestamp(DateTime.Now.ToUniversalTime());
             person1 = new Person()
-                          {
-                              Cpr = "1",
-                              FirstName = "TestCprFirst",
-                              DbId = 11,
-                              LastName = "TestCprLast",
-                              VotedPollingTable = "Table 1",
-                              VotedTime = unixTime,
-                              Voted = false,
-                              Exists = true
-                          };
+            {
+                Cpr = "1",
+                FirstName = "TestCprFirst",
+                DbId = 11,
+                LastName = "TestCprLast",
+                VotedPollingTable = "Table 1",
+                VotedTime = unixTime,
+                Voted = false,
+                Exists = true
+            };
             person2 = new Person()
-                          {
-                              Cpr = "2",
-                              FirstName = "TestIdFirst",
-                              DbId = 22,
-                              LastName = "TestIdFirst",
-                              VotedPollingTable = "Table 2",
-                              VotedTime = unixTime,
-                              Voted = true,
-                              Exists = true
-                          };
+            {
+                Cpr = "2",
+                FirstName = "TestIdFirst",
+                DbId = 22,
+                LastName = "TestIdFirst",
+                VotedPollingTable = "Table 2",
+                VotedTime = unixTime,
+                Voted = true,
+                Exists = true
+            };
             emptyPerson = new Person();
-            tables = new string[] {"Table 1", "Table 2", "Table 3"};
+            tables = new string[] { "Table 1", "Table 2", "Table 3" };
         }
 
         [Test]
         public void TestRpc()
         {
+            // Setup test objects
             Init();
+
+            // Start a server that will be active for 10 seconds
             Thread serverThread = new Thread(new ThreadStart(SetupServer));
             serverThread.Start();
+
+            // Wait to make sure its active
             Thread.Sleep(5000);
 
+            // Start testing
             VoterClient voterClient = new VoterClient("Client1");
+
+            // Test the name
+            Assert.That(voterClient.Name.Equals("Client1"));
+            voterClient.Name = "Client1.1";
+            Assert.That(voterClient.Name.Equals("Client1.1"));
 
             // Connected
             Assert.True(voterClient.Connected());
@@ -87,45 +97,52 @@ namespace SmallTubaTestSuite.Network
             Assert.That(arr[2] == tables[2]);
 
 
-            //Disconnect the server and test that the client perfomrs as expected
+            // Await that the server runs out of time
+            Thread.Sleep(10000);
+
+            // Abort the server thread
             serverThread.Abort();
+
+            // Make sure that the thraed is not allive
             Thread.Sleep(5000);
 
+            // Test that it perfomrs well when not connected to a server
             //Connected
             Assert.False(voterClient.Connected());
 
             //Testing person from cpr
             person = voterClient.GetPersonFromCpr(1);
             Assert.That(person == null);
-            
+
             //Testing person from id
             person = voterClient.GetPersonFromId(2);
             Assert.That(person == null);
-            
+
             //Register voter
             b = voterClient.RegisterVoter(person1);
             Assert.False(b);
-            
+
             //unregister voter
             b = voterClient.UnregisterVoter(person2);
             Assert.False(b);
-            
+
             //Valid tables
             arr = voterClient.ValidTables();
             Assert.That(arr == null);
         }
 
-
+        /// <summary>
+        /// A server that will listen for 10 seconds
+        /// </summary>
         private void SetupServer()
         {
             VoterServer voterServer = new VoterServer(System.Net.Dns.GetHostName());
-            voterServer.SetCprToPersonRequest((name, cpr) => cpr == "1" ? person1 : emptyPerson);
-            voterServer.SetVoterIdToPersonRequest((name, id) => id == 2 ? person2 : emptyPerson);
-            voterServer.SetRegisterVoteRequest((name, person) => !person.Voted);
-            voterServer.SetUnregisterVoteRequest((name, person) => !person.Voted);
-            voterServer.SetValidTableRequest((name) => tables);
-            voterServer.ListenForCalls(0);
+            voterServer.CprToPersonRequest = ((name, cpr) => cpr == "1" ? person1 : emptyPerson);
+            voterServer.VoterIdToPersonRequest = ((name, id) => id == 2 ? person2 : emptyPerson);
+            voterServer.RegisterVoteRequest = ((name, person) => !person.Voted);
+            voterServer.UnregisterVoteRequest = ((name, person) => !person.Voted);
+            voterServer.ValidTableRequest = ((name) => tables);
+            voterServer.ListenForCalls(10000);
         }
-         
     }
 }
