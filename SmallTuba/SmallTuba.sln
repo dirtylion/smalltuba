@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientApplicationSetup", "ClientApplicationSetup\ClientApplicationSetup.vdproj", "{1F9AF067-73C1-409C-9626-6CDBFC3315B6}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AdminApplicationSetup", "AdminApplicationSetup\AdminApplicationSetup.vdproj", "{8FC7E319-C314-4704-83E1-6B355EFED95C}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SmallTuba.vsmdi
@@ -113,6 +115,12 @@ Global
 		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|Any CPU.ActiveCfg = Release
 		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|Mixed Platforms.ActiveCfg = Release
 		{1F9AF067-73C1-409C-9626-6CDBFC3315B6}.Release|x86.ActiveCfg = Release
+		{8FC7E319-C314-4704-83E1-6B355EFED95C}.Debug|Any CPU.ActiveCfg = Debug
+		{8FC7E319-C314-4704-83E1-6B355EFED95C}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{8FC7E319-C314-4704-83E1-6B355EFED95C}.Debug|x86.ActiveCfg = Debug
+		{8FC7E319-C314-4704-83E1-6B355EFED95C}.Release|Any CPU.ActiveCfg = Release
+		{8FC7E319-C314-4704-83E1-6B355EFED95C}.Release|Mixed Platforms.ActiveCfg = Release
+		{8FC7E319-C314-4704-83E1-6B355EFED95C}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

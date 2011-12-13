@@ -15,32 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_532692EA588CC250F2067B5EB1579856"
+        "MsmKey" = "8:_3D5771FA9807B467E1D9E101EB74AB3F"
         "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9FAA1F04A9C9A29E3286FF6E66A16204"
+        "MsmKey" = "8:_3D5771FA9807B467E1D9E101EB74AB3F"
+        "OwnerKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
         "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9FAA1F04A9C9A29E3286FF6E66A16204"
-        "OwnerKey" = "8:_532692EA588CC250F2067B5EB1579856"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B2475E359FC873E94ECB4BF70992D6A0"
-        "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B2475E359FC873E94ECB4BF70992D6A0"
-        "OwnerKey" = "8:_532692EA588CC250F2067B5EB1579856"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,6 +39,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FF56A323DBCA6869B884F023F8EEC374"
+        "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FF56A323DBCA6869B884F023F8EEC374"
+        "OwnerKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
         "MsmSig" = "8:_UNDEFINED"
@@ -58,19 +58,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_532692EA588CC250F2067B5EB1579856"
+        "OwnerKey" = "8:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B2475E359FC873E94ECB4BF70992D6A0"
+        "OwnerKey" = "8:_3D5771FA9807B467E1D9E101EB74AB3F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9FAA1F04A9C9A29E3286FF6E66A16204"
+        "OwnerKey" = "8:_FF56A323DBCA6869B884F023F8EEC374"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -98,6 +98,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
         "Release"
@@ -165,14 +178,45 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_532692EA588CC250F2067B5EB1579856"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3D5771FA9807B467E1D9E101EB74AB3F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3D5771FA9807B467E1D9E101EB74AB3F"
+                    {
+                    "Name" = "8:PdfSharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:PdfSharp.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:SmallTuba, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_532692EA588CC250F2067B5EB1579856"
+                    "_5BA2CD75CF9DFF38ADB23C6BA9EFE4F9"
                     {
                     "Name" = "8:SmallTuba.exe"
                     "Attributes" = "3:512"
@@ -196,51 +240,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9FAA1F04A9C9A29E3286FF6E66A16204"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FF56A323DBCA6869B884F023F8EEC374"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.4.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9FAA1F04A9C9A29E3286FF6E66A16204"
+                    "_FF56A323DBCA6869B884F023F8EEC374"
                     {
                     "Name" = "8:MySql.Data.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:MySql.Data.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B2475E359FC873E94ECB4BF70992D6A0"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B2475E359FC873E94ECB4BF70992D6A0"
-                    {
-                    "Name" = "8:PdfSharp.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:PdfSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
@@ -313,22 +326,22 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:ClientApplicationSetup"
+        "ProductName" = "8:Client"
         "ProductCode" = "8:{4D9FA3A8-90D1-43CF-9A17-9B10A832F89D}"
-        "PackageCode" = "8:{BF77192F-6F0A-4FC0-9546-3B0AE9592B8A}"
+        "PackageCode" = "8:{81B5CDD4-167C-441A-9812-6F5F5BA69AB9}"
         "UpgradeCode" = "8:{448EA8DB-839E-4946-B12E-8E6D6E5B230C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
-        "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "DetectNewerInstalledVersion" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Dirty Lion"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:ClientApplicationSetup"
+        "Title" = "8:Dirty Lion - Client"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Dirty Lion"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -435,6 +448,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F59384ADE87430DB232BE5EBD1568F3"
+            {
+            "Name" = "8:Dirty Lion - Client"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
+            "Folder" = "8:_FC185F874516483EBE71FC0CDCA5525C"
+            "WorkingFolder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9D270DDC17C34DB5A25EA6FE6073AB53"
+            {
+            "Name" = "8:Dirty Lion - Client"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_FD0D0D8B12A646FA959D8A0EC78CCD09"
+            "Folder" = "8:_D2C98A2B95C14004A4B059E6857F15FD"
+            "WorkingFolder" = "8:_D95DF6350B444DFD9E7E41124D7845FF"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
