@@ -1,7 +1,10 @@
-﻿namespace SmallTuba.Utility {
+
+namespace SmallTuba.Utility {
     using System;
     using System.Diagnostics.Contracts;
 
+    /// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
+    /// <version>2011-12-12</version>
     /// <summary>
     /// Generates a unique voter id number
     /// </summary>

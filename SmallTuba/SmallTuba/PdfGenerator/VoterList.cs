@@ -9,6 +9,8 @@ namespace SmallTuba.PdfGenerator
 	using PdfSharp.Pdf;
 	using SmallTuba.Entities;
 
+	/// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
+	/// <version>2011-12-12</version>
 	/// <summary>
 	/// This class generates voter lists.
 	/// The number of rows is flexible, and the size of the font will automatically be adjusted.

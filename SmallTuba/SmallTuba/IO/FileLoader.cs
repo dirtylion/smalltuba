@@ -1,4 +1,4 @@
-﻿namespace SmallTuba.IO
+namespace SmallTuba.IO
 {
 	using System.Collections.Generic;
 	using System.Diagnostics.Contracts;
@@ -10,14 +10,17 @@
 	using SmallTuba.Entities;
 	using SmallTuba.Utility;
 
+	/// <author>Kåre Sylow Pedersen (ksyl@itu.dk)</author>
+	/// <version>2011-12-12</version>
 	/// <summary>
 	/// This class loads a xml file from at path and validate it against a xml schema.
 	/// If the format of the file is correct, the class parse it to a list of polling venues
 	/// with information about the voters and municipality associated with it.
 	/// </summary>
-	public class FileLoader {
+	public class FileLoader{
+
 		/// <summary>
-		/// Load a xml file from a path, and parse it to a list of polling venues
+		/// Can you load this xml file, and parse it to a list of polling venues?
 		/// </summary>
 		/// <param name="path">The path of the file</param>
 		/// <param name="notifier">Event subscriber if validation of the xml file fails</param>
@@ -26,6 +29,7 @@
 			Contract.Requires(path != null);
 			Contract.Requires(notifier != null);
 			Contract.Requires(File.Exists(path));
+			Contract.Requires(Path.GetExtension(path).Equals(".xml"));
 
 			return this.LoadVenues(XDocument.Load(path), notifier);		
 		}

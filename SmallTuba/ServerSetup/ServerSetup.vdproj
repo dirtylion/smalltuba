@@ -135,6 +135,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -337,7 +350,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Server"
         "ProductCode" = "8:{A6EC7F96-2D51-4839-9CED-4F0992BF5BA4}"
-        "PackageCode" = "8:{DBD29238-45B2-4006-936C-3B691087F824}"
+        "PackageCode" = "8:{3BC85890-C1AE-4CF1-A197-2714748D0D8A}"
         "UpgradeCode" = "8:{C075598F-C4C3-4A66-BE6C-26484509BBEA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -872,7 +885,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0534CC5394C04974955A12E4ED72FABE"
             {
-            "SourcePath" = "8:..\\SmallTuba\\obj\\x86\\Debug\\SmallTuba.exe"
+            "SourcePath" = "8:..\\SmallTuba\\obj\\x86\\Release\\SmallTuba.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"
@@ -928,7 +941,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D34E57393803491C82B49E9A80C232E0"
             {
-            "SourcePath" = "8:..\\ServerApplication\\obj\\x86\\Debug\\ServerApplication.exe"
+            "SourcePath" = "8:..\\ServerApplication\\obj\\x86\\Release\\ServerApplication.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"

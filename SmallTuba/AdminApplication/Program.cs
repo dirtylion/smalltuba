@@ -1,16 +1,16 @@
-﻿using System;
-using System.Windows.Forms;
 namespace AdminApplication {
+	using System;
 	using System.Runtime.InteropServices;
+	using System.Windows.Forms;
 
 	using SmallTuba.Utility;
 
-	static class Program {
+	internal static class Program {
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main() {
+		private static void Main() {
 			if (Debug.ConsoleOutput) {
 				Win32.AllocConsole();
 			}
