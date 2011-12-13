@@ -1,5 +1,4 @@
-﻿namespace ClientApplication
-{
+﻿namespace ClientApplication {
     using System.Collections.Generic;
     
     /// <author>Christian Olsson (chro@itu.dk)</author>
@@ -7,8 +6,7 @@
     /// <summary>
     /// The model of this application
     /// </summary>
-    internal class Model
-    {
+    internal class Model {
         /// <summary>
         /// A log of who is registered at this client
         /// </summary>
@@ -17,8 +15,7 @@
         /// <summary>
         /// Creates a new model
         /// </summary>
-        public Model()
-        {
+        public Model() {
             this.log = new List<ClientLog>();
         }
 
@@ -30,8 +27,7 @@
         /// <summary>
         /// The log of what has been registered at this client
         /// </summary>
-        public List<ClientLog> Log
-        {
+        public List<ClientLog> Log {
             get { return this.log; }
         }
     }

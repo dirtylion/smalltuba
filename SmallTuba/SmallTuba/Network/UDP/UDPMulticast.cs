@@ -1,5 +1,4 @@
-﻿namespace SmallTuba.Network.UDP
-{
+﻿namespace SmallTuba.Network.UDP {
     using System;
     using System.Diagnostics.Contracts;
     using System.IO;
@@ -13,8 +12,7 @@
     /// <summary>
     /// Class used for multicasting data
     /// </summary>
-    public class UdpMulticast
-    {
+    public class UdpMulticast {
         /// <summary>
         /// The Udpclient that wraps all the socket programming nicely
         /// </summary>
@@ -38,8 +36,7 @@
 	    /// The server sends to ip 224.5.6.7 port 5000
         /// </summary>
         /// <param name="server">If the client should be server - 0 or client - 1</param>
-        public UdpMulticast(int server)
-        {
+        public UdpMulticast(int server) {
             Contract.Requires(server == 0 || server == 1);
             
             // Creates a new client initialized for port 5000/5001
@@ -65,8 +62,7 @@
         /// Send this object
         /// </summary>
         /// <param name="o">The object to send</param>
-        public void Send(object o)
-        {
+        public void Send(object o) {
             Contract.Requires(o != null);
             var bf = new BinaryFormatter();
             var ms = new MemoryStream();
@@ -80,19 +76,16 @@
         /// </summary>
         /// <param name="timeOut">The time to wait in milliseconds</param>
         /// <returns>The received object, null if it times out</returns>
-        public object Receive(long timeOut)
-        {
+        public object Receive(long timeOut) {
             Contract.Requires(timeOut >= 0);
 
             // The initial time
             var preTime = DateTime.Now.ToFileTime();
             
             // Listen forever if timeout was 0, or until the time has expired
-            while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000))
-            {
+            while (timeOut == 0 || DateTime.Now.ToFileTime() < preTime + (timeOut * 10000)) {
                 // If packages are available
-                if (this.client.Available > 0)
-                {
+                if (this.client.Available > 0) {
                     // Receive the next as a byte array
                     byte[] data = this.client.Receive(ref this.receivePoint);
                     var ms = new MemoryStream();
@@ -101,18 +94,15 @@
                     ms.Seek(0, SeekOrigin.Begin);
                     
                     // Try to deserialize the data
-                    try
-                    {
+                    try {
                         return bf.Deserialize(ms);
                     }
-                    catch (System.Runtime.Serialization.SerializationException)
-                    {
+                    catch (System.Runtime.Serialization.SerializationException) {
                         // The received input was not an object
                         // Maybe Another application is using this port
                     }
                 }
-                else
-                {
+                else {
                     // Sleeps for 10 miliseconds
                     System.Threading.Thread.Sleep(10);
                 }

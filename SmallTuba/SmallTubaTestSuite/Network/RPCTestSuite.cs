@@ -1,26 +1,25 @@
-﻿using System;
-using System.Threading;
-using NUnit.Framework;
-using SmallTuba.Entities;
-using SmallTuba.Network.RPC;
-using SmallTuba.Utility;
+﻿namespace SmallTubaTestSuite.Network {
+    using System;
+    using System.Threading;
+    using NUnit.Framework;
+    using SmallTuba.Entities;
+    using SmallTuba.Network.RPC;
+    using SmallTuba.Utility;
 
-namespace SmallTubaTestSuite.Network
-{
+    /// <author>Christian Olsson (chro@itu.dk)</author>
+    /// <version>2011-12-12</version>
+    /// <summary>
     [TestFixture]
-    class RPCTestSuite
-    {
+    class RPCTestSuite {
         private Person person1;
         private Person person2;
         private Person emptyPerson;
         private int unixTime;
         private string[] tables;
 
-        private void Init()
-        {
+        private void Init() {
             unixTime = (int)TimeConverter.ConvertToUnixTimestamp(DateTime.Now.ToUniversalTime());
-            person1 = new Person()
-            {
+            person1 = new Person() {
                 Cpr = "1",
                 FirstName = "TestCprFirst",
                 DbId = 11,
@@ -30,8 +29,7 @@ namespace SmallTubaTestSuite.Network
                 Voted = false,
                 Exists = true
             };
-            person2 = new Person()
-            {
+            person2 = new Person() {
                 Cpr = "2",
                 FirstName = "TestIdFirst",
                 DbId = 22,
@@ -46,8 +44,7 @@ namespace SmallTubaTestSuite.Network
         }
 
         [Test]
-        public void TestRpc()
-        {
+        public void TestRpc() {
             // Setup test objects
             Init();
 
@@ -134,8 +131,7 @@ namespace SmallTubaTestSuite.Network
         /// <summary>
         /// A server that will listen for 10 seconds
         /// </summary>
-        private void SetupServer()
-        {
+        private void SetupServer() {
             VoterServer voterServer = new VoterServer(System.Net.Dns.GetHostName());
             voterServer.CprToPersonRequest = ((name, cpr) => cpr == "1" ? person1 : emptyPerson);
             voterServer.VoterIdToPersonRequest = ((name, id) => id == 2 ? person2 : emptyPerson);
