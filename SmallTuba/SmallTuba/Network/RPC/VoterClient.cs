@@ -1,6 +1,4 @@
-﻿namespace SmallTuba.Network.RPC
-{
-	using System;
+namespace SmallTuba.Network.RPC {
 	using System.Diagnostics.Contracts;
 	using SmallTuba.Entities;
 	using SmallTuba.Network.RequestReply;
@@ -11,8 +9,7 @@
 	/// The client side of the network communication in our voting system.
 	/// This is the top most level and communication is based on procedure calls
 	/// </summary>
-	public class VoterClient
-	{
+	public class VoterClient {
 		/// <summary>
 		/// The request reply network class
 		/// </summary>
@@ -22,16 +19,13 @@
         /// May I have a new client for the voter network with this name?
         /// </summary>
         /// <param name="name">The name of the client</param>
-        public VoterClient(string name)
-        {
+        public VoterClient(string name) {
             this.Name = name;
             this.clientFrontEnd = new ClientFrontEnd(name);
         }
 
 		/// <summary>
 		/// The name of this client
-		/// The name in the underlying architecture is set by the constructor
-		/// If the name is changed, it only changes the name received at the VoterServer class
 		/// </summary>
 		public string Name { get; set; }
 		
@@ -40,8 +34,7 @@
 		/// </summary>
 		/// <param name="cpr">The cpr number of the person</param>
 		/// <returns>The person</returns>
-		public Person GetPersonFromCpr(int cpr)
-		{
+		public Person GetPersonFromCpr(int cpr) {
 			Contract.Ensures(this.Connected() ? Contract.Result<Person>() != null : Contract.Result<Person>() == null);
 			
             // The request to send
@@ -51,14 +44,12 @@
 			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			
             // If it was a timeout
-			if (reply == null)
-			{
+			if (reply == null) {
 				return null;
 			}
             
             // If it was a valid reply
-            if (reply is Message && ((Message)reply).GetValue is Person)
-            {
+            if (reply is Message && ((Message)reply).GetValue is Person) {
                 Message replyMessage = (Message) reply;
 				return (Person)replyMessage.GetValue;
 			}
@@ -69,12 +60,11 @@
 		}
 
 		/// <summary>
-		/// May I have all information about the person with this barcode ID?
+		/// May I have all information about the person with this ID?
 		/// </summary>
 		/// <param name="id">The id of the person</param>
 		/// <returns>The person</returns>
-		public Person GetPersonFromId(int id)
-		{
+		public Person GetPersonFromId(int id) {
 			Contract.Ensures(this.Connected() ? Contract.Result<Person>() != null : Contract.Result<Person>() == null);
 			
             // The request to send
@@ -84,14 +74,12 @@
 			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			
             // If it was a timeout
-			if (reply == null)
-			{
+			if (reply == null) {
 				return null;
 			}
 			
             // If it was a valid reply
-			if (reply is Message && ((Message)reply).GetValue is Person)
-			{
+			if (reply is Message && ((Message)reply).GetValue is Person) {
 				Message replyMessage = (Message)reply;
 				return (Person)replyMessage.GetValue;
 			}
@@ -106,8 +94,7 @@
 		/// </summary>
 		/// <param name="person">The state of the voter</param>
 		/// <returns>If the voter was registered</returns>
-		public bool RegisterVoter(Person person)
-		{
+		public bool RegisterVoter(Person person) {
 			Contract.Requires(person != null);
 			Contract.Ensures(this.Connected() ? true : Contract.Result<bool>() == false);
 			
@@ -118,14 +105,12 @@
 			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			
             // If it was a timeout
-			if (reply == null)
-			{
+			if (reply == null) {
 				return false;
 			}
 			
             // If it was a valid reply
-			if (reply is Message && ((Message)reply).GetValue is bool)
-			{
+			if (reply is Message && ((Message)reply).GetValue is bool) {
 				Message replyMessage = (Message)reply;
 				return (bool)replyMessage.GetValue;
 			}
@@ -152,14 +137,12 @@
 			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			
             // If it was a timeout
-			if (reply == null)
-			{
+			if (reply == null) {
 				return false;
 			}
 			
             // If it was a valid reply
-			if (reply is Message && ((Message)reply).GetValue is bool)
-			{
+			if (reply is Message && ((Message)reply).GetValue is bool) {
 				Message replyMessage = (Message)reply;
 				return (bool)replyMessage.GetValue;
 			}
@@ -173,8 +156,7 @@
 		/// What are the valid tables for this server?
 		/// </summary>
 		/// <returns></returns>
-		public string[] ValidTables()
-		{
+		public string[] ValidTables() {
 			Contract.Ensures(!this.Connected() ? Contract.Result<string[]>() == null : true);
 			
             // The request to send
@@ -184,14 +166,12 @@
 			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			
             // If it was a timeout
-			if (reply == null)
-			{
+			if (reply == null) {
 				return null;
 			}
 			
             // If it was a valid reply
-			if (reply is Message && ((Message)reply).GetValue is string[])
-			{
+			if (reply is Message && ((Message)reply).GetValue is string[]) {
 				Message replyMessage = (Message)reply;
 				return (string[])replyMessage.GetValue;
 			}
@@ -206,8 +186,7 @@
 		/// </summary>
 		/// <returns>If the client is connected</returns>
 		[Pure]
-		public bool Connected()
-		{
+		public bool Connected() {
 			// The request to send
 			Message request = new Message(Keyword.Ping, this.Name, null);
 			
@@ -215,14 +194,12 @@
 			object reply = this.clientFrontEnd.SendRequest(request, 5000);
 			
             // If it was a timeout
-			if (reply == null)
-			{
+			if (reply == null) {
 				return false;
 			}
 			
             // If it was a valid reply
-			if (reply is Message)
-			{
+			if (reply is Message) {
 				return true;
 			}
 			
@@ -235,8 +212,7 @@
 		/// The name must never be null, or of length 0 since it is used at the server
 		/// </summary>
 		[ContractInvariantMethod]
-		private void ObjectInvariant()
-		{
+		private void ObjectInvariant() {
 			Contract.Invariant(!string.IsNullOrEmpty(this.Name) && this.Name != "server");
 		}
 	}

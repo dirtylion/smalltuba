@@ -6,7 +6,7 @@
 	using SmallTuba.Entities.Abstracts;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-07</version>
+	/// <version>2011-12-12</version>
 	/// <summary>
 	/// The Person class represents a real-life person, with
 	/// relevant-to-the-system information associated such as
@@ -18,56 +18,69 @@
 
 		private List<LogEntity> logs;
 
+		/// <summary>
+		/// Create a new person entity object.
+		/// </summary>
 		public PersonEntity() {
-			ValueObject = new PersonValueObject();
-			DataAccessObject = new PersonDataAccessObject();
+			this.ValueObject = new PersonValueObject();
+			this.DataAccessObject = new PersonDataAccessObject();
 
 			logs = null;
 		}
 
+		/// <summary>
+		/// Create a new person entity and set
+		/// the given values on it.
+		/// </summary>
+		/// <param name="values">The values which the person entity should be created with.</param>
 		public PersonEntity(Hashtable values) : this() {
 			Contract.Requires(values != null);
 
-			ValueObject.SetValues(values);
+			this.ValueObject.SetValues(values);
 		}
 
 		public string Firstname { 
-			get { return ValueObject["firstname"] != null ? (string) ValueObject["firstname"] : ""; } 
-			set { ValueObject["firstname"] = value; }
+			get { return this.ValueObject["firstname"] != null ? (string) this.ValueObject["firstname"] : ""; } 
+			set { this.ValueObject["firstname"] = value; }
 		}
 		public string Lastname { 
-			get { return ValueObject["lastname"] != null ? (string) ValueObject["lastname"] : ""; } 
-			set { ValueObject["lastname"] = value; }
+			get { return this.ValueObject["lastname"] != null ? (string) this.ValueObject["lastname"] : ""; } 
+			set { this.ValueObject["lastname"] = value; }
 		}
 		public string Cpr { 
-			get { return ValueObject["cpr"] != null ? (string) ValueObject["cpr"] : ""; } 
-			set { ValueObject["cpr"] = value; }
+			get { return this.ValueObject["cpr"] != null ? (string) this.ValueObject["cpr"] : ""; } 
+			set { this.ValueObject["cpr"] = value; }
 		}
 		public int VoterId { 
-			get { return ValueObject["voter_id"] != null ? (int) ValueObject["voter_id"] : 0; } 
-			set { ValueObject["voter_id"] = value; }
+			get { return this.ValueObject["voter_id"] != null ? (int) this.ValueObject["voter_id"] : 0; } 
+			set { this.ValueObject["voter_id"] = value; }
 		}
 		public string PollingVenue { 
-			get { return ValueObject["polling_venue"] != null ? (string) ValueObject["polling_venue"] : ""; } 
-			set { ValueObject["polling_venue"] = value; }
+			get { return this.ValueObject["polling_venue"] != null ? (string) this.ValueObject["polling_venue"] : ""; } 
+			set { this.ValueObject["polling_venue"] = value; }
 		}
 		public string PollingTable { 
-			get { return ValueObject["polling_table"] != null ? (string) ValueObject["polling_table"] : ""; } 
-			set { ValueObject["polling_table"] = value; }
+			get { return this.ValueObject["polling_table"] != null ? (string) this.ValueObject["polling_table"] : ""; } 
+			set { this.ValueObject["polling_table"] = value; }
 		}
 
 		public bool Voted {
-			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register"; }
+			get { return this.GetMostRecentLog() != null && this.GetMostRecentLog().Action == "register"; }
 		}
 
 		public int VotedTime {
-			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register" ? GetMostRecentLog().Timestamp : 0; }
+			get { return this.GetMostRecentLog() != null && this.GetMostRecentLog().Action == "register" ? this.GetMostRecentLog().Timestamp : 0; }
 		}
 
 		public string VotedPollingTable {
-			get { return GetMostRecentLog() != null && GetMostRecentLog().Action == "register" ? GetMostRecentLog().PollingTable : ""; }
+			get { return this.GetMostRecentLog() != null && this.GetMostRecentLog().Action == "register" ? this.GetMostRecentLog().PollingTable : ""; }
 		}
 
+		/// <summary>
+		/// Get all log entities in the database
+		/// concerning this person.
+		/// </summary>
+		/// <returns>All the logs in the database concerning this person.</returns>
 		public List<LogEntity> GetLogs() {
 			if (Exists()) {
 				var resource = new LogResource();
@@ -80,10 +93,19 @@
 			return logs;
 		}
 
+		/// <summary>
+		/// Get the most recent log inserted in the database.
+		/// </summary>
+		/// <returns>The most recent log entitiy inserted in the database.</returns>
 		public LogEntity GetMostRecentLog() {
-			return GetLogs() != null && GetLogs().Count > 0 ? logs[0] : null;
+			return this.GetLogs() != null && this.GetLogs().Count > 0 ? logs[0] : null;
 		}
 
+		/// <summary>
+		/// Create a Person object from the data currently
+		/// stored in the PersonEntity object.
+		/// </summary>
+		/// <returns>A Person object reflecting this entity.</returns>
 		public Person ToObject() {
 			return new Person {
 			    DbId = DbId,

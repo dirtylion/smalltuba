@@ -8,28 +8,32 @@
 	using SmallTuba.Utility;
 
 	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
-	/// <version>2011-12-08</version>
+	/// <version>2011-12-12</version>
 	/// <summary>
 	/// Testing the interface of the server. Making sure
 	/// that the reponses to the request is the correct
 	/// data to be send over the network etc.
 	/// </summary>
-	[TestFixture()]
+	[TestFixture]
 	public class ServerTestSuite {
-		private Server _server;
+		private Server server;
 		
 		/// <summary>
 		/// Initialize an instance of the Server class
-		/// to test against.
+		/// to test against. Set external data source
+		/// debug mode to true.
 		/// </summary>
-		[TestFixtureSetUp()]
+		[TestFixtureSetUp]
 		public void TestSetUp() {
-			_server = new Server();
+			this.server = new Server();
 
 			Debug.ExternalDataSources = true;
 		}
 
-		[TestFixtureTearDown()]
+		/// <summary>
+		/// Set external data source debug mode to false.
+		/// </summary>
+		[TestFixtureTearDown]
 		public void TestTearDown() {
 			Debug.ExternalDataSources = false;
 		} 
@@ -38,9 +42,9 @@
 		/// Testing the CprToPersonRequestHandler method
 		/// with a cpr from a valid, existing person.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestCprToPersonRequestHandlerWithExistingPerson() {
-			var person = _server.CprToPersonRequestHandler("test client", "0123456789");
+			var person = this.server.CprToPersonRequestHandler("test client", "0123456789");
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
@@ -56,9 +60,9 @@
 		/// Testing the CprToPersonRequestHandler method
 		/// with a cpr from a non-existing/invalid person.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestCprToPersonRequestHandlerWithUnexistingPerson() {
-			var person = _server.CprToPersonRequestHandler("test client", "0711891952");
+			var person = this.server.CprToPersonRequestHandler("test client", "0711891952");
 			
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);
@@ -74,9 +78,9 @@
 		/// Testing the IdToPersonRequestHandler method
 		/// with a id from a valid, existing person.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestVoterIdToPersonRequestHandlerWithExistingPerson() {
-			var person = _server.VoterIdToPersonRequestHandler("test client", 3306);
+			var person = this.server.VoterIdToPersonRequestHandler("test client", 3306);
 			
 			Assert.That(person.Exists);
 			Assert.That(person.DbId == 1);
@@ -92,9 +96,9 @@
 		/// Testing the IdToPersonRequestHandler method
 		/// with a id from a valid, existing person.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestVoterIdToPersonRequestHandlerWithUnexistingPerson() {
-			var person = _server.VoterIdToPersonRequestHandler("test client", 669);
+			var person = this.server.VoterIdToPersonRequestHandler("test client", 669);
 
 			Assert.That(person.Exists == false);
 			Assert.That(person.DbId == 0);
@@ -110,14 +114,14 @@
 		/// Test registration of a voter/person which has
 		/// not voted before and is a valid voter.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestRegisterVoteRequestHandlerWithExistingNonVotePerson() {
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", 1 } });
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(_server.RegisterVoteRequestHandler("test client", person));
+			Assert.That(this.server.RegisterVoteRequestHandler("test client", person));
 
 			var logEntity = personEntity.GetMostRecentLog();
 			logEntity.Delete();
@@ -127,55 +131,55 @@
 		/// Test registration of a voter/person which has
 		/// voted before but is a valid voter.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestRegisterVoteRequestHandlerWithExistingVotePerson() {
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", 2 } });
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.RegisterVoteRequestHandler("test client", person));
+			Assert.That(!this.server.RegisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
 		/// Test registration with a non-existing person.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestRegisterVoteRequestHandlerWithUnexistingPerson() {
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", 669 } });
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.RegisterVoteRequestHandler("test client", person));
+			Assert.That(!this.server.RegisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
 		/// Test unregistration of a person who have not
 		/// voted before but is a valid voter.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestUnregisterVoteRequestHandlerWithExistingNonVotePerson() {
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", 1 } });
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.UnregisterVoteRequestHandler("test client", person));
+			Assert.That(!this.server.UnregisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
 		/// Test unregistration of a person who have 
 		/// voted before and is a valid voter.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestUnregisterVoteRequestHandlerWithExistingVotePerson() {
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", 2 } });
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(_server.UnregisterVoteRequestHandler("test client", person));
+			Assert.That(this.server.UnregisterVoteRequestHandler("test client", person));
 
 			var logEntity = personEntity.GetMostRecentLog();
 			logEntity.Delete();
@@ -184,14 +188,14 @@
 		/// <summary>
 		/// Test unregistration with a non-existing person.
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestUnregisterVoteRequestHandlerWitUnexistingPerson() {
 			var personEntity = new PersonEntity();
 			personEntity.Load(new Hashtable { { "id", 669 } });
 			
 			var person = personEntity.ToObject();
 
-			Assert.That(!_server.UnregisterVoteRequestHandler("test client", person));
+			Assert.That(!this.server.UnregisterVoteRequestHandler("test client", person));
 		}
 
 		/// <summary>
@@ -199,9 +203,9 @@
 		/// from the data source and that it does not return
 		/// the same table twice. 
 		/// </summary>
-		[Test()]
+		[Test]
 		public void TestValidTableRequestHandler() {
-			var tables = _server.ValidTableRequestHandler("test client");
+			var tables = this.server.ValidTableRequestHandler("test client");
 
 			var tablesList = new List<string>(tables);
 

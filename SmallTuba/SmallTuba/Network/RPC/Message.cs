@@ -1,19 +1,14 @@
-﻿namespace SmallTuba.Network.RPC
-{
+namespace SmallTuba.Network.RPC {
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.Contracts;
-    using System.Linq;
-    using System.Text;
+	using System.Diagnostics.Contracts;
 
-    /// <author>Christian Olsson (chro@itu.dk)</author>
+	/// <author>Christian Olsson (chro@itu.dk)</author>
     /// <version>2011-12-12</version>
     /// <summary>
     /// A message describing a keyword and a value
     /// </summary>
     [Serializable]
-    internal struct Message
-    {
+    internal struct Message {
         /// <summary>
         /// The keyword
         /// </summary>
@@ -35,8 +30,7 @@
         /// <param name="keyword">The keyword</param>
         /// <param name="sender">The sender</param>
         /// <param name="value">The value</param>
-        public Message(Keyword keyword, string sender, object value)
-        {
+        public Message(Keyword keyword, string sender, object value) {
             this.keyword = keyword;
             this.sender = sender;
             this.value = value;
@@ -46,10 +40,8 @@
         /// What is the keyword of this message?
         /// </summary>
         [Pure]
-        public Keyword GetKeyword
-        {
-            get
-            {
+        public Keyword GetKeyword {
+            get {
                 return this.keyword;
             }
         }
@@ -57,10 +49,8 @@
         /// <summary>
         /// Who is the sender of this message
         /// </summary>
-        public string GetSender
-        {
-            get
-            {
+        public string GetSender {
+            get {
                 return this.sender;
             }
         }
@@ -69,10 +59,8 @@
         /// What is the value of this message?
         /// </summary>
         [Pure]
-        public object GetValue
-        {
-            get
-            {
+        public object GetValue {
+            get {
                 return this.value;
             }
         }

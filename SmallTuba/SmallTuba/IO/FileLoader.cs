@@ -1,5 +1,4 @@
-﻿namespace SmallTuba.IO
-{
+﻿﻿namespace SmallTuba.IO{
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;

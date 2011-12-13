@@ -6366,7 +6366,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0534CC5394C04974955A12E4ED72FABE"
             {
-            "SourcePath" = "8:..\\SmallTuba\\obj\\x86\\Debug\\SmallTuba.exe"
+            "SourcePath" = "8:..\\SmallTuba\\obj\\x86\\Release\\SmallTuba.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"
@@ -6422,7 +6422,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D34E57393803491C82B49E9A80C232E0"
             {
-            "SourcePath" = "8:..\\ServerApplication\\obj\\x86\\Debug\\ServerApplication.exe"
+            "SourcePath" = "8:..\\ServerApplication\\obj\\x86\\Release\\ServerApplication.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E32AA59EEAE4C429BD107D7C6D3E8F3"

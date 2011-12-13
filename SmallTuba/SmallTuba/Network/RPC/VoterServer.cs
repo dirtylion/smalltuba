@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace SmallTuba.Network.RPC
-{
-	using System.Diagnostics.Contracts;
+﻿namespace SmallTuba.Network.RPC {
+    using System;
+    using System.Diagnostics.Contracts;
 	using SmallTuba.Entities;
 	using SmallTuba.Network.RequestReply;
 
@@ -12,8 +10,7 @@ namespace SmallTuba.Network.RPC
 	/// The server side of the network communication in our voting system.
 	///	This is the top most level and communication is based on procedure calls.
 	/// </summary>
-	public class VoterServer
-	{
+	public class VoterServer {
 		/// <summary>
 		/// The name of the server
 		/// </summary>
@@ -28,8 +25,7 @@ namespace SmallTuba.Network.RPC
 		/// May I have a new server for the voter network with this name?
 		/// </summary>
 		/// <param name="name">The name of the server</param>
-		public VoterServer(string name)
-		{
+		public VoterServer(string name) {
 			Contract.Requires(name != null);
 			this.name = "Server: " + name;
 			this.serverFrontEnd = new ServerFrontEnd();
@@ -104,8 +100,7 @@ namespace SmallTuba.Network.RPC
 		/// Listen for calls for this amount of time
 		/// </summary>
 		/// <param name="timeOut">The amount of time in milliseconds, if zero it waits forever</param>
-		public void ListenForCalls(int timeOut)
-		{
+		public void ListenForCalls(int timeOut) {
 			Contract.Requires(timeOut >= 0);
 			Contract.Requires(this.CprToPersonRequest != null);
 			Contract.Requires(this.VoterIdToPersonRequest != null);
@@ -121,22 +116,19 @@ namespace SmallTuba.Network.RPC
 		/// </summary>
 		/// <param name="o">The request from the client</param>
 		/// <returns>The reply for the client</returns>
-		private object RequestHandler(object o)
-		{
-			// This should not be possible
-			// Only packets from a SmallTuba.Network.RequestReply.ClientFrontEnd will be received
-			if (!(o is Message))
-			{
-				Contract.Assert(false);
-				return null;
-			}
-			
-			Message request = (Message) o;
+		private object RequestHandler(object o) {
+            // This should not be possible
+            // Only packets from a SmallTuba.Network.RequestReply.ClientFrontEnd will be received
+            if (!(o is Message)) {
+                Contract.Assert(false);
+                return null;
+            }
+            
+            Message request = (Message) o;
 			Keyword keyword = request.GetKeyword;
 
 			// Test which procedure is to be invoked
-			switch (keyword)
-			{
+			switch (keyword) {
 				case Keyword.GetPersonFromCpr:
 					Person personFromCpr = this.CprToPersonRequest.Invoke(request.GetSender, request.GetValue.ToString());
 					return new Message(keyword, this.name, personFromCpr);

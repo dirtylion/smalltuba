@@ -27,7 +27,7 @@
 		/// instance of the QueryBuilder.
 		/// </summary>
 		protected AbstractDataAccessObject() {
-			QueryBuilder = new QueryBuilder();
+			this.QueryBuilder = new QueryBuilder();
 		}
 		
 		/// <summary>
@@ -45,17 +45,17 @@
 			Contract.Requires(parameters != null);
 			Contract.Requires(parameters.Count > 0);
 
-			QueryBuilder.SetType("select");
-			QueryBuilder.SetTable(Table);
-			QueryBuilder.SetColumns(Columns);
-			QueryBuilder.SetLimit(1);
+			this.QueryBuilder.SetType("select");
+			this.QueryBuilder.SetTable(Table);
+			this.QueryBuilder.SetColumns(Columns);
+			this.QueryBuilder.SetLimit(1);
 
 			var enumerator = parameters.GetEnumerator();
 			while (enumerator.MoveNext()) {
-				QueryBuilder.AddCondition("`"+enumerator.Key+"` = '"+enumerator.Value+"'");
+				this.QueryBuilder.AddCondition("`"+enumerator.Key+"` = '"+enumerator.Value+"'");
 			}
 
-			var results = QueryBuilder.ExecuteQuery();
+			var results = this.QueryBuilder.ExecuteQuery();
 
 			return results.Count > 0 ? (Hashtable) results[0] : new Hashtable();
 		}
@@ -70,27 +70,27 @@
 			Contract.Requires(values != null);
 			Contract.Requires(values.Count > 0);
 
-			var _values = new string[Columns.Length];
+			var valuesFiltered = new string[Columns.Length];
 
 			for (var i = 0; i < Columns.Length; i++) {
 				if (values.ContainsKey(Columns[i])) {
-					_values[i] = values[Columns[i]].ToString();
+					valuesFiltered[i] = values[Columns[i]].ToString();
 				}
 			}
 			
-			QueryBuilder.SetTable(Table);
-			QueryBuilder.SetColumns(Columns);
-			QueryBuilder.SetValues(_values);
-			QueryBuilder.SetLimit(1);
+			this.QueryBuilder.SetTable(Table);
+			this.QueryBuilder.SetColumns(Columns);
+			this.QueryBuilder.SetValues(valuesFiltered);
+			this.QueryBuilder.SetLimit(1);
 
 			if (values.ContainsKey("id") && values["id"].ToString() != "" && (int) values["id"] > 0) {
-				QueryBuilder.SetType("update");
-				QueryBuilder.AddCondition("`id` = '" + (int)values["id"] + "'");
+				this.QueryBuilder.SetType("update");
+				this.QueryBuilder.AddCondition("`id` = '" + (int)values["id"] + "'");
 			} else {
-				QueryBuilder.SetType("insert");
+				this.QueryBuilder.SetType("insert");
 			}
 
-			return QueryBuilder.ExecuteNoneQuery();
+			return this.QueryBuilder.ExecuteNoneQuery();
 		}
 		
 		/// <summary>
@@ -100,12 +100,12 @@
 		public void Delete(int id) {
 			Contract.Requires(id > 0);
 
-			QueryBuilder.SetType("delete");
-			QueryBuilder.SetTable(Table);
-			QueryBuilder.AddCondition("`id` = '" + id + "'");
-			QueryBuilder.SetLimit(1);
+			this.QueryBuilder.SetType("delete");
+			this.QueryBuilder.SetTable(Table);
+			this.QueryBuilder.AddCondition("`id` = '" + id + "'");
+			this.QueryBuilder.SetLimit(1);
 
-			QueryBuilder.ExecuteNoneQuery();
+			this.QueryBuilder.ExecuteNoneQuery();
 		}
 	}
 }

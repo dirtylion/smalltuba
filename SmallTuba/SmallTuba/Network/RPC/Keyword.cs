@@ -1,17 +1,11 @@
-﻿namespace SmallTuba.Network.RPC
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+namespace SmallTuba.Network.RPC {
 
-    /// <author>Christian Olsson (chro@itu.dk)</author>
+	/// <author>Christian Olsson (chro@itu.dk)</author>
     /// <version>2011-12-12</version>
     /// <summary>
     /// Describing the action to be performed by the server
     /// </summary>
-    internal enum Keyword
-    {
+    internal enum Keyword {
         /// <summary>
         /// Are you a request about getting a person from a cpr number?
         /// </summary>

@@ -1,12 +1,20 @@
 ﻿namespace SmallTuba.DataGenerator {
 	using System.Xml;
 
+	/// <author>Henrik Haugbølle (hhau@itu.dk)</author>
+	/// <version>2011-12-12</version>
+	/// <summary>
+	/// The data generator uses information given
+	/// by a DataSource object to generate xml data
+	/// about municipalities, polling venues, voters
+	/// and polling tables.
+	/// </summary>
 	public class DataGenerator {
-		private DataSource dataSource;
+		private readonly DataSource dataSource;
 
 		public DataGenerator() {
-			dataSource = new DataSource();
-			dataSource.Load();
+			this.dataSource = new DataSource();
+			this.dataSource.Load();
 		}
 
 		public int NumberOfMunicipalities { get; set; }
@@ -15,6 +23,11 @@
 
 		public string FileDestination { get; set; }
 
+		/// <summary>
+		/// Generate a xml document containing information
+		/// about voters taking the given parameters
+		/// into consideration.
+		/// </summary>
 		public void Generate() {
 			XmlDocument doc = new XmlDocument();
 
@@ -28,13 +41,18 @@
 			doc.Save(FileDestination);
 		}
 
+		/// <summary>
+		/// Generate the municipality xml elements.
+		/// </summary>
+		/// <param name="doc">The document of which the elements should be attached.</param>
+		/// <returns>The document with the newly attached elements.</returns>
 		private XmlDocument GenerateMunicipalites(XmlDocument doc) {
 			XmlElement municipalities = doc.CreateElement("Municipalities");
 
-			for (var i = 0; i < NumberOfMunicipalities; i++) {
+			for (var i = 0; i < this.NumberOfMunicipalities; i++) {
 				XmlElement municipality = doc.CreateElement("Municipality");
 
-				var muni = dataSource.GetMunicipality();
+				var muni = this.dataSource.GetMunicipality();
 
 				XmlElement name = doc.CreateElement("Name");
 				name.InnerText = muni[0];
@@ -48,7 +66,7 @@
 				city.InnerText = muni[2];
 				municipality.AppendChild(city);
 
-				municipality.AppendChild(GeneratePollingVenues(doc, muni));
+				municipality.AppendChild(this.GeneratePollingVenues(doc, muni));
 
 				municipalities.AppendChild(municipality);
 			}
@@ -58,13 +76,19 @@
 			return doc;
 		}
 
+		/// <summary>
+		/// Generate the polling venue xml elements.
+		/// </summary>
+		/// <param name="doc">The document of which the elements should be attached.</param>
+		/// <param name="municipality">The information of the municipality the polling venues should be in.</param>
+		/// <returns>The document with the newly attached elements.</returns>
 		private XmlElement GeneratePollingVenues(XmlDocument doc, string[] municipality) {
 			XmlElement pollingVenues = doc.CreateElement("PollingVenues");
 
-			for (var i = 0; i < NumberOfPollingVenues; i++) {
+			for (var i = 0; i < this.NumberOfPollingVenues; i++) {
 				XmlElement pollingVenue = doc.CreateElement("PollingVenue");
 
-				var venue = dataSource.GetPollingVenue(municipality);
+				var venue = this.dataSource.GetPollingVenue(municipality);
 				
 				XmlElement name = doc.CreateElement("Name");
 				name.InnerText = venue[0];
@@ -78,7 +102,7 @@
 				city.InnerText = venue[2];
 				pollingVenue.AppendChild(city);
 
-				pollingVenue.AppendChild(GenerateVoters(doc, venue));
+				pollingVenue.AppendChild(this.GenerateVoters(doc, venue));
 
 				pollingVenues.AppendChild(pollingVenue);
 			}
@@ -86,13 +110,19 @@
 			return pollingVenues;
 		}
 
+		/// <summary>
+		/// Generate the voter xml elements.
+		/// </summary>
+		/// <param name="doc">The document of which the elements should be attached.</param>
+		/// <param name="venue">The information of the polling venue the voters should be in.</param>
+		/// <returns>The document with the newly attached elements.</returns>
 		private XmlElement GenerateVoters(XmlDocument doc, string[] venue) {
 			XmlElement voters = doc.CreateElement("Voters");
 
-			for (var i = 0; i < NumberOfVoters; i++) {
+			for (var i = 0; i < this.NumberOfVoters; i++) {
 				XmlElement voter = doc.CreateElement("Voter");
 
-				var person = dataSource.GetVoter(venue);
+				var person = this.dataSource.GetVoter(venue);
 				
 				XmlElement firstName = doc.CreateElement("FirstName");
 				firstName.InnerText = person[0];
