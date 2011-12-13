@@ -11,9 +11,9 @@ namespace ClientApplication {
 	/// The controller of the client application
 	/// </summary>
 	public class Controller {
-        /// <summary>
-        /// The welcome window
-        /// </summary>
+		/// <summary>
+		/// The welcome window
+		/// </summary>
 		private WelcomeForm welcomeForm;
 		
 		/// <summary>
@@ -41,9 +41,9 @@ namespace ClientApplication {
 		/// </summary>
 		private Model model;
 
-        /// <summary>
-        /// Creates a new controller
-        /// </summary>
+		/// <summary>
+		/// Creates a new controller
+		/// </summary>
 		public Controller() {
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
@@ -57,20 +57,15 @@ namespace ClientApplication {
 		/// <summary>
 		/// Starts the application
 		/// </summary>
-		public void Run()
-		{
-        /// <summary>
-        /// Starts the application
-        /// </summary>
 		public void Run() {
 			this.SetListeners();
 			this.SetDropDown();
 			Application.Run(this.welcomeForm);
 		}
 
-        /// <summary>
-        /// Sets the listeners for the main window and the welcome window
-        /// </summary>
+		/// <summary>
+		/// Sets the listeners for the main window and the welcome window
+		/// </summary>
 		private void SetListeners() {
 			this.welcomeForm.RefreshButton.Click += (object sender, EventArgs e) => this.SetDropDown();
 			this.welcomeForm.OKButton.Click += (object sender, EventArgs e) => this.GoToMainForm();
@@ -85,9 +80,9 @@ namespace ClientApplication {
 			this.mainForm.FormClosed += (object sender, FormClosedEventArgs e) => Application.Exit();
 		}
 
-        /// <summary>
-        /// Sets the dropdown menu with a response from the network client
-        /// </summary>
+		/// <summary>
+		/// Sets the dropdown menu with a response from the network client
+		/// </summary>
 		private void SetDropDown() {
 			this.welcomeForm.dropdown.Items.Clear();
 			string[] arr = this.networkClient.ValidTables();
@@ -102,9 +97,9 @@ namespace ClientApplication {
 			}
 		}
 
-        /// <summary>
-        /// Hides the welcome window and displays the main window
-        /// </summary>
+		/// <summary>
+		/// Hides the welcome window and displays the main window
+		/// </summary>
 		private void GoToMainForm() {
 			this.model.Name = this.welcomeForm.dropdown.SelectedItem.ToString();
 			this.welcomeForm.Hide();
@@ -114,9 +109,9 @@ namespace ClientApplication {
 			this.mainForm.Show();
 		}
 
-        /// <summary>
-        /// Searches for a voter with the id from the textbox and sets the current voter in the main window
-        /// </summary>
+		/// <summary>
+		/// Searches for a voter with the id from the textbox and sets the current voter in the main window
+		/// </summary>
 		private void SearchId() {
 			try {
 				int id = int.Parse(this.mainForm.IdTextBox.Text);
@@ -125,14 +120,14 @@ namespace ClientApplication {
 			}
 			catch (Exception exception) {
 				MessageBox.Show("Invalid input");
-                Debug.WriteLine(exception.Message);
+				Debug.WriteLine(exception.Message);
 			}
 		}
 
-        /// <summary>
-        /// Searches for a voter with the cpr from the textbox and sets the current voter in the main window
-        /// </summary>
-        private void SearchCpr() {
+		/// <summary>
+		/// Searches for a voter with the cpr from the textbox and sets the current voter in the main window
+		/// </summary>
+		private void SearchCpr() {
 			try {
 				int cpr = int.Parse(this.mainForm.CprTextBox.Text);
 				Person person = this.networkClient.GetPersonFromCpr(cpr);
@@ -140,14 +135,14 @@ namespace ClientApplication {
 			}
 			catch (Exception exception) {
 				MessageBox.Show("Invalid input");
-                Debug.WriteLine(exception.Message);
-            }
-	    }
+				Debug.WriteLine(exception.Message);
+			}
+		}
 
-        /// <summary>
-        /// Creates a new log window with the posts from this client
-        /// </summary>
-	    private void CreateLog() {
+		/// <summary>
+		/// Creates a new log window with the posts from this client
+		/// </summary>
+		private void CreateLog() {
 			this.logForm = new LogForm();
 			this.logForm.LogListBox.Items.AddRange(this.model.Log.ToArray());
 			this.logForm.TableLable.Text = this.model.Name;
@@ -157,9 +152,9 @@ namespace ClientApplication {
 			this.logForm.Show();
 		}
 
-        /// <summary>
-        /// Tries to register the current voter
-        /// </summary>
+		/// <summary>
+		/// Tries to register the current voter
+		/// </summary>
 		private void Register() {
 			if (this.networkClient.RegisterVoter(this.currentVoter)) {
 				this.model.Log.Add(new ClientLog(this.currentVoter, "registered"));
@@ -171,10 +166,10 @@ namespace ClientApplication {
 			}
 		}
 
-        /// <summary>
-        /// Tries to unregister the current voter
-        /// </summary>
-        private void Unregister() {
+		/// <summary>
+		/// Tries to unregister the current voter
+		/// </summary>
+		private void Unregister() {
 			if (this.networkClient.UnregisterVoter(this.currentVoter)) {
 				this.model.Log.Add(new ClientLog(this.currentVoter, "unregistered"));
 				this.ClearVoter();
@@ -185,9 +180,9 @@ namespace ClientApplication {
 			}
 		}
 
-        /// <summary>
-        /// Chooses the selected line from the log and sets this voter as the current
-        /// </summary>
+		/// <summary>
+		/// Chooses the selected line from the log and sets this voter as the current
+		/// </summary>
 		private void ChooseLine() {
 			if (this.logForm.LogListBox.SelectedItem != null) {
 				ClientLog logState = (ClientLog) this.logForm.LogListBox.SelectedItem;
@@ -197,18 +192,18 @@ namespace ClientApplication {
 			}
 		}
 
-        /// <summary>
-        /// closes the log window
-        /// </summary>
+		/// <summary>
+		/// closes the log window
+		/// </summary>
 		private void CloseLog() {
 			this.logForm.Hide();
 			this.logForm.Dispose();
 		}
 
-        /// <summary>
-        /// Sets the current voter
-        /// </summary>
-        /// <param name="voter">The voter to be set</param>
+		/// <summary>
+		/// Sets the current voter
+		/// </summary>
+		/// <param name="voter">The voter to be set</param>
 		private void SetVoter(Person voter) {
 			if (voter == null) {
 				MessageBox.Show("No network connection");
@@ -238,9 +233,9 @@ namespace ClientApplication {
 			}
 		}
 
-        /// <summary>
-        /// Clear the current voter
-        /// </summary>
+		/// <summary>
+		/// Clear the current voter
+		/// </summary>
 		private void ClearVoter() {
 			this.currentVoter = null;
 			this.mainForm.IdTextBox.Text = string.Empty;
@@ -257,23 +252,23 @@ namespace ClientApplication {
 			this.mainForm.Time.Text = string.Empty;
 		}
 
-        /// <summary>
-        /// Is called when a character is enteres in the id textbox
-        /// </summary>
-        /// <param name="sender">The sender</param>
-        /// <param name="e">the event</param>
+		/// <summary>
+		/// Is called when a character is enteres in the id textbox
+		/// </summary>
+		/// <param name="sender">The sender</param>
+		/// <param name="e">the event</param>
 		private void IdTextBoxEnter(object sender, KeyEventArgs e) {
 			if (e.KeyCode == Keys.Enter) {
 				this.SearchId();
 			}
 		}
 
-        /// <summary>
-        /// Is called when a character is enteres in the cpr textbox
-        /// </summary>
-        /// <param name="sender">The sender</param>
-        /// <param name="e">the event</param>
-        private void CprTextBoxEnter(object sender, KeyEventArgs e) {
+		/// <summary>
+		/// Is called when a character is enteres in the cpr textbox
+		/// </summary>
+		/// <param name="sender">The sender</param>
+		/// <param name="e">the event</param>
+		private void CprTextBoxEnter(object sender, KeyEventArgs e) {
 			if (e.KeyCode == Keys.Enter) {
 				this.SearchCpr();
 			}
